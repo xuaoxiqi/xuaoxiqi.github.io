@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
+    <meta name="description" content="Research on molecular dynamics." />
+    <meta name="keywords" content="lattice Boltzmann method,Ao Xu,Xu Ao,HKUST">
+
+    <title>Ao Xu (HKUST) | Research_MD</title>
+    
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./favicon.ico" sizes="57x57" />
+    
+    <link rel="author" type="text/html" href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" />
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+    
+    <link rel="stylesheet" type="text/css" href="./~css/main.css" media="all" />
+       <!-- Pygments -->
+    <link rel="stylesheet" type="text/css" href="./~css/pygments.css" media="all" />
+    
+    <!-- load Google Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans' />
+
+    <!-- <script type="text/javascript" src="./~js/main.js"></script> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107941848-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-107941848-1');
+</script>
+
+
+</head>
+
+<body>
+    
+    <nav id="navBarTop"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <ul class="navBarListLeft">
+	 		 <li><a href="./index.html"><img src="./~images/home.png" alt="home" title="Home" class="navDock" height="32"></a></li>
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./research.html">Research</a></li>
+	 		<li style="position: relative; top: -12px; font-size: 16px"><a href="./teaching.html">Teaching</a></li>
+              <li style="position: relative; top: -12px; font-size: 16px"><a href="./publications.html">Publications</a></li>
+			<!--<li style="position: relative; top: -12px; font-size: 16px"><a href="./gallery.html">Gallery</a></li>-->
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./about.html">About</a></li>
+        </ul>
+        
+        <ul class="navBarListRight">
+            <li style="position: relative; top: -12px"><b>Ao</b> on </li>
+            <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank"><img src="./~images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="32"></a></li>
+            <li><a href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./~images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="32"></a></li>
+            <li><a href="https://github.com/xuaoxiqi" target="_blank"><img src="./~images/github.png" alt="github" title="GitHub" class="navDock" height="32"></a></li>
+        </ul>
+    </nav>
+    
+    <nav id="navBarBottom"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <div class="navBarListLeft">            
+                <div style="position: relative; top: 4px; width: 150%">    
+                    ©2013-2018  Ao Xu <strong> -- Discussion on multiscale transport phenomena is welcomed. </strong>
+                </div>
+        </div>
+        
+        <div class="navBarListRight">
+            <div style="position: relative; top: 4px; right: 0">
+                Last updated: <b>Aug. 2018</b>
+            </div>
+        </div>
+    </nav>
+    
+        <div id="divTitleNav">
+        <a href="./research.html"><img src="./~images/left-arrow.png" class="navDock" /></a>
+    </div>
+    
+<div id="divPost">
+
+    <article id="articlePost">
+    <br/>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+ 
+    <h2>Molecular Dynamics (MD) - Basics</h2>
+            <hr/>
+     <p>The molecular dynamics simultates the time course of atomic positions subject to forces following classical mechanics $\mathbf{F}=m\mathbf{\ddot{x}}$</p>
+
+
+    <h3>Simulation algorithms</h3>
+    
+    <p>Lennard-Jones (LJ) potential is one of the most famous potentials for monatomic fluids.
+    For a pair of atoms $i$ and $j$ located at $\mathbf{r}_{i}$ and $\mathbf{r}_{j}$, the potential energy is
+    $u(r_{i,j})= 4\epsilon [ (\frac{\sigma}{r_{ij}})^{12}-(\frac{\sigma}{r_{ij}})^{6} ]$ (for $r_{ij}\lt r_{c}$), and $u(r_{i,j})=0$ (for $r_{ij}\gt r_{c}$).</p>
+    
+    <p>The force is $\mathbf{f}=-\nabla u(r)$, then the force that atom $j$ exerts on atom $i$ is $\mathbf{f}_{ij}=(\frac{48\epsilon}{\sigma^{2}})[ (\frac{\sigma}{r_{ij}})^{14}-\frac{1}{2}(\frac{\sigma}{r_{ij}})^{8} ]\mathbf{r}_{ij}$.</p>
+    
+    <p>According to Newton's second law, the equations of motion can be written $m \ddot{\mathbf{r}}_{i}=\mathbf{f}_{i}=\sum_{j=1, j\ne i}^{N_{m}} \mathbf{f}_{ij}$.</p>
+    
+    <p>With the scalings $r^{*} \rightarrow r/\sigma$, $e^{*} \rightarrow e/ \epsilon$, and $t^{*} \rightarrow t/\sqrt{m\sigma^{2}/\epsilon}$, the equation of motion can be written as $\ddot{\mathbf{r}}^{*}_{i}=48[ r_{ij}^{*-14}-\frac{1}{2}r_{ij}^{*-8} ]\mathbf{r}_{ij}^{*}$.</p>
+
+
+    <h3>Integration of equations of motion</h3>
+
+    <p>The leapfrog method in two-step procedure version is written as
+    $\mathbf{v}_{i}(\mathbf{x}, t+\frac{\Delta t}{2})=\mathbf{v}_{i}(\mathbf{x}, t)+\frac{\Delta t}{2}\mathbf{a}_{i}(\mathbf{x}, t)$, 
+    $\mathbf{r}_{i}(\mathbf{x}, t+\Delta t)=\mathbf{r}_{i}(\mathbf{x}, t)+\Delta t \mathbf{v}_{i}(\mathbf{x}, t+\frac{\Delta t}{2})$,
+    $\mathbf{v}_{i}(\mathbf{x}, t+\Delta t)=\mathbf{v}_{i}(\mathbf{x}, t+\frac{\Delta t}{2})+\frac{\Delta t}{2}\mathbf{a}_{i}(\mathbf{x}, t+\Delta t)$.</p>
+    
+    <p>The Verlet method is written as
+    $\mathbf{r}_{i}(\mathbf{x}, t+\Delta t)=2\mathbf{r}_{i}(\mathbf{x}, t)-\mathbf{r}_{i}(\mathbf{x}, t-\Delta t)+\Delta t^{2}\mathbf{a}_{i}(\mathbf{x}, t)+O(\Delta t^{4})$,
+    $\mathbf{v}_{i}(\mathbf{x}, t)=[\mathbf{r}_{i}(\mathbf{x}, t+\Delta t)-\mathbf{r}_{i}(\mathbf{x}, t-\Delta t) ]/2\Delta t+O(\Delta t^{2})$.</p>
+    
+    
+    <h3>Data analysis</h3>
+    
+    <p>The dimensionless kinetic energy per atom is $E_{k}=\frac{1}{2N_{m}}\sum_{i=1}^{N_{m}}\mathbf{v}_{i}^{2}$, 
+    the dimensionless potential energy per atom is $E_{u}=\frac{4}{N_{m}}\sum (r_{ij}^{-12}-r_{ij}^{-6}) $,
+    the temperature of $d$- dimensional system is $T=\frac{1}{dN_{m}}\sum_{i} \mathbf{v}_{i}^{2}$. 
+    Pressure is defined as $PV=N_{m}T+\frac{1}{d}\langle \sum_{i=1}^{N_{m}}\mathbf{r}_{i}\cdot \mathbf{f}_{i} \rangle$.</p>
+    
+    <p>Radial distribution function $g(r)$, RDF for short, is a function that describes the spherically averaged local organization around any given atom.
+    $\rho g(r) d\mathbf{r}$ is proportional to the probability of finding an atom in the volume element $d\mathbf{r}$ at a distance $r$ from a given atom.
+    $4\pi g(r) r^{2} \Delta r$ is the mean number of atoms in a shell of radius $r$ and thickness $\Delta r$ surrouding the atom.</p>
+    
+    
+    <h3>Application of molecular dynamics (Read more...)</h3>
+        <ul class="ulResearch">
+            <li class="liResearch"><a href="./research_MD_transportProperties.html">transport properties</a></li>
+        </ul>
+    
+     
+    <br/>
+
+    <br/>
+    
+    
+    </article>
+    
+    <div class="div0"></div>
+    
+</div>
+
+    
+  
+</body>
+</html>

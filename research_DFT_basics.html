@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
+    <meta name="description" content="Research on density functional theory." />
+    <meta name="keywords" content="lattice Boltzmann method,Ao Xu,Xu Ao,HKUST">
+
+    <title>Ao Xu (HKUST) | Research_DFT</title>
+    
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./favicon.ico" sizes="57x57" />
+    
+    <link rel="author" type="text/html" href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" />
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+    
+    <link rel="stylesheet" type="text/css" href="./~css/main.css" media="all" />
+       <!-- Pygments -->
+    <link rel="stylesheet" type="text/css" href="./~css/pygments.css" media="all" />
+    
+    <!-- load Google Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans' />
+
+    <!-- <script type="text/javascript" src="./~js/main.js"></script> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107941848-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-107941848-1');
+</script>
+
+
+</head>
+
+<body>
+    
+    <nav id="navBarTop"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <ul class="navBarListLeft">
+	 		 <li><a href="./index.html"><img src="./~images/home.png" alt="home" title="Home" class="navDock" height="32"></a></li>
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./research.html">Research</a></li>
+	 		<li style="position: relative; top: -12px; font-size: 16px"><a href="./teaching.html">Teaching</a></li>
+              <li style="position: relative; top: -12px; font-size: 16px"><a href="./publications.html">Publications</a></li>
+			<!--<li style="position: relative; top: -12px; font-size: 16px"><a href="./gallery.html">Gallery</a></li>-->
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./about.html">About</a></li>
+        </ul>
+        
+        <ul class="navBarListRight">
+            <li style="position: relative; top: -12px"><b>Ao</b> on </li>
+            <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank"><img src="./~images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="32"></a></li>
+            <li><a href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./~images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="32"></a></li>
+            <li><a href="https://github.com/xuaoxiqi" target="_blank"><img src="./~images/github.png" alt="github" title="GitHub" class="navDock" height="32"></a></li>
+        </ul>
+    </nav>
+    
+    <nav id="navBarBottom"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <div class="navBarListLeft">            
+                <div style="position: relative; top: 4px; width: 150%">    
+                    ©2013-2018  Ao Xu <strong> -- Discussion on multiscale transport phenomena is welcomed. </strong>
+                </div>
+        </div>
+        
+        <div class="navBarListRight">
+            <div style="position: relative; top: 4px; right: 0">
+                Last updated: <b>Aug. 2018</b>
+            </div>
+        </div>
+    </nav>
+    
+        <div id="divTitleNav">
+        <a href="./research.html"><img src="./~images/left-arrow.png" class="navDock" /></a>
+    </div>
+    
+<div id="divPost">
+
+    <article id="articlePost">
+    <br/>
+ 
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+    <h2>Density Functional Theory (DFT) - Basics</h2>
+            <hr/>
+            
+     <p>
+     The information of a quantum system can be obtained from the state function (or wave function), which is described by the <i>Schr&oumldinger equation</i> as $\hat{H} \Psi=E \Psi$.
+     In this equation, $\hat{H}$ is the Hamiltonian operator and $\Psi$ is a set of solutions of the Hamiltonian.
+     Each of these solution $\psi_{n}$ has an associated eigenvalue $E_{n}$ that satisfies the eigenvalue equation.
+     For a system consisting of <i>N</i> electrons, the time independent Schr&oumldinger  equation is a function of <i>3N</i> coordinates.
+     To obtain an approximation solution of Schr&oumldinger equation, define the electron density as $n(\mathbf{r})=2\sum_{i}\psi_{i}^{*}(\mathbf{r})\psi_{i}(\mathbf{r})$,
+     where $n(\mathbf{r})$ is a function of only 3 coordinates and contains a great amount of the information that is actually physical observable.
+     The <b>density functional theory (DFT)</b> rests on the Hohenberg and Kohn theorem and Kohn-Sham equation.
+     </p>
+    
+    <p>The <i>Hohenberg and Kohn theorem</i> states:
+    <ol>
+        <li>The ground-state energy from Schr&oumldinger's equation is a unique functional of the electron density.</li>
+        <li>The electron density that minimizes the energy of the overall functional is the true electron density corresponding to the full solution of the Schr&oumldinger equation.</li>
+    </ol>
+    The <i>Kohn-Sham equation</i> is written as $\left[ -\frac{h^{2}}{2m}\nabla^{2}+V(\mathbf{r})+V_{H}(\mathbf{r})+V_{XC}(\mathbf{r}) \right]\psi_{i}(\mathbf{r})=\varepsilon_{i}\psi_{i}(\mathbf{r})$.
+    Here, $V_{H}$ is the Hartree potential, and $V_{XC}$ is the exchange-correlation potential.
+    </p>
+    
+    <p>The approximation of exchange-correlation potential includes local density approximation (LDA), generalized gradient approximation (GGA), etc.
+    Two of the most widely used GGA functionals are the Perdew-Wang functional (PW91) and the Perdew-Burke-Ernzerhof functional (PBE).
+    </p>
+    
+    <h3>Application of density functional theory (Read more...)</h3>
+        <ul class="ulResearch">
+            <li class="liResearch"><a href="./research_DFT_adsorbatesSurfaces.html">adsorbates on surfaces</a></li>
+            <!--<li class="liResearch"><a href="./research_DFT_phaseDiagrams.html">equilibrium phase diagrams</a></li>-->
+        </ul>
+
+    <br/>
+
+    <br/>
+    
+    
+    </article>
+    
+    <div class="div0"></div>
+    
+</div>
+
+    
+  
+</body>
+</html>

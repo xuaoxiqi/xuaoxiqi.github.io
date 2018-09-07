@@ -1,0 +1,385 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	background-color: #DDF0E4;
+	font-family: 'Droid Sans', 'DejaVu Sans';
+	/*font-family: 'Palatino', 'Palatino Linotype';*/
+	/*font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;*/
+	font-size: 14px;
+}
+
+a {
+	color: #000000;
+	/*color: #3964c2;*/
+	font-weight: normal;
+	text-decoration: none;
+	padding-bottom:1px;
+	border-bottom:1px solid #000;
+}
+
+a:hover {
+	color: #000000;
+	font-weight: bold;
+}
+
+table, th, td {
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f5f5f5;
+    color: black;
+}
+td {
+	font-size: 13px;
+	height: 60px;
+}
+tr:hover {background-color: #f5f5f5}
+
+nav#navBarTop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 64px;
+	z-index: 32;	
+	background-color: #001111;
+	box-shadow: 0 2px 4px #001111;
+	opacity: 0.9;
+}
+
+nav#navBarBottom {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 36px;
+	z-index: 32;	
+	background-color: #001111;
+	box-shadow: 0 -2px 4px #001111;
+	opacity: 0.9;	
+}
+
+nav ul {
+	list-style: none;
+}
+
+nav a:hover{
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: #000000;
+	font-size: 150%;
+}
+
+nav a{
+	text-decoration: none;
+	color: #FFFFFF; /*For Google dark style: #BBBBBB*/
+	font-weight: bold;
+	padding-bottom:1px;
+	border-bottom:1px;
+}
+
+.navBarListLeft {
+	position: relative;
+	top: 0;
+	left: 0;	
+	padding-top: 5px;
+	padding-left: 16px;
+	color: #FFFFFF;
+}
+
+.navBarListRight {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-top: 5px;
+	padding-right: 16px;
+	color: #BBBBBB;
+}
+
+nav li {
+	display: inline;
+	padding-right: 6px;	
+	color: #DDDDDD;
+}
+
+.ulResearch {
+    list-style-type: square;
+    overflow: hidden;
+}
+.liResearch {
+    display: inline;
+	padding-right: 2%;
+}
+
+.liPublications {
+	padding: 6px 0;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#divLeft {
+	position: absolute;
+	top: 128px;
+	left: 6%;
+	width: 18%;
+}
+
+#divMiddle {
+	position: absolute;
+	top: 128px;
+	left: 25%;
+	width: 46%;
+}
+
+#divRight {
+	position: absolute;
+	top: 128px;
+	left: 72%;
+	width: 23%;  /*Least width for Right*/
+}
+
+#divShow, #divGallery,
+#divSignature,  #divIntro, 
+#divResearch, #divTeaching,  #divLinks {
+	position: relative;
+	padding: 16px;
+	margin-top: 8px;
+	background-color: #FFFFFF;
+	border-radius: 8px;
+	box-shadow: 0 0 16px 0 #002222;
+	opacity: 0.85;
+	color: #000000;
+	line-height: 2.0;
+}
+
+#divIntro{
+	line-height: 1.8;
+}
+
+#divShow, #divSignature, #divResearch {
+	margin-top: 0;
+}
+
+#divShow {
+	padding-top: -32px;
+}
+
+.indexLi {
+    margin-left: -16px;
+}
+
+div.div0 {
+	height: 128px;
+}
+
+
+.hTitle1 {
+	position: relative;
+	top: -8px;
+	
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.hTitle2 {
+	position: relative;
+	top: -8px;
+	
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.divExtLinks {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 50%;
+	
+	text-align: right;
+}
+
+
+/*----------------------------------*/
+.articleScrap {
+	position: relative;	
+	padding: 8px;
+	margin-top: 0px;
+	background-color: #FFFFFF;
+	border-radius: 8px;
+	opacity: 1.0;
+}
+
+.asideScrap {
+	position: absolute;
+	left: 48%;
+	width: 50%;	
+	text-align: left;
+	font-size: 16px;
+}
+.sectionScrap {
+	position: relative;
+	left: 0;
+	width: 100%;
+	font-style: italic;
+}
+/*----------------------------------*/
+
+/*----------------------------------*/
+.articleScrapResearch {
+	position: relative;	
+	padding: 8px;
+	margin-top: 0px;
+	background-color: #FFFFFF;
+	border-radius: 8px;
+	opacity: 1.0;
+}
+.asideScrapResearch {
+	position: absolute;
+	left: 34%;
+	width: 66%;	
+	text-align: left;
+	font-size: 16px;
+}
+
+.sectionScrapResearch {
+	position: relative;
+	left: 0;
+	width: 100%;
+	font-style: italic;
+}
+/*----------------------------------*/
+
+
+.imgScrap {
+	border-radius: 4px;
+	
+	transition: all 0.2s ease-out;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+}
+
+.imgScrap:hover {
+	box-shadow: 0 0 8px 2px #FFFFFF;
+}
+
+
+.divIndex {
+	position: relative;
+	margin-bottom: 4px;
+	
+	transition: all 0.2s ease-out;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-o-transform: scale(1.2);
+}
+
+.divIndex:hover {
+	box-shadow: 0 0 0 6px #001111;
+}
+
+.divIndexTitle {
+	left: 0;
+	width: 100%;
+}
+
+.divIndexDate {
+	position: relative;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	text-align: right;
+}
+
+.divIndexDate:{
+	text-decoration: none;
+}
+
+.divImgIndex {
+	position: relative;
+	margin-bottom: 4px;
+}
+
+.divImgIndexPicture{
+	left: 0;
+	width:36%;
+}
+
+.divImgIndexCaption{
+	position: absolute;
+	left: 50%;
+	width: 40%;
+	text-align: left;
+}
+
+.divImgIndexDate:{
+	text-decoration: none;
+}
+
+#divPost {
+	position: absolute;
+	top: 128px;
+	left: 10%; 
+	width: 82%;
+	padding: 16px;	
+	background-color: #BBBBBB;
+	border-radius: 8px;
+	box-shadow: 0 0 16px 0 #001111;
+	opacity: 0.9;
+	color: #000000;
+	text-align: justify;
+}
+
+#articlePost {
+	background-color: #FFFFFF;
+	border-radius: 8px;
+	opacity: 0.95;	
+	padding: 8px;	
+	color: #000000;
+	font-size: 16px;
+	line-height: 1.8;
+}
+
+#articlePost a {
+	text-decoration: none;
+}
+
+#articlePost a:hover {
+	font-weight: bold;
+}
+
+#articlePost a.publications {
+	text-decoration: none;
+	color: blue;
+	padding-bottom:1px;
+	border-bottom:1px solid #FFF;
+}
+#articlePost a.publications:hover {
+	color: red;
+	font-weight: inherit;
+}
+
+#divTitle {
+	position: fixed;
+	top: 100px;
+	left: 3%;
+	width: 20%;
+	
+	text-align: center;
+}
+
+#divTitleNav {
+	position: fixed;
+	bottom: 20%;
+	left: 3%; 
+	width: 7%;  
+	padding-bottom:1px;
+	border-bottom:1px;
+}
+
+#divTitleNav a{
+	padding-bottom:1px;
+	border-bottom:1px;
+}

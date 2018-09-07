@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
+    <meta name="description" content="Research on MPI." />
+    <meta name="keywords" content="lattice Boltzmann method,Ao Xu,Xu Ao,HKUST">
+
+    <title>Ao Xu (HKUST) | Research_MPI</title>
+    
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./favicon.ico" sizes="57x57" />
+    
+    <link rel="author" type="text/html" href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" />
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+    
+    <link rel="stylesheet" type="text/css" href="./~css/main.css" media="all" />
+       <!-- Pygments -->
+    <link rel="stylesheet" type="text/css" href="./~css/pygments.css" media="all" />
+    
+    <!-- load Google Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans' />
+
+    <!-- <script type="text/javascript" src="./~js/main.js"></script> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107941848-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-107941848-1');
+</script>
+
+
+</head>
+
+<body>
+    
+    <nav id="navBarTop"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <ul class="navBarListLeft">
+	 		 <li><a href="./index.html"><img src="./~images/home.png" alt="home" title="Home" class="navDock" height="32"></a></li>
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./research.html">Research</a></li>
+	 		<li style="position: relative; top: -12px; font-size: 16px"><a href="./teaching.html">Teaching</a></li>
+              <li style="position: relative; top: -12px; font-size: 16px"><a href="./publications.html">Publications</a></li>
+			<!--<li style="position: relative; top: -12px; font-size: 16px"><a href="./gallery.html">Gallery</a></li>-->
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./about.html">About</a></li>
+        </ul>
+        
+        <ul class="navBarListRight">
+            <li style="position: relative; top: -12px"><b>Ao</b> on </li>
+            <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank"><img src="./~images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="32"></a></li>
+            <li><a href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./~images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="32"></a></li>
+            <li><a href="https://github.com/xuaoxiqi" target="_blank"><img src="./~images/github.png" alt="github" title="GitHub" class="navDock" height="32"></a></li>
+        </ul>
+    </nav>
+    
+    <nav id="navBarBottom"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <div class="navBarListLeft">            
+                <div style="position: relative; top: 4px; width: 150%">    
+                    ©2013-2018  Ao Xu <strong> -- Discussion on multiscale transport phenomena is welcomed. </strong>
+                </div>
+        </div>
+        
+        <div class="navBarListRight">
+            <div style="position: relative; top: 4px; right: 0">
+                Last updated: <b>Aug. 2018</b>
+            </div>
+        </div>
+    </nav>
+    
+        <div id="divTitleNav">
+        <a href="./research.html"><img src="./~images/left-arrow.png" class="navDock" /></a>
+    </div>
+    
+<div id="divPost">
+
+    <article id="articlePost">
+    <br/>
+ 
+    <h2>Message Passing Interface (MPI)</h2>
+            <hr/>
+
+    <p>
+Message Passing Interface (MPI) supports distributed memory system consisting of multiple computers with independent memory.
+    </p>
+    
+    <h3>Sample MPI code</h3>
+    
+    <h4>Calculate Pi</h4>
+    <embed src="./~codes/calPi_MPI_OpenMP.F90" width="88%">
+    
+    <h4>Compile</h4>
+			<pre> <code>
+$ <font color="red">mpif90</font> -O2 calPi_MPI.F90 -o calPi
+$ <font color="red">mpiifort</font> -O2 calPi_MPI.F90 -o calPi
+$ mpirun -np 8 ./calPi
+			</code> </pre>
+    
+    <h4>Compile with OpenMP</h4>
+			<pre> <code>
+On Tianhe-2:
+$ <font color="red">mpif90</font> -openmp <font color="blue">-heap-arrays</font> -O2 calPi_MPI.F90 -o calPi
+job.sh file:
+#!/bin/bash
+export OMP_NUM_THREADS=12 && yhrun -N 2 -n 4 -c 12 -p bigdata ./calPi
+Running:
+yhbatch -N 2 -p bigdata ./job.sh
+
+
+$ <font color="red">mpif90</font> -fopenmp -O2 calPi_MPI.F90 -o calPi
+$ <font color="red">mpiifort</font> -qopenmp -O2 calPi_MPI.F90 -o calPi
+#!/bin/bash
+#SBATCH -N 2 -n 2
+export OMP_NUM_THREADS=3 && mpirun -np 2 ./calPi
+			</code> </pre>
+    
+    <h3>High performance computing techniques (Read more...)</h3>
+        <ul class="ulResearch">
+            <li class="liResearch"><a href="./research_HPC_OpenMP.html">Open Multi-Processing (OpenMP)</a></li>
+            <li class="liResearch"><a href="./research_HPC_MPI.html">Message Passing Interface (MPI)</a></li>
+            <li class="liResearch"><a href="./research_HPC_OpenACC.html">Open Accelerators (OpenACC)</a></li>
+        </ul>
+        
+    </article>
+    
+    <div class="div0"></div>
+    
+</div>
+
+    
+  
+</body>
+</html>

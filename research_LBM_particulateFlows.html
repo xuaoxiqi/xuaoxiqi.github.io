@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
+    <meta name="description" content="Research on LB method for particulate flow." />
+    <meta name="keywords" content="lattice Boltzmann method,Ao Xu,Xu Ao,HKUST">
+
+    <title>Ao Xu (HKUST) | Research_particulateFlow</title>
+    
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./favicon.ico" sizes="57x57" />
+    
+    <link rel="author" type="text/html" href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" />
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+    
+    <link rel="stylesheet" type="text/css" href="./~css/main.css" media="all" />
+       <!-- Pygments -->
+    <link rel="stylesheet" type="text/css" href="./~css/pygments.css" media="all" />
+    
+    <!-- load Google Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans' />
+
+    <!-- <script type="text/javascript" src="./~js/main.js"></script> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107941848-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-107941848-1');
+</script>
+
+
+</head>
+
+<body>
+    
+    <nav id="navBarTop"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <ul class="navBarListLeft">
+	 		 <li><a href="./index.html"><img src="./~images/home.png" alt="home" title="Home" class="navDock" height="32"></a></li>
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./research.html">Research</a></li>
+	 		<li style="position: relative; top: -12px; font-size: 16px"><a href="./teaching.html">Teaching</a></li>
+              <li style="position: relative; top: -12px; font-size: 16px"><a href="./publications.html">Publications</a></li>
+			<!--<li style="position: relative; top: -12px; font-size: 16px"><a href="./gallery.html">Gallery</a></li>-->
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./about.html">About</a></li>
+        </ul>
+        
+        <ul class="navBarListRight">
+            <li style="position: relative; top: -12px"><b>Ao</b> on </li>
+            <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank"><img src="./~images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="32"></a></li>
+            <li><a href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./~images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="32"></a></li>
+            <li><a href="https://github.com/xuaoxiqi" target="_blank"><img src="./~images/github.png" alt="github" title="GitHub" class="navDock" height="32"></a></li>
+        </ul>
+    </nav>
+    
+    <nav id="navBarBottom"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <div class="navBarListLeft">            
+                <div style="position: relative; top: 4px; width: 150%">    
+                    ©2013-2018  Ao Xu <strong> -- Discussion on multiscale transport phenomena is welcomed. </strong>
+                </div>
+        </div>
+        
+        <div class="navBarListRight">
+            <div style="position: relative; top: 4px; right: 0">
+                Last updated: <b>Aug. 2018</b>
+            </div>
+        </div>
+    </nav>
+    
+        <div id="divTitleNav">
+        <a href="./research.html"><img src="./~images/left-arrow.png" class="navDock" /></a>
+    </div>
+    
+<div id="divPost">
+
+    <article id="articlePost">
+    <br/>
+ 
+    <h1>Lattice Boltzmann Method (LBM) - Particulate flows</h1>
+            <hr/>
+    
+    <h2>Moving boundary</h2>
+    <p>The LB method has received much attention in simulaing particulate flow, primarily because the fluid-solid interface can be easily implemented in the regular Cartesian grids, thereby improving the computational efficiency for moving particle simulations.
+    Specifically, the no-slip boundary condition can be achieved by modifications on the density distribution function encountering the surface.</p>
+    <p>An example of LB method for moving boundary simulation is given as below: the cylnder moves with a constant velocity, and vortex shakes off the cylinder.</p>
+
+<video width="50%"  autoplay controls>
+  <source src="./~videos/movingCylinder.mp4" type="video/mp4">
+Your browser does not support the video tag. 
+Please <b>switch to the newest version of Google Chrome browser </b> OR <b>refer to <a href="https://youtu.be/L96htMY7GlM">https://youtu.be/L96htMY7GlM</a> on YouTube</b>.
+</video>
+
+    <h2>Drafting-kissing-tumbling</h2>
+<article class="articleScrapResearch">
+    <aside class="asideScrapResearch">
+    <p>Drafting-kissing-tumbling (DKT) scenario was first observed by <a href="http://dx.doi.org/10.1017/S0022112087001046" target="_blank">Fortes et al., 1987, J. Fluid Mech.</a>:
+           For two particle with equal sizes settling in a channel, the trailing particle will first accelerate in the wake of the leader.
+           When they come near contact, their center lines will rotate, and the trailing particle will fall around the other and then take the lead.</p>
+    </aside>
+    
+    <section class="sectionScrapResearch">
+         <img src="./~gif/DKT.gif" width="8%"></img>
+        <br />
+        
+    </section>
+</article>
+ 
+    <h2>An elliptical particle setttling in a narrow channel</h2>
+<article class="articleScrapResearch">
+    <aside class="asideScrapResearch">
+    <p>An elliptical particle is settling in a narrow channel.
+    Although the particle translates in the downward vertical direction, it rotates as if it was contacting and rolling up the near wall.
+    This sedimentaion mode is known as "tumbling mode" <a href="https://doi.org/10.1017/S0022112008005521" target="_blank">Xia et al., 2009, J. Fluid Mech.</a>.
+    </p>
+    </aside>
+    
+    <section class="sectionScrapResearch">
+         <img src="./~gif/narrowChannel.gif" width="8%"></img>
+        <br />
+        
+    </section>
+</article>
+    
+    
+    <h2>Mass point particles</h2>
+    <p>In engineering applications, we may also treat particles as mass points to track large number of particles with low computational cost.
+    Below is the animation of 2,500 particles motion in a lid driven cavity.</p>
+    
+<video width="20%"  autoplay controls>
+  <source src="./~videos/lidParticle.mp4" type="video/mp4">
+Your browser does not support the video tag. 
+Please <b>switch to the newest version of Google Chrome browser </b> OR <b>refer to <a href="https://youtu.be/looOcsWEUwU">https://youtu.be/looOcsWEUwU</a> on YouTube</b>.
+</video>
+    
+    
+    
+    
+    <h3>Application of lattice Boltzmann method (Read more...)</h3>
+        <ul class="ulResearch">
+            <!--<li class="liResearch"><a href="./research_LBM_thermalConvection.html">thermal convection</a></li>-->
+            <li class="liResearch"><a href="./research_LBM_gasLiquidTwoPhase.html">gas-liquid two-phase flows</a></li>
+            <li class="liResearch"><a href="./research_LBM_particulateFlows.html">particulate flows</a></li>
+            <li class="liResearch"><a href="./research_LBM_porousMedia.html">flows in porous media</a></li>
+        </ul>
+    
+    <br/>
+    <br/>
+    
+    
+    </article>
+    
+    <div class="div0"></div>
+    
+</div>
+
+    
+  
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
+    <meta name="description" content="Research on lattice Boltzmann method." />
+    <meta name="keywords" content="lattice Boltzmann method,Ao Xu,Xu Ao,HKUST">
+
+    <title>Ao Xu (HKUST) | Research_LBM</title>
+    
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./favicon.ico" sizes="57x57" />
+    
+    <link rel="author" type="text/html" href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" />
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+    
+    <link rel="stylesheet" type="text/css" href="./~css/main.css" media="all" />
+       <!-- Pygments -->
+    <link rel="stylesheet" type="text/css" href="./~css/pygments.css" media="all" />
+    
+    <!-- load Google Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans' />
+
+    <!-- <script type="text/javascript" src="./~js/main.js"></script> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107941848-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-107941848-1');
+</script>
+
+
+</head>
+
+<body>
+    
+    <nav id="navBarTop"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <ul class="navBarListLeft">
+	 		 <li><a href="./index.html"><img src="./~images/home.png" alt="home" title="Home" class="navDock" height="32"></a></li>
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./research.html">Research</a></li>
+	 		<li style="position: relative; top: -12px; font-size: 16px"><a href="./teaching.html">Teaching</a></li>
+              <li style="position: relative; top: -12px; font-size: 16px"><a href="./publications.html">Publications</a></li>
+			<!--<li style="position: relative; top: -12px; font-size: 16px"><a href="./gallery.html">Gallery</a></li>-->
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./about.html">About</a></li>
+        </ul>
+        
+        <ul class="navBarListRight">
+            <li style="position: relative; top: -12px"><b>Ao</b> on </li>
+            <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank"><img src="./~images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="32"></a></li>
+            <li><a href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./~images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="32"></a></li>
+            <li><a href="https://github.com/xuaoxiqi" target="_blank"><img src="./~images/github.png" alt="github" title="GitHub" class="navDock" height="32"></a></li>
+        </ul>
+    </nav>
+    
+    <nav id="navBarBottom"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <div class="navBarListLeft">            
+                <div style="position: relative; top: 4px; width: 150%">    
+                    ©2013-2018  Ao Xu <strong> -- Discussion on multiscale transport phenomena is welcomed. </strong>
+                </div>
+        </div>
+        
+        <div class="navBarListRight">
+            <div style="position: relative; top: 4px; right: 0">
+                Last updated: <b>Aug. 2018</b>
+            </div>
+        </div>
+    </nav>
+    
+        <div id="divTitleNav">
+        <a href="./research.html"><img src="./~images/left-arrow.png" class="navDock" /></a>
+    </div>
+    
+<div id="divPost">
+
+    <article id="articlePost">
+    <br/>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+ 
+    <h2>Lattice Boltzmann Method (LBM) - Basics</h2>
+            <hr/>
+    
+    <p>At mesoscopic level, fluid flows can be described by the Boltzmann equation $\frac{\partial f}{\partial t}+\xi \cdot \nabla f +\mathbf{F}\cdot \nabla_{\xi}f= \Omega$ based on gas kinetic theory. 
+            However, the computational cost would be extremely high if we try to resolve the length and time scales that are applicable to Boltzmann equation in practical engineering problems.
+            On the other hand, in the lattice Boltzmann (LB) method, the evoluation equation of distribution function $f_{i}$ is written as 
+            $f_{i}(\mathbf{x}+\mathbf{e}_{i}\delta_{t}, t+\delta_{t})-f_{i}(\mathbf{x},t)=-\frac{1}{\tau}\left[ f_{i}(\mathbf{x},t)-f_{i}^{(\text{eq})}(\mathbf{x},t) \right]$,
+            where $\tau$ is the relaxation time.
+            Then, macroscopic fluid variables, such as density and velocity can be calculated as $\rho=\sum_{i} f_{i}$, $\mathbf{u}=\frac{1}{\rho}\sum_{i}\mathbf{e}_{i}f_{i}$.
+    </p>
+    <p>The standard implementation consists of four subroutines: collision, streaming, bounce-back, and calculating macro variables.</p>
+    <center><img src="./~images/research/LBM/flowcharts.jpg" width="47%"></img> </center>
+    
+    <p>The advantages of the LB method (compared with convectional numerical methods based on solving Navier-Stokes equations) are:</p>
+    <ul>
+        <li>It is based on kinetic theory and is suitable for simulating complex flows (such as 
+        <a class="publications" href="./research_LBM_gasLiquidTwoPhase.html">gas-liquid two-phase flows</a>, 
+        <a class="publications" href="./research_LBM_particulateFlows.html">particulate flows</a>, and 
+        <a class="publications" href="./research_LBM_porousMedia.html">flows in porous media</a>).</li>
+        <li>It is not necessary to solve Poisson equation for the pressure field.</li>
+        <li>It is easy to be parallelized.</li>
+    </ul>
+    
+    <h3>Application of lattice Boltzmann method (Read more...)</h3>
+        <ul class="ulResearch">
+            <!--<li class="liResearch"><a href="./research_LBM_thermalConvection.html">thermal convection</a></li>-->
+            <li class="liResearch"><a href="./research_LBM_gasLiquidTwoPhase.html">gas-liquid two-phase flows</a></li>
+            <li class="liResearch"><a href="./research_LBM_particulateFlows.html">particulate flows</a></li>
+            <li class="liResearch"><a href="./research_LBM_porousMedia.html">flows in porous media</a></li>
+        </ul>
+
+    <br/>
+
+    <br/>
+    
+    
+    </article>
+    
+    <div class="div0"></div>
+    
+</div>
+
+    
+  
+</body>
+</html>

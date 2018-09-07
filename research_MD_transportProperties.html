@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
+    <meta name="description" content="Research on molecular dynamics." />
+    <meta name="keywords" content="lattice Boltzmann method,Ao Xu,Xu Ao,HKUST">
+
+    <title>Ao Xu (HKUST) | Research_MD</title>
+    
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./favicon.ico" sizes="57x57" />
+    
+    <link rel="author" type="text/html" href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" />
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+    
+    <link rel="stylesheet" type="text/css" href="./~css/main.css" media="all" />
+       <!-- Pygments -->
+    <link rel="stylesheet" type="text/css" href="./~css/pygments.css" media="all" />
+    
+    <!-- load Google Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans' />
+
+    <!-- <script type="text/javascript" src="./~js/main.js"></script> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107941848-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-107941848-1');
+</script>
+
+
+</head>
+
+<body>
+    
+    <nav id="navBarTop"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <ul class="navBarListLeft">
+	 		 <li><a href="./index.html"><img src="./~images/home.png" alt="home" title="Home" class="navDock" height="32"></a></li>
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./research.html">Research</a></li>
+	 		<li style="position: relative; top: -12px; font-size: 16px"><a href="./teaching.html">Teaching</a></li>
+              <li style="position: relative; top: -12px; font-size: 16px"><a href="./publications.html">Publications</a></li>
+			<!--<li style="position: relative; top: -12px; font-size: 16px"><a href="./gallery.html">Gallery</a></li>-->
+			<li style="position: relative; top: -12px; font-size: 16px"><a href="./about.html">About</a></li>
+        </ul>
+        
+        <ul class="navBarListRight">
+            <li style="position: relative; top: -12px"><b>Ao</b> on </li>
+            <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank"><img src="./~images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="32"></a></li>
+            <li><a href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./~images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="32"></a></li>
+            <li><a href="https://github.com/xuaoxiqi" target="_blank"><img src="./~images/github.png" alt="github" title="GitHub" class="navDock" height="32"></a></li>
+        </ul>
+    </nav>
+    
+    <nav id="navBarBottom"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+        <div class="navBarListLeft">            
+                <div style="position: relative; top: 4px; width: 150%">    
+                    ©2013-2018  Ao Xu <strong> -- Discussion on multiscale transport phenomena is welcomed. </strong>
+                </div>
+        </div>
+        
+        <div class="navBarListRight">
+            <div style="position: relative; top: 4px; right: 0">
+                Last updated: <b>Aug. 2018</b>
+            </div>
+        </div>
+    </nav>
+    
+        <div id="divTitleNav">
+        <a href="./research.html"><img src="./~images/left-arrow.png" class="navDock" /></a>
+    </div>
+    
+<div id="divPost">
+
+    <article id="articlePost">
+    <br/>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+ 
+    <h2>Molecular Dynamics (MD)</h2>
+            <hr/>
+     
+     <h3>Transport Properties</h3>
+     
+        <p>Transport coefficients describe the material properties of a fluid within the framework of continuum fluid dynamics, such as diffusion coefficient, shear viscosity, bulk viscosity, and thermal conductivity.</p>
+     
+        <p>Transport properties can be determined by equilibrium method, including Green-Kubo formalism (Ref: <a href="http://dx.doi.org/10.1063/1.1740082" target="_blank">Green, 1954, J. Chem. Phys.</a>; 
+        <a href="http://dx.doi.org/10.1143/JPSJ.12.570" target="_blank">Kubo, 1957, J. Phys. Soc. Jpn.</a>).</p>
+     
+        <p>The water molecule models adopted are 
+        SPC/E (Ref: <a href="http://dx.doi.org/10.1021/j100308a038" target="_blank">Berendsen <i>et al.</i>, 1987, J. Chem. Phys.</a>)
+        TIP4P/2005 (Ref: <a href="http://dx.doi.org/10.1063/1.3697977" target="_blank">Abascal and Vega, 2005, J. Chem. Phys.</a>);
+        SPC/Fw (Ref: <a href="http://dx.doi.org/10.1063/1.2136877" target="_blank">Wu <i>et al.</i>, 2006, J. Chem. Phys.</a>).
+        </p>
+     
+    <ul>
+        <li>
+            <b>Diffusion coefficient</b>: the spontaneous mixing species when the chemical potential or concentration gradient equals zero.
+            Einstein expression gives $D=\lim_{t \to \infty}\frac{1}{6N_{m}t}\langle \sum_{j=1}^{N_{m}}[\mathbf{r}_{j}(t)-\mathbf{r}_{j}(0)]^{2} \rangle$.
+            For a finite system, $t$ can NOT become too large because the allowed displacements are bounded.
+            Eventually this asymptotic result will break down, so that after reaching a plateau $D$ will begin to drop to zero.
+            The alternative Green-Kubo expression for $D$ is based on integrated velocity autocorrelation function (VAF) $D=\frac{1}{3N_{m}}\int_{0}^{\infty}\langle \sum_{j=1}^{N_{m}}\mathbf{v}_{j}(t)\cdot \mathbf{v}_{j}(0) \rangle dt$.        
+        </li>
+        <img src="./~images/research/MD/diffusivity.png" width="41%"></img>
+        
+        <li>
+            <b>Shear viscosity</b>: a measure of fluid's resistance to gradual deformation by shear stress.    
+            Einstein expression gives $\eta = \lim_{t \to \infty}\frac{1}{6TVt}\langle \sum_{x \lt y}[\sum_{j}m_{j}r_{jx}(t)v_{jy}(t)-\sum_{j}m_{j}r_{jx}(0)v_{jy}(0)]^{2} \rangle$,
+            where $\sum_{x \lt y}$ denotes a sum over the three pairs of distinct vector components ($xy$, $yz$, and $zx$) used to improve the statistics.
+            However, this expression turns out to be unusable with periodic boundaries due to the violation of translational invariance.
+            The alternative Green-Kubo expression for $\eta$ is based on integrated autocorrelation function of the pressure tensor $\eta=\frac{V}{3T}\int_{0}^{\infty}\langle \sum_{x \lt y}P_{xy}(t)P_{xy}(0) \rangle dt$,
+            where $P_{xy}=\frac{1}{V}[\sum_{j}m_{j}v_{jx}v_{jy}+\frac{1}{2}\sum_{i \ne j}r_{ijx}f_{ijy} ]$ is a component of the pressure tensor.
+        </li>
+        <img src="./~images/research/MD/viscosity.png" width="41%"></img>
+        
+        <li>
+            <b>Thermal conductivity</b>:
+            Einstein expression gives $\lambda=\lim_{t\to \infty}\frac{1}{6T^{2}Vt}\langle \sum_{x}[\sum_{j}r_{jx}(t)e_{j}(t)-\sum_{j}r_{jx}(0)e_{j}(0)]^{2} \rangle$,
+            where $e_{j}=\frac{1}{2}m\mathbf{v}_{j}^{2}+\frac{1}{2}\sum_{i\ne j}u(r_{ij})-\langle e \rangle$.
+            The alternative Green-Kubo expression for $\lambda$ is based on integrated heat flux autocorrelation function $\lambda=\frac{V}{3T^{2}}\int_{0}^{\infty}\langle \mathbf{S}(t)\cdot \mathbf{S}(0) \rangle dt$,
+            where $\mathbf{S}=\frac{1}{V}[\sum_{j}e_{j}\mathbf{v}_{j}+\frac{1}{2}\sum_{i \ne j}\mathbf{r}_{ij}(\mathbf{f}_{ij}\cdot \mathbf{v}_{j})]$.
+        </li>
+    </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <br/>
+
+    <br/>
+    
+    
+    </article>
+    
+    <div class="div0"></div>
+    
+</div>
+
+    
+  
+</body>
+</html>
