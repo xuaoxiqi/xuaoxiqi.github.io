@@ -5,46 +5,38 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>http://meaxu.people.ust.hk/</loc>
-  <lastmod>2017-12-01</lastmod>
+  <loc>https://xuaoxiqi.github.io/</loc>
+  <lastmod>2018-09-01</lastmod>
   <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
-
-
 <url>
-  <loc>http://meaxu.people.ust.hk/index.html</loc>
-  <lastmod>2017-12-01</lastmod>
+  <loc>https://xuaoxiqi.github.io/index.html</loc>
+  <lastmod>2018-09-01</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://meaxu.people.ust.hk/research.html</loc>
-  <lastmod>2017-12-01</lastmod>
+  <loc>https://xuaoxiqi.github.io/research.html</loc>
+  <lastmod>2018-09-01</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://meaxu.people.ust.hk/teaching.html</loc>
-  <lastmod>2017-12-01</lastmod>
+  <loc>https://xuaoxiqi.github.io/teaching.html</loc>
+  <lastmod>2018-09-01</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://meaxu.people.ust.hk/publications.html</loc>
-  <lastmod>2017-12-01</lastmod>
+  <loc>https://xuaoxiqi.github.io/publications.html</loc>
+  <lastmod>2018-09-01</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://meaxu.people.ust.hk/gallery.html</loc>
-  <lastmod>2017-12-01</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://meaxu.people.ust.hk/about.html</loc>
-  <lastmod>2017-12-01</lastmod>
+  <loc>https://xuaoxiqi.github.io/about.html</loc>
+  <lastmod>2018-09-01</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
