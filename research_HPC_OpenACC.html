@@ -35,6 +35,16 @@ $ pgf90 -acc -ta=tesla:cc35 -Minfo=all calPi_OpenACC.F90 -o calPi
 nohup ./calPi &
 			</code> </pre>
             
+    On Tianhe-2:
+    
+#!/bin/bash
+module load PGIcompiler/17.1
+yhrun -n 1 -N 1 -p gpu ./lidACC
+
+
+    yhbatch -N 1 -p gpu ./job.sh
+    
+            
     <h3>Example: Accelerated lattice Boltzmann simulation using OpenACC</h3>
     <p>
 In these tests, the mesh size 2048*2048, and the iterative steps are 20,000.
