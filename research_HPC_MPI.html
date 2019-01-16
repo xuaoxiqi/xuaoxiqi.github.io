@@ -28,7 +28,7 @@ Message Passing Interface (MPI) supports distributed memory system consisting of
 			<pre> <code>
 $ <font color="red">mpif90</font> -O2 calPi_MPI.F90 -o calPi
 $ <font color="red">mpiifort</font> -O2 calPi_MPI.F90 -o calPi
-$ mpirun -np 8 ./calPi
+$ nohup mpirun -np 8 ./calPi &
 			</code> </pre>
     
     <h4>Compile with OpenMP</h4>
@@ -41,12 +41,11 @@ export OMP_NUM_THREADS=12 && yhrun -N 2 -n 4 -c 12 -p bigdata ./calPi
 Running:
 yhbatch -N 2 -p bigdata ./job.sh
 
-
+On local machine:
 $ <font color="red">mpif90</font> -fopenmp -O2 calPi_MPI.F90 -o calPi
 $ <font color="red">mpiifort</font> -qopenmp -O2 calPi_MPI.F90 -o calPi
-#!/bin/bash
-#SBATCH -N 2 -n 2
-export OMP_NUM_THREADS=3 && mpirun -np 2 ./calPi
+Running:
+export OMP_NUM_THREADS=12 && nohup mpirun -np 2 ./calPi &
 			</code> </pre>
     
     <h3>High performance computing techniques (Read more...)</h3>
