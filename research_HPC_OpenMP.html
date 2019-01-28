@@ -28,7 +28,7 @@ It fits shared-memory parallel computers (SMPs).
     <h4>Compile</h4>
 Below is examples of adding compiler flag to various compilers in OpenMP code:
 			<pre> <code>
-$ <font color="red">ifort -qopenmp</font> -O2 calPi_OpenMP.F90 -o calPi
+$ <font color="red">ifort -qopenmp</font> -O2 -check all calPi_OpenMP.F90 -o calPi
 $ <font color="red">pgf90 -mp</font> calPi_OpenMP.F90 -o calPi
 $ <font color="red">gfortran -fopenmp</font> -O2 -fcheck=all calPi_OpenMP.F90 -o calPi
 
