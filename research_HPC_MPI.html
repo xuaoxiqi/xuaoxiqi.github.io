@@ -51,12 +51,13 @@ export OMP_NUM_THREADS=12 && nohup mpirun -np 2 ./test &
     <h4>PBS file</h4>
 			<pre> <code>
 # !/bin/bash
-#PBS -N hybrid
+#PBS -N mpi2d
 #PBS -l nodes=2:ppn=4
 #PBS -j oe output.out
 #PBS -l walltime=1000000:00:00
+cd /DATA2/work/AoXu/testMPI_2D/
 export OMP_NUM_THREADS=6
-mpirun -hostfile $PBS_NODEFILE /DATA2/work/AoXu/hybrid_mpi_openmp/mpi_openmp
+mpirun -hostfile $PBS_NODEFILE /DATA2/work/AoXu/testMPI_2D/mpi2d
 			</code> </pre>
     
     <h3>High performance computing techniques (Read more...)</h3>
