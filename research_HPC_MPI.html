@@ -47,6 +47,17 @@ $ <font color="red">mpiifort</font> -qopenmp -O2 test_MPI.F90 -o test
 Running:
 export OMP_NUM_THREADS=12 && nohup mpirun -np 2 ./test &
 			</code> </pre>
+            
+    <h4>PBS file</h4>
+			<pre> <code>
+# !/bin/bash
+#PBS -N hybrid
+#PBS -l nodes=2:ppn=4
+#PBS -j oe output.out
+#PBS -l walltime=1000000:00:00
+export OMP_NUM_THREADS=6
+mpirun -hostfile $PBS_NODEFILE /DATA2/work/AoXu/hybrid_mpi_openmp/mpi_openmp
+			</code> </pre>
     
     <h3>High performance computing techniques (Read more...)</h3>
         <ul class="ulResearch">
