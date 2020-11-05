@@ -25,11 +25,14 @@ Open Accelerators (OpenACC) is a programming standard for parallel computing of 
     <embed src="./codes/calPi_OpenACC.F90" width="88%">
             
     <h4>Compile</h4>
-<p>Below is example of adding compiler flag to compile OpenACC code:</p>
+<p>(obsolete) Example to compile OpenACC code:</p>
 			<pre> <code>
 $ pgf90 -acc -ta=tesla:cc35 -Minfo=all calPi_OpenACC.F90 -o calPi
 			</code> </pre>
-    
+
+<p>As of August 5, 2020, the "PGI Compilers and Tools" technology is a part of the NVIDIA HPC SDK product available as a free download from NVIDIA
+(see the news at <a href="https://news.developer.nvidia.com/hpc-sdk-ga-2020/">https://news.developer.nvidia.com/hpc-sdk-ga-2020/</a>)</p>
+
     <h4>Running</h4>
 			<pre> <code>
 nohup ./calPi &
