@@ -25,12 +25,13 @@ Open Accelerators (OpenACC) is a programming standard for parallel computing of 
     <embed src="./codes/calPi_OpenACC.F90" width="88%">
             
     <h4>Compile</h4>
-<p>(obsolete) Example to compile OpenACC code:</p>
+<p>Example to compile OpenACC code:</p>
 			<pre> <code>
-$ pgf90 -acc -ta=tesla:cc35 -Minfo=all calPi_OpenACC.F90 -o calPi
+$ nvfortran -acc=gpu -Minfo=all calPi_OpenACC.F90 -o calPi
+<del>Obsolete: $ pgf90 -acc -ta=tesla:cc35 -Minfo=all calPi_OpenACC.F90 -o calPi</del>
 			</code> </pre>
 
-<p>As of August 5, 2020, the "PGI Compilers and Tools" technology is a part of the NVIDIA HPC SDK product available as a free download from NVIDIA
+<p>Note: As of August 5, 2020, the "PGI Compilers and Tools" technology is a part of the NVIDIA HPC SDK product available as a free download from NVIDIA
 (see the news at <a href="https://news.developer.nvidia.com/hpc-sdk-ga-2020/">https://news.developer.nvidia.com/hpc-sdk-ga-2020/</a>)</p>
 
     <h4>Running</h4>
@@ -65,6 +66,11 @@ Here, <b>MLUPS</b> is short for <i>million lattice updates per second</i>.
     <img src="./images/research/HPC/OpenACC/Tesla_K40c.png" width="30%"></img>
     <img src="./images/research/HPC/OpenACC/compare.png" width="40%"></img>
     
+<p>Cuda toolkit and minimum required compatible driver versions</p>
+    <img src="./images/research/HPC/OpenACC/cudaVersion.png" width="30%"></img>
+
+<p>Compute capability support</p>
+    <img src="./images/research/HPC/OpenACC/cudaComputing.png" width="70%"></img>
 
     <h3>High performance computing techniques (Read more...)</h3>
         <ul class="ulResearch">
