@@ -1,3 +1,4 @@
+
     module commondata
         use mpi
         implicit none
@@ -24,28 +25,36 @@
     call MPI_COMM_RANK(MPI_COMM_WORLD, myID, ierr)
     
     if (myID.EQ.0) then
-        write(*,100) "=====Max Running processes:", nProc
+        write(*,*) "Max Running processes:", nProc
+        write(*,*) " "
     endif
-    
+    call MPI_BARRIER(MPI_COMM_WORLD, ierr)    
+
     call MPI_GET_PROCESSOR_NAME(proc_name, namelen, ierr)
-    write(*,*) "Greetings from process #", myID," on ", proc_name 
-    
+    write(*,*) "From process #", myID," on ", proc_name
+    call MPI_BARRIER(MPI_COMM_WORLD, ierr)
+    if(myID.EQ.0) then
+        write(*,*) " "
+    endif
+
 #ifdef _OPENMP
-    write(*,*) "Starting OpenMP >>>>>>"
     call OMP_set_num_threads(8)
     myMaxThreads = OMP_get_max_threads()
-    write(*,100) "-----Max Running threads:",myMaxThreads
-    
-    !$omp parallel default(none) private(threadID)
+    if(myID.EQ.0) then
+        write(*,*) "Max Running threads:",myMaxThreads
+        write(*,*) " "
+    endif    
+
+    call MPI_BARRIER(MPI_COMM_WORLD, ierr)
+    !$omp parallel default(none) shared(myID, proc_name) private(threadID)
     threadID = omp_get_thread_num()
-    write(*,100) "Greetings from thread #", threadID
+    write(*,*) "From process #", myID, "; Thread #", threadID
     !$omp end parallel
-    write(*,*) "    "
 #endif
-100 format(1X,A,I3)
 
     call trapezoidalRule()
-    
+
+    call MPI_BARRIER(MPI_COMM_WORLD, ierr)    
     if(myID.EQ.0) then
         write(*,*) "Successfully: simulation completed!"
     endif
@@ -80,3 +89,4 @@
     
     return
     end subroutine trapezoidalRule
+null
