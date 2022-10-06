@@ -3,6 +3,7 @@ layout: main
 description: Research on OpenMP.
 title: Research_OpenMP
 ---
+
     <div id="divTitleNav">
         <a href="./research.html"><img src="./images/left-arrow.png" class="navDock" /></a>
     </div>
@@ -22,26 +23,35 @@ It fits shared-memory parallel computers (SMPs).
     
     <h3>Sample OpenMP code</h3>
     
-    <h4>Calculate Pi</h4>
-    <embed src="./codes/calPi_OpenMP.F90" width="88%">
+    <h4>Example I: Calculate Pi</h4>
+    <embed src="./codes/calPi_OpenMP.F90" width="100%" height="1200">
     
     <h4>Compile</h4>
-Below is examples of adding compiler flag to various compilers in OpenMP code:
+<p>The simplest ways to compile the codes are: </p>
 			<pre> <code>
-$ <font color="red">ifort -qopenmp</font> -O2 -check all calPi_OpenMP.F90 -o calPi
-$ <font color="red">ifort -qopenmp</font> -O3 -fp-model precise calPi_OpenMP.F90 -o calPi
-$ <font color="red">pgf90 -mp</font> calPi_OpenMP.F90 -o calPi
-$ <font color="red">gfortran -fopenmp</font> -O2 -fcheck=all calPi_OpenMP.F90 -o calPi
+$ <font color="red">ifort -qopenmp</font> <font color="blue">-O2</font> calPi_OpenMP.F90
+$ <font color="red">gfortran -fopenmp</font> <font color="blue">-O2</font> calPi_OpenMP.F90
+			</code> </pre>
+Running: $ ./a.out
 
+<p>Belows are examples of adding compiler flag to various compilers in OpenMP code:</p>
+			<pre> <code>
+$ <font color="red">ifort -qopenmp</font> <font color="blue">-check all</font> calPi_OpenMP.F90 <font color="green">-o calPi</font>
+$ <font color="red">ifort -qopenmp</font> <font color="blue">-O3 -fp-model precise</font> calPi_OpenMP.F90 <font color="green">-o calPi</font>
+$ <font color="red">gfortran -fopenmp</font> <font color="blue">-O2 -fcheck=all</font> calPi_OpenMP.F90 <font color="green">-o calPi</font>
+
+<del>$ <font color="red">pgf90 -mp</font> calPi_OpenMP.F90 -o calPi</del> (obsoleted)
+			</code> </pre>
+            
 On Tianhe-2, job.sh file:
+			<pre> <code>
 #!/bin/bash
 module load intelcompiler/18.0.0
 yhrun -N 1 -n 1 -c 24 -p bigdata ./calPi
-Running:
-yhbatch -N 1 -p bigdata ./job.sh
 			</code> </pre>
+Running: $ yhbatch -N 1 -p bigdata ./job.sh
             
-To set the number of running treads, one may set the enviroment variables as
+<p>To set the number of running treads, one may set the enviroment variables as</p>
 			<pre> <code>
 export OMP_NUM_THREADS=4 && ./calPi
 			</code> </pre>
