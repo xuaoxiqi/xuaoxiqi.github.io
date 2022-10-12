@@ -10,7 +10,7 @@
         !----for MPI----!
         integer(kind=4) :: myID, nProc, ierr, iRoot
         integer(kind=4), allocatable :: start1d(:), end1d(:), count1d(:)
-        integer(kind=4) :: istatus(MPI_STATUS_SIZE)
+        integer(kind=4) :: iStatus(MPI_STATUS_SIZE)
         integer(kind=4) :: nxLocal
         integer(kind=4) :: iStart, iEnd
     end module commondata

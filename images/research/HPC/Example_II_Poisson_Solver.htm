@@ -9,30 +9,39 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <meta name=ProgId content=Word.Document>
 <meta name=Generator content="Microsoft Word 15">
 <meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="MPI_bindings_files/filelist.xml">
-<!--[if gte mso 9]><xml>
+<link rel=File-List href="Example_II_Poisson_Solver_files/filelist.xml">
+<link rel=Edit-Time-Data href="Example_II_Poisson_Solver_files/editdata.mso">
+<link rel=OLE-Object-Data href="Example_II_Poisson_Solver_files/oledata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
  <o:DocumentProperties>
   <o:Author>Ao XU</o:Author>
   <o:LastAuthor>Ao XU</o:LastAuthor>
   <o:Revision>2</o:Revision>
-  <o:TotalTime>403</o:TotalTime>
-  <o:Created>2022-10-08T07:12:00Z</o:Created>
-  <o:LastSaved>2022-10-08T07:12:00Z</o:LastSaved>
-  <o:Pages>2</o:Pages>
-  <o:Words>394</o:Words>
-  <o:Characters>2250</o:Characters>
-  <o:Lines>18</o:Lines>
-  <o:Paragraphs>5</o:Paragraphs>
-  <o:CharactersWithSpaces>2639</o:CharactersWithSpaces>
+  <o:TotalTime>217</o:TotalTime>
+  <o:Created>2022-10-07T04:02:00Z</o:Created>
+  <o:LastSaved>2022-10-07T04:02:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>159</o:Words>
+  <o:Characters>908</o:Characters>
+  <o:Lines>7</o:Lines>
+  <o:Paragraphs>2</o:Paragraphs>
+  <o:CharactersWithSpaces>1065</o:CharactersWithSpaces>
   <o:Version>16.00</o:Version>
  </o:DocumentProperties>
  <o:OfficeDocumentSettings>
-  <o:RelyOnVML/>
   <o:AllowPNG/>
  </o:OfficeDocumentSettings>
 </xml><![endif]-->
-<link rel=themeData href="MPI_bindings_files/themedata.thmx">
-<link rel=colorSchemeMapping href="MPI_bindings_files/colorschememapping.xml">
+<link rel=themeData href="Example_II_Poisson_Solver_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="Example_II_Poisson_Solver_files/colorschememapping.xml">
 <!--[if gte mso 9]><xml>
  <w:WordDocument>
   <w:SpellingState>Clean</w:SpellingState>
@@ -62,7 +71,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
   </w:Compatibility>
   <w:DocumentVariables>
    <w:__Grammarly_42____i>H4sIAAAAAAAEAKtWckksSQxILCpxzi/NK1GyMqwFAAEhoTITAAAA</w:__Grammarly_42____i>
-   <w:__Grammarly_42___1>H4sIAAAAAAAEAKtWcslP9kxRslIyNDY2sDQ1MTAzNzA1sDC2tDRW0lEKTi0uzszPAykwrgUAiBwnqywAAAA=</w:__Grammarly_42___1>
+   <w:__Grammarly_42___1>H4sIAAAAAAAEAKtWcslP9kxRslIyNDY2sDSxNLQwNDAzMDKzMDFV0lEKTi0uzszPAykwrQUA0x0z5CwAAAA=</w:__Grammarly_42___1>
   </w:DocumentVariables>
   <m:mathPr>
    <m:mathFont m:val="Cambria Math"/>
@@ -661,13 +670,6 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <!--
  /* Font Definitions */
  @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;
-	mso-font-charset:2;
-	mso-generic-font-family:auto;
-	mso-font-pitch:variable;
-	mso-font-signature:0 268435456 0 0 -2147483648 0;}
-@font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;
 	mso-font-charset:0;
@@ -717,130 +719,35 @@ xmlns="http://www.w3.org/TR/REC-html40">
 	mso-hansi-theme-font:minor-latin;
 	mso-bidi-font-family:"Times New Roman";
 	mso-bidi-theme-font:minor-bidi;}
-h1
-	{mso-style-priority:9;
+p.MTDisplayEquation, li.MTDisplayEquation, div.MTDisplayEquation
+	{mso-style-name:MTDisplayEquation;
 	mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-link:"Heading 1 Char";
-	mso-margin-top-alt:auto;
+	mso-style-link:"MTDisplayEquation Char";
+	mso-style-next:Normal;
+	margin-top:0cm;
 	margin-right:0cm;
-	mso-margin-bottom-alt:auto;
+	margin-bottom:8.0pt;
 	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:150%;
 	mso-pagination:widow-orphan;
-	mso-outline-level:1;
-	font-size:24.0pt;
+	tab-stops:center 216.0pt right 432.0pt;
+	font-size:12.0pt;
 	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:"Times New Roman";}
-tt
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	font-family:"Courier New";
-	mso-ascii-font-family:"Courier New";
-	mso-fareast-font-family:"Times New Roman";
-	mso-hansi-font-family:"Courier New";
-	mso-bidi-font-family:"Courier New";}
-p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
-	{mso-style-priority:34;
-	mso-style-unhide:no;
-	mso-style-qformat:yes;
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:8.0pt;
-	margin-left:36.0pt;
-	mso-add-space:auto;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
 	mso-fareast-font-family:等线;
-	mso-fareast-theme-font:minor-fareast;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
-	{mso-style-priority:34;
-	mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-type:export-only;
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:36.0pt;
-	mso-add-space:auto;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:等线;
-	mso-fareast-theme-font:minor-fareast;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
-	{mso-style-priority:34;
-	mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-type:export-only;
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:36.0pt;
-	mso-add-space:auto;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:等线;
-	mso-fareast-theme-font:minor-fareast;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
-	{mso-style-priority:34;
-	mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-type:export-only;
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:8.0pt;
-	margin-left:36.0pt;
-	mso-add-space:auto;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:等线;
-	mso-fareast-theme-font:minor-fareast;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-span.Heading1Char
-	{mso-style-name:"Heading 1 Char";
-	mso-style-priority:9;
+	mso-fareast-theme-font:minor-fareast;}
+span.MTDisplayEquationChar
+	{mso-style-name:"MTDisplayEquation Char";
 	mso-style-unhide:no;
 	mso-style-locked:yes;
-	mso-style-link:"Heading 1";
-	mso-ansi-font-size:24.0pt;
-	mso-bidi-font-size:24.0pt;
+	mso-style-link:MTDisplayEquation;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
 	font-family:"Times New Roman",serif;
 	mso-ascii-font-family:"Times New Roman";
-	mso-fareast-font-family:"Times New Roman";
 	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
-	mso-font-kerning:18.0pt;
-	font-weight:bold;}
+	mso-bidi-font-family:"Times New Roman";}
 span.SpellE
 	{mso-style-name:"";
 	mso-spl-e:yes;}
@@ -869,288 +776,6 @@ span.SpellE
 	mso-paper-source:0;}
 div.WordSection1
 	{page:WordSection1;}
- /* List Definitions */
- @list l0
-	{mso-list-id:382366453;
-	mso-list-type:hybrid;
-	mso-list-template-ids:-291593778 67698701 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
-@list l0:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0FC;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l0:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l0:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l0:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Symbol;}
-@list l0:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l0:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l0:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Symbol;}
-@list l0:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l0:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l1
-	{mso-list-id:1145856347;
-	mso-list-type:hybrid;
-	mso-list-template-ids:-1422233192 67698701 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
-@list l1:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0FC;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l1:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l1:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l1:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Symbol;}
-@list l1:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l1:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l1:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Symbol;}
-@list l1:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l1:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l2
-	{mso-list-id:1399330436;
-	mso-list-type:hybrid;
-	mso-list-template-ids:274767102 67698701 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
-@list l2:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0FC;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l2:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l2:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l2:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Symbol;}
-@list l2:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l2:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l2:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Symbol;}
-@list l2:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l2:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l3
-	{mso-list-id:1679456044;
-	mso-list-type:hybrid;
-	mso-list-template-ids:880155778 67698701 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
-@list l3:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0FC;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:54.0pt;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l3:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:90.0pt;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l3:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:126.0pt;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l3:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:162.0pt;
-	text-indent:-18.0pt;
-	font-family:Symbol;}
-@list l3:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:198.0pt;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l3:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:234.0pt;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-@list l3:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:270.0pt;
-	text-indent:-18.0pt;
-	font-family:Symbol;}
-@list l3:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:306.0pt;
-	text-indent:-18.0pt;
-	font-family:"Courier New";}
-@list l3:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0A7;
-	mso-level-tab-stop:none;
-	mso-level-number-position:left;
-	margin-left:342.0pt;
-	text-indent:-18.0pt;
-	font-family:Wingdings;}
-ol
-	{margin-bottom:0cm;}
-ul
-	{margin-bottom:0cm;}
 -->
 </style>
 <!--[if gte mso 10]>
@@ -1180,7 +805,7 @@ ul
 	mso-bidi-theme-font:minor-bidi;}
 </style>
 <![endif]--><!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext="edit" spidmax="1026"/>
+ <o:shapedefaults v:ext="edit" spidmax="1028"/>
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <o:shapelayout v:ext="edit">
   <o:idmap v:ext="edit" data="1"/>
@@ -1191,341 +816,175 @@ ul
 
 <div class=WordSection1>
 
-<p class=MsoListParagraphCxSpFirst style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;line-height:150%;mso-list:l1 level1 lfo1'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings'><span style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
-color:#0000C8'>MPI_INIT </span><span style='font-family:"Times New Roman",serif'>(<span
-class=SpellE>ierr</span>): <i>Initialize MPI</i><o:p></o:p></span></p>
-
-<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
-inter-ideograph;text-indent:-18.0pt;line-height:150%;mso-list:l1 level1 lfo1'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings'><span style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
-color:#0000C8'>MPI_COMM_SIZE </span><span style='font-family:"Times New Roman",serif'>(comm,
-<span class=SpellE><span style='color:red'>nProc</span></span>, <span
-class=SpellE>ierr</span>): <i>Find out how many processes there are</i><o:p></o:p></span></p>
-
-<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
-inter-ideograph;text-indent:-18.0pt;line-height:150%;mso-list:l1 level1 lfo1'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings'><span style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
-color:#0000C8'>MPI_COMM_RANK </span><span style='font-family:"Times New Roman",serif'>(comm,
-<span class=SpellE><span style='color:red'>myid</span></span>, <span
-class=SpellE>ierr</span>): <i>Find out which process I am</i><o:p></o:p></span></p>
-
-<p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
-inter-ideograph;text-indent:-18.0pt;line-height:150%;mso-list:l1 level1 lfo1'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings'><span style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
-color:#0000C8'>MPI_BARRIER </span><span style='font-family:"Times New Roman",serif'>(comm,
-<span class=SpellE>ierr</span>): <i>Ensure every process has completed the
-computation</i><o:p></o:p></span></p>
-
-<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
-mso-border-bottom-alt:solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm;
-margin-left:18.0pt;margin-right:0cm'>
-
-<p class=MsoListParagraphCxSpMiddle style='margin-left:18.0pt;mso-add-space:
-auto;text-align:justify;text-justify:inter-ideograph;text-indent:-18.0pt;
-line-height:150%;mso-list:l1 level1 lfo1;border:none;mso-border-bottom-alt:
-solid windowtext .75pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings'><span style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
-color:#0000C8'>MPI_FINALIZE </span><span style='font-family:"Times New Roman",serif'>(<span
-class=SpellE>ierr</span>): <i>Terminate MPI</i><o:p></o:p></span></p>
-
-</div>
-
-<p class=MsoListParagraphCxSpLast style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo1'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings'><span style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
-color:#0000C8'>MPI_REDUCE </span><span style='font-family:"Times New Roman",serif'>(<span
-class=SpellE>sendbuf</span>, <span class=SpellE>recvbuf</span>, count,
-datatype, operation, <span style='color:red'>root,</span> comm, <span
-class=SpellE>ierr</span>)<o:p></o:p></span></p>
-
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;line-height:115%'><i><span style='font-family:"Times New Roman",serif'>It
-performs a reduction of data from each process onto the specified root process.
-The root process must wait for all other process to enter the call.<o:p></o:p></span></i></p>
-
-<p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo1'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings'><span style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
-color:#0000C8'>MPI_ALLREDUCE </span><span style='font-family:"Times New Roman",serif'>(<span
-class=SpellE>sendbuf</span>, <span class=SpellE>recvbuf</span>, count,
-datatype, operation, comm, <span class=SpellE>ierr</span>)<o:p></o:p></span></p>
-
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;line-height:115%'><i><span style='font-family:"Times New Roman",serif'>There
-is no root, all processes receive the results. <o:p></o:p></span></i></p>
-
-<p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo1'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings'><span style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
-color:#0000C8'>MPI_SCATTERV </span><span style='font-family:"Times New Roman",serif'>(<span
-class=SpellE><span style='color:#ED7D31;mso-themecolor:accent2'>sendbuf</span></span><span
-style='color:#ED7D31;mso-themecolor:accent2'>, <span class=SpellE>sendcounts</span></span>,
-<span class=SpellE><span style='color:red'>displs</span></span>, <span
-class=SpellE>sendtype</span>, <span class=SpellE><span style='color:#70AD47;
-mso-themecolor:accent6'>recvbuf</span></span><span style='color:#70AD47;
-mso-themecolor:accent6'>, <span class=SpellE>recvcount</span>, </span><span
-class=SpellE><span style='color:black;mso-themecolor:text1'>recytype</span></span><span
-style='color:black;mso-themecolor:text1'>, </span>root, comm)<o:p></o:p></span></p>
-
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;line-height:115%'><i><span style='font-family:"Times New Roman",serif'>Scatters
-a buffer in parts to all processes in a communicator. <o:p></o:p></span></i></p>
-
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;line-height:115%'><span class=SpellE><span style='font-family:
-"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>sendbuf</span></span><span
-style='font-family:"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>:</span><i><span
-style='font-family:"Times New Roman",serif'> address of send buffer; </span></i><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#ED7D31;
-mso-themecolor:accent2'>sendcounts</span></span><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>: </span><i><span style='font-family:
-"Times New Roman",serif'>integer array specifying the number of elements to
-send to each processor;</span></i><span style='font-family:"Times New Roman",serif;
-color:red'> <span class=SpellE>displs</span>: </span><i><span style='font-family:
-"Times New Roman",serif'>integer array and entry <span class=SpellE>i</span>
-specifies the displacement, relative to <span class=SpellE>sendbuf</span> from
-which to take the outgoing data to process <span class=SpellE>i</span>. </span></i><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#70AD47;
-mso-themecolor:accent6'>recvbuf</span></span><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>: </span><i><span style='font-family:
-"Times New Roman",serif'>address of receive buffer (output); </span></i><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#70AD47;
-mso-themecolor:accent6'>recvcount</span></span><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>:</span><i><span style='font-family:"Times New Roman",serif'>
-number of elements in receive buffer.<o:p></o:p></span></i></p>
-
-<p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo1'><a
-name="MPI_Gatherv"><![if !supportLists]><span style='font-family:Wingdings;
-mso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#0000C8'><span
-style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
-style='font-family:"Times New Roman",serif;color:#0000C8'>MPI_GATHERV </span></a><span
-style='mso-bookmark:MPI_Gatherv'><span style='font-family:"Times New Roman",serif;
-color:black;mso-themecolor:text1'>(</span></span><span style='mso-bookmark:
-MPI_Gatherv'><span class=SpellE><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>sendbuf</span></span></span><span
-style='mso-bookmark:MPI_Gatherv'><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>, <span class=SpellE>sendcount</span>, </span></span><span
-style='mso-bookmark:MPI_Gatherv'><span class=SpellE><span style='font-family:
-"Times New Roman",serif;color:black;mso-themecolor:text1'>sendtype</span></span></span><span
-style='mso-bookmark:MPI_Gatherv'><span style='font-family:"Times New Roman",serif;
-color:black;mso-themecolor:text1'>, </span></span><span style='mso-bookmark:
-MPI_Gatherv'><span class=SpellE><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>recvbuf</span></span></span><span
-style='mso-bookmark:MPI_Gatherv'><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>, <span class=SpellE>recvcounts</span>, </span></span><span
-style='mso-bookmark:MPI_Gatherv'><span class=SpellE><span style='font-family:
-"Times New Roman",serif;color:red'>displs</span></span></span><span
-style='mso-bookmark:MPI_Gatherv'><span style='font-family:"Times New Roman",serif;
-color:red'>, </span></span><span style='mso-bookmark:MPI_Gatherv'><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:black;
-mso-themecolor:text1'>rectytpe</span></span></span><span style='mso-bookmark:
-MPI_Gatherv'><span style='font-family:"Times New Roman",serif;color:black;
-mso-themecolor:text1'>, root, comm)</span></span><span style='mso-bookmark:
-MPI_Gatherv'><span style='font-family:"Times New Roman",serif;color:#0000C8'><o:p></o:p></span></span></p>
-
-<span style='mso-bookmark:MPI_Gatherv'></span>
-
-<p class=MsoNormal style='margin-left:21.3pt;text-align:justify;text-justify:
-inter-ideograph;background:white'><i><span style='font-family:"Times New Roman",serif;
-color:black;mso-color-alt:windowtext'>Gathers into specified locations from all
-processes in a group. </span></i><i><span style='font-family:"Times New Roman",serif'><o:p></o:p></span></i></p>
-
-<p class=MsoNormal style='margin-left:21.3pt;text-align:justify;text-justify:
-inter-ideograph;background:white'><span class=SpellE><span style='font-family:
-"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>sendbuf</span></span><span
-style='font-family:"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>:</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-starting address of send buffer; </span></i><span class=SpellE><span
-style='font-family:"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>sendcount</span></span><span
-style='font-family:"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>:</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-integer number of elements in send buffer;</span></i><b><span style='font-size:
-13.5pt;line-height:107%;color:black'> </span></b><span class=SpellE><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>recvbuf</span></span><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>:</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-address of receive buffer (output); </span></i><span class=SpellE><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>recvcounts</span></span><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>:
-</span><i><span style='font-family:"Times New Roman",serif;color:black;
-mso-color-alt:windowtext'>integer array containing the number of elements that
-are received from each process;</span></i><b><span style='font-size:13.5pt;
-line-height:107%;color:black'> </span></b><span class=SpellE><span
-style='font-family:"Times New Roman",serif;color:red'>displs</span></span><span
-style='font-family:"Times New Roman",serif;color:red'>:<i> </i></span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>integer
-array and entry&nbsp;<span class=SpellE>i</span>&nbsp;specifies the
-displacement relative to <span class=SpellE>recvbuf</span> at which to place
-the incoming data from process&nbsp;<span class=SpellE>i</span>.</span></i><i><span
-style='font-family:"Times New Roman",serif'><o:p></o:p></span></i></p>
-
-<p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;line-height:115%;mso-list:l2 level1 lfo3'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings;color:black;mso-themecolor:text1;mso-bidi-font-style:italic'><span
-style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
-style='font-family:"Times New Roman",serif;color:#0000C8'>MPI_SEND<i> </i></span><span
-style='font-family:"Times New Roman",serif;color:black;mso-themecolor:text1'>(</span><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#ED7D31;
-mso-themecolor:accent2'>buf</span></span><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>, count, </span><span style='font-family:
-"Times New Roman",serif;color:black;mso-themecolor:text1'>datatype</span><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>,
-<span class=SpellE>dest</span>, </span><span style='font-family:"Times New Roman",serif;
-color:black;mso-themecolor:text1'>tag, comm)<i><o:p></o:p></i></span></p>
-
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;line-height:115%'><i><span style='font-family:"Times New Roman",serif;
-color:black;mso-themecolor:text1'>Performs a <b><u>blocking</u></b> send.<o:p></o:p></span></i></p>
+<p class=MsoNormal align=center style='text-align:center;line-height:150%'><b><span
+style='font-family:"Times New Roman",serif'>Example II: Poisson Solver<o:p></o:p></span></b></p>
 
 <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
-background:white'><i><span style='font-family:"Times New Roman",serif;
-color:black;mso-color-alt:windowtext'><span
-style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></i><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#ED7D31;
-mso-themecolor:accent2'>buf</span></span><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>: </span><i><span style='font-family:
-"Times New Roman",serif;color:black;mso-color-alt:windowtext'>initial address
-of send buffer; </span></i><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>count:</span><i><span style='font-family:
-"Times New Roman",serif;color:black;mso-color-alt:windowtext'> integer number
-of elements in send buffer; </span></i><span class=SpellE><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>dest</span></span><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>:</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-integer rank of destination.</span></i><i><span style='font-family:"Times New Roman",serif'><o:p></o:p></span></i></p>
+line-height:150%'><span style='font-family:"Times New Roman",serif'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>The
+Poisson problem is expressed by the following equations: </span><span
+style='position:relative;top:5.0pt;mso-text-raise:-5.0pt'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:69pt;
+ height:18pt' o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image001.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=92 height=24
+src="Example_II_Poisson_Solver_files/image002.png" v:shapes="_x0000_i1025"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1726649311">
+ </o:OLEObject>
+</xml><![endif]--><span style='font-family:"Times New Roman",serif'><span
+style='mso-spacerun:yes'>&nbsp;</span>in the interior, </span><span
+style='position:relative;top:5.0pt;mso-text-raise:-5.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:81pt;height:16.5pt' o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image003.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=108 height=22
+src="Example_II_Poisson_Solver_files/image004.png" v:shapes="_x0000_i1026"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1026"
+  DrawAspect="Content" ObjectID="_1726649312">
+ </o:OLEObject>
+</xml><![endif]--><span style='font-family:"Times New Roman",serif'><span
+style='mso-spacerun:yes'>&nbsp;</span>on the boundary. To simplify the
+discussion, we use the unit square as the domain. To find an approximate
+solution to this problem, we define a </span><!--[if gte vml 1]><v:shape id="Picture_x0020_1"
+ o:spid="_x0000_s1027" type="#_x0000_t75" style='position:absolute;left:0;
+ text-align:left;margin-left:118.85pt;margin-top:80.1pt;width:170.05pt;
+ height:169.6pt;z-index:251658240;visibility:visible;mso-wrap-style:square;
+ mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;
+ mso-wrap-distance-bottom:0;mso-position-horizontal:right;
+ mso-position-horizontal-relative:margin;mso-position-vertical:absolute;
+ mso-position-vertical-relative:margin'>
+ <v:imagedata src="Example_II_Poisson_Solver_files/image005.png" o:title=""/>
+ <w:wrap type="square" anchorx="margin" anchory="margin"/>
+</v:shape><![endif]--><![if !vml]><img width=227 height=226
+src="Example_II_Poisson_Solver_files/image006.png" align=right hspace=12
+v:shapes="Picture_x0020_1"><![endif]><span style='font-family:"Times New Roman",serif'>grid
+consisting of the points (<i>x<sub>i</sub></i>, <span class=SpellE><i>y<sub>j</sub></i></span>),
+given by<o:p></o:p></span></p>
 
-<p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;mso-list:l0 level1 lfo4;background:white'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings;mso-bidi-font-style:italic'><span style='mso-list:Ignore'>ü<span
-style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
-style='font-family:"Times New Roman",serif;color:#0000C8'>MPI_RECV</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-</span></i><span style='font-family:"Times New Roman",serif;color:black;
-mso-color-alt:windowtext'>(</span><span class=SpellE><span style='font-family:
-"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>buf</span></span><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>,
-count, </span><span style='font-family:"Times New Roman",serif;color:black;
-mso-color-alt:windowtext'>datatype, </span><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>source,</span><span style='font-family:
-"Times New Roman",serif;color:black;mso-color-alt:windowtext'> tag, comm,
-status)</span><i><span style='font-family:"Times New Roman",serif'><o:p></o:p></span></i></p>
+<p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+style='position:relative;top:12.0pt;mso-text-raise:-12.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1027" type="#_x0000_t75" style='width:117.75pt;height:31.5pt'
+ o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image007.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=157 height=42
+src="Example_II_Poisson_Solver_files/image008.png" v:shapes="_x0000_i1027"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1027"
+  DrawAspect="Content" ObjectID="_1726649313">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-spacerun:yes'>&nbsp;</span><span
+style='font-family:"Times New Roman",serif'>and </span><span style='position:
+relative;top:12.0pt;mso-text-raise:-12.0pt'><!--[if gte vml 1]><v:shape id="_x0000_i1028"
+ type="#_x0000_t75" style='width:120.75pt;height:31.5pt' o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image009.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=161 height=42
+src="Example_II_Poisson_Solver_files/image010.png" v:shapes="_x0000_i1028"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1028"
+  DrawAspect="Content" ObjectID="_1726649314">
+ </o:OLEObject>
+</xml><![endif]--></p>
 
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;background:white'><b><i><u><span style='font-family:"Times New Roman",serif;
-color:black;mso-color-alt:windowtext'>Blocking</span></u></i></b><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-receives for a message.</span></i><i><span style='font-family:"Times New Roman",serif'><o:p></o:p></span></i></p>
+<p class=MsoNormal style='line-height:150%'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"Times New Roman",serif'>We approximate the governing
+equation with a second-order finite difference scheme<o:p></o:p></span></p>
 
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;background:white'><span class=SpellE><span style='font-family:
-"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>buf</span></span><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>:<i>
-</i></span><i><span style='font-family:"Times New Roman",serif;color:black;
-mso-color-alt:windowtext'>initial address of receive buffer; </span></i><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>count:</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-maximum integer number of elements in receive buffer; </span></i><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>source:</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-rank of source</span></i><i><span style='font-family:"Times New Roman",serif'><o:p></o:p></span></i></p>
+<p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+style='position:relative;top:12.0pt;mso-text-raise:-12.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1029" type="#_x0000_t75" style='width:183pt;height:33pt' o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image011.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=244 height=44
+src="Example_II_Poisson_Solver_files/image012.png" v:shapes="_x0000_i1029"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1029"
+  DrawAspect="Content" ObjectID="_1726649315">
+ </o:OLEObject>
+</xml><![endif]--><span style='font-family:"Times New Roman",serif'>, where </span><span
+style='position:relative;top:12.0pt;mso-text-raise:-12.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1030" type="#_x0000_t75" style='width:43.5pt;height:31.5pt' o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image013.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=58 height=42
+src="Example_II_Poisson_Solver_files/image014.png" v:shapes="_x0000_i1030"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1030"
+  DrawAspect="Content" ObjectID="_1726649316">
+ </o:OLEObject>
+</xml><![endif]--></p>
 
-<p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;line-height:115%;mso-list:l2 level1 lfo3'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings;color:black;mso-themecolor:text1;mso-bidi-font-style:italic'><span
-style='mso-list:Ignore'>ü<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
-style='font-family:"Times New Roman",serif;color:#0000C8'>MPI_SENDRECV</span><span
-style='font-family:"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>
-</span><span style='font-family:"Times New Roman",serif;color:black;mso-themecolor:
-text1'>(</span><span class=SpellE><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>sendbuf</span></span><span
-style='font-family:"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>,
-<span class=SpellE>sendcount</span>,</span><span style='font-family:"Times New Roman",serif;
-color:black;mso-themecolor:text1'> <span class=SpellE>sendtype</span>, </span><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#ED7D31;
-mso-themecolor:accent2'>dest</span></span><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>,</span><span style='font-family:"Times New Roman",serif;
-color:black;mso-themecolor:text1'> <span class=SpellE>sendtag</span>, </span><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#70AD47;
-mso-themecolor:accent6'>recvbuf</span></span><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>, <span class=SpellE>recvcount</span>, </span><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:black;
-mso-themecolor:text1'>recvtype</span></span><span style='font-family:"Times New Roman",serif;
-color:black;mso-themecolor:text1'>, </span><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>source, </span><span class=SpellE><span
-style='font-family:"Times New Roman",serif;color:black;mso-themecolor:text1'>recvtag</span></span><span
-style='font-family:"Times New Roman",serif;color:black;mso-themecolor:text1'>,
-comm, status)<i><o:p></o:p></i></span></p>
+<p class=MsoNormal style='line-height:150%'><span style='font-family:"Times New Roman",serif'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>We
+adopt the Jacobi iteration, which repeats updating the following equation until
+the solution is reached<o:p></o:p></span></p>
 
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;line-height:115%'><i><span style='font-family:"Times New Roman",serif'>Sends
-and receives a message<o:p></o:p></span></i></p>
+<p class=MsoNormal align=center style='text-align:center;line-height:150%'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_2" o:spid="_x0000_s1026" type="#_x0000_t75" style='position:absolute;
+ left:0;text-align:left;margin-left:118.85pt;margin-top:252.75pt;width:170.05pt;
+ height:151.15pt;z-index:251659264;visibility:visible;mso-wrap-style:square;
+ mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;
+ mso-wrap-distance-bottom:0;mso-position-horizontal:right;
+ mso-position-horizontal-relative:margin;mso-position-vertical:absolute;
+ mso-position-vertical-relative:margin'>
+ <v:imagedata src="Example_II_Poisson_Solver_files/image015.png" o:title=""/>
+ <w:wrap type="square" anchorx="margin" anchory="margin"/>
+</v:shape><![endif]--><![if !vml]><img width=227 height=202
+src="Example_II_Poisson_Solver_files/image016.jpg" align=right hspace=12
+alt="Frame 001&#13;&#10;Created with Tecplot Version 2017.3.0.84688" v:shapes="Picture_x0020_2"><![endif]><span
+style='position:relative;top:12.0pt;mso-text-raise:-12.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1031" type="#_x0000_t75" style='width:197.25pt;height:31.5pt'
+ o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image017.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=263 height=42
+src="Example_II_Poisson_Solver_files/image018.png" v:shapes="_x0000_i1031"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1031"
+  DrawAspect="Content" ObjectID="_1726649317">
+ </o:OLEObject>
+</xml><![endif]--></p>
 
-<p class=MsoNormal style='margin-left:14.2pt;text-align:justify;text-justify:
-inter-ideograph;line-height:115%;background:white'><span class=SpellE><span
-style='font-family:"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>sendbuf</span></span><span
-style='font-family:"Times New Roman",serif;color:#ED7D31;mso-themecolor:accent2'>:<i>
-</i></span><i><span style='font-family:"Times New Roman",serif;color:black;
-mso-color-alt:windowtext'>initial address of send buffer; </span></i><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#ED7D31;
-mso-themecolor:accent2'>sendcount</span></span><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>:<i> </i></span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-themecolor:text1'>integer
-number </span></i><i><span style='font-family:"Times New Roman",serif;
-color:black;mso-color-alt:windowtext'>of elements in send buffer; </span></i><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#ED7D31;
-mso-themecolor:accent2'>dest</span></span><span style='font-family:"Times New Roman",serif;
-color:#ED7D31;mso-themecolor:accent2'>:</span><i><span style='font-family:"Times New Roman",serif;
-color:black;mso-color-alt:windowtext'> integer rank of destination; </span></i><span
-class=SpellE><span style='font-family:"Times New Roman",serif;color:#70AD47;
-mso-themecolor:accent6'>recvbuf</span></span><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>:</span><i><span style='font-family:"Times New Roman",serif;
-color:black;mso-color-alt:windowtext'> initial address of receive buffer
-(output); </span></i><span class=SpellE><span style='font-family:"Times New Roman",serif;
-color:#70AD47;mso-themecolor:accent6'>recvcount</span></span><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>:</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-integer number of elements in receive buffer; </span></i><span
-style='font-family:"Times New Roman",serif;color:#70AD47;mso-themecolor:accent6'>source:</span><i><span
-style='font-family:"Times New Roman",serif;color:black;mso-color-alt:windowtext'>
-integer rank of source</span></i><i><span style='font-family:"Times New Roman",serif'><o:p></o:p></span></i></p>
+<p class=MsoNormal style='margin-top:12.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:150%'><span style='font-family:"Times New Roman",serif'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>A
+special case of the Poisson equation is <i>f</i> = 0, which leads to the
+Laplace equation. The Laplace equation describes many transport processes, such
+as heat conduction. In the simulation, the domain is [0, 1] × [0, 1]. We set
+the initial condition as <i>u</i> = 0, and the boundary conditions as </span><span
+style='position:relative;top:5.0pt;mso-text-raise:-5.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1032" type="#_x0000_t75" style='width:57pt;height:16.5pt' o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image019.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=76 height=22
+src="Example_II_Poisson_Solver_files/image020.png" v:shapes="_x0000_i1032"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1032"
+  DrawAspect="Content" ObjectID="_1726649318">
+ </o:OLEObject>
+</xml><![endif]--><span style='font-family:"Times New Roman",serif'>, </span><span
+style='position:relative;top:5.0pt;mso-text-raise:-5.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1033" type="#_x0000_t75" style='width:160.5pt;height:16.5pt'
+ o:ole="">
+ <v:imagedata src="Example_II_Poisson_Solver_files/image021.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=214 height=22
+src="Example_II_Poisson_Solver_files/image022.png" v:shapes="_x0000_i1033"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1033"
+  DrawAspect="Content" ObjectID="_1726649319">
+ </o:OLEObject>
+</xml><![endif]--><span style='font-family:"Times New Roman",serif'>.<o:p></o:p></span></p>
 
-<p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
-text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo1'><![if !supportLists]><span
-style='font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
-Wingdings;mso-bidi-font-style:italic'><span style='mso-list:Ignore'>ü<span
-style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
-style='font-family:"Times New Roman",serif;color:#0000C8'>MPI_BCAST</span><span
-style='font-family:"Times New Roman",serif'> (buffer, count, datatype, root,
-comm, <span class=SpellE>ierr</span>)<i><o:p></o:p></i></span></p>
-
-<p class=MsoNormal style='margin-left:18.0pt;text-align:justify;text-justify:
-inter-ideograph;line-height:115%'><i><span style='font-family:"Times New Roman",serif'>It
-sends data from one process in one group to all processes in the other group.<o:p></o:p></span></i></p>
-
-<p class=MsoListParagraph style='text-align:justify;text-justify:inter-ideograph;
-line-height:115%'><span style='font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:150%'><span style='font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
 
 </div>
 
