@@ -262,7 +262,7 @@
         enddo
     enddo
 
-    call MPI_ALLREDUCE(errorLocal, errorGloabl, 1, MPI_DOUBLE_PRECISION, MPI_MAX, MPI_COMM_2D, ierr)
+    call MPI_ALLREDUCE(errorLocal, errorGloabl, 1, MPI_DOUBLE_PRECISION, MPI_SUM, MPI_COMM_2D, ierr)
     
     if(myID.EQ.0) then
         write(*,*) itc, errorGloabl

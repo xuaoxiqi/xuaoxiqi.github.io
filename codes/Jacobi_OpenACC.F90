@@ -1,13 +1,13 @@
 
     module commondata
         implicit none
-        integer(kind=4), parameter :: nx=401, ny=401
+        integer(kind=4), parameter :: nx=4001, ny=4001
         real(kind=8), allocatable :: Xp(:), Yp(:)
         real(kind=8), allocatable :: A(:,:), Anew(:,:)
         real(kind=8) :: error
         integer(kind=4) :: itc
         real(kind=8), parameter :: eps=1e-6
-        integer(kind=4), parameter :: itc_max=200000
+        integer(kind=4), parameter :: itc_max=20000
     end module commondata
 
 
@@ -74,9 +74,9 @@
     string = ctime( time() )
     write(00,*) 'End:   ', string
     
-    call outputA_datFile()
+    !~call outputA_datFile()
 
-    call outputA_pltFile()
+    !~call outputA_pltFile()
 
     write(*,*) "Successfully: simulation completed!"
     

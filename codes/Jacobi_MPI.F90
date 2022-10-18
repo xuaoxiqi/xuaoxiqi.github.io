@@ -63,7 +63,7 @@
     allocate (Yp(ny))
     
     allocate (A(nx, 0:nyLocal+1))
-    allocate (Anew(nx, nyLocal))
+    allocate (Anew(nx, 0:nyLocal+1))
     allocate (AGlobal(nx, ny))
     !--------------------------------------------------------------------    
     call StartEnd(1, ny)
