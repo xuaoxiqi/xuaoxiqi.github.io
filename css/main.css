@@ -394,18 +394,6 @@ div.div0 {
   margin-bottom: 0.5em;
 }
 
-.honors-list > li {
-  counter-reset: award-count;
-}
-
-.honors-list > li > ol > li {
-  counter-increment: award-count;
-}
-
-.honors-list > li > b::after {
-  content: " (" counter(award-count) ")";
-}
-
 /* Course description styling */
 .course-description {
   margin: 0.5em 0 1em 1.5em;
