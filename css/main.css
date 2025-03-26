@@ -385,14 +385,14 @@ div.div0 {
 }
 
 /* Student list styling */
-/* .student-list {
+ .student-list {
   margin-left: 1.5em;
   line-height: 1.6;
-}*/
+}
 
-/*.student-list li {
+.student-list li {
   margin-bottom: 0.5em;
-}*/
+}
 
 
 /* Course description styling */
@@ -400,32 +400,3 @@ div.div0 {
   margin: 0.5em 0 1em 1.5em;
   font-style: italic;
 }
-
-/*用时间轴展示学生培养历程*/
-.student-list {
-	position: relative;
-	padding-left: 2rem;
-  }
-  .student-list::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 4px;
-	background: linear-gradient(to bottom, #4facfe, #00f2fe);
-  }
-  .student-list li {
-	position: relative;
-	padding-bottom: 1rem;
-  }
-  .student-list li::before {
-	content: "";
-	position: absolute;
-	left: -2.2rem;
-	top: 0.3em;
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: #4facfe;
-  }
