@@ -395,29 +395,15 @@ div.div0 {
 }
 
 .honors-list > li {
-  position: relative;
-  padding-left: 1.5em;
-  margin-bottom: 1rem;
-}
-
-.honors-list > li > b::after {
-  content: " (" attr(data-count) "人次)"; /* 自动统计人数 */
-  font-weight: normal;
-  color: #666;
-}
-
-.honors-list > li > ol {
-  display: inline; /* 让链接横向排列 */
-  padding-left: 0;
-  list-style: none;
+  counter-reset: award-count;
 }
 
 .honors-list > li > ol > li {
-  display: inline;
+  counter-increment: award-count;
 }
 
-.honors-list > li > ol > li:not(:last-child)::after {
-  content: "; "; /* 链接之间用分号分隔 */
+.honors-list > li > b::after {
+  content: " (" counter(award-count) ")";
 }
 
 /* Course description styling */
