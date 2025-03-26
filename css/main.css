@@ -383,3 +383,19 @@ div.div0 {
 	padding-bottom:1px;
 	border-bottom:1px;
 }
+
+/* Student list styling */
+.student-list {
+  margin-left: 1.5em;
+  line-height: 1.6;
+}
+
+.student-list li {
+  margin-bottom: 0.5em;
+}
+
+/* Course description styling */
+.course-description {
+  margin: 0.5em 0 1em 1.5em;
+  font-style: italic;
+}

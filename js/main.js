@@ -24,3 +24,10 @@
     }
 }
 
+
+//Add this to handle PDF links more gracefully:
+document.querySelectorAll('a[href$=".pdf"]').forEach(link => {
+  link.setAttribute('target', '_blank');
+  link.setAttribute('rel', 'noopener noreferrer');
+  link.insertAdjacentHTML('beforeend', ' <small>(PDF)</small>');
+});
