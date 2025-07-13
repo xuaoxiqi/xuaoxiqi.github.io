@@ -2,7 +2,6 @@ clc; clear all; close all;
 
 % GPU model names
 models = {'K20', 'K40', 'P100', 'V100', 'A100', 'H100'};
-years  = [ 2012   2013   2016    2017    2020    2022];
 
 % Metric data
 metrics = {
@@ -60,14 +59,13 @@ for m = 1:size(metrics, 1)
     if(m == 4)
         ylim([0 4000])
     end
-    xlim([0.3 6.7])
 
     % Add labels
     xlabel('GPU Architecture', 'FontSize', 24);
     ylabel(metrics{m, 4}, 'FontSize', 24);
 
     % Add data labels
-    labelOffset = 0.01 * yMax; % Dynamic positioning
+    labelOffset = 0.05 * yMax; % Dynamic positioning
     for i = 1:6
         text(i, data(i) + labelOffset,...
             num2str(data(i), metrics{m, 3}),...
@@ -75,19 +73,15 @@ for m = 1:size(metrics, 1)
             'VerticalAlignment', 'bottom',...
             'FontSize', 14,...
             'FontName', 'Arial');
-    end
 
-    for i = 1:size(data, 2)
-        y_pos = cumsum(data(:,i));
-        for j = 1:size(data, 1)
-            text(i, y_pos(j) - data(j,i)/2, ...
-                sprintf('%.0f', years(i)), ...
-                'HorizontalAlignment', 'center', ...
-                'VerticalAlignment', 'middle', ...
-                'FontSize', 14, ...
-                'Color', 'w', ...
-                'FontWeight', 'bold');
-        end
+                text(i, y_pos(j) - data(j,i)/2, ...
+            sprintf('%.1f', data(j,i)), ...
+            'HorizontalAlignment', 'center', ...
+            'VerticalAlignment', 'middle', ...
+            'FontSize', 16, ...
+            'Color', 'w', ...
+            'FontWeight', 'bold');
+                
     end
 
     xlims = xlim;
@@ -98,7 +92,7 @@ for m = 1:size(metrics, 1)
     set(get(get(h_border, 'Annotation'), 'LegendInformation'), ...
         'IconDisplayStyle', 'off');
     set(gca, 'Position', [0.18, 0.18, 0.75, 0.75]);  % Margins adjustment
-    set(gca, 'LineWidth', 2, 'TickDir', 'in', 'TickLength', [0.02 0.02])
+    set(gca, 'LineWidth', 2, 'TickDir', 'in', 'TickLength', [0.025 0.025])
 
     % Save image
     print('-dpng', '-r600', metrics{m, 6});
