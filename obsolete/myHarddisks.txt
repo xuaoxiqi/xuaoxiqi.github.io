@@ -1,0 +1,78 @@
+login master, then $df -h, we have
+Filesystem                 Size  Used Avail Use% Mounted on
+/dev/sdj                    11T  2.6T  8.4T  24% /data6
+/dev/sdg                    11T  2.1T  8.9T  19% /data5
+/dev/sde                    21T  5.5T   15T  28% /data3
+/dev/sdf                    21T  7.2T   13T  36% /data2
+/dev/sdb                    17T  9.0T  7.5T  55% /data8
+/dev/sdi                    17T   11T  5.6T  67% /data7
+/dev/sda                    17T  7.8T  8.7T  48% /data9
+/dev/sdh                    19T   11T  7.7T  59% /data4
+/dev/sdd                    11T  7.4T  3.0T  72% /data1
+
+
+ssh node06, then $df -h, we have
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/sdb                  17T  6.2T   11T  38% /localdata1
+/dev/sdf                  17T  6.9T  9.5T  43% /localdata5
+/dev/sdh                  17T  4.1T   13T  25% /localdata7
+/dev/sdg                  17T  8.5T  8.0T  52% /localdata6
+/dev/sde                  17T  4.0T   13T  25% /localdata4
+/dev/sdd                  17T   16T  402G  98% /localdata3
+/dev/sdc                  17T   16T 1001G  95% /localdata2
+/dev/nvme0n1             3.7T   33M  3.7T   1% /localNVME
+master:/data5             11T  2.1T  8.9T  19% /data5
+master:/data3             21T  5.5T   15T  28% /data3
+master:/data4             19T   11T  7.7T  59% /data4
+master:/data7             17T   11T  5.6T  67% /data7
+master:/data1             11T  7.4T  3.0T  72% /data1
+master:/data6             11T  2.6T  8.4T  24% /data6
+master:/data8             17T  9.0T  7.5T  55% /data8
+master:/data9             17T  7.8T  8.7T  48% /data9
+master:/data2             21T  7.2T   13T  36% /data2
+
+
+login io, then $df -h, we have: (note here nfsdata1 is same as data 1 when login master, etc)
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/sdh                  21T   20T  918G  96% /data93
+/dev/sdf                  21T   13T  7.3T  64% /dataAX
+/dev/sdm                  17T   15T  2.0T  89% /data98
+/dev/sdg                  21T   12T  8.4T  59% /dataJLS
+/dev/sdl                  11T  9.3T  1.7T  85% /data99
+/dev/sdn                  17T   15T  1.7T  91% /data97
+/dev/sdd                  11T  8.0T  2.3T  78% /data92
+/dev/sdk                  11T   11T  161G  99% /data96
+/dev/sdb                  11T  5.2T  5.2T  50% /data91
+/dev/sdj                  21T   18T  2.3T  89% /data95
+/dev/sdi                  21T   17T  3.6T  83% /data94
+/dev/sde                  21T   34M   21T   1% /dataAX2
+/dev/sdc                  21T  9.9T   11T  50% /dataJLS2
+master:/data2             21T  7.2T   13T  36% /nfsdata2
+master:/data9             17T  7.8T  8.7T  48% /nfsdata9
+master:/data6             11T  2.6T  8.4T  24% /nfsdata6
+master:/data1             11T  7.4T  3.0T  72% /nfsdata1
+master:/data3             21T  5.5T   15T  28% /nfsdata3
+master:/data5             11T  2.1T  8.9T  19% /nfsdata5
+master:/data4             19T   11T  7.7T  59% /nfsdata4
+master:/data8             17T  9.0T  7.5T  55% /nfsdata8
+master:/data7             17T   11T  5.6T  67% /nfsdata7
+
+
+login io2, then $df -h, we have: (note here nfsdata1 is same as data 1 when login master, etc)
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sde         21T   19T  1.7T  92% /dataXBR
+/dev/sda         21T   18T  2.8T  87% /dataJLS1
+/dev/sdb         21T   17T  4.0T  81% /dataXBR3
+/dev/sdc         21T   19T  1.1T  95% /dataXBR2
+/dev/sdd         21T   15T  5.6T  73% /dataXBR1
+master:/data5    11T  2.1T  8.9T  19% /nfsdata5
+master:/data4    19T   11T  7.7T  59% /nfsdata4
+master:/data1    11T  7.4T  3.0T  72% /nfsdata1
+master:/data2    21T  7.2T   13T  36% /nfsdata2
+master:/data3    21T  5.5T   15T  28% /nfsdata3
+master:/data6    11T  2.6T  8.4T  24% /nfsdata6
+master:/data7    17T   11T  5.6T  67% /nfsdata7
+master:/data8    17T  9.0T  7.5T  55% /nfsdata8
+master:/data9    17T  7.8T  8.7T  48% /nfsdata9
+
+
