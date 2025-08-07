@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPC Cluster Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4f7f9;
+            --card-bg-color: #ffffff;
+            --primary-text-color: #2c3e50;
+            --secondary-text-color: #596a7a;
+            --header-color: #3498db;
+            --accent-color-intel: #0071c5;
+            --accent-color-amd: #ed1c24;
+            --border-color: #e1e8ed;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--header-color);
+            font-weight: 700;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-text-color);
+            border-bottom: 3px solid var(--header-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .summary-card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--header-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .summary-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: var(--secondary-text-color);
+            font-weight: 400;
+        }
+
+        .summary-card .value {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: var(--primary-text-color);
+            line-height: 1.2;
+        }
+        
+        .summary-card .sub-value {
+            font-size: 1em;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+            color: var(--secondary-text-color);
+        }
+        
+        .sub-value span {
+            font-weight: 700;
+        }
+        
+        .intel-text { color: var(--accent-color-intel); }
+        .amd-text { color: var(--accent-color-amd); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        thead th {
+            background-color: var(--header-color);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        tbody tr {
+            transition: background-color 0.25s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #eef7ff;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cores {
+            font-weight: 700;
+            color: var(--header-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: var(--secondary-text-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>HPC Research Facilities Dashboard</h1>
+        </header>
+
+        <main>
+            <section id="summary">
+                <h2>Cluster Overview</h2>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Total CPU Cores</h3>
+                        <p class="value" id="total-cores">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total Compute Cores</h3>
+                        <p class="value" id="compute-cores">0</p>
+                        <div class="sub-value">
+                            <span class="intel-text" id="compute-intel-cores">0</span> Intel + 
+                            <span class="amd-text" id="compute-amd-cores">0</span> AMD
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Mgmt & I/O Cores</h3>
+                        <p class="value" id="io-master-cores">0</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="management-nodes">
+                 <h2>Management & I/O Nodes</h2>
+                <table id="master-node">
+                    <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>CPU Model</th>
+                            <th>Cores</th>
+                            <th>Sockets</th>
+                            <th>Release Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>master</td>
+                            <td>Intel(R) Xeon(R) Silver 4110 CPU @ 2.10GHz</td>
+                            <td class="cores">16</td>
+                            <td>1</td>
+                            <td>2017</td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <table id="io-nodes">
+                    <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>CPU Model</th>
+                            <th>Cores</th>
+                            <th>Sockets</th>
+                            <th>Release Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>io</td>
+                            <td>Intel(R) Xeon(R) Gold 6244 CPU @ 3.60GHz</td>
+                            <td class="cores">8</td>
+                            <td>1</td>
+                            <td>2019</td>
+                        </tr>
+                        <tr>
+                            <td>io2</td>
+                            <td>AMD EPYC 9135 16-Core Processor</td>
+                            <td class="cores">16</td>
+                            <td>1</td>
+                            <td>2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="compute-nodes">
+                <h2>Compute Nodes</h2>
+                <h3 style="color: var(--accent-color-intel);">Intel Partition</h3>
+                <table id="compute-nodes-intel">
+                    <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>CPU Model</th>
+                            <th>Cores</th>
+                            <th>Sockets</th>
+                            <th>Release Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>node01</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">48</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node02</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">48</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node03</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">48</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node04</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">48</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node05</td>
+                            <td>Intel(R) Xeon(R) Platinum 8170 CPU @ 2.10GHz</td>
+                            <td class="cores">52</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node06</td>
+                            <td>Intel(R) Xeon(R) Gold 6226R CPU @ 2.90GHz</td>
+                            <td class="cores">32</td>
+                            <td>2</td>
+                            <td>2020</td>
+                        </tr>
+                        <tr>
+                            <td>node07</td>
+                            <td>Intel(R) Xeon(R) Platinum 8170M CPU @ 2.10GHz</td>
+                            <td class="cores">52</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node08</td>
+                            <td>Intel(R) Xeon(R) Platinum 8170M CPU @ 2.10GHz</td>
+                            <td class="cores">52</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node09</td>
+                            <td>Intel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHz</td>
+                            <td class="cores">56</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: var(--accent-color-amd);">AMD Partition</h3>
+                <table id="compute-nodes-amd">
+                    <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>CPU Model</th>
+                            <th>Cores</th>
+                            <th>Sockets</th>
+                            <th>Release Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>node1</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node2</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node3</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node4</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node6</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        
+        <footer>
+            <p>HPC Cluster Visualization</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            function sumCoresInTable(tableId) {
+                let total = 0;
+                const table = document.getElementById(tableId);
+                if (table) {
+                    const coreElements = table.querySelectorAll('td.cores');
+                    coreElements.forEach(element => {
+                        total += parseInt(element.textContent, 10);
+                    });
+                }
+                return total;
+            }
+
+            const masterCores = sumCoresInTable('master-node');
+            const ioCores = sumCoresInTable('io-nodes');
+            const computeIntelCores = sumCoresInTable('compute-nodes-intel');
+            const computeAmdCores = sumCoresInTable('compute-nodes-amd');
+
+            const totalComputeCores = computeIntelCores + computeAmdCores;
+            const totalIoMasterCores = ioCores + masterCores;
+            const totalCores = totalComputeCores + totalIoMasterCores;
+            
+            document.getElementById('total-cores').textContent = totalCores.toLocaleString();
+            document.getElementById('compute-cores').textContent = totalComputeCores.toLocaleString();
+            document.getElementById('compute-intel-cores').textContent = computeIntelCores.toLocaleString();
+            document.getElementById('compute-amd-cores').textContent = computeAmdCores.toLocaleString();
+            document.getElementById('io-master-cores').textContent = totalIoMasterCores.toLocaleString();
+            
+        });
+    </script>
+
+</body>
+</html>```
