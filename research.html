@@ -131,143 +131,211 @@ My research is focused on turbulence structure and transport mechanism, which in
         
     <br/>
     
+
+    
+    <!-- =================================================== -->
+    <!-- ==========  IMPROVED PROJECTS SECTION START ========== -->
+    <!-- =================================================== -->
     
     <h2>Projects</h2>
     <hr/>
     
-<style>
-.project-details {
-    cursor: pointer;
-    position: relative;
-    padding-left: 20px;
-    margin: 5px 0;
-}
+    <style>
+        /* General styling for the projects section */
+        .projects-section ol {
+            list-style: none;
+            padding-left: 0;
+        }
 
-.project-details::before {
-    content: '▶';
-    position: absolute;
-    left: 0;
-    transition: transform 0.3s ease;
-}
+        /* Card design for each project */
+        .project-card {
+            background-color: #ffffff;
+            border-left: 5px solid #007bff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.project-details.expanded::before {
-    transform: rotate(90deg);
-}
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+        }
 
-.detail-content {
-    display: none;
-    margin-left: 15px;
-    padding-left: 10px;
-    border-left: 2px solid #ddd;
-    font-size: 0.95em;
-    color: #666;
-}
-</style>
+        .project-card b {
+            color: #0056b3; /* A darker blue for emphasis */
+        }
 
-<script>
-function toggleDetails(element) {
-    const details = element.nextElementSibling;
-    details.style.display = details.style.display === 'block' ? 'none' : 'block';
-    element.classList.toggle('expanded');
-}
-</script>
-
-<h3>Active</h3>
-<ol reversed="reversed">  
-
-    <!-- Project 11 -->
-        <li>2024.12-2027.12:
-        无人机敏捷飞行技术, <b>JKW173计划重点项目</b>, RMB ??w / 1730w, 9 / 15.</li>
-    
-    <!-- Project 10 -->
-        <li>2024.10-2026.04:
-        集群无人机飞行控制技术, <b>JKW173计划技术领域基金项目</b>, RMB 10w / 125w, 4 / 10.</li>
+        /* Styling for the "Show Details" button */
+        .project-details-toggle {
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 8px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            user-select: none; /* Prevents text selection on click */
+        }
         
-    <!-- Project 9 -->
-        <li>2024.06-2025.09: 
-        气隙域涡流性能测试系统及平台设计、试验, <b>中国船舶重工集团公司第七０四研究所</b>, RMB 45w.</li>
+        .project-details-toggle::before {
+            content: '▶';
+            display: inline-block;
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-details-toggle.expanded::before {
+            transform: rotate(90deg);
+        }
+
+        .project-details-toggle:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for the details content area */
+        .detail-content {
+            display: none; /* Hidden by default */
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #e9ecef;
+            font-size: 0.95em;
+            color: #495057;
+            animation: fadeIn 0.5s ease;
+        }
         
+        /* Simple fade-in animation for the details */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <div class="projects-section">
+        <h3>Active</h3>
+        <ol>  
+            <!-- Project 11 -->
+            <li class="project-card">2024.12-2027.12: 无人机敏捷飞行技术, <b>JKW173计划重点项目</b>, RMB 15w / 1730w, 9 / 16.</li>
         
-    <!-- Project 8 -->
-    <li>
-        2024.01-2028.12: National Natural Science Foundation of China, 12388101.<br>
-        极端流动的多过程问题研究, <b>国家自然科学基金基础科学中心项目</b>
-        <div class="project-details" onclick="toggleDetails(this)">Show Details</div>
-        <div class="detail-content">
-            RMB 120w / 6000w, 20 / 300 <br>
-            (即定目标) 8 篇；<br>
-            (完成情况) 2+1篇：
-            (第三, 2) JFM 2025; JFM 2024;
-            (补第二, 1) JFM 2024.
-        </div>
-    </li>
-
-    <!-- Project 7 -->
-    <li>
-        2024.01-2026.12: Young Elite Scientists Sponsorship Program by CAST, 2023QNRC001.<br>
-        湍流结构与输运, <b>中国科协青年人才托举工程</b>
-        <div class="project-details" onclick="toggleDetails(this)">Show Details</div>
-        <div class="detail-content">
-            RMB 30w <br>
-            (即定目标) 6 篇；<br>
-            (完成情况) 3 篇：
-            (第四) JFM 2025; JFM 2024; JFM 2024;
-        </div>
-    </li>
-
-    <!-- Project 6 -->
-    <li>
-        2023.01-2026.12: National Natural Science Foundation of China, 12272311.<br>
-        热湍流中颗粒的被动迁移及主动推进, <b>国家自然科学基金面上项目</b>, 
-        <div class="project-details" onclick="toggleDetails(this)">Show Details</div>
-        <div class="detail-content">
-            RMB 55w+7.5w <br>
-            (即定目标) 6-8 篇；<br>
-            (完成情况) 7篇：
-            (第一, 6) JFM 2025; JFM 2024; JFM 2023; PRF 2023; PRF 2023; IJHMT 2024;
-            (第二, 1) IJHMT 2023.
-        </div>
-    </li>
-</ol>
-
-<h3>Inactive</h3>
-<ol reversed="reversed">  
-    
-    <!-- Project 5 -->
-    <li>2021.01-2022.12: Open Fund of Key Laboratory of Icing and Anti/De-icing, IADL20200301.
-        格子Boltzmann水滴结冰模型的发展及其应用, <b>国防KGJ实验室基金</b>, RMB 5w
-    </li>
-
-    <!-- Project 4 -->
-    <li>2020.06-2022.12: National Key Project GJXM92579.
-        湍热对流拟序结构作用下颗粒运动规律的研究, <b>国防KGJ某重大工程青年项目</b>, RMB 35w
-    </li>
+            <!-- Project 10 -->
+            <li class="project-card">2024.10-2026.04: 集群无人机飞行控制技术, <b>JKW173计划技术领域基金项目</b>, RMB 10w / 125w, 4 / 11.</li>
             
-    <!-- Project 3 -->
-    <li>
-        2020.01-2022.12: National Natural Science Foundation of China, 11902268.<br>
-        基于格子Boltzmann方法的三维热对流中非球形固体颗粒运动规律研究, <b>国家自然科学基金青年科学基金项目</b>.
-        <div class="project-details" onclick="toggleDetails(this)">Show Details</div>
-        <div class="detail-content">
-            RMB 26w+4.3w <br>
-            (即定目标) 3-5篇；<br>
-            (完成情况) 8+1篇：
-            (第一, 7) JFM 2021; PoF 2022; PoF 2022; PoF 2020; PoF 2020; PoF 2019; IJHMT 2023
-            (第二, 1) IJHMT 2020;
-            (补第二, 1) IJHMT 2024.
-        </div>
-    </li>
+            <!-- Project 9 -->
+            <li class="project-card">2024.06-2025.09: 气隙域涡流性能测试系统及平台设计、试验, <b>中国船舶重工集团公司第七０四研究所</b>, RMB 45w.</li>
+            
+            <!-- Project 8 -->
+            <li class="project-card">
+                2024.01-2028.12: National Natural Science Foundation of China, 12388101.<br>
+                极端流动的多过程问题研究, <b>国家自然科学基金基础科学中心项目</b>
+                <div class="project-details-toggle" onclick="toggleDetails(this)">Show Details</div>
+                <div class="detail-content">
+                    RMB 120w / 6000w, 20 / 300 <br>
+                    (即定目标) 8 篇<br>
+                    (完成情况) 0+1+2篇：<!--参研，通讯/一作--!>
+                    iii) IJHMT2026_Interpolation_R2;
+                    ii) JFM2025_Temporal_R3;
+                    i) JFM2024_Transport_R3;<br>
+                    (Coming..) 1+2+0篇：
+                    i) Super_R2;
+                    ii) Mixed_R2;
+                    iii) Wall_R1;
+                </div>
+            </li>
+
+            <!-- Project 7 -->
+            <li class="project-card">
+                2024.01-2026.12: Young Elite Scientists Sponsorship Program by CAST, 2023QNRC001.<br>
+                湍流结构与输运, <b>中国科协青年人才托举工程</b>
+                <div class="project-details-toggle" onclick="toggleDetails(this)">Show Details</div>
+                <div class="detail-content">
+                    RMB 30w <br>
+                    (即定目标) 6 篇；<br>
+                    (完成情况) 0+0+1+2 篇：<!--协议，通讯/一作--!>
+                    iii) IJHMT2026_Interpolation_R3;
+                    ii) JFM2025_Temporal_R4;
+                    i) JFM2024_Transport_R4; <br>
+                    (Coming..) 0+0+0+3篇：
+                    i) Super_R4;
+                    ii) Mixed_R4;
+                    iii) Wall_R4;
+                </div>
+            </li>
+
+            <!-- Project 6 -->
+            <li class="project-card">
+                2023.01-2026.12: National Natural Science Foundation of China, 12272311.<br>
+                热湍流中颗粒的被动迁移及主动推进, <b>国家自然科学基金面上项目</b>
+                <div class="project-details-toggle" onclick="toggleDetails(this)">Show Details</div>
+                <div class="detail-content">
+                    RMB 55w+7.5w <br>
+                    (即定目标) 6-8 篇；<br>
+                    (完成情况) 7+1+0篇：
+                    viii) IJHMT2026_Interpolation_R1;
+                    vii) JFM2025_Temporal_R1;
+                    vi) JFM2024_Transport_R1;
+                    v) IJHMT2024_Particle_R1;
+                    iv) PRF2023_Pore_R1;
+                    iii) JFM2023_Wall_R1;
+                    ii) IJHMT2023_Multi_R2;
+                    i) PRF2023_Long_R1; <br>
+                    (Coming..) 2+1+0篇：
+                    i) Super_R1;
+                    ii) Mixed_R1;
+                    iii) Wall_R2;
+                </div>
+            </li>
+        </ol>
+
+        <h3>Inactive</h3>
+        <ol>  
+            <!-- Project 5 -->
+            <li class="project-card">2021.01-2022.12: Open Fund of Key Laboratory of Icing and Anti/De-icing, IADL20200301. 格子Boltzmann水滴结冰模型的发展及其应用, <b>国防KGJ实验室基金</b>, RMB 5w</li>
+
+            <!-- Project 4 -->
+            <li class="project-card">2020.06-2022.12: National Key Project GJXM92579. 湍热对流拟序结构作用下颗粒运动规律的研究, <b>国防KGJ某重大工程青年项目</b>, RMB 35w</li>
+                    
+            <!-- Project 3 -->
+            <li class="project-card">
+                2020.01-2022.12: National Natural Science Foundation of China, 11902268.<br>
+                基于格子Boltzmann方法的三维热对流中非球形固体颗粒运动规律研究, <b>国家自然科学基金青年科学基金项目</b>.
+                <div class="project-details-toggle" onclick="toggleDetails(this)">Show Details</div>
+                <div class="detail-content">
+                    RMB 26w+4.3w <br>
+                    (即定目标) 3-5篇；<br>
+                    (完成情况) 8+1篇：
+                    (第一, 7) JFM 2021; PoF 2022; PoF 2022; PoF 2020; PoF 2020; PoF 2019; IJHMT 2023
+                    (第二, 1) IJHMT 2020;
+                    (补第二, 1) IJHMT 2024.
+                </div>
+            </li>
+            
+            <!-- Project 2 -->
+            <li class="project-card">2020.01-2021.12: Foundation of National Key Laboratory, 614220119030103. 基于格子Boltzmann方法的超疏水表面过冷水滴结冰介观机理研究, <b>国防KGJ重点实验室基金</b>, RMB 17.5w</li>
+                
+            <!-- Project 1 -->
+            <li class="project-card">2019.01-2021.12: Fundamental Research Funds for the Central Universities of China, D5000200570. 羽流作用下固体颗粒运动规律的研究, <b>中央高校基本科研业务费</b>, RMB 40w</li>
+        </ol>
+    </div>
+
+    <script>
+        function toggleDetails(element) {
+            const detailsContent = element.nextElementSibling;
+            const isExpanded = detailsContent.style.display === 'block';
+            
+            detailsContent.style.display = isExpanded ? 'none' : 'block';
+            element.classList.toggle('expanded', !isExpanded);
+        }
+    </script>
     
-    <!-- Project 2 -->
-    <li>2020.01-2021.12: Foundation of National Key Laboratory, 614220119030103.
-        基于格子Boltzmann方法的超疏水表面过冷水滴结冰介观机理研究, <b>国防KGJ重点实验室基金</b>, RMB 17.5w
-    </li>
-        
-    <!-- Project 1 -->
-    <li>2019.01-2021.12: Fundamental Research Funds for the Central Universities of China, D5000200570.
-        羽流作用下固体颗粒运动规律的研究, <b>中央高校基本科研业务费</b>, RMB 40w
-    </li>
-</ol>
+    <!-- =================================================== -->
+    <!-- ==========   IMPROVED PROJECTS SECTION END  ========== -->
+    <!-- =================================================== -->
 
     
     <h2>Conferences and Talks (selected)</h2>
