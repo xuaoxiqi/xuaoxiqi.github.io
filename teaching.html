@@ -3,274 +3,427 @@ layout: main
 description: Teaching activities
 title: Teaching
 ---
-    <div id="divTitleNav">
-        <a href="./index.html"><img src="./images/left-arrow.png" class="navDock" /></a>
-    </div>
+
+<style>
+    /* 局部样式，仅美化当前页面，不影响其他页面 */
+    
+    /* 标题样式优化 */
+    .teaching-header {
+        font-family: 'Droid Sans', sans-serif;
+        color: #001111;
+        border-bottom: 2px solid #001111;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        margin-bottom: 25px;
+        font-size: 24px;
+    }
+    
+    .teaching-subheader {
+        font-size: 18px;
+        color: #444;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+    
+    .teaching-subheader::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 18px;
+        background-color: #001111;
+        margin-right: 10px;
+        border-radius: 2px;
+    }
+
+    /* 学生卡片网格布局 (用于在读学生) */
+    .student-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .student-card {
+        background: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 15px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border-left: 4px solid #555;
+    }
+
+    .student-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-left-color: #001111;
+    }
+
+    .student-name {
+        display: block;
+        font-weight: bold;
+        font-size: 15px;
+        color: #222;
+        margin-bottom: 5px;
+    }
+
+    .student-time {
+        font-size: 12px;
+        color: #666;
+        display: block;
+    }
+
+    /* 毕业生列表样式 */
+    .graduate-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .graduate-item {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed #eee;
+    }
+
+    .graduate-item:last-child {
+        border-bottom: none;
+    }
+
+    .thesis-title {
+        font-style: italic;
+        color: #555;
+        display: block;
+        margin-top: 4px;
+        font-size: 13px;
+    }
+
+    /* 表格美化 */
+    .modern-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 14px;
+        background-color: #fff;
+        border-radius: 6px 6px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    }
+
+    .modern-table thead tr {
+        background-color: #001111;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .modern-table th, .modern-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .modern-table th {
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .modern-table tbody tr {
+        transition: background-color 0.2s;
+    }
+
+    .modern-table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .modern-table tbody tr:nth-of-type(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* 奖项列表美化 */
+    .award-category {
+        margin-bottom: 25px;
+        background: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        padding: 15px;
+    }
+
+    .award-title {
+        font-weight: bold;
+        color: #001111;
+        display: block;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #eaeaea;
+        padding-bottom: 5px;
+    }
+
+    .award-sublist {
+        padding-left: 20px;
+        margin: 0;
+        list-style-type: circle;
+    }
+    
+    .award-sublist li {
+        margin-bottom: 4px;
+    }
+
+    /* 助教课程样式 */
+    .ta-course-block {
+        background-color: #f4f7f6;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        border-left: 4px solid #001111;
+    }
+    
+    .ta-course-title {
+        font-weight: bold;
+        font-size: 16px;
+        color: #000;
+        margin-bottom: 5px;
+    }
+    
+    .ta-course-role {
+        font-size: 13px;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    /* 返回按钮微调 */
+    #divTitleNav {
+        margin-bottom: 20px; /* 增加一点底部间距 */
+    }
+</style>
+
+<div id="divTitleNav">
+    <a href="./index.html"><img src="./images/left-arrow.png" class="navDock" style="height: 24px; width: auto;" alt="Back"/></a>
+</div>
     
 <div id="divPost">
 
     <article id="articlePost">
-    <br/>
     
-	<hr/>
-    
+    <!-- Supervised Students Section -->
+    <section aria-labelledby="supervised-students">
+        <h2 id="supervised-students" class="teaching-header">Supervised Students</h2>
+        
+        <!-- PhD Grid -->
+        <h3 id="phd-candidates" class="teaching-subheader">Ph.D. Candidates</h3>
+        <div class="student-grid">
+            <div class="student-card">
+                <span class="student-name">Xu-Long Li</span>
+                <span class="student-time">Sep 2025 - Present</span>
+            </div>
+            <div class="student-card">
+                <span class="student-name">Hua-Lin Wu</span>
+                <span class="student-time">Apr 2024 - Present</span>
+            </div>
+            <div class="student-card">
+                <span class="student-name">Ben-Rui Xu</span>
+                <span class="student-time">Apr 2024 - Present</span>
+            </div>
+            <div class="student-card">
+                <span class="student-name">Li-Sheng Jiang</span>
+                <span class="student-time">Apr 2023 - Present</span>
+            </div>
+        </div>
+        
+        <!-- Master Grid -->
+        <h3 id="master-candidates" class="teaching-subheader">Master's Candidates</h3>
+        <div class="student-grid">
+             <div class="student-card">
+                <span class="student-name">Yun-Qian Bi</span>
+                <span class="student-time">Sep 2025 - Present</span>
+            </div>
+            <div class="student-card">
+                <span class="student-name">Yu-Cheng Ma</span>
+                <span class="student-time">Sep 2024 - Present</span>
+            </div>
+            <div class="student-card">
+                <span class="student-name">Zhi-Jie He</span>
+                <span class="student-time">Sep 2024 - Present</span>
+            </div>
+            <div class="student-card">
+                <span class="student-name">Zheng Zhao</span>
+                <span class="student-time">Sep 2023 - Present</span>
+            </div>
+        </div>
 
-<section aria-labelledby="supervised-students">
-  <h2 id="supervised-students">Supervised Students</h2>
-  
-  <section aria-labelledby="phd-candidates">
-    <h3 id="phd-candidates">Ph.D. Candidates</h3>
-    
-    <ol class="student-list" reversed>
-    
-      <li>
-        <span class="student-name">Xu-Long Li</span>, 
-        <time datetime="2024-04">Sep 2025</time> - present
-      </li>
-      
-      <li>
-        <span class="student-name">Hua-Lin Wu</span>, 
-        <time datetime="2024-04">Apr 2024</time> - present
-      </li>
-    
-      <li>
-        <span class="student-name">Ben-Rui Xu</span>, 
-        <time datetime="2024-04">Apr 2024</time> - present
-      </li>
-      
-      <li>
-        <span class="student-name">Li-Sheng Jiang</span>, 
-        <time datetime="2023-04">Apr 2023</time> - present
-      </li>
-      <!-- Other list items -->
-    </ol>
-  </section>
-  
-  <section aria-labelledby="master-candidates">
-    <h3 id="master-candidates">Master's Candidates</h3>
-    
-    <ol class="student-list" reversed>
-    
-       <li>
-        <span class="student-name">Yun-Qian Bi</span>, 
-        <time datetime="2024-09">Sep 2025</time> - present
-      </li>
-      
-      <li>
-        <span class="student-name">Yu-Cheng Ma</span>, 
-        <time datetime="2024-09">Sep 2024</time> - present
-      </li>
-      
-      <li>
-        <span class="student-name">Zhi-Jie He</span>, 
-        <time datetime="2024-09">Sep 2024</time> - present
-      </li>
-      
-      <li>
-        <span class="student-name">Zheng Zhao</span>, 
-        <time datetime="2023-09">Sep 2023</time> - present
-      </li>
-      
-      <!-- Other list items -->
-    </ol>
-  </section>
-  
+        <!-- Graduates List -->
+        <h3 id="master-graduate" class="teaching-subheader">Master's Graduates</h3>
+        <ul class="graduate-list">
+            <li class="graduate-item">
+                <a href="images/students/2025-Master-RQLi.jpg" target="_blank"><b>Rui-Qi Li</b></a> (Sep 2022 - Mar 2025)
+                <span class="thesis-title">Evolution of Flow Structures in Channel Turbulence Under the Influence of Time-Varying Wall Temperature</span>
+                (<a href="./pdf/硕士学位论文-封面-2025-李瑞琦.pdf" target="_blank">时变壁面温度影响下槽道湍流的流动结构演化</a>)
+            </li>
+            
+            <li class="graduate-item">
+                <a href="images/students/2024-Master-HLWu.jpg" target="_blank"><b>Hua-Lin Wu</b></a> (Sep 2021 - Mar 2024)
+                <span class="thesis-title">Migration Strategies of Self-Propelled Particles in a Turbulent Flow Field</span>
+                (<a href="./pdf/硕士学位论文-封面-2024-吴华林.pdf" target="_blank">自驱动颗粒在湍流场中的迁移策略研究</a>)
+            </li>
+            
+            <li class="graduate-item">
+                <a href="images/students/2024-Master-BRXu.jpg" target="_blank"><b>Ben-Rui Xu</b></a> (Sep 2021 - Mar 2024)
+                <span class="thesis-title">Coherent Structures of Shear Thermal Turbulence and Particle Sedimentations</span>
+                (<a href="./pdf/硕士学位论文-封面-2024-许本瑞.pdf" target="_blank">剪切热湍流的拟序结构及颗粒沉降</a>)
+            </li>
+            
+            <li class="graduate-item">
+                <a href="images/students/2023-Master-BTLi.jpg" target="_blank"><b>Bo-Tao Li</b></a> (Sep 2020 - Mar 2023)
+                <span class="thesis-title">Parallel Computation of the Lattice Boltzmann Method for Complex Flows on Multi-GPUs</span>
+                (<a href="./pdf/硕士学位论文-封面-2023-李博韬.pdf" target="_blank">多GPU复杂流动格子Boltzmann方法的并行计算</a>)
+            </li>
+            
+            <li class="graduate-item">
+                <b>Wen-Hao Xue</b> (Sep 2019 - Mar 2022)
+                <span class="thesis-title">Boundary Layers and Forces on Bluff Bodies and Airfoils in Thermal Turbulence</span>
+                (<a href="./pdf/硕士学位论文-封面-2022-薛文灏.pdf" target="_blank">热湍流中边界层与钝体及翼型受力特性研究</a>)
+            </li>
+        </ul>
+        
+        <!-- Awards Section -->
+        <h3 id="honors-awards" class="teaching-subheader">Students' Honors and Awards</h3>
+        
+        <div class="award-category">
+            <span class="award-title">University Outstanding Graduate Student Award (学校“优秀研究生”)</span>
+            <ul class="award-sublist">
+                <li><a href="./pdf/优秀研究生-2021-李博韬.pdf" target="_blank">Bo-Tao Li (2021)</a></li>
+                <li><a href="./pdf/优秀研究生-2022-许本瑞.pdf" target="_blank">Ben-Rui Xu (2022)</a></li>
+                <li><a href="./pdf/优秀研究生-2023-许本瑞.pdf" target="_blank">Ben-Rui Xu (2023)</a></li>
+                <li><a href="./pdf/优秀研究生-2025-许本瑞.pdf" target="_blank">Ben-Rui Xu (2025)</a></li>
+                <li><a href="./pdf/优秀研究生-2022-吴华林.pdf" target="_blank">Hua-Lin Wu (2022)</a></li>
+                <li><a href="./pdf/优秀研究生-2023-吴华林.pdf" target="_blank">Hua-Lin Wu (2023)</a></li>
+            </ul>
+        </div>
 
-  <section aria-labelledby="master-graduates">
-    <h3 id="master-graduate">Master's Graduates</h3>
-    
-    <ol class="student-list" reversed>
-        <li>
-            <a href="images/students/2025-Master-RQLi.jpg" target="_blank">Rui-Qi Li</a>, Sep 2022 - Mar 2025, 
-            Evolution of Flow Structures in Channel Turbulence Under the Influence of Time-Varying Wall Temperature
-            (<a href="./pdf/硕士学位论文-封面-2025-李瑞琦.pdf" target="_blank">时变壁面温度影响下槽道湍流的流动结构演化</a>). 
-        </li>
+        <div class="award-category">
+            <span class="award-title">University Outstanding Graduating Student Award (学校“优秀毕业生”)</span>
+            <ul class="award-sublist">
+                <li><a href="./pdf/优秀毕业生-2023-李博韬.pdf" target="_blank">Bo-Tao Li (2023)</a></li>
+                <li><a href="./pdf/优秀毕业生-2024-许本瑞.pdf" target="_blank">Ben-Rui Xu (2024)</a></li>
+                <li><a href="./pdf/优秀毕业生-2025-李瑞琦.pdf" target="_blank">Rui-Qi Li (2025)</a></li>
+            </ul>
+        </div>
         
-        <li>
-            <a href="images/students/2024-Master-HLWu.jpg" target="_blank">Hua-Lin Wu</a>, Sep 2021 - Mar 2024, 
-            Migration Strategies of Self-Propelled Particles in a Turbulent Flow Field
-            (<a href="./pdf/硕士学位论文-封面-2024-吴华林.pdf" target="_blank">自驱动颗粒在湍流场中的迁移策略研究</a>). 
-        </li>
-        
-        <li>
-            <a href="images/students/2024-Master-BRXu.jpg" target="_blank">Ben-Rui Xu</a>, Sep 2021 - Mar 2024, 
-            Coherent Structures of Shear Thermal Turbulence and Particle Sedimentations
-            (<a href="./pdf/硕士学位论文-封面-2024-许本瑞.pdf" target="_blank">剪切热湍流的拟序结构及颗粒沉降</a>). 
-        </li>
-        
-        <li>
-            <a href="images/students/2023-Master-BTLi.jpg" target="_blank">Bo-Tao Li</a>, Sep 2020 - Mar 2023, 
-            Parallel Computation of the Lattice Boltzmann Method for Complex Flows on Multi-GPUs
-            (<a href="./pdf/硕士学位论文-封面-2023-李博韬.pdf" target="_blank">多GPU复杂流动格子Boltzmann方法的并行计算</a>). 
-        </li>
-        
-        <li>
-            Wen-Hao Xue, Sep 2019 - Mar 2022, 
-            Boundary Layers and Forces on Bluff Bodies and Airfoils in Thermal Turbulence
-            (<a href="./pdf/硕士学位论文-封面-2022-薛文灏.pdf" target="_blank">热湍流中边界层与钝体及翼型受力特性研究</a>). 
-        </li>
-    </ol>
-  </section>
-      
-  <section aria-labelledby="honors-awards">
-    <h3 id="honors-awards">Students' Honors and Awards</h3>
-    
-    <ol class="student-list" style="list-style-type: disc;">
-      <li>
-        <b>University Outstanding Graduate Student Award (学校“优秀研究生”)</b>
-        <ol>
-          <li><a href="./pdf/优秀研究生-2021-李博韬.pdf" target="_blank">Bo-Tao Li (2021)</a></li>
-          <li><a href="./pdf/优秀研究生-2022-许本瑞.pdf" target="_blank">Ben-Rui Xu (2022)</a></li>
-          <li><a href="./pdf/优秀研究生-2023-许本瑞.pdf" target="_blank">Ben-Rui Xu (2023)</a></li>
-          <li><a href="./pdf/优秀研究生-2025-许本瑞.pdf" target="_blank">Ben-Rui Xu (2025)</a></li>
-          <li><a href="./pdf/优秀研究生-2022-吴华林.pdf" target="_blank">Hua-Lin Wu (2022)</a></li>
-          <li><a href="./pdf/优秀研究生-2023-吴华林.pdf" target="_blank">Hua-Lin Wu (2023)</a></li>
-        </ol>
-      </li>
-
-      <li>
-        <b>University Outstanding Graduating Student Award (学校“优秀毕业生”)</b>
-        <ol>
-          <li><a href="./pdf/优秀毕业生-2023-李博韬.pdf" target="_blank">Bo-Tao Li (2023)</a></li>
-          <li><a href="./pdf/优秀毕业生-2024-许本瑞.pdf" target="_blank">Ben-Rui Xu (2024)</a></li>
-          <li><a href="./pdf/优秀毕业生-2025-李瑞琦.pdf" target="_blank">Rui-Qi Li (2025)</a></li>
-        </ol>
-      </li>
-      
-        <li>
-            <b>University Outstanding Master's Thesis (学校“优秀硕士学位论文”)</b>: 
-            <ol>
+        <div class="award-category">
+            <span class="award-title">University Outstanding Master's Thesis (学校“优秀硕士学位论文”)</span>
+            <ul class="award-sublist">
               <li><a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank">Ben-Rui Xu (2024)</a></li>
               <li><a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank">Rui-Qi Li (2025)</a></li>
-            </ol>
-        </li>
+            </ul>
+        </div>
         
-        <li>
-            <b>National Scholarship for Graduate Students (研究生国家奖学金)</b>: 
-            <ol>
+        <div class="award-category">
+            <span class="award-title">National Scholarship for Graduate Students (研究生国家奖学金)</span>
+            <ul class="award-sublist">
               <li><a href="./pdf/研究生国家奖学金-2022-许本瑞.pdf" target="_blank">Ben-Rui Xu (2022)</a></li>
               <li><a href="./pdf/研究生国家奖学金-2023-许本瑞.pdf" target="_blank">Ben-Rui Xu (2023)</a></li>
-            </ol>
-        </li>
+            </ul>
+        </div>
         
-        <li>
-            <b>First-Class Academic Scholarship (一等学业奖学金)</b>:
-            <ol>
+        <div class="award-category">
+            <span class="award-title">First-Class Academic Scholarship (一等学业奖学金)</span>
+            <ul class="award-sublist">
               <li>Bo-Tao Li (2021)</li>
-              <li><a href="./pdf/一等学业奖学金-2022-许本瑞.pdf" target="_blank">Ben-Rui Xu (2022)</a></li>
-              <li><a href="./pdf/一等学业奖学金-2023-许本瑞.pdf" target="_blank">Ben-Rui Xu (2023)</a></li>
-              <li><a href="./pdf/一等学业奖学金-2023-许本瑞.pdf" target="_blank">Ben-Rui Xu (2025)</a></li>
-              <li><a href="./pdf/一等学业奖学金-2022-吴华林.pdf" target="_blank">Hua-Lin Wu (2022)</a></li>
-              <li><a href="./pdf/一等学业奖学金-2023-吴华林.pdf" target="_blank">Hua-Lin Wu (2023)</a></li>
+              <li><a href="./pdf/一等学业奖学金-2022-许本瑞.pdf" target="_blank">Ben-Rui Xu (2022, 2023, 2025)</a></li>
+              <li><a href="./pdf/一等学业奖学金-2022-吴华林.pdf" target="_blank">Hua-Lin Wu (2022, 2023)</a></li>
               <li><a href="./pdf/一等学业奖学金-2022-姜丽升.pdf" target="_blank">Li-Sheng Jiang (2022)</a></li>
-            </ol>
-        </li>
+            </ul>
+        </div>
         
-        <li>
-            First-Class Scholarship (一等奖学金): 
-            Ben-Rui Xu (2022; 2023)
-        </li>
-        
-          <li>
-            Second-Class Scholarship (二等奖学金): 
-            Ben-Rui Xu (2025)
-        </li>
-        
-        <li>
-            Wu Ya-Jun Special Scholarship (吴亚军专项奖学金): 
-            Hua-Lin Wu (2022)
-        </li>
-        
-        <li>
-            Kewei Special Scholarship (科为专项奖学金): 
-            Li-Sheng Jiang (2022)
-        </li>
-        
-    </ol>
-  </section>
-      
-</section>
+        <div class="award-category">
+            <span class="award-title">Other Scholarships</span>
+            <ul class="award-sublist">
+                <li><b>First-Class Scholarship (一等奖学金):</b> Ben-Rui Xu (2022; 2023)</li>
+                <li><b>Second-Class Scholarship (二等奖学金):</b> Ben-Rui Xu (2025)</li>
+                <li><b>Wu Ya-Jun Special Scholarship (吴亚军专项奖学金):</b> Hua-Lin Wu (2022)</li>
+                <li><b>Kewei Special Scholarship (科为专项奖学金):</b> Li-Sheng Jiang (2022)</li>
+            </ul>
+        </div>
+    </section>
 
-
-    <h2>Teaching at NPU</h2>
+    <!-- NPU Teaching Section -->
+    <h2 class="teaching-header">Teaching at NPU</h2>
+    <h3 class="teaching-subheader">Teaching Courses</h3>
     
-    <h3>Teaching Courses</h3>
-  <table>
-    <tr>
-      <th>Course name</th>
-      <th>Semesters</th>
-      <th>Teaching hours</th>
-      <th>Student numbers</th>
-      <th>Remark</th>
-    </tr>
-    
-    <tr>
-      <td>粘性流体力学导论（本科课程）</td>
-      <td>2 （2020+2021）</td>
-      <td>64 （32+32）</td>
-      <td>62 （37+25）</td>
-      <td>核心课程</td>
-    </tr>
-
-    <tr>
-      <td>热力学和流体力学（本科课程）</td>
-      <td>1 （2021）</td>
-      <td>4 （2+2）</td>
-      <td>111 （55+56）</td>
-      <td>核心课程</td>
-    </tr>
-    
-    <tr>
-      <td>粘性流体力学（本科课程）</td>
-      <td>2 （2022+2023）</td>
-      <td>64 （32+32）</td>
-      <td>47 （26+21）</td>
-      <td>-</td>
-    </tr>
-    
-    <tr>
-      <td>张量分析（本科课程）</td>
-      <td>1 （2023）</td>
-      <td>16 （16）</td>
-      <td>20 （20）</td>
-      <td>核心课程</td>
-    </tr>
-    
-    <tr>
-      <td>连续介质力学（本科课程）</td>
-      <td>1 （2023）</td>
-      <td>4 （4）</td>
-      <td>20 （20）</td>
-      <td>核心课程</td>
-    </tr>
-    
-    <tr>
-      <td>Introduction to Turbulence（研究生课程）</td>
-      <td>4 （2020+2021+2022+2023）</td>
-      <td>80 （20+20+20+20）</td>
-      <td>60 （9+11+16+24）</td>
-      <td>-</td>
-    </tr>
-    
-  </table>
-    
-	<hr/>
+    <table class="modern-table">
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Semesters</th>
+                <th>Teaching Hours</th>
+                <th>Student Numbers</th>
+                <th>Remark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>粘性流体力学导论（本科课程）</td>
+                <td>2 (2020+2021)</td>
+                <td>64 (32+32)</td>
+                <td>62 (37+25)</td>
+                <td>核心课程</td>
+            </tr>
+            <tr>
+                <td>热力学和流体力学（本科课程）</td>
+                <td>1 (2021)</td>
+                <td>4 (2+2)</td>
+                <td>111 (55+56)</td>
+                <td>核心课程</td>
+            </tr>
+            <tr>
+                <td>粘性流体力学（本科课程）</td>
+                <td>2 (2022+2023)</td>
+                <td>64 (32+32)</td>
+                <td>47 (26+21)</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>张量分析（本科课程）</td>
+                <td>1 (2023)</td>
+                <td>16 (16)</td>
+                <td>20 (20)</td>
+                <td>核心课程</td>
+            </tr>
+            <tr>
+                <td>连续介质力学（本科课程）</td>
+                <td>1 (2023)</td>
+                <td>4 (4)</td>
+                <td>20 (20)</td>
+                <td>核心课程</td>
+            </tr>
+            <tr>
+                <td>Introduction to Turbulence（研究生课程）</td>
+                <td>4 (2020-2023)</td>
+                <td>80 (20x4)</td>
+                <td>60 (9+11+16+24)</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
     
 
-    <h2>Teaching at HKUST</h2>
+    <!-- HKUST Teaching Section -->
+    <h2 class="teaching-header">Teaching at HKUST</h2>
 
-	<div class="divIndexDate"> MECH 2310 - Thermodynamics, <i>Teaching Assistant</i>, Fall 2015-16</div> 
-	
-    <p><b>Course desription:</b> Fundamental concepts; pure substance; work and heat; control volume; Ideal and real gases. First and second laws of thermodynamics. Entropy. Elementary power and refrigeration cycles.</p>
-    <p><b>Course instructor:</b> <a href="https://www.mae.ust.hk/en/people/faculty/detail/huang-baoling" target="_blank">Prof. Baoling HUANG</a></p>
-    
-    <br/>
+    <div class="ta-course-block">
+        <div class="ta-course-title">MECH 2310 - Thermodynamics</div>
+        <span class="ta-course-role">Teaching Assistant | Fall 2015-16</span>
+        <p><b>Course description:</b> Fundamental concepts; pure substance; work and heat; control volume; Ideal and real gases. First and second laws of thermodynamics. Entropy. Elementary power and refrigeration cycles.</p>
+        <p><b>Course instructor:</b> <a href="https://www.mae.ust.hk/en/people/faculty/detail/huang-baoling" target="_blank">Prof. Baoling HUANG</a></p>
+    </div>
 
-	<div class="divIndexDate">MECH 3300 - Energy Conversion, <i>Teaching Assistant</i>, Fall 2014-15</div> 
-	
-    <p><b>Course desription:</b> Thermodynamics of combustion, chemical equilibrium, refrigeration and mixtures of gases. Analysis of power generation, propulsion systems. 
-                                                    Performance of modern steam plants, gas turbines, internal combustion engines and refrigeration plants.</p>
-    <p><b>Course instructor:</b> <a href="https://www.mae.ust.hk/en/people/faculty/detail/ma-robin" target="_blank">Prof. Robin Lok Wang MA</a></p>
+    <div class="ta-course-block">
+        <div class="ta-course-title">MECH 3300 - Energy Conversion</div>
+        <span class="ta-course-role">Teaching Assistant | Fall 2014-15</span>
+        <p><b>Course description:</b> Thermodynamics of combustion, chemical equilibrium, refrigeration and mixtures of gases. Analysis of power generation, propulsion systems. Performance of modern steam plants, gas turbines, internal combustion engines and refrigeration plants.</p>
+        <p><b>Course instructor:</b> <a href="https://www.mae.ust.hk/en/people/faculty/detail/ma-robin" target="_blank">Prof. Robin Lok Wang MA</a></p>
+    </div>
 
     </article>
     
