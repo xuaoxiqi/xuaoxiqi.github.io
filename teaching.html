@@ -110,7 +110,7 @@ title: Teaching
         border-radius: 12px;
     }
 
-    /* --- Graduate List Styling (Enhanced for Photos) --- */
+    /* --- Graduate List Styling --- */
     .graduate-list {
         list-style: none;
         padding: 0;
@@ -124,8 +124,6 @@ title: Teaching
         border: 1px solid var(--border-color);
         box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         transition: all 0.2s;
-        
-        /* Flexbox for Image + Content layout */
         display: flex;
         gap: 20px;
         align-items: flex-start;
@@ -136,7 +134,6 @@ title: Teaching
         border-color: var(--accent-color);
     }
 
-    /* Thumbnail styling */
     .graduate-thumb {
         flex-shrink: 0;
         width: 120px;
@@ -145,33 +142,21 @@ title: Teaching
         overflow: hidden;
         border: 1px solid var(--border-color);
         position: relative;
+        background-color: #f0f0f0;
     }
     
     .graduate-thumb img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: top center; /* Focus on faces usually at top */
+        object-position: top center;
         transition: transform 0.5s ease;
     }
     
     .graduate-thumb:hover img {
         transform: scale(1.1);
     }
-    
-    /* Overlay icon for thumbnail */
-    .graduate-thumb::after {
-        content: '🔍';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background: rgba(255,255,255,0.8);
-        padding: 2px 5px;
-        font-size: 10px;
-        border-top-left-radius: 4px;
-    }
 
-    /* Content side of the card */
     .graduate-details {
         flex-grow: 1;
     }
@@ -192,10 +177,6 @@ title: Teaching
         display: inline-flex;
         align-items: center;
         gap: 6px;
-    }
-    
-    .graduate-name-link:hover {
-        color: var(--highlight-color) !important;
     }
     
     .photo-badge {
@@ -221,17 +202,6 @@ title: Teaching
         margin-top: 6px;
         font-size: 14px;
         line-height: 1.5;
-    }
-
-    /* Responsive adjustments for mobile */
-    @media (max-width: 600px) {
-        .graduate-item {
-            flex-direction: column;
-        }
-        .graduate-thumb {
-            width: 100%;
-            height: 150px;
-        }
     }
 
     /* --- Modern Table --- */
@@ -273,7 +243,6 @@ title: Teaching
     .modern-table tbody tr:hover {
         background-color: #eaf6f6;
     }
-
     .modern-table tbody tr:nth-of-type(even) {
         background-color: #f8fafc;
     }
@@ -303,10 +272,67 @@ title: Teaching
         margin: 0;
         color: var(--text-dark);
     }
-    
     .award-sublist li {
         margin-bottom: 6px;
         line-height: 1.6;
+    }
+    
+    /* --- NEW: Certificate Gallery Styles --- */
+    .cert-gallery {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .cert-item {
+        position: relative;
+        width: 200px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+        background: #fff;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .cert-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .cert-thumb-container {
+        height: 140px;
+        background-color: #eee;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .cert-thumb-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Shows full cert */
+        /* object-fit: cover;  If you want to fill the box */
+        transition: opacity 0.2s;
+    }
+    
+    .cert-caption {
+        padding: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: var(--text-dark);
+        display: block;
+    }
+    
+    .cert-caption span {
+        display: block;
+        font-size: 12px;
+        color: var(--text-light);
+        font-weight: normal;
+        margin-top: 2px;
     }
 
     /* --- TA Course Block --- */
@@ -345,6 +371,12 @@ title: Teaching
     }
     #divTitleNav img:hover {
         opacity: 1.0;
+    }
+    
+    @media (max-width: 600px) {
+        .graduate-item { flex-direction: column; }
+        .graduate-thumb { width: 100%; height: 150px; }
+        .cert-item { width: 100%; }
     }
 </style>
 
@@ -402,11 +434,10 @@ title: Teaching
             </div>
         </div>
 
-        <!-- Graduates List (UPDATED WITH PHOTOS) -->
+        <!-- Graduates List -->
         <h3 id="master-graduate" class="teaching-subheader">Master's Graduates</h3>
         <ul class="graduate-list">
             
-            <!-- Rui-Qi Li -->
             <li class="graduate-item">
                 <a href="images/students/2025-Master-RQLi.jpg" target="_blank" class="graduate-thumb" title="View Group Photo">
                     <img src="images/students/2025-Master-RQLi.jpg" alt="Photo with Rui-Qi Li">
@@ -425,7 +456,6 @@ title: Teaching
                 </div>
             </li>
             
-            <!-- Hua-Lin Wu -->
             <li class="graduate-item">
                 <a href="images/students/2024-Master-HLWu.jpg" target="_blank" class="graduate-thumb" title="View Group Photo">
                     <img src="images/students/2024-Master-HLWu.jpg" alt="Photo with Hua-Lin Wu">
@@ -444,7 +474,6 @@ title: Teaching
                 </div>
             </li>
             
-            <!-- Ben-Rui Xu -->
             <li class="graduate-item">
                 <a href="images/students/2024-Master-BRXu.jpg" target="_blank" class="graduate-thumb" title="View Group Photo">
                     <img src="images/students/2024-Master-BRXu.jpg" alt="Photo with Ben-Rui Xu">
@@ -463,7 +492,6 @@ title: Teaching
                 </div>
             </li>
             
-            <!-- Bo-Tao Li -->
             <li class="graduate-item">
                 <a href="images/students/2023-Master-BTLi.jpg" target="_blank" class="graduate-thumb" title="View Group Photo">
                     <img src="images/students/2023-Master-BTLi.jpg" alt="Photo with Bo-Tao Li">
@@ -482,9 +510,7 @@ title: Teaching
                 </div>
             </li>
             
-            <!-- Wen-Hao Xue (No photo available) -->
             <li class="graduate-item">
-                <!-- Fallback icon for student without photo -->
                 <div class="graduate-thumb" style="background: #f0f0f0; display:flex; align-items:center; justify-content:center; color:#ccc;">
                     <img src="./images/home.png" style="opacity:0.2; width:40%; height:auto;" alt="NPU">
                 </div>
@@ -525,13 +551,41 @@ title: Teaching
             </ul>
         </div>
         
+        <!-- === NEW: VISUAL CERTIFICATE GALLERY === -->
         <div class="award-category">
             <span class="award-title">University Outstanding Master's Thesis (学校“优秀硕士学位论文”)</span>
-            <ul class="award-sublist">
-              <li><a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank">Ben-Rui Xu (2024)</a></li>
-              <li><a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank">Rui-Qi Li (2025)</a></li>
-            </ul>
+            
+            <div class="cert-gallery">
+                <!-- Certificate 1: Ben-Rui Xu -->
+                <div class="cert-item">
+                    <a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                            <!-- TODO: Take a screenshot of the PDF and save it as an image. 
+                                 Then replace 'src' below with your image path (e.g., images/xu-cert.jpg) -->
+                            <!-- Placeholder image is used below for now -->
+                            <img src="https://via.placeholder.com/200x140/e0e0e0/555555?text=Certificate+Preview" alt="Certificate Preview">
+                        </div>
+                        <div class="cert-caption">
+                            Ben-Rui Xu <span>(2024)</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Certificate 2: Rui-Qi Li -->
+                <div class="cert-item">
+                    <a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                            <!-- TODO: Replace 'src' below with real screenshot -->
+                            <img src="https://via.placeholder.com/200x140/e0e0e0/555555?text=Certificate+Preview" alt="Certificate Preview">
+                        </div>
+                        <div class="cert-caption">
+                            Rui-Qi Li <span>(2025)</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
+        <!-- ======================================= -->
         
         <div class="award-category">
             <span class="award-title">National Scholarship for Graduate Students (研究生国家奖学金)</span>
