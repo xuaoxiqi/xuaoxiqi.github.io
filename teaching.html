@@ -277,17 +277,19 @@ title: Teaching
         line-height: 1.6;
     }
     
-    /* --- NEW: Certificate Gallery Styles --- */
+    /* --- Certificate Gallery Styles --- */
     .cert-gallery {
         display: flex;
-        gap: 20px;
+        gap: 15px;
         padding: 20px;
         flex-wrap: wrap;
+        /* Center on small screens, left align on large */
+        justify-content: flex-start;
     }
     
     .cert-item {
         position: relative;
-        width: 200px;
+        width: 200px; /* Fixed width for uniformity */
         border: 1px solid #e0e0e0;
         border-radius: 8px;
         overflow: hidden;
@@ -299,11 +301,19 @@ title: Teaching
     .cert-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-color: var(--accent-color);
+    }
+    
+    /* Ensure the link covers the whole card */
+    .cert-item a {
+        display: block;
+        text-decoration: none;
+        border: none !important; /* Remove dotted lines from global style */
     }
     
     .cert-thumb-container {
-        height: 140px;
-        background-color: #eee;
+        height: 140px; /* Fixed height */
+        background-color: #f9f9f9;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -314,8 +324,8 @@ title: Teaching
     .cert-thumb-container img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* Shows full cert */
-        /* object-fit: cover;  If you want to fill the box */
+        object-fit: contain; /* Shows full document */
+        padding: 5px; /* slight padding inside the frame */
         transition: opacity 0.2s;
     }
     
@@ -376,7 +386,8 @@ title: Teaching
     @media (max-width: 600px) {
         .graduate-item { flex-direction: column; }
         .graduate-thumb { width: 100%; height: 150px; }
-        .cert-item { width: 100%; }
+        .cert-item { width: 100%; } /* Full width certs on mobile */
+        .cert-gallery { justify-content: center; }
     }
 </style>
 
@@ -530,71 +541,139 @@ title: Teaching
         <!-- Awards Section -->
         <h3 id="honors-awards" class="teaching-subheader">Students' Honors and Awards</h3>
         
+        <!-- 1. University Outstanding Graduate Student Award -->
         <div class="award-category">
             <span class="award-title">University Outstanding Graduate Student Award (学校“优秀研究生”)</span>
-            <ul class="award-sublist">
-                <li><a href="./pdf/优秀研究生-2021-李博韬.pdf" target="_blank">Bo-Tao Li (2021)</a></li>
-                <li><a href="./pdf/优秀研究生-2022-许本瑞.pdf" target="_blank">Ben-Rui Xu (2022)</a></li>
-                <li><a href="./pdf/优秀研究生-2023-许本瑞.pdf" target="_blank">Ben-Rui Xu (2023)</a></li>
-                <li><a href="./pdf/优秀研究生-2025-许本瑞.pdf" target="_blank">Ben-Rui Xu (2025)</a></li>
-                <li><a href="./pdf/优秀研究生-2022-吴华林.pdf" target="_blank">Hua-Lin Wu (2022)</a></li>
-                <li><a href="./pdf/优秀研究生-2023-吴华林.pdf" target="_blank">Hua-Lin Wu (2023)</a></li>
-            </ul>
-        </div>
-
-        <div class="award-category">
-            <span class="award-title">University Outstanding Graduating Student Award (学校“优秀毕业生”)</span>
-            <ul class="award-sublist">
-                <li><a href="./pdf/优秀毕业生-2023-李博韬.pdf" target="_blank">Bo-Tao Li (2023)</a></li>
-                <li><a href="./pdf/优秀毕业生-2024-许本瑞.pdf" target="_blank">Ben-Rui Xu (2024)</a></li>
-                <li><a href="./pdf/优秀毕业生-2025-李瑞琦.pdf" target="_blank">Rui-Qi Li (2025)</a></li>
-            </ul>
-        </div>
-        
-        <!-- === NEW: VISUAL CERTIFICATE GALLERY === -->
-        <div class="award-category">
-            <span class="award-title">University Outstanding Master's Thesis (学校“优秀硕士学位论文”)</span>
-            
             <div class="cert-gallery">
-                <!-- Certificate 1: Ben-Rui Xu -->
                 <div class="cert-item">
-                    <a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank">
+                    <a href="./pdf/优秀研究生-2021-李博韬.pdf" target="_blank">
                         <div class="cert-thumb-container">
-                            <!-- TODO: Take a screenshot of the PDF and save it as an image. 
-                                 Then replace 'src' below with your image path (e.g., images/xu-cert.jpg) -->
-                            <!-- Placeholder image is used below for now -->
-                            <img src="https://via.placeholder.com/200x140/e0e0e0/555555?text=Certificate+Preview" alt="Certificate Preview">
+                            <img src="./images/certificate/优秀研究生-2021-李博韬.jpg" alt="Cert" loading="lazy">
                         </div>
-                        <div class="cert-caption">
-                            Ben-Rui Xu <span>(2024)</span>
-                        </div>
+                        <div class="cert-caption">Bo-Tao Li <span>(2021)</span></div>
                     </a>
                 </div>
-
-                <!-- Certificate 2: Rui-Qi Li -->
                 <div class="cert-item">
-                    <a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank">
+                    <a href="./pdf/优秀研究生-2022-许本瑞.pdf" target="_blank">
                         <div class="cert-thumb-container">
-                            <!-- TODO: Replace 'src' below with real screenshot -->
-                            <img src="https://via.placeholder.com/200x140/e0e0e0/555555?text=Certificate+Preview" alt="Certificate Preview">
+                             <img src="./images/certificate/优秀研究生-2022-许本瑞.jpg" alt="Cert" loading="lazy">
                         </div>
-                        <div class="cert-caption">
-                            Rui-Qi Li <span>(2025)</span>
+                        <div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div>
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a href="./pdf/优秀研究生-2023-许本瑞.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/优秀研究生-2023-许本瑞.jpg" alt="Cert" loading="lazy">
                         </div>
+                        <div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div>
+                    </a>
+                </div>
+                 <div class="cert-item">
+                    <a href="./pdf/优秀研究生-2025-许本瑞.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/优秀研究生-2025-许本瑞.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Ben-Rui Xu <span>(2025)</span></div>
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a href="./pdf/优秀研究生-2022-吴华林.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/优秀研究生-2022-吴华林.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Hua-Lin Wu <span>(2022)</span></div>
+                    </a>
+                </div>
+                 <div class="cert-item">
+                    <a href="./pdf/优秀研究生-2023-吴华林.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/优秀研究生-2023-吴华林.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Hua-Lin Wu <span>(2023)</span></div>
                     </a>
                 </div>
             </div>
         </div>
-        <!-- ======================================= -->
-        
+
+        <!-- 2. University Outstanding Graduating Student Award -->
         <div class="award-category">
-            <span class="award-title">National Scholarship for Graduate Students (研究生国家奖学金)</span>
-            <ul class="award-sublist">
-              <li><a href="./pdf/研究生国家奖学金-2022-许本瑞.pdf" target="_blank">Ben-Rui Xu (2022)</a></li>
-              <li><a href="./pdf/研究生国家奖学金-2023-许本瑞.pdf" target="_blank">Ben-Rui Xu (2023)</a></li>
-            </ul>
+            <span class="award-title">University Outstanding Graduating Student Award (学校“优秀毕业生”)</span>
+            <div class="cert-gallery">
+                <div class="cert-item">
+                    <a href="./pdf/优秀毕业生-2023-李博韬.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/优秀毕业生-2023-李博韬.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Bo-Tao Li <span>(2023)</span></div>
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a href="./pdf/优秀毕业生-2024-许本瑞.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/优秀毕业生-2024-许本瑞.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div>
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a href="./pdf/优秀毕业生-2025-李瑞琦.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/优秀毕业生-2025-李瑞琦.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Rui-Qi Li <span>(2025)</span></div>
+                    </a>
+                </div>
+            </div>
         </div>
         
+        <!-- 3. University Outstanding Master's Thesis -->
+        <div class="award-category">
+            <span class="award-title">University Outstanding Master's Thesis (学校“优秀硕士学位论文”)</span>
+            <div class="cert-gallery">
+                <div class="cert-item">
+                    <a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                            <img src="./images/certificate/优秀硕士学位论文-2024-许本瑞.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div>
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                            <img src="./images/certificate/优秀硕士学位论文-2025-李瑞琦.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Rui-Qi Li <span>(2025)</span></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 4. National Scholarship for Graduate Students -->
+        <div class="award-category">
+            <span class="award-title">National Scholarship for Graduate Students (研究生国家奖学金)</span>
+            <div class="cert-gallery">
+                <div class="cert-item">
+                    <a href="./pdf/研究生国家奖学金-2022-许本瑞.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/研究生国家奖学金-2022-许本瑞.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div>
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a href="./pdf/研究生国家奖学金-2023-许本瑞.pdf" target="_blank">
+                        <div class="cert-thumb-container">
+                             <img src="./images/certificate/研究生国家奖学金-2023-许本瑞.jpg" alt="Cert" loading="lazy">
+                        </div>
+                        <div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Remaining Lists (Text Only) -->
         <div class="award-category">
             <span class="award-title">First-Class Academic Scholarship (一等学业奖学金)</span>
             <ul class="award-sublist">
