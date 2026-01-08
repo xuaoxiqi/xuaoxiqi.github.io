@@ -15,6 +15,13 @@ title: Teaching
         --text-dark: #2c3e50;
         --text-light: #5f6c7b;
         --border-color: #e2e8f0;
+        
+        /* Specific Colors for Tags */
+        --tag-core: #e63946;       /* Red for Core courses */
+        --tag-elective: #457b9d;   /* Blue for Elective */
+        --tag-general: #6c757d;    /* Grey for General/Platform */
+        --tag-national: #d62828;   /* Strong Red for National Awards */
+        --tag-provincial: #1976d2; /* Blue for Provincial Awards */
     }
 
     /* --- Typography & Headers --- */
@@ -28,7 +35,7 @@ title: Teaching
         color: var(--primary-color);
         border-bottom: 3px solid var(--primary-color);
         padding-bottom: 8px;
-        margin-top: 45px;
+        margin-top: 50px;
         margin-bottom: 25px;
         font-size: 26px;
         letter-spacing: -0.5px;
@@ -54,6 +61,17 @@ title: Teaching
         margin-right: 12px;
         border-radius: 4px;
     }
+    
+    .section-divider {
+        font-size: 14px;
+        font-weight: 800;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 25px 0 10px 0;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
 
     /* --- Links Styling (Scoped) --- */
     #articlePost a {
@@ -67,7 +85,7 @@ title: Teaching
         border-bottom: 1px solid var(--highlight-color);
     }
 
-    /* --- Student Cards Grid --- */
+    /* --- Common Card/Grid Styles --- */
     .student-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -84,13 +102,11 @@ title: Teaching
         transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-
     .student-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         border-left-color: var(--highlight-color);
     }
-
     .student-name {
         display: block;
         font-weight: 700;
@@ -98,7 +114,6 @@ title: Teaching
         color: var(--text-dark);
         margin-bottom: 6px;
     }
-
     .student-time {
         font-size: 13px;
         color: var(--text-light);
@@ -111,283 +126,185 @@ title: Teaching
     }
 
     /* --- Graduate List Styling --- */
-    .graduate-list {
-        list-style: none;
-        padding: 0;
-    }
-
+    .graduate-list { list-style: none; padding: 0; }
     .graduate-item {
-        background: white;
-        margin-bottom: 20px;
-        padding: 20px;
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        transition: all 0.2s;
-        display: flex;
-        gap: 20px;
-        align-items: flex-start;
+        background: white; margin-bottom: 20px; padding: 20px;
+        border-radius: 8px; border: 1px solid var(--border-color);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s;
+        display: flex; gap: 20px; align-items: flex-start;
     }
-
     .graduate-item:hover {
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        border-color: var(--accent-color);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-color: var(--accent-color);
     }
-
     .graduate-thumb {
-        flex-shrink: 0;
-        width: 120px;
-        height: 90px;
-        border-radius: 6px;
-        overflow: hidden;
-        border: 1px solid var(--border-color);
-        position: relative;
-        background-color: #f0f0f0;
+        flex-shrink: 0; width: 120px; height: 90px;
+        border-radius: 6px; overflow: hidden; border: 1px solid var(--border-color);
+        position: relative; background-color: #f0f0f0;
     }
-    
     .graduate-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top center;
-        transition: transform 0.5s ease;
+        width: 100%; height: 100%; object-fit: cover;
+        object-position: top center; transition: transform 0.5s ease;
     }
-    
-    .graduate-thumb:hover img {
-        transform: scale(1.1);
-    }
-
-    .graduate-details {
-        flex-grow: 1;
-    }
-
+    .graduate-thumb:hover img { transform: scale(1.1); }
+    .graduate-details { flex-grow: 1; }
     .graduate-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 8px;
-        flex-wrap: wrap;
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 8px; flex-wrap: wrap;
     }
-    
     .graduate-name-link {
-        font-size: 17px;
-        font-weight: bold;
-        color: var(--primary-color) !important;
-        border-bottom: 2px solid transparent !important;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+        font-size: 17px; font-weight: bold; color: var(--primary-color) !important;
+        border-bottom: 2px solid transparent !important; display: inline-flex;
+        align-items: center; gap: 6px;
     }
-    
     .photo-badge {
-        font-size: 10px;
-        background-color: var(--bg-light-gray);
-        color: var(--text-light);
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-weight: normal;
-        text-transform: uppercase;
+        font-size: 10px; background-color: var(--bg-light-gray);
+        color: var(--text-light); padding: 2px 6px; border-radius: 4px;
+        font-weight: normal; text-transform: uppercase;
     }
-
-    .graduate-years {
-        font-size: 13px;
-        color: var(--text-light);
-        font-weight: 500;
-    }
-
+    .graduate-years { font-size: 13px; color: var(--text-light); font-weight: 500; }
     .thesis-title {
-        font-style: italic;
-        color: #4a5568;
-        display: block;
-        margin-top: 6px;
-        font-size: 14px;
-        line-height: 1.5;
+        font-style: italic; color: #4a5568; display: block;
+        margin-top: 6px; font-size: 14px; line-height: 1.5;
     }
 
-    /* --- Modern Table --- */
+    /* --- Destination Badge Styles --- */
+    .destination-block {
+        margin-top: 10px; padding-top: 10px; border-top: 1px dashed #eee;
+        font-size: 13px; display: flex; align-items: flex-start; gap: 10px;
+    }
+    .dest-badge {
+        font-size: 11px; font-weight: bold; padding: 2px 8px;
+        border-radius: 4px; text-transform: uppercase; flex-shrink: 0; margin-top: 1px;
+    }
+    .dest-badge.academic { background-color: #e0f2f1; color: #00695c; border: 1px solid #b2dfdb; }
+    .dest-badge.industry { background-color: #eceff1; color: #455a64; border: 1px solid #cfd8dc; }
+    .dest-text { color: var(--text-dark); line-height: 1.4; }
+
+    /* --- Table Styles (Courses) --- */
     .table-container {
-        overflow-x: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        overflow-x: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px;
     }
-
     .modern-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 14px;
-        background-color: white;
+        width: 100%; border-collapse: collapse; font-size: 14px; background-color: white;
     }
+    .modern-table thead tr { background-color: var(--primary-color); color: #ffffff; text-align: left; }
+    .modern-table th, .modern-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); }
+    .modern-table th { font-weight: 600; font-size: 13px; text-transform: uppercase; }
+    .modern-table tbody tr:hover { background-color: #eaf6f6; }
+    .modern-table tbody tr:nth-of-type(even) { background-color: #f8fafc; }
 
-    .modern-table thead tr {
-        background-color: var(--primary-color);
-        color: #ffffff;
-        text-align: left;
+    .course-code { font-family: 'Courier New', monospace; font-weight: bold; color: #555; }
+    .course-tag {
+        font-size: 10px; padding: 2px 6px; border-radius: 4px; color: white;
+        text-transform: uppercase; font-weight: bold; display: inline-block; margin-top: 2px;
     }
+    .tag-core { background-color: var(--tag-core); }
+    .tag-elective { background-color: var(--tag-elective); }
+    .tag-general { background-color: var(--tag-general); }
 
-    .modern-table th, .modern-table td {
-        padding: 14px 16px;
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .modern-table th {
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        font-size: 13px;
-    }
-
-    .modern-table tbody tr {
-        transition: background-color 0.2s;
-    }
-
-    .modern-table tbody tr:hover {
-        background-color: #eaf6f6;
-    }
-    .modern-table tbody tr:nth-of-type(even) {
-        background-color: #f8fafc;
-    }
-
-    /* --- Awards Section --- */
+    /* --- Awards & Cert Gallery --- */
     .award-category {
-        margin-bottom: 25px;
-        background: white;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        margin-bottom: 25px; background: white; border: 1px solid var(--border-color);
+        border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
-
     .award-title {
-        background-color: #f1f5f9;
-        color: var(--primary-color);
-        font-weight: 700;
-        display: block;
-        padding: 12px 20px;
-        border-bottom: 1px solid var(--border-color);
-        font-size: 15px;
+        background-color: #f1f5f9; color: var(--primary-color); font-weight: 700;
+        display: block; padding: 12px 20px; border-bottom: 1px solid var(--border-color); font-size: 15px;
+    }
+    .award-sublist { padding: 15px 20px 15px 40px; margin: 0; color: var(--text-dark); }
+    .award-sublist li { margin-bottom: 6px; line-height: 1.6; }
+
+    .cert-gallery {
+        display: flex; gap: 15px; padding: 20px; flex-wrap: wrap; justify-content: flex-start;
+    }
+    .cert-item {
+        position: relative; width: 200px; border: 1px solid #e0e0e0;
+        border-radius: 8px; overflow: hidden; text-align: center;
+        background: #fff; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cert-item:hover {
+        transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--accent-color);
+    }
+    .cert-item a { display: block; text-decoration: none; border: none !important; }
+    .cert-thumb-container {
+        height: 140px; background-color: #f9f9f9; overflow: hidden;
+        display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #eee;
+    }
+    .cert-thumb-container img {
+        width: 100%; height: 100%; object-fit: contain; padding: 5px; transition: opacity 0.2s;
+    }
+    .cert-caption {
+        padding: 10px; font-size: 14px; font-weight: bold; color: var(--text-dark); display: block;
+    }
+    .cert-caption span {
+        display: block; font-size: 12px; color: var(--text-light); font-weight: normal; margin-top: 2px;
     }
 
-    .award-sublist {
-        padding: 15px 20px 15px 40px;
-        margin: 0;
-        color: var(--text-dark);
+    /* --- Class Teacher Block --- */
+    .class-teacher-block {
+        background-color: #fff8e1; border-left: 5px solid #ffb300; padding: 15px;
+        border-radius: 4px; margin-bottom: 25px; display: flex; align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    .award-sublist li {
-        margin-bottom: 6px;
-        line-height: 1.6;
+    .class-teacher-icon { font-size: 24px; margin-right: 15px; }
+
+    /* --- Innovation & Thesis Lists --- */
+    .supervision-list { list-style: none; padding: 0; }
+    .supervision-item {
+        margin-bottom: 12px; padding: 10px 15px; border-bottom: 1px solid #eee;
+        display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
     }
+    .supervision-item:last-child { border-bottom: none; }
     
-    /* --- Certificate Gallery Styles --- */
-    .cert-gallery {
-        display: flex;
-        gap: 15px;
-        padding: 20px;
-        flex-wrap: wrap;
-        /* Center on small screens, left align on large */
-        justify-content: flex-start;
+    .project-badge {
+        font-size: 11px; font-weight: bold; color: white; padding: 3px 8px;
+        border-radius: 10px; margin-left: 8px;
     }
-    
-    .cert-item {
-        position: relative;
-        width: 200px; /* Fixed width for uniformity */
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        overflow: hidden;
-        text-align: center;
-        background: #fff;
-        transition: transform 0.2s, box-shadow 0.2s;
+    .badge-national { background-color: var(--tag-national); }
+    .badge-provincial { background-color: var(--tag-provincial); }
+
+    .thesis-year-group { margin-bottom: 20px; }
+    .thesis-year {
+        font-weight: 800; color: var(--primary-color); font-size: 15px;
+        margin-bottom: 8px; border-bottom: 2px solid #eee; display: inline-block; padding-bottom: 2px;
     }
-    
-    .cert-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        border-color: var(--accent-color);
+    .thesis-student { margin-bottom: 6px; padding-left: 10px; line-height: 1.5; }
+    .thesis-award {
+        color: #d32f2f; font-weight: bold; font-size: 13px; margin-left: 5px;
     }
-    
-    /* Ensure the link covers the whole card */
-    .cert-item a {
-        display: block;
-        text-decoration: none;
-        border: none !important; /* Remove dotted lines from global style */
+
+    /* --- Bilibili Button --- */
+    .bilibili-card {
+        display: inline-flex; align-items: center; background-color: #fb7299; color: white !important;
+        padding: 10px 20px; border-radius: 30px; font-weight: bold; text-decoration: none !important;
+        transition: transform 0.2s; margin-top: 10px; border: none !important;
     }
-    
-    .cert-thumb-container {
-        height: 140px; /* Fixed height */
-        background-color: #f9f9f9;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-bottom: 1px solid #eee;
-    }
-    
-    .cert-thumb-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Shows full document */
-        padding: 5px; /* slight padding inside the frame */
-        transition: opacity 0.2s;
-    }
-    
-    .cert-caption {
-        padding: 10px;
-        font-size: 14px;
-        font-weight: bold;
-        color: var(--text-dark);
-        display: block;
-    }
-    
-    .cert-caption span {
-        display: block;
-        font-size: 12px;
-        color: var(--text-light);
-        font-weight: normal;
-        margin-top: 2px;
-    }
+    .bilibili-card:hover { transform: scale(1.05); background-color: #f75d88; box-shadow: 0 4px 10px rgba(251, 114, 153, 0.4); }
 
     /* --- TA Course Block --- */
     .ta-course-block {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        margin-bottom: 25px;
-        border-left: 5px solid var(--primary-color);
-        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        background-color: white; padding: 20px; border-radius: 8px; margin-bottom: 25px;
+        border-left: 5px solid var(--primary-color); box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     }
-    
     .ta-course-title {
-        font-weight: 800;
-        font-size: 17px;
-        color: var(--primary-color);
-        margin-bottom: 4px;
+        font-weight: 800; font-size: 17px; color: var(--primary-color); margin-bottom: 4px;
     }
-    
     .ta-course-role {
-        font-size: 12px;
-        font-weight: bold;
-        color: white;
-        background-color: var(--accent-color);
-        padding: 2px 8px;
-        border-radius: 4px;
-        display: inline-block;
-        margin-bottom: 12px;
-        text-transform: uppercase;
+        font-size: 12px; font-weight: bold; color: white; background-color: var(--accent-color);
+        padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 12px; text-transform: uppercase;
     }
 
     /* Navigation Icon */
-    #divTitleNav img {
-        opacity: 0.7;
-        transition: opacity 0.2s;
-    }
-    #divTitleNav img:hover {
-        opacity: 1.0;
-    }
+    #divTitleNav img { opacity: 0.7; transition: opacity 0.2s; }
+    #divTitleNav img:hover { opacity: 1.0; }
     
     @media (max-width: 600px) {
         .graduate-item { flex-direction: column; }
         .graduate-thumb { width: 100%; height: 150px; }
-        .cert-item { width: 100%; } /* Full width certs on mobile */
+        .cert-item { width: 100%; } 
         .cert-gallery { justify-content: center; }
+        .supervision-item { flex-direction: column; align-items: flex-start; }
+        .project-badge { margin-left: 0; margin-top: 4px; }
     }
 </style>
 
@@ -399,11 +316,12 @@ title: Teaching
 
     <article id="articlePost">
     
-    <!-- Supervised Students Section -->
+    <!-- ============================================== -->
+    <!-- SUPERVISED STUDENTS SECTION (Unchanged layout) -->
+    <!-- ============================================== -->
     <section aria-labelledby="supervised-students">
         <h2 id="supervised-students" class="teaching-header">Supervised Students</h2>
         
-        <!-- PhD Grid -->
         <h3 id="phd-candidates" class="teaching-subheader">Ph.D. Candidates</h3>
         <div class="student-grid">
             <div class="student-card">
@@ -424,7 +342,6 @@ title: Teaching
             </div>
         </div>
         
-        <!-- Master Grid -->
         <h3 id="master-candidates" class="teaching-subheader">Master's Candidates</h3>
         <div class="student-grid">
              <div class="student-card">
@@ -445,10 +362,9 @@ title: Teaching
             </div>
         </div>
 
-        <!-- Graduates List -->
         <h3 id="master-graduate" class="teaching-subheader">Master's Graduates</h3>
         <ul class="graduate-list">
-            
+            <!-- Rui-Qi Li -->
             <li class="graduate-item">
                 <a href="images/students/2025-Master-RQLi.jpg" target="_blank" class="graduate-thumb" title="View Group Photo">
                     <img src="images/students/2025-Master-RQLi.jpg" alt="Photo with Rui-Qi Li">
@@ -464,9 +380,14 @@ title: Teaching
                     <div style="margin-top:4px; font-size:13px; color: #777;">
                         (<a href="./pdf/硕士学位论文-封面-2025-李瑞琦.pdf" target="_blank">时变壁面温度影响下槽道湍流的流动结构演化</a>)
                     </div>
+                    <div class="destination-block">
+                        <span class="dest-badge industry">Industry 🏢</span>
+                        <span class="dest-text">Hangzhou Mushiny Technology Co., Ltd. <br>(杭州牧星科技有限公司)</span>
+                    </div>
                 </div>
             </li>
             
+            <!-- Hua-Lin Wu -->
             <li class="graduate-item">
                 <a href="images/students/2024-Master-HLWu.jpg" target="_blank" class="graduate-thumb" title="View Group Photo">
                     <img src="images/students/2024-Master-HLWu.jpg" alt="Photo with Hua-Lin Wu">
@@ -482,9 +403,14 @@ title: Teaching
                     <div style="margin-top:4px; font-size:13px; color: #777;">
                         (<a href="./pdf/硕士学位论文-封面-2024-吴华林.pdf" target="_blank">自驱动颗粒在湍流场中的迁移策略研究</a>)
                     </div>
+                    <div class="destination-block">
+                        <span class="dest-badge academic">Academia 🎓</span>
+                        <span class="dest-text">Continued Ph.D. studies in our group at NPU</span>
+                    </div>
                 </div>
             </li>
             
+            <!-- Ben-Rui Xu -->
             <li class="graduate-item">
                 <a href="images/students/2024-Master-BRXu.jpg" target="_blank" class="graduate-thumb" title="View Group Photo">
                     <img src="images/students/2024-Master-BRXu.jpg" alt="Photo with Ben-Rui Xu">
@@ -500,9 +426,14 @@ title: Teaching
                     <div style="margin-top:4px; font-size:13px; color: #777;">
                          (<a href="./pdf/硕士学位论文-封面-2024-许本瑞.pdf" target="_blank">剪切热湍流的拟序结构及颗粒沉降</a>)
                     </div>
+                    <div class="destination-block">
+                        <span class="dest-badge academic">Academia 🎓</span>
+                        <span class="dest-text">Continued Ph.D. studies in our group at NPU</span>
+                    </div>
                 </div>
             </li>
             
+            <!-- Bo-Tao Li -->
             <li class="graduate-item">
                 <a href="images/students/2023-Master-BTLi.jpg" target="_blank" class="graduate-thumb" title="View Group Photo">
                     <img src="images/students/2023-Master-BTLi.jpg" alt="Photo with Bo-Tao Li">
@@ -518,9 +449,14 @@ title: Teaching
                     <div style="margin-top:4px; font-size:13px; color: #777;">
                         (<a href="./pdf/硕士学位论文-封面-2023-李博韬.pdf" target="_blank">多GPU复杂流动格子Boltzmann方法的并行计算</a>)
                     </div>
+                    <div class="destination-block">
+                        <span class="dest-badge industry">Industry 🏢</span>
+                        <span class="dest-text">First Aircraft Institute of AVIC <br>(中国航空工业集团公司第一飞机设计研究院)</span>
+                    </div>
                 </div>
             </li>
             
+            <!-- Wen-Hao Xue -->
             <li class="graduate-item">
                 <div class="graduate-thumb" style="background: #f0f0f0; display:flex; align-items:center; justify-content:center; color:#ccc;">
                     <img src="./images/home.png" style="opacity:0.2; width:40%; height:auto;" alt="NPU">
@@ -534,6 +470,10 @@ title: Teaching
                     <div style="margin-top:4px; font-size:13px; color: #777;">
                         (<a href="./pdf/硕士学位论文-封面-2022-薛文灏.pdf" target="_blank">热湍流中边界层与钝体及翼型受力特性研究</a>)
                     </div>
+                    <div class="destination-block">
+                        <span class="dest-badge academic">Academia 🎓</span>
+                        <span class="dest-text">Ph.D. Candidate at Northwestern Polytechnical University (NPU)</span>
+                    </div>
                 </div>
             </li>
         </ul>
@@ -541,223 +481,263 @@ title: Teaching
         <!-- Awards Section -->
         <h3 id="honors-awards" class="teaching-subheader">Students' Honors and Awards</h3>
         
-        <!-- 1. University Outstanding Graduate Student Award -->
+        <!-- 1. Outstanding Grad Student -->
         <div class="award-category">
             <span class="award-title">University Outstanding Graduate Student Award (学校“优秀研究生”)</span>
             <div class="cert-gallery">
-                <div class="cert-item">
-                    <a href="./pdf/优秀研究生-2021-李博韬.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                            <img src="./images/certificate/优秀研究生-2021-李博韬.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Bo-Tao Li <span>(2021)</span></div>
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a href="./pdf/优秀研究生-2022-许本瑞.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/优秀研究生-2022-许本瑞.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div>
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a href="./pdf/优秀研究生-2023-许本瑞.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/优秀研究生-2023-许本瑞.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div>
-                    </a>
-                </div>
-                 <div class="cert-item">
-                    <a href="./pdf/优秀研究生-2025-许本瑞.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/优秀研究生-2025-许本瑞.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Ben-Rui Xu <span>(2025)</span></div>
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a href="./pdf/优秀研究生-2022-吴华林.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/优秀研究生-2022-吴华林.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Hua-Lin Wu <span>(2022)</span></div>
-                    </a>
-                </div>
-                 <div class="cert-item">
-                    <a href="./pdf/优秀研究生-2023-吴华林.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/优秀研究生-2023-吴华林.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Hua-Lin Wu <span>(2023)</span></div>
-                    </a>
-                </div>
+                <div class="cert-item"><a href="./pdf/优秀研究生-2021-李博韬.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2021-李博韬.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Bo-Tao Li <span>(2021)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/优秀研究生-2022-许本瑞.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2022-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/优秀研究生-2023-许本瑞.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2023-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/优秀研究生-2025-许本瑞.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2025-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2025)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/优秀研究生-2022-吴华林.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2022-吴华林.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Hua-Lin Wu <span>(2022)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/优秀研究生-2023-吴华林.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2023-吴华林.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Hua-Lin Wu <span>(2023)</span></div></a></div>
             </div>
         </div>
 
-        <!-- 2. University Outstanding Graduating Student Award -->
+        <!-- 2. Outstanding Graduating Student -->
         <div class="award-category">
             <span class="award-title">University Outstanding Graduating Student Award (学校“优秀毕业生”)</span>
             <div class="cert-gallery">
-                <div class="cert-item">
-                    <a href="./pdf/优秀毕业生-2023-李博韬.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/优秀毕业生-2023-李博韬.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Bo-Tao Li <span>(2023)</span></div>
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a href="./pdf/优秀毕业生-2024-许本瑞.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/优秀毕业生-2024-许本瑞.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div>
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a href="./pdf/优秀毕业生-2025-李瑞琦.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/优秀毕业生-2025-李瑞琦.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Rui-Qi Li <span>(2025)</span></div>
-                    </a>
-                </div>
+                <div class="cert-item"><a href="./pdf/优秀毕业生-2023-李博韬.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2023-李博韬.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Bo-Tao Li <span>(2023)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/优秀毕业生-2024-许本瑞.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2024-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/优秀毕业生-2025-李瑞琦.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2025-李瑞琦.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Rui-Qi Li <span>(2025)</span></div></a></div>
             </div>
         </div>
         
-        <!-- 3. University Outstanding Master's Thesis -->
+        <!-- 3. Outstanding Master's Thesis -->
         <div class="award-category">
             <span class="award-title">University Outstanding Master's Thesis (学校“优秀硕士学位论文”)</span>
             <div class="cert-gallery">
-                <div class="cert-item">
-                    <a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                            <img src="./images/certificate/优秀硕士学位论文-2024-许本瑞.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div>
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                            <img src="./images/certificate/优秀硕士学位论文-2025-李瑞琦.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Rui-Qi Li <span>(2025)</span></div>
-                    </a>
-                </div>
+                <div class="cert-item"><a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀硕士学位论文-2024-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/优秀硕士学位论文-2025-李瑞琦.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Rui-Qi Li <span>(2025)</span></div></a></div>
             </div>
         </div>
         
-        <!-- 4. National Scholarship for Graduate Students -->
+        <!-- 4. National Scholarship -->
         <div class="award-category">
             <span class="award-title">National Scholarship for Graduate Students (研究生国家奖学金)</span>
             <div class="cert-gallery">
-                <div class="cert-item">
-                    <a href="./pdf/研究生国家奖学金-2022-许本瑞.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/研究生国家奖学金-2022-许本瑞.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div>
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a href="./pdf/研究生国家奖学金-2023-许本瑞.pdf" target="_blank">
-                        <div class="cert-thumb-container">
-                             <img src="./images/certificate/研究生国家奖学金-2023-许本瑞.jpg" alt="Cert" loading="lazy">
-                        </div>
-                        <div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div>
-                    </a>
-                </div>
+                <div class="cert-item"><a href="./pdf/研究生国家奖学金-2022-许本瑞.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/研究生国家奖学金-2022-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div></a></div>
+                <div class="cert-item"><a href="./pdf/研究生国家奖学金-2023-许本瑞.pdf" target="_blank"><div class="cert-thumb-container"><img src="./images/certificate/研究生国家奖学金-2023-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div></a></div>
             </div>
         </div>
         
-        <!-- Remaining Lists (Text Only) -->
-        <div class="award-category">
-            <span class="award-title">First-Class Academic Scholarship (一等学业奖学金)</span>
-            <ul class="award-sublist">
-              <li>Bo-Tao Li (2021)</li>
-              <li><a href="./pdf/一等学业奖学金-2022-许本瑞.pdf" target="_blank">Ben-Rui Xu (2022, 2023, 2025)</a></li>
-              <li><a href="./pdf/一等学业奖学金-2022-吴华林.pdf" target="_blank">Hua-Lin Wu (2022, 2023)</a></li>
-              <li><a href="./pdf/一等学业奖学金-2022-姜丽升.pdf" target="_blank">Li-Sheng Jiang (2022)</a></li>
-            </ul>
-        </div>
-        
+        <!-- 5. Other Scholarships -->
         <div class="award-category">
             <span class="award-title">Other Scholarships</span>
             <ul class="award-sublist">
-                <li><b>First-Class Scholarship (一等奖学金):</b> Ben-Rui Xu (2022; 2023)</li>
-                <li><b>Second-Class Scholarship (二等奖学金):</b> Ben-Rui Xu (2025)</li>
-                <li><b>Wu Ya-Jun Special Scholarship (吴亚军专项奖学金):</b> Hua-Lin Wu (2022)</li>
-                <li><b>Kewei Special Scholarship (科为专项奖学金):</b> Li-Sheng Jiang (2022)</li>
+                <li><b>First-Class Academic Scholarship:</b> Bo-Tao Li (2021); Ben-Rui Xu (2022, 2023, 2025); Hua-Lin Wu (2022, 2023); Li-Sheng Jiang (2022)</li>
+                <li><b>First-Class Scholarship:</b> Ben-Rui Xu (2022; 2023)</li>
+                <li><b>Second-Class Scholarship:</b> Ben-Rui Xu (2025)</li>
+                <li><b>Wu Ya-Jun Special Scholarship:</b> Hua-Lin Wu (2022)</li>
+                <li><b>Kewei Special Scholarship:</b> Li-Sheng Jiang (2022)</li>
             </ul>
         </div>
     </section>
 
-    <!-- NPU Teaching Section -->
+    <!-- ============================================== -->
+    <!-- TEACHING AT NPU SECTION (New & Improved)       -->
+    <!-- ============================================== -->
     <h2 class="teaching-header">Teaching at NPU</h2>
-    <h3 class="teaching-subheader">Teaching Courses</h3>
+
+    <!-- (1) & (2) Courses -->
+    <h3 class="teaching-subheader">1. Teaching Courses</h3>
     
+    <div class="section-divider">Undergraduate Courses</div>
     <div class="table-container">
         <table class="modern-table">
             <thead>
                 <tr>
+                    <th>Code</th>
                     <th>Course Name</th>
+                    <th>Type</th>
                     <th>Semesters</th>
-                    <th>Teaching Hours</th>
-                    <th>Student Numbers</th>
-                    <th>Remark</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>粘性流体力学导论（本科课程）</td>
-                    <td>2 (2020+2021)</td>
-                    <td>64 (32+32)</td>
-                    <td>62 (37+25)</td>
-                    <td>核心课程</td>
+                    <td class="course-code">U01M11039</td>
+                    <td><b>Introduction to Viscous Fluid Mechanics</b><br><span style="color:#666; font-size:12px;">(粘性流体力学导论)</span></td>
+                    <td><span class="course-tag tag-core">Core</span></td>
+                    <td>Spring 2020, Spring 2021</td>
                 </tr>
                 <tr>
-                    <td>热力学和流体力学（本科课程）</td>
-                    <td>1 (2021)</td>
-                    <td>4 (2+2)</td>
-                    <td>111 (55+56)</td>
-                    <td>核心课程</td>
+                    <td class="course-code">NXC4122</td>
+                    <td><b>Thermodynamics and Fluid Mechanics</b><br><span style="color:#666; font-size:12px;">(热力学和流体力学)</span></td>
+                    <td><span class="course-tag tag-core">Core</span></td>
+                    <td>Spring 2021, 2023, 2024</td>
                 </tr>
                 <tr>
-                    <td>粘性流体力学（本科课程）</td>
-                    <td>2 (2022+2023)</td>
-                    <td>64 (32+32)</td>
-                    <td>47 (26+21)</td>
-                    <td>-</td>
+                    <td class="course-code">U01M11097</td>
+                    <td><b>Viscous Fluid Mechanics</b> <i style="font-size:12px; color:#666">(Course Head)</i><br><span style="color:#666; font-size:12px;">(粘性流体力学)</span></td>
+                    <td><span class="course-tag tag-elective">Elective</span></td>
+                    <td>Spring 2022, 2023, 2024</td>
                 </tr>
                 <tr>
-                    <td>张量分析（本科课程）</td>
-                    <td>1 (2023)</td>
-                    <td>16 (16)</td>
-                    <td>20 (20)</td>
-                    <td>核心课程</td>
+                    <td class="course-code">U01G11011</td>
+                    <td><b>Tensor Analysis</b><br><span style="color:#666; font-size:12px;">(张量分析)</span></td>
+                    <td><span class="course-tag tag-elective">Math & Sci</span></td>
+                    <td>Spring 2023, Fall 2024, 2025</td>
                 </tr>
                 <tr>
-                    <td>连续介质力学（本科课程）</td>
-                    <td>1 (2023)</td>
-                    <td>4 (4)</td>
-                    <td>20 (20)</td>
-                    <td>核心课程</td>
+                    <td class="course-code">U01M11222</td>
+                    <td><b>Continuum Mechanics</b><br><span style="color:#666; font-size:12px;">(连续介质力学)</span></td>
+                    <td><span class="course-tag tag-general">Platform</span></td>
+                    <td>Spring 2023, Fall 2024, 2025</td>
                 </tr>
                 <tr>
-                    <td>Introduction to Turbulence（研究生课程）</td>
-                    <td>4 (2020-2023)</td>
-                    <td>80 (20x4)</td>
-                    <td>60 (9+11+16+24)</td>
-                    <td>-</td>
+                    <td class="course-code">U01M11224</td>
+                    <td><b>Fluid Mechanics Fundamentals</b><br><span style="color:#666; font-size:12px;">(流体力学贯通课-流体力学基础)</span></td>
+                    <td><span class="course-tag tag-general">Platform</span></td>
+                    <td>Spring 2025</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <!-- HKUST Teaching Section -->
+    <div class="section-divider">Graduate Courses</div>
+    <div class="table-container">
+        <table class="modern-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Course Name</th>
+                    <th>Type</th>
+                    <th>Semesters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="course-code">M01M12024</td>
+                    <td><b>Introduction to Turbulence</b> (English-Taught)<br><span style="color:#666; font-size:12px;">(全英文课程)</span></td>
+                    <td><span class="course-tag tag-elective">Elective</span></td>
+                    <td>Spring 2020-2025 (Annual)</td>
+                </tr>
+                <tr>
+                    <td class="course-code">D01A11004</td>
+                    <td><b>New Progress in Fluid Mechanics</b><br><span style="color:#666; font-size:12px;">(流体力学研究的新进展)</span></td>
+                    <td><span class="course-tag tag-elective">Lecture</span></td>
+                    <td>Fall 2023</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- (3) Class Teacher -->
+    <h3 class="teaching-subheader">2. Class Teacher</h3>
+    <div class="class-teacher-block">
+        <div class="class-teacher-icon">👨‍🏫</div>
+        <div>
+            <b>Class 01101701: Aviation Engineering (International Class)</b>
+            <div style="font-size:13px; margin-top:4px;">Awarded the University's "Outstanding Class Award" (被评为学校“先进班级”)</div>
+        </div>
+    </div>
+
+    <!-- (4) Innovation Projects -->
+    <h3 class="teaching-subheader">3. Undergraduate Innovation Training Projects</h3>
+    <p style="margin-bottom:15px; font-style:italic;">Supervised 7 projects involving 33 students.</p>
+    <ul class="supervision-list">
+        <li class="supervision-item">
+            <span><b>S201910699348</b> (Bo-Tao Li et al.) <span class="project-badge badge-provincial">Provincial</span></span>
+            <span style="color:#666; font-size:13px;">5 Members</span>
+        </li>
+        <li class="supervision-item">
+            <span><b>S202010699434</b> (Li-Sheng Jiang et al.) <span class="project-badge badge-provincial">Provincial</span></span>
+            <span style="color:#666; font-size:13px;">5 Members</span>
+        </li>
+        <li class="supervision-item">
+            <span><b>S202010699577</b> (Ye-Kai Pan et al.) <span class="project-badge badge-provincial">Provincial</span></span>
+            <span style="color:#666; font-size:13px;">4 Members</span>
+        </li>
+        <li class="supervision-item">
+            <span><b>202110699053</b> (Le-Tian Jiang et al.) <span class="project-badge badge-national">National</span></span>
+            <span style="color:#666; font-size:13px;">4 Members</span>
+        </li>
+        <li class="supervision-item">
+            <span><b>S202110699324</b> (Qing-Yang Shi et al.) <span class="project-badge badge-provincial">Provincial</span></span>
+            <span style="font-size:13px; color:var(--primary-color); font-weight:bold;">Rated "Excellent" on completion</span>
+        </li>
+        <li class="supervision-item">
+            <span><b>S202310699570</b> (He-Fei Fan et al.) <span class="project-badge badge-provincial">Provincial</span></span>
+            <span style="color:#666; font-size:13px;">5 Members</span>
+        </li>
+        <li class="supervision-item">
+            <span><b>S202410699683</b> (Yun-Qian Bi et al.) <span class="project-badge badge-provincial">Provincial</span></span>
+            <span style="color:#666; font-size:13px;">5 Members</span>
+        </li>
+    </ul>
+
+    <!-- (5) Undergraduate Thesis -->
+    <h3 class="teaching-subheader">4. Undergraduate Thesis Supervision</h3>
+    <p style="margin-bottom:15px; font-style:italic;">Supervised 17 students' graduation theses.</p>
+    
+    <div class="award-category" style="padding:15px;">
+        <div class="thesis-year-group">
+            <div class="thesis-year">Class of 2025</div>
+            <div class="thesis-student"><b>Yun-Qian Bi</b> <span class="thesis-award">★ National Excellence Award (National Aerospace Majors) & Top 100 Thesis Nomination & University Outstanding Graduate</span></div>
+            <div class="thesis-student">Zhuo-Ran Shang</div>
+        </div>
+        
+        <div class="thesis-year-group">
+            <div class="thesis-year">Class of 2024</div>
+            <div class="thesis-student"><b>Zhi-Jie He</b> <span class="thesis-award">★ Department Excellent Thesis</span></div>
+            <div class="thesis-student">Yu-Cheng Ma</div>
+        </div>
+
+        <div class="thesis-year-group">
+            <div class="thesis-year">Class of 2023</div>
+            <div class="thesis-student">Xi-Kai Qu, Mu-Kun Liu</div>
+        </div>
+
+        <div class="thesis-year-group">
+            <div class="thesis-year">Class of 2022</div>
+            <div class="thesis-student"><b>Qing-Yang Shi</b> <span class="thesis-award">★ University Outstanding Graduate & Department Excellent Thesis</span></div>
+            <div class="thesis-student"><b>Yu-Chen Ge</b> <span class="thesis-award">★ University Outstanding Graduate & Department Excellent Thesis</span></div>
+            <div class="thesis-student"><b>Yi-Wei Zhang</b> <span class="thesis-award">★ University Outstanding Graduate</span></div>
+            <div class="thesis-student">Le-Tian Jiang, Rui-Qi Li</div>
+        </div>
+
+        <div class="thesis-year-group">
+            <div class="thesis-year">Class of 2021</div>
+            <div class="thesis-student"><b>Ben-Rui Xu</b> <span class="thesis-award">★ National 2nd Prize (Aerospace Majors) & University Excellent Thesis & Outstanding Graduate</span></div>
+            <div class="thesis-student"><b>Li-Sheng Jiang</b> <span class="thesis-award">★ University Outstanding Graduate</span></div>
+            <div class="thesis-student">Hua-Lin Wu, Ye-Kai Pan</div>
+        </div>
+
+        <div class="thesis-year-group">
+            <div class="thesis-year">Class of 2020</div>
+            <div class="thesis-student"><b>Bo-Tao Li</b> <span class="thesis-award">★ Department Excellent Thesis</span></div>
+        </div>
+
+        <div class="thesis-year-group">
+            <div class="thesis-year">Class of 2019</div>
+            <div class="thesis-student">Wen-Hao Xue</div>
+        </div>
+    </div>
+
+    <!-- (7) Competitions & (8) Resources -->
+    <h3 class="teaching-subheader">5. Competitions & Resources</h3>
+    
+    <div class="award-category" style="padding:20px;">
+        <div style="margin-bottom:20px;">
+            <b>Teaching Innovation Competitions:</b>
+            <ul style="margin-top:5px; margin-left:20px;">
+                <li>2021: School Level 1st Prize</li>
+                <li>2022: University Level 3rd Prize, School Level 1st Prize</li>
+            </ul>
+        </div>
+        
+        <div>
+            <b>Fluid Mechanics Micro-Course:</b><br>
+            <a href="https://space.bilibili.com/3537108358662211" target="_blank" class="bilibili-card">
+                📺 Watch on Bilibili (哔哩哔哩)
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TEACHING AT HKUST SECTION (Unchanged)          -->
+    <!-- ============================================== -->
     <h2 class="teaching-header">Teaching at HKUST</h2>
 
     <div class="ta-course-block">
