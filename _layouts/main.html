@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added for mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile Responsiveness -->
     <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
     <meta name="description" content="{{ page.description }}" />
     <meta name="keywords" content="Ao Xu,A. Xu,axu@nwpu.edu.cn,axu@connect.ust.hk">
@@ -16,10 +16,10 @@
     
     <link rel="stylesheet" type="text/css" href="./css/main.css" media="all" />
     
-    <!-- Load Google Web Fonts (Updated to HTTPS) -->
+    <!-- Load Google Web Fonts (HTTPS) -->
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Droid+Sans' />
 
-    <!-- GLOBAL THEME STYLES (Overrides old CSS for modern look) -->
+    <!-- GLOBAL THEME STYLES -->
     <style>
         :root {
             --primary-color: #1d4e5f;  /* Deep Slate Teal */
@@ -31,33 +31,36 @@
             --border-color: #e2e8f0;
         }
 
-        /* Update Body Background to match modern cards */
+        /* 1. Set Global Background 
+           2. Add Padding-Top so content isn't hidden behind fixed Navbar */
         body {
             background-color: var(--bg-light-gray) !important;
             font-family: 'Droid Sans', 'Segoe UI', Tahoma, sans-serif;
             color: var(--text-dark);
             margin: 0;
+            padding-top: 80px; 
         }
 
         /* Modernize Navigation Bars */
         nav#navBarTop, nav#navBarBottom {
             background-color: var(--primary-color) !important;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
-            opacity: 1.0 !important; /* Removed transparency for clearer reading */
+            opacity: 1.0 !important; /* Solid background for readability */
         }
 
         /* Nav Link Hover Effects */
         nav a:hover {
             background-color: rgba(255,255,255,0.1) !important;
             color: #fff !important;
+            text-decoration: none !important;
         }
         
-        /* Better link colors in footer */
+        /* Footer text color */
         .navBarListRight, .navBarListLeft {
             color: #e0e0e0 !important;
         }
         
-        /* Fix for absolute positioning legacy issues on mobile */
+        /* Mobile Layout Fixes */
         @media (max-width: 800px) {
             #divLeft, #divMiddle, #divRight {
                 position: relative !important;
@@ -71,9 +74,9 @@
                 top: auto !important;
                 left: auto !important;
                 width: 94% !important;
-                margin: 80px auto 20px auto !important;
+                margin: 20px auto !important;
             }
-            .navBarListRight { display: none; } /* Hide social icons on very small screens to save space */
+            .navBarListRight { display: none; } /* Hide social icons on small screens */
         }
     </style>
 
@@ -124,7 +127,7 @@
         </div>
     </nav>
     
-    <!-- MAIN CONTENT INJECTION -->
+    <!-- PAGE CONTENT INJECTION -->
     {{ content }}
     
 </body>
