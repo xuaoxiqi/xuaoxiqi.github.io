@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added for mobile responsiveness -->
     <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
     <meta name="description" content="{{ page.description }}" />
     <meta name="keywords" content="Ao Xu,A. Xu,axu@nwpu.edu.cn,axu@connect.ust.hk">
@@ -9,64 +11,121 @@
     
     <link rel="icon" type="image/vnd.microsoft.icon" href="./favicon.ico" sizes="57x57" />
     
-    <link rel="author" type="text/html" href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" />
-    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+    <link rel="author" type="text/html" href="https://www.linkedin.com/pub/ao-xu/30/a72/a29" />
+    <link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/3.0/" />
     
     <link rel="stylesheet" type="text/css" href="./css/main.css" media="all" />
     
-    <!-- load Google Web Fonts -->
-    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans' />
+    <!-- Load Google Web Fonts (Updated to HTTPS) -->
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Droid+Sans' />
 
-    <!-- <script type="text/javascript" src="./~js/main.js"></script> -->
+    <!-- GLOBAL THEME STYLES (Overrides old CSS for modern look) -->
+    <style>
+        :root {
+            --primary-color: #1d4e5f;  /* Deep Slate Teal */
+            --accent-color: #2a9d8f;   /* Refreshing Cyan/Green */
+            --highlight-color: #e76f51;/* Warm Burnt Sienna */
+            --bg-light-gray: #f8fafc;
+            --text-dark: #2c3e50;
+            --text-light: #5f6c7b;
+            --border-color: #e2e8f0;
+        }
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130136738-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        /* Update Body Background to match modern cards */
+        body {
+            background-color: var(--bg-light-gray) !important;
+            font-family: 'Droid Sans', 'Segoe UI', Tahoma, sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+        }
 
-  gtag('config', 'UA-130136738-1');
-</script>
+        /* Modernize Navigation Bars */
+        nav#navBarTop, nav#navBarBottom {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+            opacity: 1.0 !important; /* Removed transparency for clearer reading */
+        }
+
+        /* Nav Link Hover Effects */
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1) !important;
+            color: #fff !important;
+        }
+        
+        /* Better link colors in footer */
+        .navBarListRight, .navBarListLeft {
+            color: #e0e0e0 !important;
+        }
+        
+        /* Fix for absolute positioning legacy issues on mobile */
+        @media (max-width: 800px) {
+            #divLeft, #divMiddle, #divRight {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                width: 94% !important;
+                margin: 0 auto 20px auto !important;
+            }
+            #divPost {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                width: 94% !important;
+                margin: 80px auto 20px auto !important;
+            }
+            .navBarListRight { display: none; } /* Hide social icons on very small screens to save space */
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130136738-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-130136738-1');
+    </script>
 
 </head>
 
 <body>
     
-    <nav id="navBarTop"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+    <!-- TOP NAVIGATION -->
+    <nav id="navBarTop">
         <ul class="navBarListLeft">
-             <li><a href="./index.html"><img src="./images/home.png" alt="home" title="Home" class="navDock" height="32"></a></li>
-			<li style="position: relative; top: -12px; font-size: 16px"><a href="./research.html">Research</a></li>
-			<li style="position: relative; top: -12px; font-size: 16px"><a href="./facilities.html">Facilities</a></li>
-	 		<li style="position: relative; top: -12px; font-size: 16px"><a href="./teaching.html">Teaching</a></li>
-             <li style="position: relative; top: -12px; font-size: 16px"><a href="./publications.html">Publications</a></li>
-			<li style="position: relative; top: -12px; font-size: 16px"><a href="./about.html">About</a></li>
+            <li><a href="./index.html"><img src="./images/home.png" alt="home" title="Home" class="navDock" height="32" style="vertical-align: middle;"></a></li>
+            <li style="position: relative; top: -10px; font-size: 16px"><a href="./research.html">Research</a></li>
+            <li style="position: relative; top: -10px; font-size: 16px"><a href="./facilities.html">Facilities</a></li>
+            <li style="position: relative; top: -10px; font-size: 16px"><a href="./teaching.html">Teaching</a></li>
+            <li style="position: relative; top: -10px; font-size: 16px"><a href="./publications.html">Publications</a></li>
+            <li style="position: relative; top: -10px; font-size: 16px"><a href="./about.html">About</a></li>
         </ul>
         
         <ul class="navBarListRight">
-            <li style="position: relative; top: -12px"><b>Ao</b> on </li>
+            <li style="position: relative; top: -10px"><b>Ao</b> on </li>
             <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank"><img src="./images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="32"></a></li>
-            <li><a href="http://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="32"></a></li>
+            <li><a href="https://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="32"></a></li>
             <li><a href="https://github.com/xuaoxiqi" target="_blank"><img src="./images/github.png" alt="github" title="GitHub" class="navDock" height="32"></a></li>
         </ul>
     </nav>
     
-    <nav id="navBarBottom"> <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+    <!-- BOTTOM NAVIGATION / FOOTER -->
+    <nav id="navBarBottom">
         <div class="navBarListLeft">            
-                <div style="position: relative; top: 4px; width: 150%">    
-                    ©2013-2026  Ao Xu <strong>--Discussion on multiscale transport phenomena is welcomed.</strong>
-                </div>
+            <div style="position: relative; top: 8px; font-size: 13px;">    
+                ©2013-2026 Ao Xu | <strong>Discussion on multiscale transport phenomena is welcomed.</strong>
+            </div>
         </div>
         
         <div class="navBarListRight">
-            <div style="position: relative; top: 4px; right: 0">
+            <div style="position: relative; top: 8px; right: 10px; font-size: 13px;">
                 Last updated: <b>Jan. 2026</b>
             </div>
         </div>
     </nav>
     
+    <!-- MAIN CONTENT INJECTION -->
     {{ content }}
     
-  
 </body>
 </html>
