@@ -74,23 +74,22 @@ title: Publications
 
     /* --- Publication List Styling --- */
     
-    /* Shared Container Styles */
     .pub-list {
         padding: 0;
         margin-bottom: 40px;
     }
 
-    /* Individual Paper Card */
     .pub-item {
         background: white;
         border: 1px solid var(--border-color);
         border-radius: 6px;
-        padding: 20px 20px 20px 5px; 
+        padding: 20px; 
         margin-bottom: 15px;
         transition: transform 0.2s, box-shadow 0.2s;
         display: flex;
         align-items: flex-start;
         gap: 15px;
+        position: relative;
     }
     .pub-item:hover {
         transform: translateY(-2px);
@@ -98,12 +97,11 @@ title: Publications
         border-color: var(--accent-color);
     }
 
-    /* --- Published List (Numbered) --- */
+    /* Numbered List Logic */
     ol.pub-list {
         list-style: none;
-        counter-reset: pub-counter 45; /* Start at 44 (45 - 1) */
+        counter-reset: pub-counter 45; 
     }
-
     ol.pub-list .pub-item::before {
         counter-increment: pub-counter -1;
         content: counter(pub-counter);
@@ -111,24 +109,22 @@ title: Publications
         font-size: 22px; font-weight: 800; color: #cbd5e1;
         font-family: 'Segoe UI', sans-serif;
     }
-    
-    /* Highlight recent numbers in numbered list */
     ol.pub-list .pub-item.recent::before { color: var(--highlight-color); }
 
-    /* --- Submitted List (Unnumbered) --- */
-    ul.pub-list {
-        list-style: none;
-    }
-
+    /* Submitted (Unnumbered) Logic */
+    ul.pub-list { list-style: none; }
     ul.pub-list .pub-item::before {
-        content: '•'; /* Simple bullet for submitted items */
+        content: '•'; 
         flex-shrink: 0; width: 45px; text-align: center;
         font-size: 22px; font-weight: 800; color: #cbd5e1;
         line-height: 1.2;
     }
 
     /* --- Content Typography --- */
-    .pub-content { flex-grow: 1; }
+    .pub-content { 
+        flex-grow: 1; 
+        width: 100%; /* Ensure it fills container */
+    }
 
     .pub-authors { font-size: 15px; color: var(--text-dark); margin-bottom: 5px; line-height: 1.4; }
     .pub-title { font-size: 16px; font-weight: bold; color: var(--primary-color); line-height: 1.4; margin-bottom: 6px; }
@@ -138,49 +134,42 @@ title: Publications
         border-left: 3px solid var(--accent-color); padding-left: 10px;
     }
     
-    /* Links Row */
     .pub-links-row { margin-top: 4px; font-size: 13px; color: #666; }
-
     .pub-text-link {
         color: #555; text-decoration: none; border-bottom: 1px dotted #999;
         margin-right: 15px; font-family: 'Courier New', monospace; font-weight: 600; font-size: 12px;
     }
     .pub-text-link:hover { color: var(--highlight-color); border-bottom-style: solid; }
 
-    /* Meta Info (WOS/Date) */
     .pub-meta-info { display: block; margin-top: 4px; font-size: 12px; color: #7f8c8d; }
     .pub-meta-info a { color: #7f8c8d; text-decoration: none; border-bottom: 1px dotted #ccc; }
-    .pub-meta-info a:hover { color: var(--primary-color); border-bottom: 1px solid var(--primary-color); }
-
-    /* Neutral Highlights (Grey/Slate instead of Red) */
+    
     .pub-highlights {
         font-size: 12px; color: #4a5568; margin-top: 8px; margin-bottom: 4px;
         line-height: 1.5; background-color: #f1f5f9; padding: 4px 10px;
         border-radius: 4px; border-left: 3px solid #94a3b8;
     }
     .pub-highlights a { color: #2d3748; font-weight: bold; text-decoration: underline; }
-    .pub-highlights a:hover { color: var(--highlight-color); }
 
-    /* --- Graphical Abstract --- */
+    /* --- Graphical Abstract Styling --- */
     .pub-graphic-abstract {
-        margin-top: 15px;
-        margin-bottom: 10px;
-        padding: 5px;
         border: 1px solid #f0f0f0;
         border-radius: 4px;
         background-color: #fcfcfc;
-        display: inline-block;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+    
     .pub-graphic-abstract img {
+        display: block;
         max-width: 100%;
         height: auto;
-        max-height: 150px; /* Adjust height limit as needed */
-        display: block;
-        border-radius: 2px;
         object-fit: contain;
     }
 
-    /* Action Buttons */
+    /* Buttons */
     .pub-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; margin-top: 10px; }
 
     .btn-pdf {
@@ -195,9 +184,82 @@ title: Publications
         padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase;
     }
 
+    /* --- DESKTOP VIEW (Layout Logic) --- */
+    @media (min-width: 768px) {
+        
+        /* If the paper HAS a graphical abstract, use Grid */
+        .pub-content:has(.pub-graphic-abstract) {
+            display: grid;
+            /* Column 1: Text (flexible), Column 2: Image (Fixed Width) */
+            grid-template-columns: 1fr 240px; 
+            column-gap: 25px;
+            align-items: start;
+        }
+
+        /* Elements that should stay in the left text column */
+        .pub-content:has(.pub-graphic-abstract) > *:not(.pub-graphic-abstract) {
+            grid-column: 1;
+        }
+
+        /* The Image moves to column 2 and spans all rows */
+        .pub-content:has(.pub-graphic-abstract) > .pub-graphic-abstract {
+            grid-column: 2;
+            grid-row: 1 / 10; /* Span vertically to cover authors, title, actions, etc. */
+            margin-top: 0;
+            max-height: 160px; /* Limit height on desktop */
+        }
+        
+        .pub-graphic-abstract img {
+            max-height: 160px;
+        }
+    }
+
+    /* --- MOBILE VIEW (Responsive) --- */
+    @media (max-width: 767px) {
+        /* Container adjustment */
+        .pub-item {
+            flex-direction: column; /* Stack number on top of content */
+            padding: 15px;
+            gap: 10px;
+        }
+
+        /* Number/Bullet adjustment */
+        ol.pub-list .pub-item::before,
+        ul.pub-list .pub-item::before {
+            width: 100%;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        /* Image stacks below text on mobile */
+        .pub-graphic-abstract {
+            margin-top: 15px;
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .pub-graphic-abstract img {
+            max-height: 200px; /* Allow slightly larger image on mobile */
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        /* Stats container wraps nicely */
+        .stats-container {
+            justify-content: center;
+        }
+        
+        /* Font size tweaks for readability */
+        .pub-title { font-size: 15px; }
+        .pub-venue { font-size: 13px; }
+    }
+
     /* --- Table --- */
     .table-container { overflow-x: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-top: 20px; }
-    .modern-table { width: 100%; border-collapse: collapse; font-size: 13px; background-color: white; }
+    .modern-table { width: 100%; border-collapse: collapse; font-size: 13px; background-color: white; min-width: 600px; /* Forces scroll on mobile */ }
     .modern-table thead tr { background-color: var(--primary-color); color: #ffffff; text-align: left; }
     .modern-table th, .modern-table td { padding: 12px 15px; border-bottom: 1px solid var(--border-color); vertical-align: top;}
     .modern-table tbody tr:hover { background-color: #eaf6f6; }
@@ -232,8 +294,7 @@ title: Publications
         <span><span class="legend-badge">X + Y</span> &nbsp; <b>X</b> = First or Corresponding Author; &nbsp; <b>Y</b> = Co-author</span>
     </div>
 
-
-<h3>Submitted / Under Review</h3>
+    <h3>Submitted / Under Review</h3>
 
     <!-- SUBMITTED LIST (Unordered, No Numbers) -->
     <ul class="pub-list">
@@ -280,9 +341,9 @@ title: Publications
     <h3>Published</h3>
 
     <!-- PUBLISHED LIST -->
-    <ol class="pub-list" reversed>
+    <ol class="pub-list" reversed start="44">
 
-        <!--044-->
+        <!--044: Has Graphical Abstract-->
         <li class="pub-item">
             <div class="pub-content">
                 <div class="pub-authors">H.L. Wu; <b>A. Xu</b><sup>*</sup>; H.D. Xi</div>
@@ -294,9 +355,11 @@ title: Publications
                         <a href="https://arxiv.org/abs/2509.17109" target="_blank" class="pub-text-link">arXiv:2509.17109</a>
                     </div>
                 </div>
+                <!-- Graphical Abstract -->
                 <div class="pub-graphic-abstract">
                     <img src="./images/abstract/044_super_resolution.jpg" alt="Graphical Abstract">
                 </div>
+                <!-- Actions -->
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/044_JFM_Super.pdf">PDF</a></div>
             </div>
         </li>
@@ -314,12 +377,11 @@ title: Publications
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/alldb/full-record/WOS:001585518400001" target="_blank">WOS:001585518400001</a> | Published: Feb 2026</span>
                 </div>
-                
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/043_IJHMT2026_Interpolation.pdf">PDF</a></div>
             </div>
         </li>
         
-        <!--042-->
+        <!--042: Has Graphical Abstract-->
         <li class="pub-item">
             <div class="pub-content">
                 <div class="pub-authors"><b>A. Xu</b>; R.Q. Li; H.D. Xi<sup>*</sup></div>
@@ -332,9 +394,11 @@ title: Publications
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/alldb/full-record/WOS:001437839900001" target="_blank">WOS:001437839900001</a> | Published: MAR 6 2025</span>
                 </div>
+                <!-- Graphical Abstract -->
                 <div class="pub-graphic-abstract">
                     <img src="./images/abstract/042_temporal_modulation.jpg" alt="Graphical Abstract">
                 </div>
+                <!-- Actions -->
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/042_JFM2025_Temporal.pdf">PDF</a></div>
             </div>
         </li>
@@ -351,6 +415,10 @@ title: Publications
                         <a href="https://arxiv.org/abs/2407.12631" target="_blank" class="pub-text-link">arXiv:2407.12631</a>
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/alldb/full-record/WOS:001350900200001" target="_blank">WOS:001350900200001</a> | Published: NOV 8 2024</span>
+                </div>
+                <!-- Graphical Abstract -->
+                <div class="pub-graphic-abstract">
+                    <img src="./images/abstract/041_particle_transport.jpg" alt="Graphical Abstract">
                 </div>
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/041_JFM2024_Transport.pdf">PDF</a></div>
             </div>
@@ -402,6 +470,10 @@ title: Publications
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/alldb/full-record/WOS:001169827600001" target="_blank">WOS:001169827600001</a> | Published: SEP 18 2023</span>
                 </div>
+                <!-- Graphical Abstract -->
+                <div class="pub-graphic-abstract">
+                    <img src="./images/abstract/038_pore_scale.jpg" alt="Graphical Abstract">
+                </div>
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/038_PRF2023_Pore.pdf">PDF</a></div>
             </div>
         </li>
@@ -438,6 +510,10 @@ title: Publications
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/alldb/full-record/WOS:000960860300001" target="_blank">WOS:000960860300001</a> | Published: MAR 29 2023</span>
                 </div>
+                <!-- Graphical Abstract -->
+                <div class="pub-graphic-abstract">
+                    <img src="./images/abstract/036_wall_sheared.jpg" alt="Graphical Abstract">
+                </div>
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/036_JFM2023_Wall.pdf">PDF</a></div>
             </div>
         </li>
@@ -454,6 +530,10 @@ title: Publications
                         <a href="https://arxiv.org/abs/2301.04810" target="_blank" class="pub-text-link">arXiv:2301.04810</a>
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/alldb/full-record/WOS:000933217000001" target="_blank">WOS:000933217000001</a> | Published: FEB 7 2023</span>
+                </div>
+                <!-- Graphical Abstract -->
+                <div class="pub-graphic-abstract">
+                    <img src="./images/abstract/035_long_distance.jpg" alt="Graphical Abstract">
                 </div>
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/035_PRF2023_Long.pdf">PDF</a></div>
             </div>
@@ -570,6 +650,10 @@ title: Publications
                         <a href="https://arxiv.org/abs/2010.00188" target="_blank" class="pub-text-link">arXiv:2010.00188</a>
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/woscc/full-record/WOS:000607826700001" target="_blank">WOS:000607826700001</a> | Published: JAN 15 2021</span>
+                </div>
+                <!-- Graphical Abstract -->
+                <div class="pub-graphic-abstract">
+                    <img src="./images/abstract/028_tristable_flow.jpg" alt="Graphical Abstract">
                 </div>
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/028_JFM2021_Tristable.pdf">PDF</a></div>
             </div>
