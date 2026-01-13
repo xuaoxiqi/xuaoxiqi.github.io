@@ -73,11 +73,14 @@ title: Publications
     }
 
     /* --- Publication List Styling --- */
+    
+    /* Shared Container Styles */
     .pub-list {
-        list-style: none; padding: 0;
-        counter-reset: pub-counter 48; /* Start at 47 + 1 */
+        padding: 0;
+        margin-bottom: 40px;
     }
 
+    /* Individual Paper Card */
     .pub-item {
         background: white;
         border: 1px solid var(--border-color);
@@ -95,20 +98,38 @@ title: Publications
         border-color: var(--accent-color);
     }
 
-    /* Numbering */
-    .pub-item::before {
+    /* --- Published List (Numbered) --- */
+    ol.pub-list {
+        list-style: none;
+        counter-reset: pub-counter 45; /* Start at 44 (45 - 1) */
+    }
+
+    ol.pub-list .pub-item::before {
         counter-increment: pub-counter -1;
         content: counter(pub-counter);
         flex-shrink: 0; width: 45px; text-align: center;
         font-size: 22px; font-weight: 800; color: #cbd5e1;
         font-family: 'Segoe UI', sans-serif;
     }
-    /* Highlight recent numbers */
-    .pub-item.recent::before { color: var(--highlight-color); }
+    
+    /* Highlight recent numbers in numbered list */
+    ol.pub-list .pub-item.recent::before { color: var(--highlight-color); }
 
+    /* --- Submitted List (Unnumbered) --- */
+    ul.pub-list {
+        list-style: none;
+    }
+
+    ul.pub-list .pub-item::before {
+        content: '•'; /* Simple bullet for submitted items */
+        flex-shrink: 0; width: 45px; text-align: center;
+        font-size: 22px; font-weight: 800; color: #cbd5e1;
+        line-height: 1.2;
+    }
+
+    /* --- Content Typography --- */
     .pub-content { flex-grow: 1; }
 
-    /* Content Typography */
     .pub-authors { font-size: 15px; color: var(--text-dark); margin-bottom: 5px; line-height: 1.4; }
     .pub-title { font-size: 16px; font-weight: bold; color: var(--primary-color); line-height: 1.4; margin-bottom: 6px; }
     
@@ -139,6 +160,25 @@ title: Publications
     }
     .pub-highlights a { color: #2d3748; font-weight: bold; text-decoration: underline; }
     .pub-highlights a:hover { color: var(--highlight-color); }
+
+    /* --- Graphical Abstract --- */
+    .pub-graphic-abstract {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #f0f0f0;
+        border-radius: 4px;
+        background-color: #fcfcfc;
+        display: inline-block;
+    }
+    .pub-graphic-abstract img {
+        max-width: 100%;
+        height: auto;
+        max-height: 150px; /* Adjust height limit as needed */
+        display: block;
+        border-radius: 2px;
+        object-fit: contain;
+    }
 
     /* Action Buttons */
     .pub-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; margin-top: 10px; }
@@ -192,10 +232,13 @@ title: Publications
         <span><span class="legend-badge">X + Y</span> &nbsp; <b>X</b> = First or Corresponding Author; &nbsp; <b>Y</b> = Co-author</span>
     </div>
 
-    <!-- Publication List -->
-    <ol class="pub-list" reversed start="47">
 
-        <!--047-->
+<h3>Submitted / Under Review</h3>
+
+    <!-- SUBMITTED LIST (Unordered, No Numbers) -->
+    <ul class="pub-list">
+        
+        <!-- submitted 1 -->
         <li class="pub-item recent">
             <div class="pub-content">
                 <div class="pub-authors"><b>A. Xu</b>; H.L. Wu; B.R. Xu; H.D. Xi<sup>*</sup></div>
@@ -205,7 +248,7 @@ title: Publications
             </div>
         </li>
         
-        <!--046-->
+        <!-- submitted 2 -->
         <li class="pub-item recent">
             <div class="pub-content">
                 <div class="pub-authors">L.S. Jiang; <b>A. Xu</b><sup>*</sup>; H.D. Xi</div>
@@ -215,7 +258,7 @@ title: Publications
             </div>
         </li>
         
-        <!--045-->
+        <!-- submitted 3 -->
         <li class="pub-item recent">
             <div class="pub-content">
                 <div class="pub-authors">B.R. Xu; <b>A. Xu</b><sup>*</sup>; H.D. Xi</div>
@@ -232,6 +275,12 @@ title: Publications
                 </div>
             </div>
         </li>
+    </ul>
+    
+    <h3>Published</h3>
+
+    <!-- PUBLISHED LIST -->
+    <ol class="pub-list" reversed>
 
         <!--044-->
         <li class="pub-item">
@@ -244,6 +293,9 @@ title: Publications
                         <a href="https://doi.org/10.1017/jfm.2025.11033" target="_blank" class="pub-text-link">DOI: 10.1017/jfm.2025.11033</a>
                         <a href="https://arxiv.org/abs/2509.17109" target="_blank" class="pub-text-link">arXiv:2509.17109</a>
                     </div>
+                </div>
+                <div class="pub-graphic-abstract">
+                    <img src="./images/abstract/044_super_resolution.jpg" alt="Graphical Abstract">
                 </div>
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/044_JFM_Super.pdf">PDF</a></div>
             </div>
@@ -262,6 +314,7 @@ title: Publications
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/alldb/full-record/WOS:001585518400001" target="_blank">WOS:001585518400001</a> | Published: Feb 2026</span>
                 </div>
+                
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/043_IJHMT2026_Interpolation.pdf">PDF</a></div>
             </div>
         </li>
@@ -278,6 +331,9 @@ title: Publications
                         <a href="https://arxiv.org/abs/2412.05550" target="_blank" class="pub-text-link">arXiv:2412.05550</a>
                     </div>
                     <span class="pub-meta-info">Accession Number: <a href="https://www.webofscience.com/wos/alldb/full-record/WOS:001437839900001" target="_blank">WOS:001437839900001</a> | Published: MAR 6 2025</span>
+                </div>
+                <div class="pub-graphic-abstract">
+                    <img src="./images/abstract/042_temporal_modulation.jpg" alt="Graphical Abstract">
                 </div>
                 <div class="pub-actions"><a class="btn-pdf" href="./publications/042_JFM2025_Temporal.pdf">PDF</a></div>
             </div>
