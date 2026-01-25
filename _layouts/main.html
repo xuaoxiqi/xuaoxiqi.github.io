@@ -31,7 +31,11 @@
 
 </head>
 
-<body>
+{% assign page_class = page.title | downcase | replace: ' ', '-' %}
+{% if page.title == 'Homepage' %}
+    {% assign page_class = 'home' %}
+{% endif %}
+<body class="page-{{ page_class }}">
     
     <!-- TOP NAVIGATION -->
     <nav id="navBarTop">

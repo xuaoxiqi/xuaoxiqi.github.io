@@ -591,14 +591,16 @@ nav#navBarBottom {
 #divTitleNav img:hover { opacity: 1.0; }
 
 /* === Page: Home (index.html) === */
-.page-home {
+.page-home .home-container,
+.home-container.page-home {
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
 }
 
 @media (min-width: 900px) {
-	.page-home {
+	.page-home .home-container,
+	.home-container.page-home {
 		display: grid;
 		grid-template-columns: 300px 1fr;
 		align-items: start;
