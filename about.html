@@ -1,202 +1,16 @@
----
+﻿---
 layout: main
 description: About Ao Xu and this site.
 title: About
 ---
 
-<style>
-    /* --- Modern Color Palette & Variables --- */
-    :root {
-        --primary-color: #1d4e5f;  /* Deep Slate Teal */
-        --accent-color: #2a9d8f;   /* Refreshing Cyan/Green */
-        --highlight-color: #e76f51;/* Warm Burnt Sienna for links */
-        --bg-light-gray: #f8fafc;
-        --text-dark: #2c3e50;
-        --text-light: #5f6c7b;
-        --border-color: #e2e8f0;
-    }
-
-    /* --- General Layout --- */
-    #articlePost {
-        color: var(--text-dark);
-        font-family: 'Droid Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.8;
-    }
-
-    h2 {
-        font-family: 'Droid Sans', sans-serif;
-        color: var(--primary-color);
-        border-bottom: 3px solid var(--primary-color);
-        padding-bottom: 8px;
-        margin-top: 40px;
-        margin-bottom: 25px;
-        font-size: 26px;
-        letter-spacing: -0.5px;
-    }
-
-    /* --- Key Stats Dashboard --- */
-    .bio-stats {
-        display: flex;
-        justify-content: space-around;
-        background: white;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    .stat-box {
-        text-align: center;
-        min-width: 100px;
-    }
-    
-    .stat-number {
-        display: block;
-        font-size: 28px;
-        font-weight: 800;
-        color: var(--primary-color);
-    }
-    
-    .stat-label {
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--text-light);
-        font-weight: 600;
-    }
-
-    /* --- Bio Text Styling --- */
-    .bio-text {
-        text-align: justify;
-        font-size: 15px;
-        margin-bottom: 25px;
-        font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-    }
-    
-    .bio-text strong {
-        color: var(--primary-color);
-    }
-
-    /* Highlight Box for Editorial Role */
-    .role-highlight {
-        background-color: #e0f2f1; /* Light Teal background */
-        border-left: 5px solid var(--accent-color);
-        padding: 15px 20px;
-        margin: 20px 0;
-        border-radius: 4px;
-        font-weight: 600;
-        color: #00695c;
-        display: flex;
-        align-items: center;
-    }
-    .role-icon { font-size: 20px; margin-right: 15px; }
-
-    /* --- Chinese Bio Styling --- */
-    .cn-bio-section {
-        background-color: #fff;
-        padding: 25px;
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-        margin-top: 30px;
-    }
-    
-    /* Using your preferred FangSong font stack */
-    .cn-text {
-        text-align: justify;
-        font-family: FangSong, "FangSong_GB2312", "SimSun", serif; 
-        font-size: 16px;
-        line-height: 1.8;
-        color: #000;
-        margin: 0;
-    }
-
-    /* --- Contact Cards --- */
-    .contact-grid {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-    
-    .contact-card {
-        flex: 1;
-        min-width: 250px;
-        background: white;
-        border: 1px solid var(--border-color);
-        padding: 20px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .contact-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        border-color: var(--primary-color);
-    }
-    
-    .contact-icon {
-        background-color: var(--bg-light-gray);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        font-size: 18px;
-    }
-    
-    .contact-info b {
-        color: var(--primary-color);
-        font-size: 16px;
-    }
-    .contact-label {
-        font-size: 11px;
-        text-transform: uppercase;
-        color: var(--text-light);
-        display: block;
-        margin-bottom: 2px;
-    }
-
-    /* --- Licensing Footer --- */
-    .licensing-box {
-        text-align: center;
-        font-size: 13px;
-        color: #666;
-        padding: 20px;
-        background: #f9f9f9;
-        border-radius: 8px;
-        margin-top: 40px;
-    }
-    
-    .licensing-box a {
-        color: var(--primary-color);
-        text-decoration: none;
-    }
-    .licensing-box img {
-        margin-top: 10px;
-        opacity: 0.8;
-        transition: opacity 0.2s;
-    }
-    .licensing-box img:hover { opacity: 1.0; }
-
-    /* Navigation Icon */
-    #divTitleNav img { opacity: 0.7; transition: opacity 0.2s; }
-    #divTitleNav img:hover { opacity: 1.0; }
-</style>
-
 <div id="divTitleNav">
-    <a href="./index.html"><img src="./images/left-arrow.png" class="navDock" style="height: 24px; width: auto;" alt="Back"/></a>
+    <a href="./index.html"><img src="./images/left-arrow.png" class="navDock nav-back-icon" alt="Back"/></a>
 </div>
 
 <div id="divPost">
 
-    <article id="articlePost">
+    <article id="articlePost" class="page-about">
     
     <!-- English Biography -->
     <h2>About Ao</h2>
@@ -286,7 +100,7 @@ title: About
         <p>Copyright © 2013-2026 <a href="mailto:xuaoxiqi@gmail.com">Ao Xu</a></p>
         <p style="margin-top:10px;">
             Unless otherwise stated, all contents on this site are released under a <br>
-            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><b>Creative Commons Attribution 4.0 International License</b></a>.
+            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer"><b>Creative Commons Attribution 4.0 International License</b></a>.
         </p>
         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
             <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" height="28" alt="Creative Commons License" />

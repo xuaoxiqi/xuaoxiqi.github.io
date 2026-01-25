@@ -4,95 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balanced Disk Topology</title>
-    <style>
-        :root {
-            --bg-color: #f4f7f9;
-            --node-bg: #ffffff;
-            --border-color: #e0e0e0;
-            --master-color: #4CAF50;
-            --client-color: #2196F3;
-            --summary-bg: #e8eaf6;
-            --summary-border: #3f51b5;
-            --text-color: #333;
-            --size-color: #c62828; /* Strong red for size */
-            --percent-color: #546e7a; /* Muted, professional grey */
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-        h1, h2 { text-align: center; color: #1a237e; }
-        h2 { font-size: 1.1em; font-weight: normal; margin-top: -15px; margin-bottom: 30px; }
-
-        #summary-card {
-            background-color: var(--summary-bg);
-            border-left: 6px solid var(--summary-border);
-            border-radius: 8px;
-            padding: 20px 25px;
-            margin: 0 auto 40px auto;
-            max-width: 500px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-        #total-size-display { font-size: 1.8em; font-weight: 600; color: var(--summary-border); }
-        #summary-card p { margin: 5px 0 0 0; color: #333; }
-
-        .visualization-container { display: flex; justify-content: space-around; align-items: flex-start; }
-        .node-column { display: flex; flex-direction: column; gap: 20px; flex: 1; padding: 0 15px; }
-        .master-column { flex: 1.2; }
-        .node { border: 1px solid var(--border-color); border-radius: 12px; background-color: var(--node-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .node-title { margin: 0; padding: 15px 20px; font-size: 1.5em; display: flex; align-items: center; border-bottom: 1px solid #eee; }
-        .node-title svg { margin-right: 10px; }
-        .master-node { border-left: 5px solid var(--master-color); }
-        .client-node { border-left: 5px solid var(--client-color); }
-        .node-content { padding: 5px 20px 20px 20px; }
-
-        .collapsible-title {
-            cursor: pointer; user-select: none; font-size: 1.1em;
-            margin-top: 20px; padding: 5px 0; border-bottom: 1px dashed #ccc;
-        }
-        .collapsible-title::after {
-            content: ' ▼'; font-size: 0.8em; transition: transform 0.3s ease; display: inline-block;
-        }
-        .collapsible-title.collapsed::after { transform: rotate(-90deg); }
-        .nfs-section {
-            max-height: 2000px; overflow: hidden;
-            transition: max-height 0.5s ease-in-out, margin-top 0.5s ease-in-out;
-            margin-top: 15px;
-        }
-        .nfs-section.collapsed { max-height: 0; margin-top: 0; }
-        
-        .drive { position: relative; margin-bottom: 12px; padding: 10px; border-radius: 8px; }
-        .drive-info { width: 100%; }
-        .drive-label {
-            display: flex; align-items: baseline;
-            font-weight: bold; margin-bottom: 8px; font-size: 1em;
-        }
-        .drive-mount { flex-grow: 1; color: #0056b3; }
-        .drive-size {
-            color: var(--size-color); font-weight: 700;
-            font-size: 1.1em; margin: 0 10px; flex-shrink: 0;
-        }
-        .drive-percent {
-            font-size: 0.9em; font-weight: 500;
-            color: var(--percent-color); flex-shrink: 0;
-        }
-        .usage-bar-container {
-            width: 100%; height: 12px; background-color: #e9ecef;
-            border-radius: 6px; overflow: hidden;
-        }
-        .usage-bar { height: 100%; border-radius: 6px; }
-        .usage-bar.green { background: linear-gradient(90deg, #81c784, #4caf50); }
-        .usage-bar.yellow { background: linear-gradient(90deg, #fff176, #fdd835); }
-        .usage-bar.red { background: linear-gradient(90deg, #e57373, #f44336); }
-        .local { background-color: #f8f9fa; }
-        .nfs { background-color: #e3f2fd; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" media="all" />
 </head>
-<body>
+<body class="page-facilities-disk">
 
     <h1>Disk Topology Overview</h1>
     <h2>Click on an "NFS Mounts" heading to expand or collapse.</h2>

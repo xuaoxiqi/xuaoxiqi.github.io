@@ -1,368 +1,16 @@
----
+﻿---
 layout: main
 description: Research interests.
 title: Research
 ---
 
-<style>
-    /* --- Global Variables --- */
-    :root {
-        --primary-color: #1d4e5f;  /* Deep Slate Teal */
-        --accent-color: #2a9d8f;   /* Refreshing Cyan/Green */
-        --highlight-color: #e76f51;/* Warm Burnt Sienna */
-        --bg-light-gray: #f8fafc;
-        --text-dark: #2c3e50;
-        --text-light: #5f6c7b;
-        --border-color: #e2e8f0;
-    }
-
-    /* --- General Layout --- */
-    #articlePost {
-        color: var(--text-dark);
-        font-family: 'Droid Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-    }
-
-    h2 {
-        font-family: 'Droid Sans', sans-serif;
-        color: var(--primary-color);
-        border-bottom: 3px solid var(--primary-color);
-        padding-bottom: 8px;
-        margin-top: 50px;
-        margin-bottom: 25px;
-        font-size: 26px;
-        letter-spacing: -0.5px;
-    }
-
-    h3 {
-        font-size: 20px;
-        color: var(--primary-color);
-        margin-top: 30px;
-        margin-bottom: 15px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-    }
-    h3::before {
-        content: ''; display: inline-block; width: 6px; height: 20px;
-        background: var(--accent-color); margin-right: 10px; border-radius: 3px;
-    }
-
-    /* --- Research Interest Section --- */
-    .interest-block {
-        background: white;
-        padding: 25px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        margin-bottom: 30px;
-        border: 1px solid var(--border-color);
-    }
-    .interest-text { text-align: justify; margin-bottom: 20px; }
-    
-    .interest-img-container {
-        text-align: center;
-        margin: 20px auto;
-        padding: 10px;
-        /* Restrict width to avoid images being too large */
-        max-width: 65%; 
-    }
-    
-    /* Mobile responsiveness for images */
-    @media (max-width: 768px) {
-        .interest-img-container { max-width: 100%; }
-    }
-
-    .interest-img-container img {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        border: 1px solid #eee;
-    }
-    
-    /* --- Service Section: Editor Highlights --- */
-    .editor-list {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .editor-card {
-        background-color: #fff;
-        border: 1px solid var(--border-color);
-        border-left: 5px solid var(--primary-color);
-        border-radius: 6px;
-        padding: 20px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        transition: transform 0.2s;
-    }
-    .editor-card:hover { transform: translateX(5px); }
-
-    .editor-role {
-        font-size: 18px;
-        font-weight: 800;
-        color: var(--primary-color);
-        margin-bottom: 5px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .editor-journal {
-        font-size: 15px;
-        font-weight: 600;
-        color: #333;
-    }
-    
-    .editor-publisher { color: #666; font-style: italic; }
-    
-    .editor-years {
-        float: right;
-        font-size: 12px;
-        background: var(--bg-light-gray);
-        padding: 2px 8px;
-        border-radius: 12px;
-        border: 1px solid #ddd;
-        color: #555;
-        font-weight: bold;
-    }
-
-    /* Reviewer Grid */
-    .reviewer-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
-    }
-    .publisher-card {
-        background: white;
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        padding: 15px;
-        transition: transform 0.2s;
-    }
-    .publisher-card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-    
-    .publisher-name {
-        font-weight: bold;
-        color: var(--primary-color);
-        border-bottom: 1px solid #eee;
-        padding-bottom: 5px;
-        margin-bottom: 10px;
-        display: block;
-    }
-    
-    .journal-tags-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-    }
-
-    .journal-tag {
-        display: inline-block;
-        font-size: 11px;
-        background-color: var(--bg-light-gray);
-        color: #444;
-        padding: 4px 8px;
-        border-radius: 4px;
-        text-decoration: none;
-        transition: background 0.2s;
-        border: 1px solid #e0e0e0;
-    }
-    .journal-tag:hover {
-        background-color: var(--accent-color);
-        color: white;
-        border-color: var(--accent-color);
-    }
-
-    /* --- Projects Section Styles --- */
-    .project-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .project-card {
-        background-color: #ffffff;
-        border: 1px solid var(--border-color);
-        border-left: 5px solid var(--accent-color); 
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        margin-bottom: 15px;
-        padding: 15px 20px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-    }
-    
-    .project-card.inactive {
-        border-left-color: #94a3b8; 
-        opacity: 0.9;
-    }
-
-    .project-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .project-header {
-        font-size: 14px;
-        margin-bottom: 8px;
-        color: #555;
-        font-family: monospace;
-    }
-    
-    .project-title {
-        color: var(--primary-color);
-        font-weight: bold;
-        font-size: 15px;
-    }
-
-    .status-badge {
-        font-size: 10px;
-        text-transform: uppercase;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-weight: bold;
-        float: right;
-    }
-    .badge-active { background: #d1fae5; color: #065f46; }
-    .badge-inactive { background: #f1f5f9; color: #475569; }
-
-    /* Button Styling */
-    .project-details-toggle {
-        cursor: pointer;
-        display: inline-block;
-        margin-top: 8px;
-        padding: 4px 10px;
-        background-color: var(--bg-light-gray);
-        color: var(--primary-color);
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: 600;
-        transition: all 0.2s;
-        user-select: none;
-    }
-    
-    .project-details-toggle::before {
-        content: '▶';
-        display: inline-block;
-        font-size: 10px;
-        margin-right: 6px;
-        transition: transform 0.2s ease;
-    }
-
-    .project-details-toggle.expanded::before { transform: rotate(90deg); }
-    .project-details-toggle:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); }
-
-    .detail-content {
-        display: none;
-        margin-top: 12px;
-        padding: 12px;
-        background-color: #f8fafc;
-        border-radius: 4px;
-        border: 1px dashed #cbd5e1;
-        font-size: 13px;
-        color: #475569;
-        line-height: 1.5;
-    }
-
-    /* --- Conference Timeline (Numbered) --- */
-    .conf-list {
-        list-style: none;
-        padding: 0;
-        /* Start counting from 35 (34 items + 1) */
-        counter-reset: conf-counter 35; 
-    }
-    
-    .conf-item {
-        position: relative;
-        padding-left: 45px;
-        margin-bottom: 25px;
-    }
-    
-    /* Number Badge - UNIFORM COLOR for all items */
-    .conf-item::before {
-        counter-increment: conf-counter -1;
-        content: counter(conf-counter);
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 30px;
-        text-align: right;
-        font-weight: 800;
-        color: #cbd5e1; /* Uniform Light Slate color for all numbers */
-        font-size: 18px;
-        font-family: 'Segoe UI', sans-serif;
-    }
-    
-    /* Hover effect for numbers */
-    .conf-item:hover::before {
-        color: var(--accent-color);
-    }
-    
-    .conf-date {
-        font-size: 12px;
-        font-weight: bold;
-        color: var(--text-light);
-        margin-bottom: 4px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        border-bottom: 1px solid #eee;
-        display: inline-block;
-        padding-bottom: 2px;
-    }
-    
-    .conf-title {
-        font-weight: bold;
-        color: var(--primary-color);
-        font-size: 15px;
-        margin-bottom: 4px;
-        line-height: 1.4;
-    }
-    
-    .conf-venue { 
-        font-size: 14px; 
-        color: #333; 
-        background-color: #f9f9f9;
-        display: block; 
-        padding: 8px 12px;
-        border-radius: 4px;
-        margin-top: 6px;
-        border-left: 3px solid var(--accent-color);
-    }
-    
-    .badge-conf {
-        font-size: 11px;
-        padding: 1px 6px;
-        border-radius: 3px;
-        margin-left: 8px;
-        vertical-align: middle;
-        text-transform: uppercase;
-        font-weight: bold;
-        display: inline-block;
-    }
-    .badge-invite { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
-    .badge-keynote { background-color: #ffe0b2; color: #e65100; border: 1px solid #ffcc80; }
-    .badge-oral { background-color: #e2e8f0; color: #475569; border: 1px solid #cbd5e1; }
-    
-    .conf-link {
-        font-size: 11px;
-        color: var(--primary-color);
-        text-decoration: underline;
-        margin-left: 5px;
-    }
-
-    /* Navigation Icon */
-    #divTitleNav img { opacity: 0.7; transition: opacity 0.2s; }
-    #divTitleNav img:hover { opacity: 1.0; }
-</style>
-
 <div id="divTitleNav">
-    <a href="./index.html"><img src="./images/left-arrow.png" class="navDock" style="height: 24px; width: auto;" alt="Back"/></a>
+    <a href="./index.html"><img src="./images/left-arrow.png" class="navDock nav-back-icon" alt="Back"/></a>
 </div>
     
 <div id="divPost">
 
-    <article id="articlePost">
+    <article id="articlePost" class="page-research">
     
     <!-- === Research Interests === -->
     <h2>Research Interests</h2>
@@ -417,7 +65,7 @@ title: Research
                 <span class="editor-years">2021 - Present</span>
             </div>
             <div class="editor-journal">
-                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer/editorial-board" target="_blank" style="text-decoration:none; color:inherit;">
+                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer/editorial-board" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
                     International Journal of Heat and Mass Transfer
                 </a>
             </div>
@@ -431,7 +79,7 @@ title: Research
                 <span class="editor-years">2019 - 2021</span>
             </div>
             <div class="editor-journal">
-                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer/editorial-board" target="_blank" style="text-decoration:none; color:inherit;">
+                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer/editorial-board" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
                     International Journal of Heat and Mass Transfer
                 </a>
             </div>
@@ -445,7 +93,7 @@ title: Research
                 <span class="editor-years">2017 - 2018</span>
             </div>
             <div class="editor-journal">
-                <a href="https://www.journals.elsevier.com/applied-thermal-engineering/editorial-board" target="_blank" style="text-decoration:none; color:inherit;">
+                <a href="https://www.journals.elsevier.com/applied-thermal-engineering/editorial-board" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
                     Applied Thermal Engineering
                 </a>
             </div>
@@ -458,78 +106,78 @@ title: Research
         <div class="publisher-card">
             <span class="publisher-name">Elsevier</span>
             <div class="journal-tags-container">
-                <a href="https://www.sciencedirect.com/journal/annals-of-nuclear-energy" target="_blank" class="journal-tag">Ann. Nucl. Energy</a>
-                <a href="https://www.journals.elsevier.com/applied-energy" target="_blank" class="journal-tag">Appl. Energy</a>
-                <a href="https://www.journals.elsevier.com/applied-surface-science" target="_blank" class="journal-tag">Appl. Surf. Sci.</a>
-                <a href="https://www.journals.elsevier.com/applied-thermal-engineering" target="_blank" class="journal-tag">Appl. Therm. Eng.</a>
-                <a href="https://www.journals.elsevier.com/computers-and-mathematics-with-applications/" target="_blank" class="journal-tag">Comput. Math. Appl.</a>
-                <a href="https://www.sciencedirect.com/journal/computer-physics-communications" target="_blank" class="journal-tag">Comput. Phys. Commun.</a>
-                <a href="https://www.journals.elsevier.com/chemical-engineering-journal" target="_blank" class="journal-tag">Chem. Eng. J.</a>
-                <a href="https://www.journals.elsevier.com/chemical-engineering-science" target="_blank" class="journal-tag">Chem. Eng. Sci.</a>
-                <a href="https://www.journals.elsevier.com/composites-communications" target="_blank" class="journal-tag">Compos. Commun.</a>
-                <a href="https://www.journals.elsevier.com/diamond-and-related-materials" target="_blank" class="journal-tag">Diamond Relat. Mater.</a>
-                <a href="https://www.journals.elsevier.com/energy-conversion-and-management" target="_blank" class="journal-tag">Energy Conv. Manag.</a>
-                <a href="https://www.journals.elsevier.com/electrochimica-acta" target="_blank" class="journal-tag">Electrochim. Acta</a>
-                <a href="https://www.journals.elsevier.com/international-communications-in-heat-and-mass-transfer" target="_blank" class="journal-tag">Int. Comm. Heat Mass Transf.</a>
-                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer" target="_blank" class="journal-tag">Int. J. Heat Mass Transf.</a>
-                <a href="https://www.journals.elsevier.com/international-journal-of-multiphase-flow/" target="_blank" class="journal-tag">Int. J. Multiphase Flow</a>
-                <a href="https://www.sciencedirect.com/journal/international-journal-of-heat-and-fluid-flow/" target="_blank" class="journal-tag">Int. J. Heat Fluid Flow</a>
-                <a href="https://www.sciencedirect.com/journal/international-journal-of-thermofluids" target="_blank" class="journal-tag">Int. J. Thermofluids</a>
-                <a href="https://www.sciencedirect.com/journal/international-journal-of-advanced-nuclear-reactor-design-and-technology" target="_blank" class="journal-tag">Int. J. Adv. Nucl. React. Des. Tech.</a>
-                <a href="https://www.sciencedirect.com/journal/journal-of-computational-science" target="_blank" class="journal-tag">J. Comput. Sci.</a>
-                <a href="https://www.sciencedirect.com/journal/journal-of-energy-storage" target="_blank" class="journal-tag">J. Energy Storage</a>
-                <a href="https://www.journals.elsevier.com/journal-of-wind-engineering-and-industrial-aerodynamics" target="_blank" class="journal-tag">J. Wind Eng. Ind. Aerodyn.</a>
-                <a href="https://www.journals.elsevier.com/journal-of-power-sources" target="_blank" class="journal-tag">J. Power Sources</a>
-                <a href="https://www.sciencedirect.com/journal/materials-today-communications" target="_blank" class="journal-tag">Mater. Today Commun.</a>
-                <a href="https://www.journals.elsevier.com/mathematics-and-computers-in-simulation/" target="_blank" class="journal-tag">Math. Comput. Simul.</a>
-                <a href="https://www.journals.elsevier.com/journal-of-alloys-and-compounds" target="_blank" class="journal-tag">J. Alloys Compd.</a>
-                <a href="https://www.journals.elsevier.com/journal-of-petroleum-science-and-engineering" target="_blank" class="journal-tag">J. Pet. Sci. Eng.</a>
-                <a href="https://www.sciencedirect.com/journal/materials-today-nano" target="_blank" class="journal-tag">Mater. Today Nano</a>
+                <a href="https://www.sciencedirect.com/journal/annals-of-nuclear-energy" target="_blank" rel="noopener noreferrer" class="journal-tag">Ann. Nucl. Energy</a>
+                <a href="https://www.journals.elsevier.com/applied-energy" target="_blank" rel="noopener noreferrer" class="journal-tag">Appl. Energy</a>
+                <a href="https://www.journals.elsevier.com/applied-surface-science" target="_blank" rel="noopener noreferrer" class="journal-tag">Appl. Surf. Sci.</a>
+                <a href="https://www.journals.elsevier.com/applied-thermal-engineering" target="_blank" rel="noopener noreferrer" class="journal-tag">Appl. Therm. Eng.</a>
+                <a href="https://www.journals.elsevier.com/computers-and-mathematics-with-applications/" target="_blank" rel="noopener noreferrer" class="journal-tag">Comput. Math. Appl.</a>
+                <a href="https://www.sciencedirect.com/journal/computer-physics-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Comput. Phys. Commun.</a>
+                <a href="https://www.journals.elsevier.com/chemical-engineering-journal" target="_blank" rel="noopener noreferrer" class="journal-tag">Chem. Eng. J.</a>
+                <a href="https://www.journals.elsevier.com/chemical-engineering-science" target="_blank" rel="noopener noreferrer" class="journal-tag">Chem. Eng. Sci.</a>
+                <a href="https://www.journals.elsevier.com/composites-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Compos. Commun.</a>
+                <a href="https://www.journals.elsevier.com/diamond-and-related-materials" target="_blank" rel="noopener noreferrer" class="journal-tag">Diamond Relat. Mater.</a>
+                <a href="https://www.journals.elsevier.com/energy-conversion-and-management" target="_blank" rel="noopener noreferrer" class="journal-tag">Energy Conv. Manag.</a>
+                <a href="https://www.journals.elsevier.com/electrochimica-acta" target="_blank" rel="noopener noreferrer" class="journal-tag">Electrochim. Acta</a>
+                <a href="https://www.journals.elsevier.com/international-communications-in-heat-and-mass-transfer" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. Comm. Heat Mass Transf.</a>
+                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Heat Mass Transf.</a>
+                <a href="https://www.journals.elsevier.com/international-journal-of-multiphase-flow/" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Multiphase Flow</a>
+                <a href="https://www.sciencedirect.com/journal/international-journal-of-heat-and-fluid-flow/" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Heat Fluid Flow</a>
+                <a href="https://www.sciencedirect.com/journal/international-journal-of-thermofluids" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Thermofluids</a>
+                <a href="https://www.sciencedirect.com/journal/international-journal-of-advanced-nuclear-reactor-design-and-technology" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Adv. Nucl. React. Des. Tech.</a>
+                <a href="https://www.sciencedirect.com/journal/journal-of-computational-science" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Comput. Sci.</a>
+                <a href="https://www.sciencedirect.com/journal/journal-of-energy-storage" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Energy Storage</a>
+                <a href="https://www.journals.elsevier.com/journal-of-wind-engineering-and-industrial-aerodynamics" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Wind Eng. Ind. Aerodyn.</a>
+                <a href="https://www.journals.elsevier.com/journal-of-power-sources" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Power Sources</a>
+                <a href="https://www.sciencedirect.com/journal/materials-today-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Mater. Today Commun.</a>
+                <a href="https://www.journals.elsevier.com/mathematics-and-computers-in-simulation/" target="_blank" rel="noopener noreferrer" class="journal-tag">Math. Comput. Simul.</a>
+                <a href="https://www.journals.elsevier.com/journal-of-alloys-and-compounds" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Alloys Compd.</a>
+                <a href="https://www.journals.elsevier.com/journal-of-petroleum-science-and-engineering" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Pet. Sci. Eng.</a>
+                <a href="https://www.sciencedirect.com/journal/materials-today-nano" target="_blank" rel="noopener noreferrer" class="journal-tag">Mater. Today Nano</a>
             </div>
         </div>
         
         <div class="publisher-card">
             <span class="publisher-name">Cambridge / AIP / ASME</span>
             <div class="journal-tags-container">
-                <a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics" target="_blank" class="journal-tag">J. Fluid Mech.</a>
-                <a href="https://aip.scitation.org/journal/phf" target="_blank" class="journal-tag">Phys. Fluids</a>
-                <a href="http://heattransfer.asmedigitalcollection.asme.org/journal.aspx" target="_blank" class="journal-tag">J. Heat Transfer</a>
-                <a href="http://energyresources.asmedigitalcollection.asme.org/journal.aspx" target="_blank" class="journal-tag">J. Energy Res. Tech.</a>
+                <a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Fluid Mech.</a>
+                <a href="https://aip.scitation.org/journal/phf" target="_blank" rel="noopener noreferrer" class="journal-tag">Phys. Fluids</a>
+                <a href="http://heattransfer.asmedigitalcollection.asme.org/journal.aspx" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Heat Transfer</a>
+                <a href="http://energyresources.asmedigitalcollection.asme.org/journal.aspx" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Energy Res. Tech.</a>
             </div>
         </div>
         
         <div class="publisher-card">
             <span class="publisher-name">Springer / RSC / IOP</span>
             <div class="journal-tags-container">
-                <a href="https://pubs.rsc.org/en/journals/journal/ee" target="_blank" class="journal-tag">Energy Environ. Sci.</a>
-                <a href="https://pubs.rsc.org/en/journals/journal/ta" target="_blank" class="journal-tag">J. Mater. Chem. A</a>
-                <a href="https://pubs.rsc.org/en/journals/journal/cp" target="_blank" class="journal-tag">Phys. Chem. Chem. Phys.</a>
-                <a href="http://applmathmech.cqjtu.edu.cn/EN/volumn/current.shtml" target="_blank" class="journal-tag">Appl. Math. Mech.</a>
-                <a href="https://www.springer.com/journal/11831" target="_blank" class="journal-tag">Arch. Comput. Methods Eng.</a>
-                <a href="https://www.springer.com/journal/10973" target="_blank" class="journal-tag">J. Therm. Anal. Calorim.</a>
-                <a href="https://link.springer.com/journal/11242" target="_blank" class="journal-tag">Transp. Porous Med.</a>
-                <a href="https://iopscience.iop.org/journal/1945-7111" target="_blank" class="journal-tag">J. Electrochem. Soc.</a>
+                <a href="https://pubs.rsc.org/en/journals/journal/ee" target="_blank" rel="noopener noreferrer" class="journal-tag">Energy Environ. Sci.</a>
+                <a href="https://pubs.rsc.org/en/journals/journal/ta" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Mater. Chem. A</a>
+                <a href="https://pubs.rsc.org/en/journals/journal/cp" target="_blank" rel="noopener noreferrer" class="journal-tag">Phys. Chem. Chem. Phys.</a>
+                <a href="http://applmathmech.cqjtu.edu.cn/EN/volumn/current.shtml" target="_blank" rel="noopener noreferrer" class="journal-tag">Appl. Math. Mech.</a>
+                <a href="https://www.springer.com/journal/11831" target="_blank" rel="noopener noreferrer" class="journal-tag">Arch. Comput. Methods Eng.</a>
+                <a href="https://www.springer.com/journal/10973" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Therm. Anal. Calorim.</a>
+                <a href="https://link.springer.com/journal/11242" target="_blank" rel="noopener noreferrer" class="journal-tag">Transp. Porous Med.</a>
+                <a href="https://iopscience.iop.org/journal/1945-7111" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Electrochem. Soc.</a>
             </div>
         </div>
         
         <div class="publisher-card">
             <span class="publisher-name">AIAA / Begell / Taylor</span>
             <div class="journal-tags-container">
-                <a href="https://arc.aiaa.org/loi/jtht" target="_blank" class="journal-tag">J. Thermophys. Heat Transf.</a>
-                <a href="http://www.begellhouse.com/journals/porous-media.html" target="_blank" class="journal-tag">J. Porous Media</a>
-                <a href="https://www.tandfonline.com/toc/unht20/current" target="_blank" class="journal-tag">Num. Heat Transf. A</a>
+                <a href="https://arc.aiaa.org/loi/jtht" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Thermophys. Heat Transf.</a>
+                <a href="http://www.begellhouse.com/journals/porous-media.html" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Porous Media</a>
+                <a href="https://www.tandfonline.com/toc/unht20/current" target="_blank" rel="noopener noreferrer" class="journal-tag">Num. Heat Transf. A</a>
             </div>
         </div>
         
         <div class="publisher-card">
             <span class="publisher-name">Domestic (CN)</span>
             <div class="journal-tags-container">
-                <a href="http://www.kqdlxxb.com/" target="_blank" class="journal-tag">Acta Aerodyn. Sin.</a>
-                <a href="https://www.springer.com/engineering/mechanics/journal/10409" target="_blank" class="journal-tag">Acta Mech. Sin.</a>
-                <a href="https://iopscience.iop.org/journal/0256-307X" target="_blank" class="journal-tag">Chin. Phys. Lett.</a>
-                <a href="http://engine.scichina.com/publisher/scp/journal/CSB" target="_blank" class="journal-tag">Chin. Sci. Bull.</a>
-                <a href="https://link.springer.com/journal/11431" target="_blank" class="journal-tag">Sci. China Tech. Sci.</a>
-                <a href="http://www.jhydrodynamics.com/" target="_blank" class="journal-tag">J. Hydrodynamics</a>
+                <a href="http://www.kqdlxxb.com/" target="_blank" rel="noopener noreferrer" class="journal-tag">Acta Aerodyn. Sin.</a>
+                <a href="https://www.springer.com/engineering/mechanics/journal/10409" target="_blank" rel="noopener noreferrer" class="journal-tag">Acta Mech. Sin.</a>
+                <a href="https://iopscience.iop.org/journal/0256-307X" target="_blank" rel="noopener noreferrer" class="journal-tag">Chin. Phys. Lett.</a>
+                <a href="http://engine.scichina.com/publisher/scp/journal/CSB" target="_blank" rel="noopener noreferrer" class="journal-tag">Chin. Sci. Bull.</a>
+                <a href="https://link.springer.com/journal/11431" target="_blank" rel="noopener noreferrer" class="journal-tag">Sci. China Tech. Sci.</a>
+                <a href="http://www.jhydrodynamics.com/" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Hydrodynamics</a>
             </div>
         </div>
     </div>
@@ -725,27 +373,27 @@ title: Research
         <li class="conf-item">
             <div class="conf-date">2025.10.24 - 26 | Hangzhou</div>
             <div class="conf-title">热湍流中自驱动颗粒的主动推进</div>
-            <div class="conf-venue">第四届全国多相流青年学者研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-第四届全国多相流青年学者研讨会.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">第四届全国多相流青年学者研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-第四届全国多相流青年学者研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2025.09.01 - 02 | Beijing</div>
             <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
-            <div class="conf-venue">JFM/FLOW Symposium China 2025 (JFM/FLOW 2025中国专题研讨会) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-JFM-FLOW中国专题研讨会.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">JFM/FLOW Symposium China 2025 (JFM/FLOW 2025中国专题研讨会) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-JFM-FLOW中国专题研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2025.07.18 - 21 | Changsha</div>
             <div class="conf-title">热湍流结构与颗粒输运</div>
-            <div class="conf-venue">中国力学大会-2025 (流体力学分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2025-中国力学大会.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">中国力学大会-2025 (流体力学分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2025-中国力学大会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2025.07.20 | Changsha</div>
             <div class="conf-title">复杂流动与传热传质的格子玻尔兹曼模拟</div>
-            <div class="conf-venue">AMS创刊40周年座谈会暨力学学科前瞻研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-AMS创刊40周年座谈会暨力学学科前瞻研讨会.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">AMS创刊40周年座谈会暨力学学科前瞻研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-AMS创刊40周年座谈会暨力学学科前瞻研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2025.04.19 - 20 | Nanchang</div>
             <div class="conf-title">剪切热湍流中颗粒的输运与沉积</div>
-            <div class="conf-venue">2025年全国湍流与流动稳定性专题研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-全国湍流与流动稳定性专题研讨会.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">2025年全国湍流与流动稳定性专题研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-全国湍流与流动稳定性专题研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2025.02.26 | Xi'an</div>
@@ -755,7 +403,7 @@ title: Research
         <li class="conf-item">
             <div class="conf-date">2024.10.25 - 27 | Ningbo</div>
             <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
-            <div class="conf-venue">International Symposium on Multiphase Flows - 2024 (国际多相流学术研讨会) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2024-国际多相流学术研讨会.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">International Symposium on Multiphase Flows - 2024 (国际多相流学术研讨会) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2024-国际多相流学术研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2024.09.20 - 22 | Taiyuan</div>
@@ -775,7 +423,7 @@ title: Research
         <li class="conf-item">
             <div class="conf-date">2024.08.09 - 13 | Harbin</div>
             <div class="conf-title">热湍流中颗粒的主动推进</div>
-            <div class="conf-venue">第十三届全国流体力学学术会议 (湍流与稳定性分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2024-第十三届全国流体力学学术会议.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">第十三届全国流体力学学术会议 (湍流与稳定性分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2024-第十三届全国流体力学学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2024.08.05 | Lanzhou</div>
@@ -810,17 +458,17 @@ title: Research
         <li class="conf-item">
             <div class="conf-date">2023.04.19 | Hong Kong</div>
             <div class="conf-title">Energy-efficient propulsion of self-propelling particle in turbulent environments</div>
-            <div class="conf-venue">Bilateral Academic Conference between NPU and HKUST (西北工业大学与香港科技大学双边学术会议) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2023-西北工业大学与香港科技大学双边学术会议.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">Bilateral Academic Conference between NPU and HKUST (西北工业大学与香港科技大学双边学术会议) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2023-西北工业大学与香港科技大学双边学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2023.04.14 - 17 | Ningbo</div>
             <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>
-            <div class="conf-venue">2023年全国湍流与流动稳定性专题研讨会 <span class="badge-conf badge-keynote">Keynote</span> <a href="./pdf/主旨报告-2023-全国湍流与流动稳定性研讨会.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">2023年全国湍流与流动稳定性专题研讨会 <span class="badge-conf badge-keynote">Keynote</span> <a href="./pdf/主旨报告-2023-全国湍流与流动稳定性研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2022.11.18 - 21 | Xi'an (Hybrid)</div>
             <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>
-            <div class="conf-venue">第十二届全国流体力学学术会议 (湍流与稳定性分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2022-第十二届全国流体力学学术会议.pdf" target="_blank" class="conf-link">[PDF]</a></div>
+            <div class="conf-venue">第十二届全国流体力学学术会议 (湍流与稳定性分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2022-第十二届全国流体力学学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
         </li>
         <li class="conf-item">
             <div class="conf-date">2022.11.05 - 10 | Online</div>

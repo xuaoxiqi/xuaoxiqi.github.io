@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -18,184 +18,7 @@
     
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' />
 
-    <!-- GLOBAL THEME STYLES -->
-    <style>
-        /* --- 1. Variables --- */
-        :root {
-            --primary-color: #1d4e5f;
-            --accent-color: #2a9d8f;
-            --bg-light-gray: #f8fafc;
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --highlight-active: #ffffff; /* Pure white for active page */
-            --highlight-accent: #e76f51; /* Orange for active underline */
-        }
-
-        /* --- 2. Global Resets --- */
-        * { box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-light-gray) !important;
-            font-family: 'Droid Sans', 'Segoe UI', Tahoma, sans-serif;
-            color: var(--text-dark);
-            margin: 0;
-            padding-top: 80px; /* Increased slightly to accommodate potential wrapping */
-            padding-bottom: 60px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* --- 3. Navigation Bar (Top) --- */
-        nav#navBarTop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: auto;
-            min-height: 60px;
-            background-color: var(--primary-color) !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 20px;
-            font-size: 16px;
-            flex-wrap: wrap; /* Allow wrapping on small screens */
-        }
-
-        .navBarListLeft, .navBarListRight {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .navBarListLeft { flex-wrap: wrap; }
-
-        /* Links styling */
-        nav a {
-            color: var(--text-light) !important;
-            text-decoration: none;
-            transition: all 0.2s ease-in-out;
-            padding: 5px 10px;
-            border-radius: 4px;
-            display: inline-block;
-            opacity: 0.85; /* Slightly dim inactive links */
-        }
-
-        nav a:hover {
-            background-color: rgba(255,255,255,0.15) !important;
-            color: #ffffff !important;
-            opacity: 1;
-        }
-
-        /* --- NEW: Active Page Styling --- */
-        nav a.active-nav {
-            font-size: 18px !important;     /* Larger Font */
-            color: var(--highlight-active) !important; /* Brighter Color */
-            font-weight: 800 !important;    /* Bolder */
-            opacity: 1 !important;
-            background-color: rgba(255,255,255,0.1);
-            border-bottom: 2px solid var(--highlight-accent); /* Optional underline indicator */
-        }
-
-        /* Navigation Images/Icons */
-        .navDock {
-            vertical-align: middle;
-            transition: transform 0.2s;
-        }
-        .navDock:hover { transform: scale(1.1); }
-
-        .social-text { color: var(--text-light); font-size: 14px; margin-right: 5px; white-space: nowrap; }
-
-        /* --- 4. Navigation Bar (Bottom / Footer) --- */
-        nav#navBarBottom {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background-color: var(--primary-color) !important;
-            color: #bdc3c7;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            font-size: 12px;
-            z-index: 1000;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* --- 5. Content Layout --- */
-        #divPost, #articlePost, .main-container {
-            max-width: 1100px;
-            width: 92%;
-            margin: 20px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-
-        #divLeft, #divMiddle, #divRight {
-            float: left;
-            margin-right: 2%;
-        }
-
-        /* --- 6. Media Queries (Mobile Optimization) --- */
-        @media (max-width: 950px) {
-            /* On medium screens/tablets/mobile, stack the nav bars */
-            nav#navBarTop { 
-                justify-content: center; 
-                padding: 10px;
-                flex-direction: column; /* Stack Left (Links) on top of Right (Social) */
-                gap: 10px;
-            }
-            
-            .navBarListLeft { 
-                justify-content: center; 
-                gap: 8px; 
-            }
-            
-            /* Ensure "Ao on" is visible but centered */
-            .navBarListRight { 
-                justify-content: center;
-                display: flex !important; /* Force display */
-            }
-            
-            nav a { padding: 5px 8px; font-size: 15px; }
-            nav a.active-nav { font-size: 16px !important; } /* Slightly smaller active font on mobile */
-        }
-
-        @media (max-width: 768px) {
-            #divLeft, #divMiddle, #divRight {
-                float: none;
-                width: 100% !important;
-                margin: 0 auto 20px auto;
-                position: static !important;
-            }
-
-            #divPost, #articlePost {
-                width: 96%;
-                padding: 15px;
-                margin: 10px auto;
-            }
-
-            nav#navBarBottom {
-                flex-direction: column;
-                height: auto;
-                padding: 5px;
-                text-align: center;
-                gap: 2px;
-            }
-            .navBarListLeft, .navBarListRight {
-                justify-content: center;
-                width: 100%;
-            }
-        }
-    </style>
+    <!-- Global theme styles live in css/main.css -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130136738-1"></script>
@@ -250,11 +73,11 @@
         <!-- Right Side: Social Icons (Now always visible via CSS changes) -->
         <ul class="navBarListRight">
             <li class="social-text"><b>Ao</b> on</li>
-            <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank"><img src="./images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="28"></a></li>
-            <li><a href="https://www.scopus.com/authid/detail.uri?authorId=56828706500" target="_blank"><img src="./images/Scopus.png" alt="Scopus" title="Scopus" class="navDock" height="28"></a></li>
-            <li><a href="https://www.webofscience.com/wos/author/rid/J-4000-2015" target="_blank"><img src="./images/Researcher.jpg" alt="Researcher" title="Researcher" class="navDock" height="28"></a></li>
-            <li><a href="https://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank"><img src="./images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="28"></a></li>
-            <li><a href="https://github.com/xuaoxiqi" target="_blank"><img src="./images/github.png" alt="github" title="GitHub" class="navDock" height="28"></a></li>
+            <li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><img src="./images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="28"></a></li>
+            <li><a href="https://www.scopus.com/authid/detail.uri?authorId=56828706500" target="_blank" rel="noopener noreferrer"><img src="./images/Scopus.png" alt="Scopus" title="Scopus" class="navDock" height="28"></a></li>
+            <li><a href="https://www.webofscience.com/wos/author/rid/J-4000-2015" target="_blank" rel="noopener noreferrer"><img src="./images/Researcher.jpg" alt="Researcher" title="Researcher" class="navDock" height="28"></a></li>
+            <li><a href="https://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank" rel="noopener noreferrer"><img src="./images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="28"></a></li>
+            <li><a href="https://github.com/xuaoxiqi" target="_blank" rel="noopener noreferrer"><img src="./images/github.png" alt="github" title="GitHub" class="navDock" height="28"></a></li>
         </ul>
     </nav>
     
