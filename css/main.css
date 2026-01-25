@@ -511,14 +511,28 @@ nav#navBarBottom {
 	border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-#divPost, #articlePost, .main-container {
-	max-width: 1100px;
-	width: 92%;
-	margin: 20px auto;
-	background: white;
-	padding: 25px;
-	border-radius: 8px;
-	box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+#divPost, .main-container {
+	position: relative;
+	top: auto;
+	left: auto;
+	width: min(1280px, 94vw);
+	max-width: 1280px;
+	margin: 24px auto 90px;
+	padding: 0;
+	background: transparent;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+#articlePost {
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: clamp(18px, 2.5vw, 32px);
+	background: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+	text-align: justify;
 }
 
 #divLeft, #divMiddle, #divRight {
@@ -556,10 +570,13 @@ nav#navBarBottom {
 		position: static !important;
 	}
 
-	#divPost, #articlePost {
-		width: 96%;
-		padding: 15px;
-		margin: 10px auto;
+	#divPost {
+		width: 96vw;
+		margin: 16px auto 70px;
+	}
+
+	#articlePost {
+		padding: 16px;
 	}
 
 	nav#navBarBottom {
