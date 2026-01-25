@@ -14,7 +14,7 @@
     <link rel="author" type="text/html" href="https://www.linkedin.com/pub/ao-xu/30/a72/a29" />
     <link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/3.0/" />
     
-    <link rel="stylesheet" type="text/css" href="./css/main.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ '/css/main.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}" media="all" />
     
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' />
 
@@ -87,6 +87,28 @@
     
     <!-- PAGE CONTENT INJECTION -->
     {{ content }}
+
+    <script>
+        (function () {
+            if (document.body.className.indexOf('page-') !== -1) {
+                return;
+            }
+            var path = window.location.pathname.replace(/\/$/, '/index.html');
+            var map = {
+                '/': 'home',
+                '/index.html': 'home',
+                '/about.html': 'about',
+                '/research.html': 'research',
+                '/publications.html': 'publications',
+                '/teaching.html': 'teaching',
+                '/facilities.html': 'research-facilities'
+            };
+            var cls = map[path];
+            if (cls) {
+                document.body.classList.add('page-' + cls);
+            }
+        })();
+    </script>
     
     <!-- BOTTOM NAVIGATION / FOOTER -->
     <nav id="navBarBottom">
