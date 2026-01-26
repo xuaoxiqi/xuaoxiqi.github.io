@@ -457,6 +457,8 @@ nav#navBarTop {
 	display: flex;
 	align-items: center;
 	gap: 15px;
+	position: static;
+	flex-wrap: wrap;
 }
 
 .navBarListLeft { flex-wrap: wrap; }
