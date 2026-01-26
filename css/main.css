@@ -1819,16 +1819,14 @@ nav#navBarBottom {
 
 /* === Page: Facilities CPU (facilities_CPU.html) === */
 .page-facilities-cpu {
-	--bg-color: #f4f7f9;
-	--card-bg-color: #ffffff;
-	--primary-text-color: #2c3e50;
-	--secondary-text-color: #596a7a;
-	--header-color: #3498db;
-	--accent-color-intel: #0071c5;
-	--accent-color-amd: #ed1c24;
-	--border-color: #e1e8ed;
+	--bg-color: var(--bg-light-gray);
+	--card-bg-color: var(--bg-off-white);
+	--primary-text-color: var(--text-dark);
+	--secondary-text-color: var(--text-muted);
+	--header-color: var(--primary-color);
+	--accent-color-intel: var(--accent-color);
+	--accent-color-amd: var(--highlight-color);
 	--shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-	font-family: 'Roboto', sans-serif;
 	line-height: 1.6;
 	margin: 0;
 	background-color: var(--bg-color);
@@ -1936,7 +1934,7 @@ nav#navBarBottom {
 }
 
 .page-facilities-cpu tbody tr { transition: background-color 0.25s ease; }
-.page-facilities-cpu tbody tr:hover { background-color: #eef7ff; }
+.page-facilities-cpu tbody tr:hover { background-color: #eaf6f6; }
 .page-facilities-cpu tbody tr:last-child td { border-bottom: none; }
 
 .page-facilities-cpu .cores { font-weight: 700; color: var(--header-color); }
@@ -1968,17 +1966,15 @@ nav#navBarBottom {
 
 /* === Page: Facilities Disk (facilities_disk.html) === */
 .page-facilities-disk {
-	--bg-color: #f4f7f9;
-	--node-bg: #ffffff;
-	--border-color: #e0e0e0;
-	--master-color: #4CAF50;
-	--client-color: #2196F3;
-	--summary-bg: #e8eaf6;
-	--summary-border: #3f51b5;
-	--text-color: #333;
-	--size-color: #c62828;
-	--percent-color: #546e7a;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	--bg-color: var(--bg-light-gray);
+	--node-bg: var(--bg-off-white);
+	--master-color: var(--primary-color);
+	--client-color: var(--accent-color);
+	--summary-bg: var(--bg-off-white);
+	--summary-border: var(--primary-color);
+	--text-color: var(--text-dark);
+	--size-color: var(--highlight-color);
+	--percent-color: var(--text-muted);
 	margin: 0;
 	padding: 20px;
 	background-color: var(--bg-color);
@@ -1988,7 +1984,7 @@ nav#navBarBottom {
 .page-facilities-disk h1,
 .page-facilities-disk h2 {
 	text-align: center;
-	color: #1a237e;
+	color: var(--primary-color);
 }
 .page-facilities-disk h2 { font-size: 1.1em; font-weight: normal; margin-top: -15px; margin-bottom: 30px; }
 
@@ -2003,7 +1999,7 @@ nav#navBarBottom {
 	text-align: center;
 }
 .page-facilities-disk #total-size-display { font-size: 1.8em; font-weight: 600; color: var(--summary-border); }
-.page-facilities-disk #summary-card p { margin: 5px 0 0 0; color: #333; }
+.page-facilities-disk #summary-card p { margin: 5px 0 0 0; color: var(--text-dark); }
 
 .page-facilities-disk .visualization-container { display: flex; justify-content: space-around; align-items: flex-start; }
 .page-facilities-disk .node-column { display: flex; flex-direction: column; gap: 20px; flex: 1; padding: 0 15px; }
@@ -2011,13 +2007,15 @@ nav#navBarBottom {
 .page-facilities-disk .node { border: 1px solid var(--border-color); border-radius: 12px; background-color: var(--node-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 .page-facilities-disk .node-title { margin: 0; padding: 15px 20px; font-size: 1.5em; display: flex; align-items: center; border-bottom: 1px solid #eee; }
 .page-facilities-disk .node-title svg { margin-right: 10px; }
+.page-facilities-disk .master-node .node-title svg { fill: var(--master-color) !important; }
+.page-facilities-disk .client-node .node-title svg { fill: var(--client-color) !important; }
 .page-facilities-disk .master-node { border-left: 5px solid var(--master-color); }
 .page-facilities-disk .client-node { border-left: 5px solid var(--client-color); }
 .page-facilities-disk .node-content { padding: 5px 20px 20px 20px; }
 
 .page-facilities-disk .collapsible-title {
 	cursor: pointer; user-select: none; font-size: 1.1em;
-	margin-top: 20px; padding: 5px 0; border-bottom: 1px dashed #ccc;
+	margin-top: 20px; padding: 5px 0; border-bottom: 1px dashed var(--border-color);
 }
 .page-facilities-disk .collapsible-title::after {
 	content: ' ▼'; font-size: 0.8em; transition: transform 0.3s ease; display: inline-block;
@@ -2036,7 +2034,7 @@ nav#navBarBottom {
 	display: flex; align-items: baseline;
 	font-weight: bold; margin-bottom: 8px; font-size: 1em;
 }
-.page-facilities-disk .drive-mount { flex-grow: 1; color: #0056b3; }
+.page-facilities-disk .drive-mount { flex-grow: 1; color: var(--primary-color); }
 .page-facilities-disk .drive-size {
 	color: var(--size-color); font-weight: 700;
 	font-size: 1.1em; margin: 0 10px; flex-shrink: 0;
@@ -2053,6 +2051,6 @@ nav#navBarBottom {
 .page-facilities-disk .usage-bar.green { background: linear-gradient(90deg, #81c784, #4caf50); }
 .page-facilities-disk .usage-bar.yellow { background: linear-gradient(90deg, #fff176, #fdd835); }
 .page-facilities-disk .usage-bar.red { background: linear-gradient(90deg, #e57373, #f44336); }
-.page-facilities-disk .local { background-color: #f8f9fa; }
-.page-facilities-disk .nfs { background-color: #e3f2fd; }
+.page-facilities-disk .local { background-color: var(--bg-light-gray); }
+.page-facilities-disk .nfs { background-color: #eef6f6; }
 
