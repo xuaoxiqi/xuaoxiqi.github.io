@@ -2,171 +2,99 @@
 layout: main
 description: Photo gallery of our research group and academic activities.
 title: Gallery
+photos:
+  - file: "20260321-research-group-spring-outing.jpg"
+    date: "March 21, 2026"
+    alt: "Research group spring outing"
+    caption: "Research group spring outing and outdoor group photo."
+  - file: "20251116-fluid-mechanics-youth-symposium-shanghai-special-talk.jpg"
+    date: "November 16, 2025"
+    alt: "Special talk at the Fluid Mechanics Youth Symposium in Shanghai"
+    caption: "Special talk at the Fluid Mechanics Youth Symposium in Shanghai."
+  - file: "20251102-extreme-flow-multiprocess-xian-oral-talk.jpg"
+    date: "November 2, 2025"
+    alt: "Oral talk on extreme flow and multiprocess phenomena in Xi'an"
+    caption: "Oral talk on extreme flow and multiprocess phenomena in Xi'an."
+  - file: "20251026-multiphase-flow-young-scholars-hangzhou-invited-talk.jpg"
+    date: "October 26, 2025"
+    alt: "Invited talk at a young scholars symposium on multiphase flow in Hangzhou"
+    caption: "Invited talk at the Young Scholars Symposium on Multiphase Flow in Hangzhou."
+  - file: "20250721-cctam-fluid-mechanics-invited-talk.jpg"
+    date: "July 21, 2025"
+    alt: "Invited talk in the Fluid Mechanics session at CCTAM 2025"
+    caption: "Invited talk in the Fluid Mechanics session at CCTAM 2025."
+  - file: "20250720-ams-40th-symposium-invited-talk.jpg"
+    date: "July 20, 2025"
+    alt: "Invited talk at the AMS 40th Anniversary Symposium"
+    caption: "Invited talk at the Acta Mechanica Sinica 40th Anniversary Symposium."
+  - file: "20250720-ams-40th-outstanding-paper-award.jpg"
+    date: "July 20, 2025"
+    alt: "AMS 40th Anniversary Outstanding Paper Award"
+    caption: "Receiving the Acta Mechanica Sinica 40th Anniversary Outstanding Paper Award."
+  - file: "20250719-cctam-with-students.jpg"
+    date: "July 19, 2025"
+    alt: "With students at CCTAM 2025"
+    caption: "With students at the Chinese Congress of Theoretical and Applied Mechanics 2025."
+  - file: "20250426-team-group-photo.jpg"
+    date: "April 26, 2025"
+    alt: "Team group photo"
+    caption: "Team group photo during the spring group activity."
+  - file: "20240804-wall-turbulence-lanzhou-special-talk.jpg"
+    date: "August 4, 2024"
+    alt: "Special talk on wall turbulence in Lanzhou"
+    caption: "Special talk at the wall turbulence meeting in Lanzhou."
+  - file: "20230415-turbulence-flow-stability-ningbo-keynote-talk.jpg"
+    date: "April 15, 2023"
+    alt: "Keynote talk on turbulence and flow stability in Ningbo"
+    caption: "Keynote talk on turbulence and flow stability in Ningbo."
+  - file: "20210626-research-group-photo.jpg"
+    date: "June 26, 2021"
+    alt: "Research group photo"
+    caption: "Research group photo at Northwestern Polytechnical University."
+  - file: "20190830-first-nwpu-research-group-photo.jpg"
+    date: "August 30, 2019"
+    alt: "First NWPU research group photo"
+    caption: "First research group photo at Northwestern Polytechnical University."
+  - file: "20171116-graduation-with-advisor.jpg"
+    date: "November 16, 2017"
+    alt: "Graduation with advisor"
+    caption: "Graduation day with my advisor at HKUST."
+  - file: "20170824-phd-defense-committee.jpg"
+    date: "August 24, 2017"
+    alt: "PhD defense committee"
+    caption: "With my PhD thesis defense committee at HKUST."
 ---
 
 <div id="divTitleNav">
-    <a href="./index.html" aria-label="Back to homepage"><img src="./images/gallery/left-arrow.png" class="navDock nav-back-icon" alt="Back"/></a>
+    <a href="./index.html" aria-label="Back to homepage" class="navDock nav-back-icon">&larr;</a>
 </div>
-    
+
 <div id="divPost">
 
     <article id="articlePost" class="page-gallery">
-    
+
         <h2 class="gallery-header">Group Gallery</h2>
-        
+
         <p class="gallery-intro">
             Welcome to our gallery! Here are some moments captured with our team members, collaborators, alumni, and at various academic conferences.
         </p>
 
         <div class="photo-grid">
-            
-            <!-- Photo Item: Fluid Mechanics Youth Symposium -->
+            {% for photo in page.photos %}
             <div class="photo-card">
                 <div class="photo-thumb">
-                    <img src="./images/gallery/20251114-fluid-mechanics-shanghai.jpg" alt="14th National Youth Symposium on Fluid Mechanics" loading="lazy">
+                    <img src="./image/gallery/{{ photo.file }}" alt="{{ photo.alt | escape }}" loading="lazy">
                 </div>
                 <div class="photo-info">
-                    <span class="photo-date">November 14, 2025</span>
-                    <span class="photo-caption">Giving an oral presentation at the 14th National Youth Symposium on Fluid Mechanics in Shanghai.</span>
+                    <span class="photo-date">{{ photo.date }}</span>
+                    <span class="photo-caption">{{ photo.caption }}</span>
                 </div>
             </div>
-
-            <!-- Photo Item: Multiphase Flow Symposium -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/20251024-multiphase-flow-hangzhou.jpg" alt="4th National Symposium for Young Scholars on Multiphase Flow" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">October 24, 2025</span>
-                    <span class="photo-caption">Invited talk at the 4th National Symposium for Young Scholars on Multiphase Flow in Hangzhou.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: AMS Award -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/20250720-ams-award-cctam.jpg" alt="AMS Outstanding Paper Award" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">July 20, 2025</span>
-                    <span class="photo-caption">Receiving the Acta Mechanica Sinica (AMS) 40th Anniversary Outstanding Paper Award at CCTAM.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: AMS Symposium -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/20250720-ams-40th-symposium.jpg" alt="AMS 40th Anniversary Symposium" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">July 20, 2025</span>
-                    <span class="photo-caption">Invited talk at the AMS 40th Anniversary Symposium & Mechanics Discipline Prospect Seminar.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: CCTAM 2025 Group -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/20250719-cctam-conference.jpg" alt="Attending CCTAM 2025" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">July 19, 2025</span>
-                    <span class="photo-caption">Group members attending the Chinese Congress of Theoretical and Applied Mechanics (CCTAM) in Changsha.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: CCTAM Presentation -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/20250718-cctam-presentation.jpg" alt="CCTAM 2025 Presentation" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">July 18, 2025</span>
-                    <span class="photo-caption">Invited talk at the Fluid Mechanics Session of the Chinese Congress of Theoretical and Applied Mechanics (CCTAM).</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: Wall Turbulence Symposium -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/20240802-wall-turbulence-lanzhou.jpg" alt="Wall Turbulence Symposium" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">August 2, 2024</span>
-                    <span class="photo-caption">Giving a presentation at the Young Scholars Symposium on Fundamental Issues of Wall Turbulence in Lanzhou.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: Spring Outing -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/202404-group-spring-outing.jpg" alt="Group Spring Outing" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">Spring 2024</span>
-                    <span class="photo-caption">Group spring outing and team-building activity.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: Mountain Trip -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/202310-group-mountain-trip.jpg" alt="Group Mountain Trip" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">Autumn 2023</span>
-                    <span class="photo-caption">Enjoying a group trip to the mountains.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: Indoor Lab -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/202309-group-indoor-npu.jpg" alt="Group members in the lab" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">2023</span>
-                    <span class="photo-caption">Group members at the Turbulence and Complex Flow Laboratory, NPU.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: Original Group Photo (From Homepage) -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/20210626.jpg" alt="Our group at Northwestern Polytechnical University" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">June 26, 2021</span>
-                    <span class="photo-caption">Our group at Northwestern Polytechnical University.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: PhD Graduation -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/201711-phd-graduation-hkust.jpg" alt="PhD Graduation at HKUST" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">November 2017</span>
-                    <span class="photo-caption">PhD graduation with my supervisor at HKUST.</span>
-                </div>
-            </div>
-
-            <!-- Photo Item: PhD Defense Committee -->
-            <div class="photo-card">
-                <div class="photo-thumb">
-                    <img src="./images/gallery/20170824.jpg" alt="PhD Thesis Defense" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <span class="photo-date">August 24, 2017</span>
-                    <span class="photo-caption">With my PhD thesis examination committee members at HKUST.</span>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
-        
+
     </article>
-    
+
     <div class="div0"></div>
-    
+
 </div>
