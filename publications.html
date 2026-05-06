@@ -23,6 +23,7 @@ title: Publications
         <div class="stat-item">Phys. Fluids<span class="stat-count" id="count-pof">0+0</span></div>
         <div class="stat-item">Phys. Rev. Fluids<span class="stat-count" id="count-prf">0+0</span></div>
         <div class="stat-item">Int. J. Heat Fluid Flow<span class="stat-count" id="count-ijhff">0+0</span></div>
+        <div class="stat-item">Acta Mech. Sin.<span class="stat-count" id="count-ams">0+0</span></div>
     </div>
     <div class="stats-legend">
         <span><span class="legend-badge">X + Y</span> &nbsp; <b>X</b> = First or Corresponding Author; &nbsp; <b>Y</b> = Co-author</span>
@@ -998,16 +999,13 @@ title: Publications
             'Journal of Fluid Mechanics': 'jfm',
             'Physics of Fluids': 'pof',
             'Physical Review Fluids': 'prf',
-            'International Journal of Heat and Fluid Flow': 'ijhff'
+            'International Journal of Heat and Fluid Flow': 'ijhff',
+            'Acta Mechanica Sinica': 'ams'
         };
 
-        const stats = {
-            'ijhmt': {a:0, b:0},
-            'jfm': {a:0, b:0},
-            'pof': {a:0, b:0},
-            'prf': {a:0, b:0},
-            'ijhff': {a:0, b:0}
-        };
+        const stats = Object.fromEntries(
+            Object.values(journalMap).map(key => [key, {a:0, b:0}])
+        );
 
         papers.forEach(paper => {
             const authorsHTML = paper.querySelector('.pub-authors').innerHTML.trim();
