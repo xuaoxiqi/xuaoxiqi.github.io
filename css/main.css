@@ -1358,7 +1358,7 @@ nav#navBarBottom {
 
 .page-publications ol.pub-list {
 	list-style: none;
-	counter-reset: pub-counter 45;
+	counter-reset: reversed(pub-counter);
 }
 .page-publications ol.pub-list .pub-item::before {
 	counter-increment: pub-counter -1;
