@@ -1357,21 +1357,23 @@ nav#navBarBottom {
 }
 
 .page-publications ol.pub-list {
-	list-style: none;
-	counter-reset: reversed(pub-counter);
+	list-style: decimal;
+	list-style-position: inside;
 }
-.page-publications ol.pub-list .pub-item::before {
-	counter-increment: pub-counter -1;
-	content: counter(pub-counter);
-	flex-shrink: 0;
-	width: 45px;
-	text-align: center;
+.page-publications ol.pub-list .pub-item {
+	display: list-item;
+}
+.page-publications ol.pub-list .pub-item::marker {
 	font-size: 22px;
 	font-weight: 800;
 	color: #cbd5e1;
 	font-family: 'Segoe UI', sans-serif;
 }
-.page-publications ol.pub-list .pub-item.recent::before { color: var(--highlight-color); }
+.page-publications ol.pub-list .pub-content {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(100% - 56px);
+}
 
 .page-publications ul.pub-list { list-style: none; }
 .page-publications ul.pub-list .pub-item::before {
@@ -1481,6 +1483,10 @@ nav#navBarBottom {
 		align-items: start;
 	}
 
+	.page-publications ol.pub-list .pub-content:has(.pub-graphic-abstract) {
+		display: inline-grid;
+	}
+
 	.page-publications .pub-content:has(.pub-graphic-abstract) > *:not(.pub-graphic-abstract) {
 		grid-column: 1;
 	}
@@ -1502,7 +1508,6 @@ nav#navBarBottom {
 		gap: 10px;
 	}
 
-	.page-publications ol.pub-list .pub-item::before,
 	.page-publications ul.pub-list .pub-item::before {
 		width: 100%;
 		text-align: left;
