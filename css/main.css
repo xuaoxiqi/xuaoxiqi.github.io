@@ -615,8 +615,6 @@ nav#navBarBottom {
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
-	width: min(1120px, 94vw);
-	margin: 24px auto 90px;
 }
 
 @media (min-width: 900px) {
@@ -625,11 +623,6 @@ nav#navBarBottom {
 		display: grid;
 		grid-template-columns: 300px 1fr;
 		align-items: start;
-	}
-
-	.page-home .sidebar {
-		position: sticky;
-		top: 88px;
 	}
 }
 
@@ -657,8 +650,7 @@ nav#navBarBottom {
 	font-size: 26px;
 	color: var(--primary-color);
 	font-weight: 700;
-	line-height: 1.2;
-	margin: 0 0 5px;
+	margin-bottom: 5px;
 }
 
 .page-home .profile-title {
@@ -667,7 +659,7 @@ nav#navBarBottom {
 	font-weight: 700;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
-	margin: 0 0 15px;
+	margin-bottom: 15px;
 }
 
 .page-home .profile-role-badge {
@@ -679,18 +671,8 @@ nav#navBarBottom {
 	padding: 5px 10px;
 	border-radius: 4px;
 	border: 1px solid #b2dfdb;
+	margin-bottom: 20px;
 	line-height: 1.3;
-	margin: 0 0 20px;
-}
-
-.page-home .profile-role-journal {
-	font-size: 11px;
-	font-weight: 400;
-}
-
-.page-home .profile-role-journal abbr {
-	border-bottom: 0;
-	text-decoration: none;
 }
 
 .page-home .profile-affil {
@@ -702,22 +684,11 @@ nav#navBarBottom {
 	padding-top: 15px;
 }
 
-.page-home .sidebar-heading {
-	border-bottom: 0;
-	color: var(--primary-color);
-	font-size: 15px;
-	font-weight: 700;
-	line-height: 1.3;
-	margin: 0 0 15px;
-	padding-bottom: 0;
-	text-align: left;
-}
-
 .page-home .quick-links {
 	list-style: none;
 	padding: 0;
 	text-align: left;
-	margin: 0 0 20px;
+	margin-bottom: 20px;
 }
 .page-home .quick-links li { margin-bottom: 8px; }
 .page-home .quick-links a {
@@ -731,7 +702,7 @@ nav#navBarBottom {
 	font-weight: 600;
 	font-size: 14px;
 	border: 1px solid #e0e0e0;
-	transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, color 0.2s;
+	transition: all 0.2s;
 }
 .page-home .quick-links a:hover {
 	background: white;
@@ -739,18 +710,7 @@ nav#navBarBottom {
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	color: var(--accent-color);
 }
-.page-home .quick-links a:focus-visible,
-.page-home .int-tag:focus-visible {
-	outline: 3px solid rgba(42,157,143,0.35);
-	outline-offset: 3px;
-}
-
-.page-home .link-icon {
-	display: inline-flex;
-	justify-content: center;
-	margin-right: 10px;
-	width: 1.4em;
-}
+.page-home .link-icon { margin-right: 10px; }
 
 .page-home .map-container {
 	margin-top: 20px;
@@ -760,8 +720,6 @@ nav#navBarBottom {
 }
 
 .page-home .main-content { padding-left: 10px; }
-.page-home .home-section { margin-bottom: 35px; }
-.page-home .home-section:last-child { margin-bottom: 0; }
 
 .page-home h2 {
 	font-family: 'Droid Sans', sans-serif;
@@ -773,37 +731,27 @@ nav#navBarBottom {
 	font-size: 24px;
 }
 
-.page-home .edu-list { list-style: none; padding: 0; margin: 0; }
+.page-home .edu-list { list-style: none; padding: 0; margin-bottom: 35px; }
 .page-home .edu-item { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-start; }
-.page-home .edu-item:last-child { margin-bottom: 0; }
 .page-home .edu-icon { font-size: 24px; line-height: 1; padding-top: 2px; }
-.page-home .edu-school { margin: 0 0 5px 0; font-size: 16px; line-height: 1.4; color: #333; }
-.page-home .edu-school a { color: var(--primary-color); text-decoration: none; border-bottom: 1px dotted var(--primary-color); }
+.page-home .edu-details h4 { margin: 0 0 5px 0; font-size: 16px; color: #333; }
+.page-home .edu-details h4 a { color: var(--primary-color); text-decoration: none; border-bottom: 1px dotted var(--primary-color); }
 .page-home .edu-degree { font-weight: bold; color: #444; font-size: 14px; display: block; }
 .page-home .edu-year { color: #777; font-size: 13px; }
 
-.page-home .interest-tags { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; }
+.page-home .interest-tags { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 35px; }
 .page-home .int-tag {
 	background: white; border: 1px solid var(--primary-color); color: var(--primary-color);
 	padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 13px;
-	transition: background-color 0.2s, color 0.2s;
+	transition: all 0.2s;
 }
 .page-home .int-tag:hover { background: var(--primary-color); color: white; }
 
-.page-home .award-list { list-style: none; padding: 0; margin: 0; }
+.page-home .award-list { list-style: none; padding: 0; margin-bottom: 35px; }
 .page-home .award-item {
 	position: relative; padding-left: 25px; margin-bottom: 12px; line-height: 1.6; font-size: 14px; color: #333;
 }
-.page-home .award-item:last-child { margin-bottom: 0; }
-.page-home .award-item::before { content: '\1F3C6'; position: absolute; left: 0; top: 1px; font-size: 14px; }
-
-.page-home .bio-text {
-	font-size: 15px;
-	line-height: 1.75;
-	text-align: justify;
-}
-
-.page-home .bio-text p { margin: 0; }
+.page-home .award-item::before { content: '🏆'; position: absolute; left: 0; top: 1px; font-size: 14px; }
 
 .page-home .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .page-home .gallery-card {
