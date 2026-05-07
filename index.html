@@ -1,40 +1,41 @@
 ---
 layout: main
-description: Index page of this website.
+description: Ao Xu is an Associate Professor in fluid mechanics at Northwestern Polytechnical University, working on turbulent flows, heat transfer, multiscale modeling, the lattice Boltzmann method, and high performance computing.
 title: Homepage
 ---
 
-<div itemscope itemtype="http://schema.org/Person" class="home-container page-home">
+<div itemscope itemtype="https://schema.org/Person" class="home-container page-home">
     
     <!-- LEFT SIDEBAR -->
-    <aside class="sidebar">
-        <img src="./images/Ao Xu.jpg" alt="Ao Xu" class="profile-photo" itemprop="image">
+    <aside class="sidebar" aria-label="Profile summary">
+        <img src="./images/Ao%20Xu.jpg" alt="Portrait of Ao Xu" class="profile-photo" itemprop="image" width="180" height="180" decoding="async" fetchpriority="high">
         
-        <div class="profile-name" itemprop="name">Ao Xu</div>
-        <div class="profile-title" itemprop="jobTitle">Associate Professor</div>
+        <h1 class="profile-name" itemprop="name">Ao Xu</h1>
+        <p class="profile-title" itemprop="jobTitle">Associate Professor</p>
         
         <!-- Editor Role -->
-        <div class="profile-role-badge">
+        <p class="profile-role-badge">
             Associate Editor<br>
-            <span style="font-weight:normal; font-size:11px;">Int. J. Heat Mass Transf.</span>
-        </div>
+            <span class="profile-role-journal"><abbr title="International Journal of Heat and Mass Transfer">Int. J. Heat Mass Transf.</abbr></span>
+        </p>
         
-        <!-- Updated Affiliation per Screenshot -->
-        <div class="profile-affil" itemprop="affiliation" itemscope itemtype="http://schema.org/Organization">
+        <div class="profile-affil" itemprop="affiliation" itemscope itemtype="https://schema.org/Organization">
             <div itemprop="department">Institute of Extreme Mechanics</div>
             <div itemprop="name">Northwestern Polytechnical University</div>
         </div>
 
-        <div style="font-weight:bold; color:var(--primary-color); margin-bottom:15px; text-align:left; font-size:15px;">Quick Links</div>
-        <ul class="quick-links">
-            <li><a href="./research.html"><span class="link-icon">🚀</span> Research Projects</a></li>
-            <li><a href="./publications.html"><span class="link-icon">📄</span> Publications</a></li>
-            <li><a href="./teaching.html"><span class="link-icon">🎓</span> Teaching & Students</a></li>
-            <li><a href="./about.html"><span class="link-icon">📬</span> Contact Info</a></li>
-        </ul>
+        <nav class="quick-link-nav" aria-labelledby="quick-links-heading">
+            <h2 id="quick-links-heading" class="sidebar-heading">Quick Links</h2>
+            <ul class="quick-links">
+                <li><a href="./research.html"><span class="link-icon" aria-hidden="true">&#128640;</span><span>Research Projects</span></a></li>
+                <li><a href="./publications.html"><span class="link-icon" aria-hidden="true">&#128196;</span><span>Publications</span></a></li>
+                <li><a href="./teaching.html"><span class="link-icon" aria-hidden="true">&#127891;</span><span>Teaching &amp; Students</span></a></li>
+                <li><a href="./about.html"><span class="link-icon" aria-hidden="true">&#128236;</span><span>Contact Info</span></a></li>
+            </ul>
+        </nav>
 
-        <div class="map-container">
-            <script async type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?d=cHepENClALwVYxbtmmjC4Ecrm4OT_EcUvLWypPKKp5o&cl=ffffff&w=a"></script>
+        <div class="map-container" aria-label="Visitor map">
+            <script async type="text/javascript" id="clustrmaps" src="https://cdn.clustrmaps.com/map_v2.js?d=cHepENClALwVYxbtmmjC4Ecrm4OT_EcUvLWypPKKp5o&cl=ffffff&w=a"></script>
         </div>
     </aside>
 
@@ -42,60 +43,66 @@ title: Homepage
     <main class="main-content">
         
         <!-- Education -->
-        <h2>Education</h2>
-        <ul class="edu-list">
-            <li class="edu-item">
-                <div class="edu-icon">🎓</div>
-                <div class="edu-details">
-                    <h4><a href="http://www.ust.hk/" target="_blank" rel="noopener noreferrer">The Hong Kong University of Science and Technology (HKUST)</a></h4>
-                    <span class="edu-degree">Ph.D., Mechanical Engineering</span>
-                    <div class="edu-year">2013 - 2017</div>
-                </div>
-            </li>
-            <li class="edu-item">
-                <div class="edu-icon">🎓</div>
-                <div class="edu-details">
-                    <h4><a href="http://en.ustc.edu.cn/" target="_blank" rel="noopener noreferrer">University of Science and Technology of China (USTC)</a></h4>
-                    <span class="edu-degree">B.S., Theoretical and Applied Mechanics</span>
-                    <div class="edu-year">2009 - 2013</div>
-                </div>
-            </li>
-        </ul>
+        <section class="home-section" aria-labelledby="education-heading">
+            <h2 id="education-heading">Education</h2>
+            <ul class="edu-list">
+                <li class="edu-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+                    <div class="edu-icon" aria-hidden="true">&#127891;</div>
+                    <div class="edu-details">
+                        <h3 class="edu-school"><a href="http://www.ust.hk/" target="_blank" rel="noopener noreferrer" itemprop="url"><span itemprop="name">The Hong Kong University of Science and Technology (HKUST)</span></a></h3>
+                        <span class="edu-degree">Ph.D., Mechanical Engineering</span>
+                        <div class="edu-year">2013 - 2017</div>
+                    </div>
+                </li>
+                <li class="edu-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+                    <div class="edu-icon" aria-hidden="true">&#127891;</div>
+                    <div class="edu-details">
+                        <h3 class="edu-school"><a href="http://en.ustc.edu.cn/" target="_blank" rel="noopener noreferrer" itemprop="url"><span itemprop="name">University of Science and Technology of China (USTC)</span></a></h3>
+                        <span class="edu-degree">B.S., Theoretical and Applied Mechanics</span>
+                        <div class="edu-year">2009 - 2013</div>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
         <!-- Research Interests -->
-        <h2>Research Interests</h2>
-        <div class="interest-tags">
-            <a href="./research.html" class="int-tag">Fluid Mechanics</a>
-            <a href="./research.html" class="int-tag">Heat Transfer</a>
-            <a href="./research.html" class="int-tag">Multiscale Modeling</a>
-            <a href="./research.html" class="int-tag">Lattice Boltzmann Method</a>
-            <a href="./research.html" class="int-tag">High Performance Computing</a>
-        </div>
+        <section class="home-section" aria-labelledby="interests-heading">
+            <h2 id="interests-heading">Research Interests</h2>
+            <div class="interest-tags">
+                <a href="./research.html" class="int-tag" itemprop="knowsAbout">Fluid Mechanics</a>
+                <a href="./research.html" class="int-tag" itemprop="knowsAbout">Heat Transfer</a>
+                <a href="./research.html" class="int-tag" itemprop="knowsAbout">Multiscale Modeling</a>
+                <a href="./research.html" class="int-tag" itemprop="knowsAbout">Lattice Boltzmann Method</a>
+                <a href="./research.html" class="int-tag" itemprop="knowsAbout">High Performance Computing</a>
+            </div>
+        </section>
 
         <!-- Honors -->
-        <h2>Honors and Awards</h2>
-        <ul class="award-list">
-            <li class="award-item">Shaanxi Sanqin Talent Special Support Plan for Young Top Talents (2025)</li>
-            <li class="award-item">First Prize of the Outstanding Scientific and Technological Research Achievement Award of Shaanxi Higher Education Institutions (Rank 2, 2024)</li>
-            <li class="award-item">Young Elite Scientists Sponsorship Program by the China Association for Science and Technology (2023)</li>
-            <li class="award-item">World's Top 2% of Scientists list by Stanford University (2022, 2023)</li>
-        </ul>
+        <section class="home-section" aria-labelledby="awards-heading">
+            <h2 id="awards-heading">Honors and Awards</h2>
+            <ul class="award-list">
+                <li class="award-item">Shaanxi Sanqin Talent Special Support Plan for Young Top Talents (2025)</li>
+                <li class="award-item">First Prize of the Outstanding Scientific and Technological Research Achievement Award of Shaanxi Higher Education Institutions (Rank 2, 2024)</li>
+                <li class="award-item">Young Elite Scientists Sponsorship Program by the China Association for Science and Technology (2023)</li>
+                <li class="award-item">World's Top 2% of Scientists list by Stanford University (2022, 2023)</li>
+            </ul>
+        </section>
 
-    <!-- English Biography -->
-    <h2>About Ao</h2>
-
-    <!-- English Text -->
-    <div class="bio-text">
-        <p>
-            <strong>Dr. Ao Xu</strong> is an Associate Professor in fluid mechanics at Northwestern Polytechnical University (NPU). 
-            His research focuses on turbulent flows and coupled heat and mass transport. 
-            He earned his bachelor's degree in theoretical and applied mechanics from the University of Science and Technology of China (USTC) in 2013 
-            and his Ph.D. in mechanical engineering from the Hong Kong University of Science and Technology (HKUST) in 2017.
-            He has published 45 peer-reviewed journal articles, including 25 as first or corresponding author. 
-            These papers have received over 2,100 citations, with an h-index of 25 (Scopus).
-            He also serves as an Associate Editor of the International Journal of Heat and Mass Transfer (Elsevier).
-        </p>
-    </div>
+        <!-- English Biography -->
+        <section class="home-section" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Ao</h2>
+            <div class="bio-text">
+                <p>
+                    <strong>Dr. Ao Xu</strong> is an Associate Professor in fluid mechanics at Northwestern Polytechnical University (NPU).
+                    His research focuses on turbulent flows and coupled heat and mass transport.
+                    He earned his bachelor's degree in theoretical and applied mechanics from the University of Science and Technology of China (USTC) in 2013
+                    and his Ph.D. in mechanical engineering from the Hong Kong University of Science and Technology (HKUST) in 2017.
+                    He has published 45 peer-reviewed journal articles, including 25 as first or corresponding author.
+                    These papers have received over 2,100 citations, with an h-index of 25 (Scopus).
+                    He also serves as an Associate Editor of the International Journal of Heat and Mass Transfer (Elsevier).
+                </p>
+            </div>
+        </section>
 
     </main>
 </div>
