@@ -753,6 +753,22 @@ nav#navBarBottom {
 }
 .page-home .award-item::before { content: '🏆'; position: absolute; left: 0; top: 1px; font-size: 14px; }
 
+.page-home .bio-text {
+	color: #34495e;
+	font-size: 16px;
+	line-height: 1.85;
+	text-align: justify;
+}
+
+.page-home .bio-text p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.page-home .bio-text strong {
+	color: var(--primary-color);
+}
+
 .page-home .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .page-home .gallery-card {
 	background: white; padding: 8px; border: 1px solid var(--border-color);
