@@ -719,7 +719,7 @@ nav#navBarBottom {
 	overflow: hidden;
 }
 
-.page-home .main-content { padding-left: 10px; }
+.page-home .main-content { min-width: 0; padding-left: 10px; }
 
 .page-home h2 {
 	font-family: 'Droid Sans', sans-serif;
@@ -757,6 +757,8 @@ nav#navBarBottom {
 	color: #34495e;
 	font-size: 16px;
 	line-height: 1.85;
+	max-width: 100%;
+	overflow-wrap: break-word;
 	text-align: justify;
 }
 
@@ -767,6 +769,14 @@ nav#navBarBottom {
 
 .page-home .bio-text strong {
 	color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+	.page-home .bio-text {
+		font-size: 15px;
+		line-height: 1.75;
+		text-align: left;
+	}
 }
 
 .page-home .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
