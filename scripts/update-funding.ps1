@@ -126,6 +126,7 @@ function Get-PublicationEntries {
     $ItemRegex = [regex]::new('<!--\s*([\s\S]*?)\s*-->\s*<li class="pub-item[^"]*"[^>]*>([\s\S]*?)</li>', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
     $HrefRegex = [regex]::new('<a\b[^>]*href="([^"]+\.pdf)"', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
     $CandidatesByLabel = [ordered]@{}
+    $ReadErrors = @()
     $Order = 0
 
     foreach ($ItemMatch in $ItemRegex.Matches($Html)) {
@@ -176,7 +177,9 @@ function Get-PublicationEntries {
             }
         }
         catch {
-            Write-Warning "Failed to read $($Chosen.RelativePdfPath): $($_.Exception.Message)"
+            $Message = "$($Chosen.RelativePdfPath): $($_.Exception.Message)"
+            Write-Warning "Failed to read $Message"
+            $ReadErrors += $Message
             $FundingOrder = @()
         }
 
@@ -189,6 +192,10 @@ function Get-PublicationEntries {
                 Order = $Chosen.Order
             }
         }
+    }
+
+    if ($ReadErrors.Count -gt 0) {
+        throw "Failed to read $($ReadErrors.Count) PDF(s):`n$($ReadErrors -join "`n")"
     }
 
     return @($Entries)
@@ -288,7 +295,8 @@ function Render-Block {
     )
     $Entries = @($Results[$ProjectId][$Status])
     $Label = if ($Config.statusLabels.$Status) { $Config.statusLabels.$Status } else { "($Status)" }
-    $Lines = @("$Indent$Label $(Get-CountSummary $Entries) papers:$(if ($Entries.Count -gt 0) { '<br>' } else { '' })")
+    $LabelPrefix = if ($Status -eq "coming") { "<br>" } else { "" }
+    $Lines = @("$Indent$LabelPrefix$Label $(Get-CountSummary $Entries) papers:$(if ($Entries.Count -gt 0) { '<br>' } else { '' })")
     if ($Entries.Count -gt 0) {
         $Total = $Entries.Count
         $Items = @()

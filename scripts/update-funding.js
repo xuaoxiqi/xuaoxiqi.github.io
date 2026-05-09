@@ -86,6 +86,7 @@ function parsePublications() {
   const html = fs.readFileSync(PUBLICATIONS_PATH, "utf8");
   const itemPattern = /<!--\s*([^]*?)\s*-->\s*<li class="pub-item[^"]*"[^>]*>([\s\S]*?)<\/li>/g;
   const candidatesByLabel = new Map();
+  const readErrors = [];
   let match;
   let order = 0;
 
@@ -141,7 +142,9 @@ function parsePublications() {
         console.log(`${label} [${status}, ${chosen.relativePdfPath}]: ${fundingOrder.join(", ") || "no funding tokens found"}`);
       }
     } catch (error) {
-      console.warn(`Warning: failed to read ${chosen.relativePdfPath}: ${error.message}`);
+      const message = `${chosen.relativePdfPath}: ${error.message}`;
+      console.warn(`Warning: failed to read ${message}`);
+      readErrors.push(message);
     }
 
     if (fundingOrder.length > 0) {
@@ -153,6 +156,10 @@ function parsePublications() {
         order: chosen.order
       });
     }
+  }
+
+  if (readErrors.length > 0) {
+    throw new Error(`Failed to read ${readErrors.length} PDF(s):\n${readErrors.join("\n")}`);
   }
 
   return entries;
@@ -237,7 +244,8 @@ function roman(value) {
 function renderBlock(projectId, status, indent, results, eol = "\n") {
   const entries = results[projectId]?.[status] || [];
   const label = config.statusLabels?.[status] || `(${status})`;
-  const lines = [`${indent}${label} ${countSummary(entries)} papers:${entries.length > 0 ? "<br>" : ""}`];
+  const labelPrefix = status === "coming" ? "<br>" : "";
+  const lines = [`${indent}${labelPrefix}${label} ${countSummary(entries)} papers:${entries.length > 0 ? "<br>" : ""}`];
   if (entries.length > 0) {
     const total = entries.length;
     const items = entries
