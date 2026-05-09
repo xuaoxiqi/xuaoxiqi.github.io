@@ -757,10 +757,10 @@ nav#navBarBottom {
 	color: #34495e;
 	font-size: 16px;
 	line-height: 1.85;
+	margin-right: clamp(24px, 4vw, 72px);
 	max-width: 920px;
 	overflow-wrap: break-word;
 	text-align: justify;
-	width: 100%;
 }
 
 .page-home .bio-text p {
