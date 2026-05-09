@@ -1,0 +1,55 @@
+{
+  "pdftotextCommand": "pdftotext",
+  "rankTokens": [
+    { "id": "11902268", "patterns": ["11902268"] },
+    { "id": "12272311", "patterns": ["12272311"] },
+    { "id": "12388101", "patterns": ["12388101"] },
+    { "id": "2023QNRC001", "patterns": ["2023QNRC001"] },
+    { "id": "12125204", "patterns": ["12125204"] },
+    { "id": "11772259", "patterns": ["11772259"] },
+    { "id": "51906044", "patterns": ["51906044"] },
+    { "id": "B17037", "patterns": ["B17037"] },
+    { "id": "IADL20200301", "patterns": ["IADL20200301"] },
+    { "id": "GJXM92579", "patterns": ["GJXM92579"] },
+    { "id": "D5000200570", "patterns": ["D5000200570"] },
+    { "id": "3102019PJ002", "patterns": ["3102019PJ002"] },
+    { "id": "GC300502-39", "patterns": ["GC300502-39"] },
+    { "id": "614220119030103", "patterns": ["614220119030103"] }
+  ],
+  "projects": [
+    {
+      "id": "12388101",
+      "grantIds": ["12388101"],
+      "title": "NSFC Basic Science Center Program"
+    },
+    {
+      "id": "2023QNRC001",
+      "grantIds": ["2023QNRC001"],
+      "title": "CAST Young Elite Scientists Sponsorship Program"
+    },
+    {
+      "id": "12272311",
+      "grantIds": ["12272311"],
+      "title": "NSFC General Program"
+    },
+    {
+      "id": "IADL20200301",
+      "grantIds": ["IADL20200301"],
+      "title": "Open Fund of Key Laboratory of Icing and Anti/De-icing"
+    },
+    {
+      "id": "GJXM92579",
+      "grantIds": ["GJXM92579"],
+      "title": "National Key Project"
+    },
+    {
+      "id": "11902268",
+      "grantIds": ["11902268"],
+      "title": "NSFC Young Scientists Fund"
+    }
+  ],
+  "statusLabels": {
+    "completed": "(Completed)",
+    "coming": "(Coming..)"
+  }
+}
