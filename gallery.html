@@ -5,91 +5,109 @@ title: Gallery
 photos:
   - file: "20260605-rbc-conference-venue-photo.jpg"
     date: "June 5, 2026"
+    location: "Lyon, France"
     alt: "Group photo at the venue of the 10th International Conference on Rayleigh-Bénard Turbulence"
-    caption: "Group photo at the venue of the 10th International Conference on Rayleigh-Bénard Turbulence in Lyon, France."
+    caption: "Group photo at the venue of the 10th International Conference on Rayleigh-Bénard Turbulence."
 
   - file: "20260531-rhone-river-student-group-photo.jpg"
     date: "May 31, 2026"
+    location: "Lyon, France"
     alt: "Research group students by the Rhône River in Lyon"
-    caption: "Research group student photo by the Rhône River during the trip to Lyon for the Rayleigh-Bénard Turbulence Conference."
+    caption: "Research group student photo by the Rhône River during the trip for the Rayleigh-Bénard Turbulence Conference."
 
   - file: "20260321-group-spring-outing.jpg"
     date: "March 21, 2026"
+    location: "Xi'an, China"
     alt: "Research group members during a spring outing"
     caption: "Research group spring outing and outdoor group photo."
 
   - file: "20251116-shanghai-youth-symposium-talk.jpg"
     date: "November 16, 2025"
+    location: "Shanghai, China"
     alt: "Special talk at the Fluid Mechanics Youth Symposium in Shanghai"
-    caption: "Special talk at the 14th National Fluid Mechanics Youth Symposium in Shanghai."
+    caption: "Special talk at the 14th National Fluid Mechanics Youth Symposium."
 
   - file: "20251102-xian-extreme-flow-talk.jpg"
     date: "November 2, 2025"
+    location: "Xi'an, China"
     alt: "Oral presentation at the Extreme Flow and Multiprocess Problems Workshop in Xi'an"
-    caption: "Oral presentation at the 2nd Workshop on Extreme Flow and Multiprocess Problems in Xi'an."
+    caption: "Oral presentation at the 2nd Workshop on Extreme Flow and Multiprocess Problems."
 
   - file: "20251026-hangzhou-multiphase-flow-talk.jpg"
     date: "October 26, 2025"
+    location: "Hangzhou, China"
     alt: "Invited talk at the Young Scholars Symposium on Multiphase Flow in Hangzhou"
-    caption: "Invited talk at the 4th National Young Scholars Symposium on Multiphase Flow in Hangzhou."
+    caption: "Invited talk at the 4th National Young Scholars Symposium on Multiphase Flow."
 
   - file: "20250907-nwpu-xjtu-outing.jpg"
     date: "September 7, 2025"
+    location: "Xi'an, China"
     alt: "Joint research group outing with members from NWPU and XJTU"
     caption: "Joint research group outing with collaborators from NWPU and XJTU."
 
   - file: "20250721-cctam-fluid-mechanics-talk.jpg"
     date: "July 21, 2025"
+    location: "Changsha, China"
     alt: "Invited talk in the Fluid Mechanics session at CCTAM 2025"
     caption: "Invited talk in the Fluid Mechanics session at the Chinese Congress of Theoretical and Applied Mechanics 2025."
 
   - file: "20250720-ams-40th-symposium-talk.jpg"
     date: "July 20, 2025"
+    location: "Changsha, China"
     alt: "Invited talk at the Acta Mechanica Sinica 40th anniversary symposium"
     caption: "Invited talk at the Acta Mechanica Sinica 40th Anniversary Symposium and Mechanics Frontier Forum."
 
   - file: "20250720-ams-40th-paper-award.jpg"
     date: "July 20, 2025"
+    location: "Changsha, China"
     alt: "Acta Mechanica Sinica 40th Anniversary Outstanding Paper Award ceremony"
     caption: "Receiving the Acta Mechanica Sinica 40th Anniversary Outstanding Paper Award."
 
   - file: "20250719-cctam-with-students.jpg"
     date: "July 19, 2025"
+    location: "Changsha, China"
     alt: "Group photo with students at CCTAM 2025"
     caption: "Group photo with students at the Chinese Congress of Theoretical and Applied Mechanics 2025."
 
   - file: "20250426-group-team-building.jpg"
     date: "April 26, 2025"
+    location: "Xi'an, China"
     alt: "Research group members during a spring team-building activity"
     caption: "Research group spring team-building activity and outdoor group photo."
 
   - file: "20240804-lanzhou-wall-turbulence-talk.jpg"
     date: "August 4, 2024"
+    location: "Lanzhou, China"
     alt: "Special talk at the Wall Turbulence Workshop in Lanzhou"
-    caption: "Special talk at the 2024 Young Scholars Workshop on Fundamental Problems in Wall Turbulence in Lanzhou."
+    caption: "Special talk at the 2024 Young Scholars Workshop on Fundamental Problems in Wall Turbulence."
 
   - file: "20230415-ningbo-turbulence-keynote.jpg"
     date: "April 15, 2023"
+    location: "Ningbo, China"
     alt: "Keynote talk at the Turbulence and Flow Stability Symposium in Ningbo"
-    caption: "Keynote talk at the 2023 National Symposium on Turbulence and Flow Stability in Ningbo."
+    caption: "Keynote talk at the 2023 National Symposium on Turbulence and Flow Stability."
 
   - file: "20210626-nwpu-group-photo.jpg"
     date: "June 26, 2021"
+    location: "Xi'an, China"
     alt: "NWPU research group photo on campus"
     caption: "Research group photo at Northwestern Polytechnical University."
 
   - file: "20190830-first-nwpu-group-photo.jpg"
     date: "August 30, 2019"
+    location: "Xi'an, China"
     alt: "First NWPU research group photo in an indoor meeting room"
     caption: "First research group photo at Northwestern Polytechnical University."
 
   - file: "20171116-hkust-graduation-advisor.jpg"
     date: "November 16, 2017"
+    location: "Hong Kong, China"
     alt: "Graduation photo with advisor at HKUST"
     caption: "Graduation photo with advisor at the Hong Kong University of Science and Technology."
 
   - file: "20170824-phd-defense-committee.jpg"
     date: "August 24, 2017"
+    location: "Hong Kong, China"
     alt: "Group photo with the PhD defense committee"
     caption: "Group photo with the PhD defense committee after the doctoral defense."
 ---
@@ -115,7 +133,10 @@ photos:
                     <img src="./images/gallery/{{ photo.file }}" alt="{{ photo.alt | escape }}" loading="lazy">
                 </div>
                 <div class="photo-info">
-                    <span class="photo-date">{{ photo.date }}</span>
+                    <span class="photo-date"><span class="photo-meta-icon" aria-hidden="true">📅</span>{{ photo.date }}</span>
+                    {% if photo.location %}
+                    <span class="photo-location"><span class="photo-meta-icon" aria-hidden="true">📍</span>{{ photo.location }}</span>
+                    {% endif %}
                     <span class="photo-caption">{{ photo.caption }}</span>
                 </div>
             </div>
