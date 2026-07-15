@@ -1,29 +1,456 @@
 ---
 layout: main
 description: "Details of the High-Performance Computing (HPC) research facilities."
-title: Research Facilities
+title: Facilities
 ---
-    <div id="divTitleNav">
-        <a href="./index.html"><img src="./images/left-arrow.png" class="navDock" /></a>
-    </div>
+
+<div id="divTitleNav">
+    <a href="./index.html" aria-label="Back to homepage"><img src="./images/left-arrow.png" class="navDock nav-back-icon" alt="Back"/></a>
+</div>
 
 <div id="divPost">
+    <article id="articlePost" class="page-facilities">
+        <header class="facilities-hero">
+            <span class="facilities-eyebrow">High-Performance Computing Infrastructure</span>
+            <h1>Research Facilities</h1>
+            <p>Our in-house computing cluster supports large-scale numerical simulations and data-intensive research in fluid mechanics and multiscale transport phenomena.</p>
+        </header>
 
-    <!-- This is the embedded dashboard -->
-    <iframe 
-        src="./facilities_CPU.html" 
-        style="width: 100%; height: 2400px; border: none;"
-        title="HPC Cluster Dashboard">
-    </iframe>
-    
-    
-    <!-- This is the embedded dashboard -->
-    <iframe 
-        src="./facilities_disk.html" 
-        style="width: 100%; height: 2400px; border: none;"
-        title="HPC Cluster Dashboard">
-    </iframe>
+        <section class="facilities-section" aria-labelledby="cpu-overview-heading">
+                <h2 id="cpu-overview-heading">CPU Overview</h2>
+                <p class="section-intro">A summary of the cluster processing capacity, followed by the current management, I/O, and compute nodes.</p>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Total CPU Cores</h3>
+                        <p class="value" id="total-cores">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total Compute Cores</h3>
+                        <p class="value" id="compute-cores">0</p>
+                        <div class="sub-value">
+                            <span class="intel-text" id="compute-intel-cores">0</span> Intel +
+                            <span class="amd-text" id="compute-amd-cores">0</span> AMD
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Mgmt & I/O Cores</h3>
+                        <p class="value" id="io-master-cores">0</p>
+                    </div>
+                </div>
+            </section>
 
-<div class="div0"></div>
-    
+            <section class="facilities-section" aria-labelledby="management-nodes-heading">
+                 <h2 id="management-nodes-heading">Management &amp; I/O Nodes</h2>
+                <div class="table-scroll" tabindex="0" role="region" aria-label="Management node specifications">
+                    <table id="master-node">
+                    <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>CPU Model</th>
+                            <th>Cores</th>
+                            <th>Sockets</th>
+                            <th>Release Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>master</td>
+                            <td>Intel(R) Xeon(R) Silver 4110 CPU @ 2.10GHz</td>
+                            <td class="cores">16</td>
+                            <td>1</td>
+                            <td>2017</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                 <div class="table-scroll" tabindex="0" role="region" aria-label="I/O node specifications">
+                    <table id="io-nodes">
+                    <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>CPU Model</th>
+                            <th>Cores</th>
+                            <th>Sockets</th>
+                            <th>Release Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>io</td>
+                            <td>Intel(R) Xeon(R) Gold 6244 CPU @ 3.60GHz</td>
+                            <td class="cores">8</td>
+                            <td>1</td>
+                            <td>2019</td>
+                        </tr>
+                        <tr>
+                            <td>io2</td>
+                            <td>AMD EPYC 9135 16-Core Processor</td>
+                            <td class="cores">16</td>
+                            <td>1</td>
+                            <td>2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </section>
+
+            <section class="facilities-section" aria-labelledby="compute-nodes-heading">
+                <h2 id="compute-nodes-heading">Compute Nodes</h2>
+                <h3 class="partition-title intel">Intel Partition</h3>
+                <div class="table-scroll" tabindex="0" role="region" aria-label="Intel compute node specifications">
+                    <table id="compute-nodes-intel">
+                    <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>CPU Model</th>
+                            <th>Cores</th>
+                            <th>Sockets</th>
+                            <th>Release Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>node01</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">48</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node02</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">48</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node03</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">48</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node04</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">48</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node05</td>
+                            <td>Intel(R) Xeon(R) Platinum 8170 CPU @ 2.10GHz</td>
+                            <td class="cores">52</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node06</td>
+                            <td>Intel(R) Xeon(R) Gold 6226R CPU @ 2.90GHz</td>
+                            <td class="cores">32</td>
+                            <td>2</td>
+                            <td>2020</td>
+                        </tr>
+                        <tr>
+                            <td>node07</td>
+                            <td>Intel(R) Xeon(R) Platinum 8170M CPU @ 2.10GHz</td>
+                            <td class="cores">52</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node08</td>
+                            <td>Intel(R) Xeon(R) Platinum 8170M CPU @ 2.10GHz</td>
+                            <td class="cores">52</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>node09</td>
+                            <td>Intel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHz</td>
+                            <td class="cores">56</td>
+                            <td>2</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>Dell00</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">24</td>
+                            <td>1</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>Dell01</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">24</td>
+                            <td>1</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>Dell02</td>
+                            <td>Intel(R) Xeon(R) Platinum 8160 CPU @ 2.10GHz</td>
+                            <td class="cores">24</td>
+                            <td>1</td>
+                            <td>2017</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <h3 class="partition-title amd">AMD Partition</h3>
+                <div class="table-scroll" tabindex="0" role="region" aria-label="AMD compute node specifications">
+                    <table id="compute-nodes-amd">
+                    <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>CPU Model</th>
+                            <th>Cores</th>
+                            <th>Sockets</th>
+                            <th>Release Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>node1</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node2</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node3</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node4</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node5</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>node6</td>
+                            <td>AMD EPYC 7763 64-Core Processor</td>
+                            <td class="cores">128</td>
+                            <td>2</td>
+                            <td>2021</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </section>
+
+        <section class="facilities-section facilities-storage" aria-labelledby="storage-overview-heading">
+            <div class="section-heading">
+                <div>
+                    <h2 id="storage-overview-heading">Storage Overview</h2>
+                    <p class="section-intro">Local storage attached to each cluster node. Use the NFS controls to inspect shared mounts without duplicating them in the capacity total.</p>
+                </div>
+            </div>
+
+            <div class="storage-summary-card">
+        <div id="total-size-display">Calculating...</div>
+        <p>Total Unique Storage Capacity</p>
+    </div>
+
+    <div class="visualization-container" id="vis-container">
+        <!-- Left Column: node06 -->
+        <div class="node-column">
+            <div id="node06" class="node client-node">
+                 <h3 class="node-title"><span class="node-icon" aria-hidden="true"></span>node06</h3>
+                <div class="node-content">
+                    <h4>Local Drives</h4>
+                    <div class="drive local" data-size="17" data-device="/dev/sdb"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/localdata1</span><span class="drive-size">17T</span><span class="drive-percent">38%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 38%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdc"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/localdata2</span><span class="drive-size">17T</span><span class="drive-percent">95%</span></div><div class="usage-bar-container"><div class="usage-bar red" style="width: 95%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdd"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/localdata3</span><span class="drive-size">17T</span><span class="drive-percent">98%</span></div><div class="usage-bar-container"><div class="usage-bar red" style="width: 98%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sde"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/localdata4</span><span class="drive-size">17T</span><span class="drive-percent">25%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 25%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdf"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/localdata5</span><span class="drive-size">17T</span><span class="drive-percent">43%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 43%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdg"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/localdata6</span><span class="drive-size">17T</span><span class="drive-percent">52%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 52%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdh"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/localdata7</span><span class="drive-size">17T</span><span class="drive-percent">25%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 25%;"></div></div></div></div>
+                    <div class="drive local" data-size="3.7" data-device="/dev/nvme0n1"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/localNVME</span><span class="drive-size">3.7T</span><span class="drive-percent">1%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 1%;"></div></div></div></div>
+
+                    <button type="button" class="collapsible-title collapsed" data-target="node06-nfs-section" aria-controls="node06-nfs-section" aria-expanded="false">NFS Mounts</button>
+                    <div class="nfs-section collapsed" id="node06-nfs-section" aria-hidden="true">
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data1</span><span class="drive-size">11T</span><span class="drive-percent">72%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 72%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data2</span><span class="drive-size">21T</span><span class="drive-percent">36%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 36%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data3</span><span class="drive-size">21T</span><span class="drive-percent">28%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 28%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data4</span><span class="drive-size">19T</span><span class="drive-percent">59%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 59%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data5</span><span class="drive-size">11T</span><span class="drive-percent">19%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 19%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data6</span><span class="drive-size">11T</span><span class="drive-percent">24%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 24%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data7</span><span class="drive-size">17T</span><span class="drive-percent">67%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 67%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data8</span><span class="drive-size">17T</span><span class="drive-percent">55%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 55%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data9</span><span class="drive-size">17T</span><span class="drive-percent">48%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 48%;"></div></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Column: master -->
+        <div class="node-column master-column">
+            <div id="master" class="node master-node">
+                 <h3 class="node-title"><span class="node-icon" aria-hidden="true"></span>master</h3>
+                <div class="node-content">
+                    <h4>Local Drives</h4>
+                    <div class="drive local" data-size="11" data-device="/dev/sdd"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data1</span><span class="drive-size">11T</span><span class="drive-percent">72%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 72%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdf"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data2</span><span class="drive-size">21T</span><span class="drive-percent">36%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 36%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sde"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data3</span><span class="drive-size">21T</span><span class="drive-percent">28%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 28%;"></div></div></div></div>
+                    <div class="drive local" data-size="19" data-device="/dev/sdh"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data4</span><span class="drive-size">19T</span><span class="drive-percent">59%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 59%;"></div></div></div></div>
+                    <div class="drive local" data-size="11" data-device="/dev/sdg"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data5</span><span class="drive-size">11T</span><span class="drive-percent">19%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 19%;"></div></div></div></div>
+                    <div class="drive local" data-size="11" data-device="/dev/sdj"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data6</span><span class="drive-size">11T</span><span class="drive-percent">24%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 24%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdi"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data7</span><span class="drive-size">17T</span><span class="drive-percent">67%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 67%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdb"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data8</span><span class="drive-size">17T</span><span class="drive-percent">55%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 55%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sda"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data9</span><span class="drive-size">17T</span><span class="drive-percent">48%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 48%;"></div></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: io & io2 -->
+        <div class="node-column">
+             <div id="io" class="node client-node">
+                 <h3 class="node-title"><span class="node-icon" aria-hidden="true"></span>io</h3>
+                 <div class="node-content">
+                    <h4>Local Drives</h4>
+                    <div class="drive local" data-size="11" data-device="/dev/sdb"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data91</span><span class="drive-size">11T</span><span class="drive-percent">50%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 50%;"></div></div></div></div>
+                    <div class="drive local" data-size="11" data-device="/dev/sdd"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data92</span><span class="drive-size">11T</span><span class="drive-percent">78%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 78%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdh"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data93</span><span class="drive-size">21T</span><span class="drive-percent">96%</span></div><div class="usage-bar-container"><div class="usage-bar red" style="width: 96%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdi"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data94</span><span class="drive-size">21T</span><span class="drive-percent">83%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 83%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdj"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data95</span><span class="drive-size">21T</span><span class="drive-percent">89%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 89%;"></div></div></div></div>
+                    <div class="drive local" data-size="11" data-device="/dev/sdk"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data96</span><span class="drive-size">11T</span><span class="drive-percent">99%</span></div><div class="usage-bar-container"><div class="usage-bar red" style="width: 99%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdn"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data97</span><span class="drive-size">17T</span><span class="drive-percent">91%</span></div><div class="usage-bar-container"><div class="usage-bar red" style="width: 91%;"></div></div></div></div>
+                    <div class="drive local" data-size="17" data-device="/dev/sdm"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data98</span><span class="drive-size">17T</span><span class="drive-percent">89%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 89%;"></div></div></div></div>
+                    <div class="drive local" data-size="11" data-device="/dev/sdl"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/data99</span><span class="drive-size">11T</span><span class="drive-percent">85%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 85%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdf"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataAX</span><span class="drive-size">21T</span><span class="drive-percent">64%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 64%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sde"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataAX2</span><span class="drive-size">21T</span><span class="drive-percent">1%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 1%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdg"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataJLS</span><span class="drive-size">21T</span><span class="drive-percent">59%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 59%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdc"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataJLS2</span><span class="drive-size">21T</span><span class="drive-percent">50%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 50%;"></div></div></div></div>
+
+                    <button type="button" class="collapsible-title collapsed" data-target="io-nfs-section" aria-controls="io-nfs-section" aria-expanded="false">NFS Mounts</button>
+                    <div class="nfs-section collapsed" id="io-nfs-section" aria-hidden="true">
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata1</span><span class="drive-size">11T</span><span class="drive-percent">72%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 72%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata2</span><span class="drive-size">21T</span><span class="drive-percent">36%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 36%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata3</span><span class="drive-size">21T</span><span class="drive-percent">28%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 28%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata4</span><span class="drive-size">19T</span><span class="drive-percent">59%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 59%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata5</span><span class="drive-size">11T</span><span class="drive-percent">19%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 19%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata6</span><span class="drive-size">11T</span><span class="drive-percent">24%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 24%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata7</span><span class="drive-size">17T</span><span class="drive-percent">67%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 67%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata8</span><span class="drive-size">17T</span><span class="drive-percent">55%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 55%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata9</span><span class="drive-size">17T</span><span class="drive-percent">48%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 48%;"></div></div></div></div>
+                    </div>
+                </div>
+            </div>
+             <div id="io2" class="node client-node">
+                <h3 class="node-title"><span class="node-icon" aria-hidden="true"></span>io2</h3>
+                 <div class="node-content">
+                    <h4>Local Drives</h4>
+                    <div class="drive local" data-size="21" data-device="/dev/sda"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataJLS1</span><span class="drive-size">21T</span><span class="drive-percent">87%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 87%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdb"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataXBR3</span><span class="drive-size">21T</span><span class="drive-percent">81%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 81%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdc"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataXBR2</span><span class="drive-size">21T</span><span class="drive-percent">95%</span></div><div class="usage-bar-container"><div class="usage-bar red" style="width: 95%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sdd"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataXBR1</span><span class="drive-size">21T</span><span class="drive-percent">73%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 73%;"></div></div></div></div>
+                    <div class="drive local" data-size="21" data-device="/dev/sde"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/dataXBR</span><span class="drive-size">21T</span><span class="drive-percent">92%</span></div><div class="usage-bar-container"><div class="usage-bar red" style="width: 92%;"></div></div></div></div>
+
+                    <button type="button" class="collapsible-title collapsed" data-target="io2-nfs-section" aria-controls="io2-nfs-section" aria-expanded="false">NFS Mounts</button>
+                    <div class="nfs-section collapsed" id="io2-nfs-section" aria-hidden="true">
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata1</span><span class="drive-size">11T</span><span class="drive-percent">72%</span></div><div class="usage-bar-container"><div class="usage-bar yellow" style="width: 72%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata2</span><span class="drive-size">21T</span><span class="drive-percent">36%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 36%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata3</span><span class="drive-size">21T</span><span class="drive-percent">28%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 28%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata4</span><span class="drive-size">19T</span><span class="drive-percent">59%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 59%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata5</span><span class="drive-size">11T</span><span class="drive-percent">19%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 19%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata6</span><span class="drive-size">11T</span><span class="drive-percent">24%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 24%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata7</span><span class="drive-size">17T</span><span class="drive-percent">67%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 67%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata8</span><span class="drive-size">17T</span><span class="drive-percent">55%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 55%;"></div></div></div></div>
+                        <div class="drive nfs"><div class="drive-info"><div class="drive-label"><span class="drive-mount">/nfsdata9</span><span class="drive-size">17T</span><span class="drive-percent">48%</span></div><div class="usage-bar-container"><div class="usage-bar green" style="width: 48%;"></div></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </section>
+    </article>
+
+    <div class="div0"></div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const facilitiesPage = document.querySelector('.page-facilities');
+    if (!facilitiesPage) return;
+
+    function sumCoresInTable(tableId) {
+        const table = facilitiesPage.querySelector('#' + tableId);
+        if (!table) return 0;
+
+        return Array.from(table.querySelectorAll('td.cores')).reduce(function (total, element) {
+            return total + (parseInt(element.textContent, 10) || 0);
+        }, 0);
+    }
+
+    const managementCores = sumCoresInTable('master-node');
+    const ioCores = sumCoresInTable('io-nodes');
+    const intelCores = sumCoresInTable('compute-nodes-intel');
+    const amdCores = sumCoresInTable('compute-nodes-amd');
+    const computeCores = intelCores + amdCores;
+    const managementAndIoCores = managementCores + ioCores;
+
+    const coreValues = {
+        'total-cores': computeCores + managementAndIoCores,
+        'compute-cores': computeCores,
+        'compute-intel-cores': intelCores,
+        'compute-amd-cores': amdCores,
+        'io-master-cores': managementAndIoCores
+    };
+
+    Object.keys(coreValues).forEach(function (id) {
+        const element = facilitiesPage.querySelector('#' + id);
+        if (element) element.textContent = coreValues[id].toLocaleString();
+    });
+
+    let totalStorage = 0;
+    const uniqueDisks = new Set();
+
+    facilitiesPage.querySelectorAll('.drive.local[data-device]').forEach(function (drive) {
+        const node = drive.closest('.node');
+        const device = drive.dataset.device;
+        const size = parseFloat(drive.dataset.size);
+
+        if (!node || !device || Number.isNaN(size)) return;
+
+        const uniqueId = node.id + '-' + device;
+        if (!uniqueDisks.has(uniqueId)) {
+            uniqueDisks.add(uniqueId);
+            totalStorage += size;
+        }
+    });
+
+    const storageDisplay = facilitiesPage.querySelector('#total-size-display');
+    if (storageDisplay) storageDisplay.textContent = totalStorage.toFixed(1) + ' TB';
+
+    facilitiesPage.querySelectorAll('.collapsible-title').forEach(function (control) {
+        const content = facilitiesPage.querySelector('#' + control.dataset.target);
+        if (!content) return;
+
+        control.addEventListener('click', function () {
+            const isCollapsed = content.classList.toggle('collapsed');
+            control.classList.toggle('collapsed', isCollapsed);
+            control.setAttribute('aria-expanded', String(!isCollapsed));
+            content.setAttribute('aria-hidden', String(isCollapsed));
+        });
+    });
+});
+</script>
