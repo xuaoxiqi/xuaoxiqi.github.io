@@ -1851,44 +1851,9 @@ nav#navBarBottom {
 	color: var(--text-dark);
 }
 
-.page-facilities .facilities-hero {
-	padding: clamp(24px, 4vw, 44px);
-	margin: calc(-1 * clamp(18px, 2.5vw, 32px)) calc(-1 * clamp(18px, 2.5vw, 32px)) 36px;
-	border-radius: 10px 10px 0 0;
-	background: linear-gradient(135deg, var(--primary-color), #27687a);
-	color: white;
-	text-align: left;
-}
-
-.page-facilities .facilities-eyebrow {
-	display: inline-block;
-	margin-bottom: 8px;
-	color: #bfe7e2;
-	font-size: 12px;
-	font-weight: 700;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-}
-
-.page-facilities .facilities-hero h1 {
-	margin: 0 0 10px;
-	color: white;
-	font-size: clamp(30px, 5vw, 46px);
-	line-height: 1.15;
-	letter-spacing: -0.03em;
-}
-
-.page-facilities .facilities-hero p {
-	max-width: 780px;
-	margin: 0;
-	color: rgba(255, 255, 255, 0.86);
-	font-size: 16px;
-	line-height: 1.7;
-}
-
 .page-facilities .facilities-section { margin-top: 42px; }
-.page-facilities .facilities-section:first-of-type { margin-top: 0; }
 
+.page-facilities .facilities-page-title,
 .page-facilities .facilities-section > h2,
 .page-facilities .section-heading h2 {
 	margin: 0;
@@ -1897,6 +1862,14 @@ nav#navBarBottom {
 	color: var(--primary-color);
 	font-size: clamp(23px, 3vw, 29px);
 	letter-spacing: -0.02em;
+}
+
+.page-facilities .facilities-page-intro {
+	max-width: 850px;
+	margin: 12px 0 0;
+	color: var(--text-muted);
+	font-size: 15px;
+	line-height: 1.7;
 }
 
 .page-facilities .section-intro {
@@ -2227,7 +2200,6 @@ nav#navBarBottom {
 @media (max-width: 760px) {
 	.page-facilities .summary-grid { grid-template-columns: 1fr; }
 	.page-facilities .node-column { display: flex; }
-	.page-facilities .facilities-hero { margin: -16px -16px 28px; }
 	.page-facilities .facilities-section { margin-top: 34px; }
 }
 
