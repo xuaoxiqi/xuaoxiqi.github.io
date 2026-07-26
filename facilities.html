@@ -510,6 +510,78 @@ document.addEventListener('DOMContentLoaded', function () {
     const storageDisplay = facilitiesPage.querySelector('#total-size-display');
     if (storageDisplay) storageDisplay.textContent = totalStorage.toFixed(1) + ' TB';
 
+    function capacityBreakdown(total, used, free) {
+        for (let precision = 1; precision <= 2; precision += 1) {
+            const factor = Math.pow(10, precision);
+            const roundedTotal = Math.round((total + Number.EPSILON) * factor);
+            const roundedUsed = Math.round((used + Number.EPSILON) * factor);
+            const roundedFree = Math.round((free + Number.EPSILON) * factor);
+            const keepsSmallValuesVisible =
+                (used === 0 || roundedUsed > 0) &&
+                (free === 0 || roundedFree > 0);
+
+            if (keepsSmallValuesVisible && roundedUsed + roundedFree === roundedTotal) {
+                return {
+                    precision: precision,
+                    used: roundedUsed / factor,
+                    free: roundedFree / factor
+                };
+            }
+        }
+
+        const factor = 100;
+        const roundedTotal = Math.round((total + Number.EPSILON) * factor);
+        const roundedUsed = Math.round((used + Number.EPSILON) * factor);
+        return {
+            precision: 2,
+            used: roundedUsed / factor,
+            free: (roundedTotal - roundedUsed) / factor
+        };
+    }
+
+    function createCapacityPart(className, text) {
+        const element = document.createElement('span');
+        element.className = className;
+        element.textContent = text;
+        return element;
+    }
+
+    facilitiesPage.querySelectorAll('.drive').forEach(function (drive) {
+        const label = drive.querySelector('.drive-label');
+        const sizeElement = drive.querySelector('.drive-size');
+        const percentElement = drive.querySelector('.drive-percent');
+        if (!label || !sizeElement || !percentElement) return;
+
+        const total = parseFloat(sizeElement.textContent);
+        const usedPercent = parseFloat(percentElement.textContent);
+        if (Number.isNaN(total) || Number.isNaN(usedPercent)) return;
+
+        const used = total * usedPercent / 100;
+        const free = total - used;
+        const breakdown = capacityBreakdown(total, used, free);
+        const totalText = Number.isInteger(total) ? total.toFixed(0) : total.toFixed(1);
+        const usedText = breakdown.used.toFixed(breakdown.precision);
+        const freeText = breakdown.free.toFixed(breakdown.precision);
+
+        percentElement.textContent = 'Used ' + usedPercent + '%';
+        sizeElement.textContent = totalText + ' T total';
+
+        const capacityRow = document.createElement('span');
+        capacityRow.className = 'drive-capacity';
+        capacityRow.setAttribute(
+            'aria-label',
+            totalText + ' terabytes total: ' +
+            usedText + ' terabytes used and ' +
+            freeText + ' terabytes free'
+        );
+        capacityRow.appendChild(sizeElement);
+        capacityRow.appendChild(createCapacityPart('capacity-operator', '='));
+        capacityRow.appendChild(createCapacityPart('drive-used', usedText + ' T used'));
+        capacityRow.appendChild(createCapacityPart('capacity-operator', '+'));
+        capacityRow.appendChild(createCapacityPart('drive-free', freeText + ' T free'));
+        label.appendChild(capacityRow);
+    });
+
     facilitiesPage.querySelectorAll('.collapsible-title').forEach(function (control) {
         const content = facilitiesPage.querySelector('#' + control.dataset.target);
         if (!content) return;

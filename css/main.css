@@ -2146,9 +2146,9 @@ nav#navBarBottom {
 
 .page-facilities .drive-label {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) auto auto;
-	gap: 8px;
-	align-items: baseline;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 8px 10px;
+	align-items: center;
 	margin-bottom: 7px;
 	font-size: 13px;
 	font-weight: 700;
@@ -2162,13 +2162,44 @@ nav#navBarBottom {
 }
 
 .page-facilities .drive-size {
-	color: var(--highlight-color);
-	font-size: 14px;
+	color: var(--primary-color);
+	font-weight: 700;
 }
 
 .page-facilities .drive-percent {
+	padding: 2px 7px;
+	border-radius: 999px;
+	background: #e2e8f0;
+	color: var(--text-dark);
+	font-size: 11px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.page-facilities .drive-capacity {
+	display: flex;
+	grid-column: 1 / -1;
+	flex-wrap: wrap;
+	gap: 3px 5px;
+	align-items: baseline;
 	color: var(--text-muted);
 	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.45;
+}
+
+.page-facilities .drive-used {
+	color: var(--highlight-color);
+	font-weight: 700;
+}
+
+.page-facilities .drive-free {
+	color: var(--accent-color);
+	font-weight: 700;
+}
+
+.page-facilities .capacity-operator {
+	color: #94a3b8;
 }
 
 .page-facilities .usage-bar-container {
