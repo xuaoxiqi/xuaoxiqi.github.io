@@ -257,6 +257,7 @@ title: Facilities
 </div>
 <div class="storage-summary-card">
 <div id="total-size-display">Calculating...</div>
+<div class="storage-breakdown" id="total-used-free-display">Calculating used and free capacity...</div>
 <p>Total Unique Storage Capacity</p>
 </div>
 <div class="visualization-container" id="vis-container">
@@ -491,6 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     let totalStorage = 0;
+    let usedStorage = 0;
     const uniqueDisks = new Set();
 
     facilitiesPage.querySelectorAll('.drive.local[data-device]').forEach(function (drive) {
@@ -504,11 +506,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!uniqueDisks.has(uniqueId)) {
             uniqueDisks.add(uniqueId);
             totalStorage += size;
+            const percentElement = drive.querySelector('.drive-percent');
+            const usedPercent = percentElement ? parseFloat(percentElement.textContent) : NaN;
+            if (!Number.isNaN(usedPercent)) {
+                usedStorage += size * usedPercent / 100;
+            }
         }
     });
-
-    const storageDisplay = facilitiesPage.querySelector('#total-size-display');
-    if (storageDisplay) storageDisplay.textContent = totalStorage.toFixed(1) + ' TB';
 
     function capacityBreakdown(total, used, free) {
         for (let precision = 1; precision <= 2; precision += 1) {
@@ -544,6 +548,26 @@ document.addEventListener('DOMContentLoaded', function () {
         element.className = className;
         element.textContent = text;
         return element;
+    }
+
+    const storageDisplay = facilitiesPage.querySelector('#total-size-display');
+    if (storageDisplay) storageDisplay.textContent = totalStorage.toFixed(1) + ' TB';
+
+    const storageBreakdown = facilitiesPage.querySelector('#total-used-free-display');
+    if (storageBreakdown) {
+        const freeStorage = totalStorage - usedStorage;
+        const breakdown = capacityBreakdown(totalStorage, usedStorage, freeStorage);
+        const usedText = breakdown.used.toFixed(breakdown.precision);
+        const freeText = breakdown.free.toFixed(breakdown.precision);
+
+        storageBreakdown.textContent = '';
+        storageBreakdown.appendChild(createCapacityPart('storage-used', 'Used ' + usedText + ' TB'));
+        storageBreakdown.appendChild(createCapacityPart('storage-operator', '+'));
+        storageBreakdown.appendChild(createCapacityPart('storage-free', 'Free ' + freeText + ' TB'));
+        storageBreakdown.setAttribute(
+            'aria-label',
+            usedText + ' terabytes used and ' + freeText + ' terabytes free'
+        );
     }
 
     facilitiesPage.querySelectorAll('.drive').forEach(function (drive) {

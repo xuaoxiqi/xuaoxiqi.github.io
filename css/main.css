@@ -2010,6 +2010,28 @@ nav#navBarBottom {
 	line-height: 1.2;
 }
 
+.page-facilities .storage-breakdown {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 4px 8px;
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.page-facilities .storage-used {
+	color: var(--highlight-color);
+}
+
+.page-facilities .storage-free {
+	color: var(--accent-color);
+}
+
+.page-facilities .storage-operator {
+	color: #94a3b8;
+}
+
 .page-facilities .storage-summary-card p {
 	margin: 7px 0 0;
 	color: var(--text-muted);
