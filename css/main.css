@@ -1623,13 +1623,13 @@ nav#navBarBottom {
 	padding-bottom: 5px;
 }
 
-.page-teaching a {
+#articlePost.page-teaching a {
 	color: var(--primary-color);
 	border-bottom: 1px dotted var(--accent-color);
 	transition: all 0.2s ease;
 	text-decoration: none;
 }
-.page-teaching a:hover {
+#articlePost.page-teaching a:hover {
 	color: var(--highlight-color);
 	border-bottom: 1px solid var(--highlight-color);
 }
