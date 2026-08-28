@@ -1843,6 +1843,606 @@ nav#navBarBottom {
 	.page-teaching .project-badge { margin-left: 0; margin-top: 4px; }
 }
 
+/* === Page: Tensor Analysis Course (tensor-analysis.html) === */
+.page-tensor-analysis-course {
+	color: var(--text-dark);
+	font-family: 'Droid Sans', 'Segoe UI', Tahoma, sans-serif;
+	line-height: 1.72;
+	text-align: left;
+}
+
+.page-tensor-analysis-course a {
+	color: var(--primary-color);
+}
+
+.page-tensor-analysis-course .course-breadcrumb {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 18px;
+	color: var(--text-muted);
+	font-size: 14px;
+}
+
+.page-tensor-analysis-course .course-breadcrumb a {
+	border-bottom: 1px solid transparent;
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+.page-tensor-analysis-course .course-breadcrumb a:hover {
+	border-color: var(--primary-color);
+	font-weight: 700;
+}
+
+.page-tensor-analysis-course .course-hero {
+	position: relative;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.75fr);
+	gap: 34px;
+	align-items: center;
+	min-height: 390px;
+	padding: clamp(28px, 5vw, 56px);
+	border: 1px solid var(--border-color);
+	border-radius: 12px;
+	background: #ffffff;
+	box-shadow: 0 8px 28px rgba(29, 78, 95, 0.08);
+}
+
+.page-tensor-analysis-course .course-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: 6px;
+	background: linear-gradient(180deg, var(--accent-color), var(--primary-color));
+}
+
+.page-tensor-analysis-course .course-eyebrow {
+	margin: 0 0 11px;
+	color: var(--accent-color);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.page-tensor-analysis-course .course-hero h1 {
+	margin: 0;
+	color: var(--primary-color);
+	font-size: clamp(36px, 5.6vw, 58px);
+	line-height: 1.08;
+	letter-spacing: 0;
+}
+
+.page-tensor-analysis-course .course-hero h1 span {
+	display: block;
+	margin-top: 8px;
+	color: #526574;
+	font-size: clamp(21px, 3vw, 30px);
+	font-weight: 400;
+}
+
+.page-tensor-analysis-course .course-lead {
+	max-width: 760px;
+	margin: 24px 0 0;
+	color: #455966;
+	font-size: clamp(17px, 2vw, 20px);
+	line-height: 1.75;
+	text-align: justify;
+}
+
+.page-tensor-analysis-course .course-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 9px;
+	margin-top: 26px;
+}
+
+.page-tensor-analysis-course .course-meta span {
+	display: inline-flex;
+	align-items: center;
+	min-height: 32px;
+	padding: 6px 11px;
+	border: 1px solid var(--border-color);
+	border-radius: 999px;
+	background: #f4f7f8;
+	color: #405360;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.page-tensor-analysis-course .course-meta .course-code-chip {
+	border-color: var(--primary-color);
+	background: var(--primary-color);
+	color: #ffffff;
+	font-family: 'Courier New', monospace;
+	font-size: 14px;
+	letter-spacing: 0.03em;
+}
+
+.page-tensor-analysis-course .tensor-visual {
+	position: relative;
+	min-height: 280px;
+	display: grid;
+	place-items: center;
+}
+
+.page-tensor-analysis-course .tensor-frame {
+	position: relative;
+	width: min(100%, 330px);
+	aspect-ratio: 1 / 1;
+	border: 1px solid #dce8eb;
+	border-radius: 50%;
+	background:
+		radial-gradient(circle at center, rgba(42,157,143,0.14) 0 2px, transparent 3px),
+		linear-gradient(rgba(29,78,95,0.05) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(29,78,95,0.05) 1px, transparent 1px);
+	background-size: auto, 28px 28px, 28px 28px;
+}
+
+.page-tensor-analysis-course .tensor-frame::after {
+	content: "";
+	position: absolute;
+	inset: 14%;
+	border: 1px dashed rgba(42, 157, 143, 0.48);
+	border-radius: 50%;
+}
+
+.page-tensor-analysis-course .tensor-box {
+	position: absolute;
+	inset: 50% auto auto 50%;
+	z-index: 1;
+	min-width: 190px;
+	padding: 22px 24px;
+	transform: translate(-50%, -50%) rotate(-4deg);
+	border: 1px solid rgba(29, 78, 95, 0.18);
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.94);
+	box-shadow: 0 12px 30px rgba(29, 78, 95, 0.13);
+	color: var(--primary-color);
+	text-align: center;
+}
+
+.page-tensor-analysis-course .tensor-symbol {
+	display: block;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 40px;
+	line-height: 1.2;
+}
+
+.page-tensor-analysis-course .tensor-equation {
+	display: block;
+	margin-top: 11px;
+	color: #536673;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 18px;
+}
+
+.page-tensor-analysis-course .tensor-caption {
+	position: absolute;
+	right: 8px;
+	bottom: 2px;
+	max-width: 200px;
+	padding: 8px 11px;
+	border-radius: 7px;
+	background: rgba(230, 245, 242, 0.95);
+	color: #49606d;
+	font-size: 12px;
+	line-height: 1.45;
+}
+
+.page-tensor-analysis-course .course-section {
+	margin-top: 52px;
+}
+
+.page-tensor-analysis-course .course-section-heading {
+	display: flex;
+	align-items: end;
+	justify-content: space-between;
+	gap: 24px;
+	margin-bottom: 22px;
+	padding-bottom: 10px;
+	border-bottom: 3px solid var(--primary-color);
+}
+
+.page-tensor-analysis-course .course-section-heading h2 {
+	margin: 0;
+	color: var(--primary-color);
+	font-size: clamp(24px, 3vw, 29px);
+	line-height: 1.25;
+	letter-spacing: 0;
+}
+
+.page-tensor-analysis-course .course-section-heading p {
+	margin: 0 0 3px;
+	color: var(--text-muted);
+	font-size: 13px;
+	text-align: right;
+}
+
+.page-tensor-analysis-course .overview-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+	gap: 24px;
+}
+
+.page-tensor-analysis-course .course-panel {
+	padding: 25px;
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	background: #ffffff;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.035);
+}
+
+.page-tensor-analysis-course .course-panel p:first-child {
+	margin-top: 0;
+}
+
+.page-tensor-analysis-course .course-panel p:last-child {
+	margin-bottom: 0;
+}
+
+.page-tensor-analysis-course .course-positioning {
+	font-size: 17px;
+	line-height: 1.9;
+	text-align: justify;
+}
+
+.page-tensor-analysis-course .course-positioning strong {
+	color: var(--primary-color);
+}
+
+.page-tensor-analysis-course .learning-path {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.page-tensor-analysis-course .learning-path li {
+	position: relative;
+	padding: 0 0 17px 31px;
+	color: #435764;
+}
+
+.page-tensor-analysis-course .learning-path li:last-child {
+	padding-bottom: 0;
+}
+
+.page-tensor-analysis-course .learning-path li::before {
+	content: "";
+	position: absolute;
+	left: 7px;
+	top: 8px;
+	z-index: 1;
+	width: 9px;
+	height: 9px;
+	border: 3px solid var(--accent-color);
+	border-radius: 50%;
+	background: #ffffff;
+}
+
+.page-tensor-analysis-course .learning-path li:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	left: 12px;
+	top: 20px;
+	bottom: 1px;
+	width: 1px;
+	background: #cfe5e1;
+}
+
+.page-tensor-analysis-course .learning-path strong {
+	display: block;
+	color: var(--primary-color);
+	font-size: 14px;
+}
+
+.page-tensor-analysis-course .pillar-grid,
+.page-tensor-analysis-course .resource-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.page-tensor-analysis-course .resource-grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.page-tensor-analysis-course .pillar,
+.page-tensor-analysis-course .resource-card,
+.page-tensor-analysis-course .chapter {
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	background: #ffffff;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+	transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.page-tensor-analysis-course .pillar,
+.page-tensor-analysis-course .resource-card {
+	padding: 21px;
+}
+
+.page-tensor-analysis-course .pillar:hover,
+.page-tensor-analysis-course .resource-card:hover,
+.page-tensor-analysis-course .chapter:hover {
+	transform: translateY(-3px);
+	border-color: rgba(42, 157, 143, 0.45);
+	box-shadow: 0 10px 22px rgba(29, 78, 95, 0.07);
+}
+
+.page-tensor-analysis-course .pillar-index {
+	display: inline-grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	margin-bottom: 13px;
+	border-radius: 8px;
+	background: #e6f5f2;
+	color: var(--primary-color);
+	font-family: Georgia, serif;
+	font-weight: 700;
+}
+
+.page-tensor-analysis-course .pillar h3,
+.page-tensor-analysis-course .resource-card h3,
+.page-tensor-analysis-course .chapter h3,
+.page-tensor-analysis-course .workflow-step h3 {
+	margin: 0 0 7px;
+	color: var(--primary-color);
+	font-size: 17px;
+	line-height: 1.45;
+}
+
+.page-tensor-analysis-course .pillar p,
+.page-tensor-analysis-course .resource-card p,
+.page-tensor-analysis-course .chapter p,
+.page-tensor-analysis-course .workflow-step p {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 14px;
+	line-height: 1.65;
+}
+
+.page-tensor-analysis-course .chapter-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 15px;
+}
+
+.page-tensor-analysis-course .chapter {
+	display: grid;
+	grid-template-columns: 54px 1fr;
+	gap: 17px;
+	align-items: start;
+	padding: 19px 21px;
+}
+
+.page-tensor-analysis-course .chapter-number {
+	display: grid;
+	place-items: center;
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+	background: var(--primary-color);
+	color: #ffffff;
+	font-family: 'Courier New', monospace;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.page-tensor-analysis-course .resource-card {
+	position: relative;
+	min-height: 205px;
+	display: flex;
+	flex-direction: column;
+}
+
+.page-tensor-analysis-course .resource-type {
+	width: fit-content;
+	margin-bottom: 17px;
+	padding: 4px 8px;
+	border-radius: 5px;
+	background: #e6f5f2;
+	color: #11685f;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.page-tensor-analysis-course .resource-note {
+	margin-top: auto;
+	padding-top: 16px;
+	color: #7b8d98;
+	font-size: 12px;
+}
+
+.page-tensor-analysis-course .workflow {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	overflow: hidden;
+	border: 1px solid var(--border-color);
+	border-radius: 11px;
+	background: #ffffff;
+}
+
+.page-tensor-analysis-course .workflow-step {
+	min-height: 155px;
+	padding: 25px 22px;
+}
+
+.page-tensor-analysis-course .workflow-step:not(:last-child) {
+	border-right: 1px solid var(--border-color);
+}
+
+.page-tensor-analysis-course .workflow-num {
+	color: var(--accent-color);
+	font-family: 'Courier New', monospace;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.page-tensor-analysis-course .info-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(300px, 0.75fr);
+	gap: 20px;
+}
+
+.page-tensor-analysis-course .info-table {
+	width: 100%;
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	border-collapse: separate;
+	border-spacing: 0;
+	overflow: hidden;
+	background: #ffffff;
+}
+
+.page-tensor-analysis-course .info-table th,
+.page-tensor-analysis-course .info-table td {
+	height: auto;
+	padding: 14px 17px;
+	border-bottom: 1px solid var(--border-color);
+	text-align: left;
+	vertical-align: top;
+}
+
+.page-tensor-analysis-course .info-table tr:last-child th,
+.page-tensor-analysis-course .info-table tr:last-child td {
+	border-bottom: 0;
+}
+
+.page-tensor-analysis-course .info-table th {
+	width: 30%;
+	background: #f6f9fa;
+	color: #48606d;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.page-tensor-analysis-course .info-table td {
+	color: #354b57;
+	font-size: 14px;
+}
+
+.page-tensor-analysis-course .instructor-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 26px;
+	border-radius: 11px;
+	background:
+		linear-gradient(135deg, rgba(42,157,143,0.18), transparent 58%),
+		var(--primary-color);
+	color: #ffffff;
+	box-shadow: 0 8px 28px rgba(29, 78, 95, 0.08);
+}
+
+.page-tensor-analysis-course .instructor-label {
+	margin-bottom: 12px;
+	color: #cdece7;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.page-tensor-analysis-course .instructor-card h3 {
+	margin: 0;
+	font-size: 26px;
+}
+
+.page-tensor-analysis-course .instructor-card p {
+	margin: 8px 0 0;
+	color: #e2edef;
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+.page-tensor-analysis-course .instructor-card a {
+	width: fit-content;
+	margin-top: 20px;
+	border-bottom: 1px solid rgba(255,255,255,0.55);
+	color: #ffffff;
+	text-decoration: none;
+}
+
+@media (max-width: 980px) {
+	.page-tensor-analysis-course .course-hero,
+	.page-tensor-analysis-course .overview-grid,
+	.page-tensor-analysis-course .info-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.page-tensor-analysis-course .pillar-grid,
+	.page-tensor-analysis-course .resource-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 720px) {
+	.page-tensor-analysis-course .course-hero {
+		min-height: 0;
+		padding: 27px 23px 30px;
+	}
+
+	.page-tensor-analysis-course .tensor-visual {
+		display: none;
+	}
+
+	.page-tensor-analysis-course .course-section {
+		margin-top: 44px;
+	}
+
+	.page-tensor-analysis-course .course-section-heading {
+		align-items: start;
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	.page-tensor-analysis-course .course-section-heading p {
+		text-align: left;
+	}
+
+	.page-tensor-analysis-course .chapter-list,
+	.page-tensor-analysis-course .pillar-grid,
+	.page-tensor-analysis-course .resource-grid,
+	.page-tensor-analysis-course .workflow {
+		grid-template-columns: 1fr;
+	}
+
+	.page-tensor-analysis-course .workflow-step:not(:last-child) {
+		border-right: 0;
+		border-bottom: 1px solid var(--border-color);
+	}
+
+	.page-tensor-analysis-course .chapter {
+		grid-template-columns: 46px 1fr;
+	}
+
+	.page-tensor-analysis-course .chapter-number {
+		width: 43px;
+		height: 43px;
+	}
+
+	.page-tensor-analysis-course .info-table th,
+	.page-tensor-analysis-course .info-table td {
+		display: block;
+		width: 100%;
+	}
+
+	.page-tensor-analysis-course .info-table th {
+		padding-bottom: 5px;
+		border-bottom: 0;
+	}
+
+	.page-tensor-analysis-course .info-table td {
+		padding-top: 4px;
+	}
+}
+
 /* === Page: Facilities (facilities.html) === */
 .page-facilities {
 	--facility-shadow: 0 8px 24px rgba(29, 78, 95, 0.08);
