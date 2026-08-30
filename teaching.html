@@ -269,10 +269,16 @@ title: Teaching
     <h3 class="teaching-subheader">1. Teaching Courses</h3>
     
     <div class="section-divider">Undergraduate Courses</div>
-    <p id="undergraduate-course-summary" class="summary-note">
-        All records listed below: <span data-summary-stat="all-courses">--</span> undergraduate courses, <span data-summary-stat="all-hours">--</span> actual teaching hours, and <span data-summary-stat="all-students">--</span> student enrollments.<br>
-        Recent five-year window for <span data-summary-stat="form-year">--</span> forms (<span data-summary-stat="recent-start">--</span> to now): <span data-summary-stat="recent-courses">--</span> undergraduate courses, <span data-summary-stat="recent-hours">--</span> actual teaching hours, and <span data-summary-stat="recent-students">--</span> student enrollments.
-    </p>
+    <div id="undergraduate-course-summary" class="summary-note undergraduate-summary">
+        <div class="summary-line">
+            <span class="summary-line-label">All records</span>
+            <span class="summary-line-values"><span data-summary-stat="all-courses">--</span> undergraduate courses, <span data-summary-stat="all-hours">--</span> actual teaching hours, and <span data-summary-stat="all-students">--</span> student enrollments.</span>
+        </div>
+        <div class="summary-line">
+            <span class="summary-line-label">Recent 5Y (<span data-summary-stat="form-year">--</span> forms)</span>
+            <span class="summary-line-values"><span data-summary-stat="recent-courses">--</span> undergraduate courses, <span data-summary-stat="recent-hours">--</span> actual teaching hours, and <span data-summary-stat="recent-students">--</span> student enrollments <span class="summary-window">(<span data-summary-stat="recent-start">--</span> to now)</span>.</span>
+        </div>
+    </div>
     <div class="table-container">
         <table id="undergraduate-courses-table" class="modern-table">
             <caption class="visually-hidden">Undergraduate courses taught at NPU</caption>
@@ -755,7 +761,7 @@ title: Teaching
             setText(summary, '[data-summary-stat="all-courses"]', formatNumber(allTotals.courses));
             setText(summary, '[data-summary-stat="all-hours"]', formatNumber(allTotals.hours));
             setText(summary, '[data-summary-stat="all-students"]', formatNumber(allTotals.students));
-            setText(summary, '[data-summary-stat="form-year"]', formatNumber(formYear));
+            setText(summary, '[data-summary-stat="form-year"]', String(formYear));
             setText(summary, '[data-summary-stat="recent-start"]', recentStartYear + '-01-01');
             setText(summary, '[data-summary-stat="recent-courses"]', formatNumber(recentTotals.courses));
             setText(summary, '[data-summary-stat="recent-hours"]', formatNumber(recentTotals.hours));

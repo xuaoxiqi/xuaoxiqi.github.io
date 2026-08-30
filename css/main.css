@@ -1858,6 +1858,31 @@ nav#navBarBottom {
 .page-teaching .meta-note { margin-top: 4px; font-size: 13px; color: #777; }
 .page-teaching .muted-note { color: #666; font-size: 13px; }
 .page-teaching .summary-note { margin-bottom: 15px; font-style: italic; }
+.page-teaching .undergraduate-summary {
+	display: grid;
+	gap: 5px;
+}
+.page-teaching .undergraduate-summary .summary-line {
+	display: grid;
+	grid-template-columns: 180px minmax(0, 1fr);
+	column-gap: 12px;
+	align-items: baseline;
+}
+.page-teaching .undergraduate-summary .summary-line-label {
+	color: var(--primary-color);
+	font-weight: 800;
+	white-space: nowrap;
+}
+.page-teaching .undergraduate-summary .summary-window {
+	color: var(--text-muted);
+	white-space: nowrap;
+}
+@media (max-width: 720px) {
+	.page-teaching .undergraduate-summary .summary-line {
+		grid-template-columns: 1fr;
+		row-gap: 2px;
+	}
+}
 .page-teaching .course-translation { color: #666; font-size: 12px; }
 .page-teaching .course-note { font-size: 12px; color: #666; }
 .page-teaching .class-teacher-note { font-size: 13px; margin-top: 4px; }
