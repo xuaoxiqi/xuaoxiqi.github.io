@@ -269,13 +269,14 @@ title: Teaching
     <h3 class="teaching-subheader">1. Teaching Courses</h3>
     
     <div class="section-divider">Undergraduate Courses</div>
-    <p class="summary-note">
-        All records listed below: 6 undergraduate courses, 310 actual teaching hours, and 697 student enrollments.<br>
-        Recent five-year window for 2026 forms (2021-01-01 to now): 6 undergraduate courses, 278 actual teaching hours, and 660 student enrollments.
+    <p id="undergraduate-course-summary" class="summary-note">
+        All records listed below: <span data-summary-stat="all-courses">--</span> undergraduate courses, <span data-summary-stat="all-hours">--</span> actual teaching hours, and <span data-summary-stat="all-students">--</span> student enrollments.<br>
+        Recent five-year window for <span data-summary-stat="form-year">--</span> forms (<span data-summary-stat="recent-start">--</span> to now): <span data-summary-stat="recent-courses">--</span> undergraduate courses, <span data-summary-stat="recent-hours">--</span> actual teaching hours, and <span data-summary-stat="recent-students">--</span> student enrollments.
     </p>
     <div class="table-container">
-        <table class="modern-table">
+        <table id="undergraduate-courses-table" class="modern-table">
             <caption class="visually-hidden">Undergraduate courses taught at NPU</caption>
+            <!-- Update data-term/data-year/data-hours/data-students in the records below; summaries are calculated automatically. -->
             <thead>
                 <tr>
                     <th scope="col">Code</th>
@@ -297,23 +298,23 @@ title: Teaching
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope">All</span>
-                                <span><b>Sem.</b> 2</span>
-                                <span><b>Hours</b> 64 h</span>
-                                <span><b>Enroll.</b> 62</span>
+                                <span><b>Sem.</b> <output data-course-stat="all-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="all-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="all-students">--</output></span>
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope summary-scope-recent">Recent 5Y</span>
-                                <span><b>Sem.</b> 1</span>
-                                <span><b>Hours</b> 32 h</span>
-                                <span><b>Enroll.</b> 25</span>
+                                <span><b>Sem.</b> <output data-course-stat="recent-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="recent-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="recent-students">--</output></span>
                             </div>
                         </div>
                     </td>
                     <td><span class="course-tag tag-core">Core</span></td>
                     <td>
                         <ul class="course-record-list">
-                            <li><b>Spring 2021</b>: 32 h / 25 students</li>
-                            <li><b>Spring 2020</b>: 32 h / 37 students</li>
+                            <li data-term="Spring 2021" data-year="2021" data-hours="32" data-students="25"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2020" data-year="2020" data-hours="32" data-students="37"><b data-record-term></b>: <span data-record-metrics></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -329,24 +330,24 @@ title: Teaching
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope">All</span>
-                                <span><b>Sem.</b> 3</span>
-                                <span><b>Hours</b> 12 h</span>
-                                <span><b>Enroll.</b> 347</span>
+                                <span><b>Sem.</b> <output data-course-stat="all-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="all-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="all-students">--</output></span>
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope summary-scope-recent">Recent 5Y</span>
-                                <span><b>Sem.</b> 3</span>
-                                <span><b>Hours</b> 12 h</span>
-                                <span><b>Enroll.</b> 347</span>
+                                <span><b>Sem.</b> <output data-course-stat="recent-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="recent-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="recent-students">--</output></span>
                             </div>
                         </div>
                     </td>
                     <td><span class="course-tag tag-core">Core</span></td>
                     <td>
                         <ul class="course-record-list">
-                            <li><b>Spring 2024</b>: 4 h / 120 students</li>
-                            <li><b>Spring 2023</b>: 4 h / 116 students</li>
-                            <li><b>Spring 2021</b>: 4 h / 111 students</li>
+                            <li data-term="Spring 2024" data-year="2024" data-hours="4" data-students="120"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2023" data-year="2023" data-hours="4" data-students="116"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2021" data-year="2021" data-hours="4" data-students="111"><b data-record-term></b>: <span data-record-metrics></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -362,25 +363,25 @@ title: Teaching
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope">All</span>
-                                <span><b>Sem.</b> 4</span>
-                                <span><b>Hours</b> 128 h</span>
-                                <span><b>Enroll.</b> 74</span>
+                                <span><b>Sem.</b> <output data-course-stat="all-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="all-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="all-students">--</output></span>
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope summary-scope-recent">Recent 5Y</span>
-                                <span><b>Sem.</b> 4</span>
-                                <span><b>Hours</b> 128 h</span>
-                                <span><b>Enroll.</b> 74</span>
+                                <span><b>Sem.</b> <output data-course-stat="recent-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="recent-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="recent-students">--</output></span>
                             </div>
                         </div>
                     </td>
                     <td><span class="course-tag tag-elective">Elective</span></td>
                     <td>
                         <ul class="course-record-list">
-                            <li><b>Fall 2026</b>: 32 h / 17 students</li>
-                            <li><b>Spring 2024</b>: 32 h / 10 students</li>
-                            <li><b>Spring 2023</b>: 32 h / 21 students</li>
-                            <li><b>Spring 2022</b>: 32 h / 26 students</li>
+                            <li data-term="Fall 2026" data-year="2026" data-hours="32" data-students="17"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2024" data-year="2024" data-hours="32" data-students="10"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2023" data-year="2023" data-hours="32" data-students="21"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2022" data-year="2022" data-hours="32" data-students="26"><b data-record-term></b>: <span data-record-metrics></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -396,25 +397,25 @@ title: Teaching
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope">All</span>
-                                <span><b>Sem.</b> 4</span>
-                                <span><b>Hours</b> 52 h</span>
-                                <span><b>Enroll.</b> 82</span>
+                                <span><b>Sem.</b> <output data-course-stat="all-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="all-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="all-students">--</output></span>
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope summary-scope-recent">Recent 5Y</span>
-                                <span><b>Sem.</b> 4</span>
-                                <span><b>Hours</b> 52 h</span>
-                                <span><b>Enroll.</b> 82</span>
+                                <span><b>Sem.</b> <output data-course-stat="recent-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="recent-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="recent-students">--</output></span>
                             </div>
                         </div>
                     </td>
                     <td><span class="course-tag tag-elective">Math & Sci</span></td>
                     <td>
                         <ul class="course-record-list">
-                            <li><b>Fall 2026</b>: 12 h / 20 students</li>
-                            <li><b>Fall 2025</b>: 12 h / 20 students</li>
-                            <li><b>Fall 2024</b>: 12 h / 22 students</li>
-                            <li><b>Spring 2023</b>: 16 h / 20 students</li>
+                            <li data-term="Fall 2026" data-year="2026" data-hours="12" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Fall 2025" data-year="2025" data-hours="12" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Fall 2024" data-year="2024" data-hours="12" data-students="22"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2023" data-year="2023" data-hours="16" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -430,25 +431,25 @@ title: Teaching
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope">All</span>
-                                <span><b>Sem.</b> 4</span>
-                                <span><b>Hours</b> 22 h</span>
-                                <span><b>Enroll.</b> 92</span>
+                                <span><b>Sem.</b> <output data-course-stat="all-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="all-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="all-students">--</output></span>
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope summary-scope-recent">Recent 5Y</span>
-                                <span><b>Sem.</b> 4</span>
-                                <span><b>Hours</b> 22 h</span>
-                                <span><b>Enroll.</b> 92</span>
+                                <span><b>Sem.</b> <output data-course-stat="recent-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="recent-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="recent-students">--</output></span>
                             </div>
                         </div>
                     </td>
                     <td><span class="course-tag tag-general">Platform</span></td>
                     <td>
                         <ul class="course-record-list">
-                            <li><b>Fall 2026</b>: 6 h / 25 students</li>
-                            <li><b>Fall 2025</b>: 6 h / 27 students</li>
-                            <li><b>Fall 2024</b>: 6 h / 20 students</li>
-                            <li><b>Spring 2023</b>: 4 h / 20 students</li>
+                            <li data-term="Fall 2026" data-year="2026" data-hours="6" data-students="25"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Fall 2025" data-year="2025" data-hours="6" data-students="27"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Fall 2024" data-year="2024" data-hours="6" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2023" data-year="2023" data-hours="4" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -464,23 +465,23 @@ title: Teaching
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope">All</span>
-                                <span><b>Sem.</b> 2</span>
-                                <span><b>Hours</b> 32 h</span>
-                                <span><b>Enroll.</b> 40</span>
+                                <span><b>Sem.</b> <output data-course-stat="all-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="all-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="all-students">--</output></span>
                             </div>
                             <div class="course-summary-row">
                                 <span class="summary-scope summary-scope-recent">Recent 5Y</span>
-                                <span><b>Sem.</b> 2</span>
-                                <span><b>Hours</b> 32 h</span>
-                                <span><b>Enroll.</b> 40</span>
+                                <span><b>Sem.</b> <output data-course-stat="recent-semesters">--</output></span>
+                                <span><b>Hours</b> <output data-course-stat="recent-hours">--</output> h</span>
+                                <span><b>Enroll.</b> <output data-course-stat="recent-students">--</output></span>
                             </div>
                         </div>
                     </td>
                     <td><span class="course-tag tag-general">Platform</span></td>
                     <td>
                         <ul class="course-record-list">
-                            <li><b>Spring 2026</b>: 16 h / 20 students</li>
-                            <li><b>Spring 2025</b>: 16 h / 20 students</li>
+                            <li data-term="Spring 2026" data-year="2026" data-hours="16" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2025" data-year="2025" data-hours="16" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -657,6 +658,112 @@ title: Teaching
         <p><b>Course description:</b> Thermodynamics of combustion, chemical equilibrium, refrigeration and mixtures of gases. Analysis of power generation, propulsion systems. Performance of modern steam plants, gas turbines, internal combustion engines and refrigeration plants.</p>
         <p><b>Course instructor:</b> <a href="https://www.mae.ust.hk/en/people/faculty/detail/ma-robin" target="_blank" rel="noopener noreferrer">Prof. Robin Lok Wang MA</a></p>
     </div>
+
+    <script>
+        (function () {
+            var table = document.getElementById('undergraduate-courses-table');
+            var summary = document.getElementById('undergraduate-course-summary');
+            if (!table || !summary) {
+                return;
+            }
+
+            var formYear = new Date().getFullYear();
+            var recentStartYear = formYear - 5;
+            var allTotals = { courses: 0, hours: 0, students: 0 };
+            var recentTotals = { courses: 0, hours: 0, students: 0 };
+
+            function numberFromAttribute(element, name) {
+                var value = Number(element.getAttribute(name));
+                return isFinite(value) ? value : 0;
+            }
+
+            function formatNumber(value) {
+                return value.toLocaleString('en-US');
+            }
+
+            function setText(root, selector, value) {
+                var target = root.querySelector(selector);
+                if (target) {
+                    target.textContent = value;
+                }
+            }
+
+            function addTerm(stats, term) {
+                if (!stats.terms[term]) {
+                    stats.terms[term] = true;
+                    stats.semesters += 1;
+                }
+            }
+
+            function createCourseStats() {
+                return {
+                    semesters: 0,
+                    hours: 0,
+                    students: 0,
+                    terms: {}
+                };
+            }
+
+            var courseRows = table.querySelectorAll('tbody tr');
+            for (var i = 0; i < courseRows.length; i += 1) {
+                var row = courseRows[i];
+                var records = row.querySelectorAll('.course-record-list li[data-year][data-hours][data-students]');
+                if (!records.length) {
+                    continue;
+                }
+
+                var allStats = createCourseStats();
+                var recentStats = createCourseStats();
+
+                for (var j = 0; j < records.length; j += 1) {
+                    var record = records[j];
+                    var year = numberFromAttribute(record, 'data-year');
+                    var hours = numberFromAttribute(record, 'data-hours');
+                    var students = numberFromAttribute(record, 'data-students');
+                    var term = record.getAttribute('data-term') || 'Record ' + (j + 1);
+
+                    setText(record, '[data-record-term]', term);
+                    setText(record, '[data-record-metrics]', formatNumber(hours) + ' h / ' + formatNumber(students) + ' students');
+
+                    addTerm(allStats, term);
+                    allStats.hours += hours;
+                    allStats.students += students;
+
+                    if (year >= recentStartYear && year <= formYear) {
+                        addTerm(recentStats, term);
+                        recentStats.hours += hours;
+                        recentStats.students += students;
+                    }
+                }
+
+                allTotals.courses += 1;
+                allTotals.hours += allStats.hours;
+                allTotals.students += allStats.students;
+
+                if (recentStats.semesters > 0) {
+                    recentTotals.courses += 1;
+                    recentTotals.hours += recentStats.hours;
+                    recentTotals.students += recentStats.students;
+                }
+
+                setText(row, '[data-course-stat="all-semesters"]', formatNumber(allStats.semesters));
+                setText(row, '[data-course-stat="all-hours"]', formatNumber(allStats.hours));
+                setText(row, '[data-course-stat="all-students"]', formatNumber(allStats.students));
+                setText(row, '[data-course-stat="recent-semesters"]', formatNumber(recentStats.semesters));
+                setText(row, '[data-course-stat="recent-hours"]', formatNumber(recentStats.hours));
+                setText(row, '[data-course-stat="recent-students"]', formatNumber(recentStats.students));
+            }
+
+            setText(summary, '[data-summary-stat="all-courses"]', formatNumber(allTotals.courses));
+            setText(summary, '[data-summary-stat="all-hours"]', formatNumber(allTotals.hours));
+            setText(summary, '[data-summary-stat="all-students"]', formatNumber(allTotals.students));
+            setText(summary, '[data-summary-stat="form-year"]', formatNumber(formYear));
+            setText(summary, '[data-summary-stat="recent-start"]', recentStartYear + '-01-01');
+            setText(summary, '[data-summary-stat="recent-courses"]', formatNumber(recentTotals.courses));
+            setText(summary, '[data-summary-stat="recent-hours"]', formatNumber(recentTotals.hours));
+            setText(summary, '[data-summary-stat="recent-students"]', formatNumber(recentTotals.students));
+        })();
+    </script>
 
     </article>
     
