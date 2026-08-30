@@ -275,7 +275,7 @@ title: Teaching
             <span class="summary-line-values"><span data-summary-stat="all-courses">--</span> undergraduate courses, <span data-summary-stat="all-hours">--</span> actual teaching hours, and <span data-summary-stat="all-students">--</span> student enrollments.</span>
         </div>
         <div class="summary-line">
-            <span class="summary-line-label">Recent 5Y (<span data-summary-stat="form-year">--</span> forms)</span>
+            <span class="summary-line-label">Recent 5Y</span>
             <span class="summary-line-values"><span data-summary-stat="recent-courses">--</span> undergraduate courses, <span data-summary-stat="recent-hours">--</span> actual teaching hours, and <span data-summary-stat="recent-students">--</span> student enrollments <span class="summary-window">(<span data-summary-stat="recent-start">--</span> to now)</span>.</span>
         </div>
     </div>
@@ -761,7 +761,6 @@ title: Teaching
             setText(summary, '[data-summary-stat="all-courses"]', formatNumber(allTotals.courses));
             setText(summary, '[data-summary-stat="all-hours"]', formatNumber(allTotals.hours));
             setText(summary, '[data-summary-stat="all-students"]', formatNumber(allTotals.students));
-            setText(summary, '[data-summary-stat="form-year"]', String(formYear));
             setText(summary, '[data-summary-stat="recent-start"]', recentStartYear + '-01-01');
             setText(summary, '[data-summary-stat="recent-courses"]', formatNumber(recentTotals.courses));
             setText(summary, '[data-summary-stat="recent-hours"]', formatNumber(recentTotals.hours));
