@@ -2053,6 +2053,22 @@ nav#navBarBottom {
 	border-color: var(--accent-color);
 	background: var(--accent-color);
 }
+.page-teaching .course-summary-row:nth-child(n+2) .summary-scope {
+	width: 88px;
+	justify-content: center;
+}
+.page-teaching .course-summary-row:nth-child(n+2) span:nth-child(2) {
+	width: 74px;
+	justify-content: center;
+}
+.page-teaching .course-summary-row:nth-child(n+2) span:nth-child(3) {
+	width: 108px;
+	justify-content: center;
+}
+.page-teaching .course-summary-row:nth-child(n+2) span:nth-child(4) {
+	width: 106px;
+	justify-content: center;
+}
 .page-teaching .course-summary-box b {
 	color: var(--primary-color);
 	font-weight: 800;
