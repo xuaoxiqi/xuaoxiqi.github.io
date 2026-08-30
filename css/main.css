@@ -1858,31 +1858,6 @@ nav#navBarBottom {
 .page-teaching .meta-note { margin-top: 4px; font-size: 13px; color: #777; }
 .page-teaching .muted-note { color: #666; font-size: 13px; }
 .page-teaching .summary-note { margin-bottom: 15px; font-style: italic; }
-.page-teaching .undergraduate-summary {
-	display: grid;
-	gap: 5px;
-}
-.page-teaching .undergraduate-summary .summary-line {
-	display: grid;
-	grid-template-columns: 145px minmax(0, 1fr);
-	column-gap: 12px;
-	align-items: baseline;
-}
-.page-teaching .undergraduate-summary .summary-line-label {
-	color: var(--primary-color);
-	font-weight: 800;
-	white-space: nowrap;
-}
-.page-teaching .undergraduate-summary .summary-window {
-	color: var(--text-muted);
-	white-space: nowrap;
-}
-@media (max-width: 720px) {
-	.page-teaching .undergraduate-summary .summary-line {
-		grid-template-columns: 1fr;
-		row-gap: 2px;
-	}
-}
 .page-teaching .modern-table td:nth-child(2) > b {
 	font-size: 16px;
 	line-height: 1.45;
@@ -2096,30 +2071,15 @@ nav#navBarBottom {
 	line-height: 1.35;
 	white-space: nowrap;
 }
-.page-teaching .course-summary-box .summary-scope {
-	border-color: var(--primary-color);
-	background: var(--primary-color);
-	color: #ffffff;
-	font-weight: 800;
-	text-transform: uppercase;
-}
-.page-teaching .course-summary-box .summary-scope-recent {
-	border-color: var(--accent-color);
-	background: var(--accent-color);
-}
-.page-teaching .course-summary-row:nth-child(n+2) .summary-scope {
-	width: 88px;
-	justify-content: center;
-}
-.page-teaching .course-summary-row:nth-child(n+2) span:nth-child(2) {
+.page-teaching .course-summary-row:nth-child(2) span:nth-child(1) {
 	width: 74px;
 	justify-content: center;
 }
-.page-teaching .course-summary-row:nth-child(n+2) span:nth-child(3) {
+.page-teaching .course-summary-row:nth-child(2) span:nth-child(2) {
 	width: 108px;
 	justify-content: center;
 }
-.page-teaching .course-summary-row:nth-child(n+2) span:nth-child(4) {
+.page-teaching .course-summary-row:nth-child(2) span:nth-child(3) {
 	width: 106px;
 	justify-content: center;
 }
