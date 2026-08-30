@@ -1,0 +1,317 @@
+---
+layout: main
+description: Viscous Fluid Mechanics course page
+title: Viscous Fluid Mechanics
+section: Teaching
+---
+
+<div id="divTitleNav">
+    <a href="./teaching.html" aria-label="Back to teaching page"><img src="./images/left-arrow.png" class="navDock nav-back-icon" alt="Back"/></a>
+</div>
+
+<div id="divPost">
+
+    <article id="articlePost" class="course-page page-tensor-analysis-course page-viscous-fluid-course">
+        <nav class="course-breadcrumb" aria-label="Breadcrumb">
+            <a href="./teaching.html">Teaching</a>
+            <span aria-hidden="true">/</span>
+            <span>Viscous Fluid Mechanics</span>
+        </nav>
+
+        <header class="course-hero">
+            <div class="course-hero-text">
+                <p class="course-eyebrow">Undergraduate Course · Fluid Mechanics</p>
+                <h1>
+                    粘性流体力学
+                    <span>Viscous Fluid Mechanics</span>
+                </h1>
+                <p class="course-lead">
+                    以不可压缩 Newton 流体为主线，从粘性与动量输运出发，贯通 Navier-Stokes 方程、
+                    无量纲化、低 Reynolds 数流动、边界层、分离、湍流与数值模拟；
+                    核心不是记忆公式，而是学会从物理条件出发识别主导平衡并选择合适模型。
+                </p>
+                <div class="course-meta" aria-label="Course metadata">
+                    <span class="course-code-chip">U01M11097</span>
+                    <span>32 学时</span>
+                    <span>本科课程</span>
+                    <span>力学 / 航空 / 航天 / 工程流体</span>
+                </div>
+            </div>
+
+            <div class="tensor-visual" aria-hidden="true">
+                <div class="tensor-frame">
+                    <div class="tensor-box">
+                        <span class="tensor-symbol">Re</span>
+                        <span class="tensor-equation">Re = UL / &nu;</span>
+                    </div>
+                    <div class="tensor-caption">equations → scales → balance → flow structure</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="course-section" id="overview">
+            <div class="course-section-heading">
+                <h2>课程定位</h2>
+                <p>Why Viscous Fluid Mechanics?</p>
+            </div>
+            <div class="overview-grid">
+                <div class="course-panel course-positioning">
+                    <p>
+                        <strong>这不是一门以罗列经典公式为目标的课程。</strong>
+                        同一组 Navier-Stokes 方程，会随着 Reynolds 数、几何尺度、边界条件和观察区域的变化，
+                        呈现完全不同的主导平衡。课程因此把“从物理条件出发简化方程”作为贯穿始终的方法。
+                    </p>
+                    <p>
+                        学习中反复连接 <strong>物理图像、数学推导、尺度判断与工程计算</strong>：
+                        先明确问题与边界条件，再无量纲化并比较数量级，最后判断应采用精确解、
+                        低 Reynolds 数近似、边界层理论、实验关联还是数值模拟。
+                    </p>
+                </div>
+                <div class="course-panel">
+                    <ul class="learning-path">
+                        <li>
+                            <strong>理解粘性</strong>
+                            从剪切应力、动量扩散和机械能耗散理解粘性的物理作用。
+                        </li>
+                        <li>
+                            <strong>建立方程</strong>
+                            从守恒定律、本构关系与边界条件建立不可压缩 Navier-Stokes 模型。
+                        </li>
+                        <li>
+                            <strong>判断尺度</strong>
+                            用无量纲化、尺度分析和数量级估计识别控制参数与主导平衡。
+                        </li>
+                        <li>
+                            <strong>选择模型</strong>
+                            在精确解、渐近近似、实验判断与数值模拟之间作出有依据的选择。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="course-section" id="learning-outcomes">
+            <div class="course-section-heading">
+                <h2>你将建立的四种能力</h2>
+                <p>Physics → Equations → Scaling → Modelling</p>
+            </div>
+            <div class="pillar-grid">
+                <article class="pillar">
+                    <div class="pillar-index">I</div>
+                    <h3>物理机制识别</h3>
+                    <p>从粘性、惯性、压强与边界条件出发，判断一个流动问题中真正重要的物理过程。</p>
+                </article>
+                <article class="pillar">
+                    <div class="pillar-index">II</div>
+                    <h3>控制方程与简化</h3>
+                    <p>理解 Navier-Stokes 方程各项来源，并依据几何、稳态性、对称性与边界条件系统删项。</p>
+                </article>
+                <article class="pillar">
+                    <div class="pillar-index">III</div>
+                    <h3>尺度与主导平衡</h3>
+                    <p>通过无量纲化和尺度分析识别 Reynolds 数等控制参数，并建立低 Re 与高 Re 的渐近直觉。</p>
+                </article>
+                <article class="pillar">
+                    <div class="pillar-index">IV</div>
+                    <h3>解析—计算互证</h3>
+                    <p>用精确解、渐近理论和物理极限检查 CFD 结果，形成对网格、模型与结果可信度的判断。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="course-section" id="chapters">
+            <div class="course-section-heading">
+                <h2>课程内容</h2>
+                <p>Eight Chapters · One Analytical Framework</p>
+            </div>
+            <div class="chapter-list">
+                <article class="chapter">
+                    <div class="chapter-number">CH01</div>
+                    <div>
+                        <h3>粘性流动的基本概念</h3>
+                        <p>从连续介质、Newton 粘性定律、动量扩散、无滑移条件与 Reynolds 数建立基本物理图像。</p>
+                    </div>
+                </article>
+                <article class="chapter">
+                    <div class="chapter-number">CH02</div>
+                    <div>
+                        <h3>粘性流体的控制方程</h3>
+                        <p>从质量与动量守恒、Cauchy 应力和 Newton 流体本构关系建立不可压缩 Navier-Stokes 方程。</p>
+                    </div>
+                </article>
+                <article class="chapter">
+                    <div class="chapter-number">CH03</div>
+                    <div>
+                        <h3>量纲分析与控制方程的无量纲化</h3>
+                        <p>从特征尺度出发理解 Re、St、Eu、Fr 等参数，并连接动力相似、参数归并与数据塌缩。</p>
+                    </div>
+                </article>
+                <article class="chapter">
+                    <div class="chapter-number">CH04</div>
+                    <div>
+                        <h3>Navier-Stokes 方程的典型精确解</h3>
+                        <p>通过 Couette、Poiseuille、圆管、液膜与 Stokes 问题训练“物理条件 → 方程简化 → 解析解”。</p>
+                    </div>
+                </article>
+                <article class="chapter">
+                    <div class="chapter-number">CH05</div>
+                    <div>
+                        <h3>低 Reynolds 数流动</h3>
+                        <p>进入粘性主导的 Stokes 世界：线性、可逆性、球体阻力、颗粒沉降，以及微流体与生物流动。</p>
+                    </div>
+                </article>
+                <article class="chapter">
+                    <div class="chapter-number">CH06</div>
+                    <div>
+                        <h3>边界层理论：尺度分析、数量级估计与渐近简化</h3>
+                        <p>用局部尺度化解“高 Re 但壁面粘性不可忽略”的矛盾，并建立 Prandtl 方程、Blasius 解与动量积分法。</p>
+                    </div>
+                </article>
+                <article class="chapter">
+                    <div class="chapter-number">CH07</div>
+                    <div>
+                        <h3>边界层分离、绕流、尾迹与阻力</h3>
+                        <p>沿“逆压梯 → 分离 → 剪切层与尾迹 → 压差阻力”的物理链理解圆柱绕流、Kármán 涡街与阻力危机。</p>
+                    </div>
+                </article>
+                <article class="chapter">
+                    <div class="chapter-number">CH08</div>
+                    <div>
+                        <h3>湍流粘性流动与数值模拟导论</h3>
+                        <p>建立湍流统计、Reynolds 应力、壁面单位与多尺度能量图像，并认识 DNS、LES、RANS 与 CFD 验证。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="course-section" id="resources">
+            <div class="course-section-heading">
+                <h2>课程资源</h2>
+                <p>Lecture notes · Slides · Updated with the course</p>
+            </div>
+            <div class="resource-grid">
+                <div class="resource-card resource-release-card">
+                    <span class="resource-type">Lecture Notes</span>
+                    <h3>课程讲义</h3>
+                    <p>
+                        讲义以不可压缩 Newton 流体为主线，强调物理图像、方程来源、尺度假设、适用条件以及解析—渐近—数值之间的联系。
+                        <br><a href="./pdf/viscous-fluid-mechanics-0830.pdf" target="_blank" rel="noopener noreferrer">完整讲义 PDF →</a>
+                    </p>
+                    <ul class="resource-release-list">
+                        <li><span><strong>CH01</strong> 基本概念</span><span class="resource-status">讲义完成</span><span class="resource-date">2026-08-30</span></li>
+                        <li><span><strong>CH02</strong> 控制方程</span><span class="resource-status">讲义完成</span><span class="resource-date">2026-08-30</span></li>
+                        <li><span><strong>CH03</strong> 无量纲化</span><span class="resource-status">讲义完成</span><span class="resource-date">2026-08-30</span></li>
+                        <li><span><strong>CH04</strong> 典型精确解</span><span class="resource-status">讲义完成</span><span class="resource-date">2026-08-30</span></li>
+                        <li><span><strong>CH05</strong> 低 Reynolds 数流动</span><span class="resource-status">讲义完成</span><span class="resource-date">2026-08-30</span></li>
+                        <li><span><strong>CH06</strong> 边界层理论</span><span class="resource-status">讲义完成</span><span class="resource-date">2026-08-30</span></li>
+                        <li><span><strong>CH07</strong> 分离、尾迹与阻力</span><span class="resource-status">讲义完成</span><span class="resource-date">2026-08-30</span></li>
+                        <li><span><strong>CH08</strong> 湍流与数值模拟</span><span class="resource-status">讲义完成</span><span class="resource-date">2026-08-30</span></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card resource-release-card">
+                    <span class="resource-type">Slides</span>
+                    <h3>课堂课件</h3>
+                    <p>按课堂进度逐章发布。课件服务于课堂讲解，突出物理图像、关键推导、典型流动与方法之间的联系。</p>
+                    <ul class="resource-release-list">
+                        <li><span><strong>CH01</strong> 基本概念</span><span class="resource-status">待发布</span><span class="resource-date">Updated: --</span></li>
+                        <li><span><strong>CH02</strong> 控制方程</span><span class="resource-status">待发布</span><span class="resource-date">Updated: --</span></li>
+                        <li><span><strong>CH03</strong> 无量纲化</span><span class="resource-status">待发布</span><span class="resource-date">Updated: --</span></li>
+                        <li><span><strong>CH04</strong> 典型精确解</span><span class="resource-status">待发布</span><span class="resource-date">Updated: --</span></li>
+                        <li><span><strong>CH05</strong> 低 Reynolds 数流动</span><span class="resource-status">待发布</span><span class="resource-date">Updated: --</span></li>
+                        <li><span><strong>CH06</strong> 边界层理论</span><span class="resource-status">待发布</span><span class="resource-date">Updated: --</span></li>
+                        <li><span><strong>CH07</strong> 分离、尾迹与阻力</span><span class="resource-status">待发布</span><span class="resource-date">Updated: --</span></li>
+                        <li><span><strong>CH08</strong> 湍流与数值模拟</span><span class="resource-status">待发布</span><span class="resource-date">Updated: --</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="course-section" id="workflow">
+            <div class="course-section-heading">
+                <h2>推荐分析路径</h2>
+                <p>How to approach a new viscous-flow problem</p>
+            </div>
+            <div class="workflow">
+                <article class="workflow-step">
+                    <span class="workflow-num">01 · PHYSICS</span>
+                    <h3>明确物理问题</h3>
+                    <p>先确定几何、流体物性、驱动方式、稳态性与边界条件，不急于套用公式。</p>
+                </article>
+                <article class="workflow-step">
+                    <span class="workflow-num">02 · SCALE</span>
+                    <h3>选择特征尺度</h3>
+                    <p>无量纲化控制方程，识别 Reynolds 数等控制参数，并估计各物理机制的相对强弱。</p>
+                </article>
+                <article class="workflow-step">
+                    <span class="workflow-num">03 · BALANCE</span>
+                    <h3>识别主导平衡</h3>
+                    <p>依据数量级与局部尺度判断哪些项必须保留，并选择精确解、Stokes 或边界层等模型。</p>
+                </article>
+                <article class="workflow-step">
+                    <span class="workflow-num">04 · VERIFY</span>
+                    <h3>求解并交叉验证</h3>
+                    <p>检查量纲、极限、守恒和适用范围；数值结果还应与解析解、网格检查或可靠数据互证。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="course-section" id="course-info">
+            <div class="course-section-heading">
+                <h2>课程信息</h2>
+                <p>Course at a glance</p>
+            </div>
+            <div class="info-grid">
+                <table class="info-table" aria-label="Course information">
+                    <tbody>
+                        <tr>
+                            <th>课程名称</th>
+                            <td>粘性流体力学 / Viscous Fluid Mechanics</td>
+                        </tr>
+                        <tr>
+                            <th>课程编号</th>
+                            <td><strong>U01M11097</strong></td>
+                        </tr>
+                        <tr>
+                            <th>教学学时</th>
+                            <td>32 学时</td>
+                        </tr>
+                        <tr>
+                            <th>课程对象</th>
+                            <td>力学及相关工程专业本科高年级学生；也适合作为研究生系统学习粘性流动的入门框架。</td>
+                        </tr>
+                        <tr>
+                            <th>先修知识</th>
+                            <td>大学数学、理论力学与基础流体力学；需熟悉微积分、基本偏微分方程、向量分析和守恒定律。</td>
+                        </tr>
+                        <tr>
+                            <th>课程范围</th>
+                            <td>以不可压缩 Newton 流体为主；强调动量输运、尺度分析、边界层、分离、湍流与数值模拟的统一认识。</td>
+                        </tr>
+                        <tr>
+                            <th>课程语言</th>
+                            <td>中文授课；保留 Navier-Stokes、Reynolds、Stokes、Prandtl、DNS / LES / RANS 等常用英文术语与符号。</td>
+                        </tr>
+                        <tr>
+                            <th>学习工具</th>
+                            <td>课程讲义、课堂课件、经典解析解、尺度分析与基础 CFD 验证示例。</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <aside class="instructor-card">
+                    <span class="instructor-label">Instructor</span>
+                    <h3>Ao Xu</h3>
+                    <p>
+                        Northwestern Polytechnical University<br>
+                        Institute of Extreme Mechanics
+                    </p>
+                    <a href="./about.html">Instructor profile →</a>
+                </aside>
+            </div>
+        </section>
+
+    </article>
+
+    <div class="div0"></div>
+
+</div>
