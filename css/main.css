@@ -1916,6 +1916,13 @@ nav#navBarBottom {
 	color: var(--text-dark);
 	margin-bottom: 6px;
 }
+.page-teaching .student-name-cn,
+.page-teaching .graduate-name-cn {
+	color: var(--text-muted);
+	font-size: 0.86em;
+	font-weight: 500;
+	white-space: nowrap;
+}
 .page-teaching .student-time {
 	font-size: 13px;
 	color: var(--text-muted);
