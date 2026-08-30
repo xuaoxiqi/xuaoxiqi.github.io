@@ -2020,9 +2020,14 @@ nav#navBarBottom {
 }
 .page-teaching .course-summary-box {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: 6px;
 	margin-top: 9px;
+}
+.page-teaching .course-summary-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
 }
 .page-teaching .course-summary-box span {
 	display: inline-flex;
