@@ -1863,6 +1863,8 @@ nav#navBarBottom {
 	line-height: 1.45;
 }
 .page-teaching .course-translation {
+	display: block;
+	margin-top: 3px;
 	color: #666;
 	font-size: 14px;
 }
@@ -2011,16 +2013,16 @@ nav#navBarBottom {
 	min-width: 1000px;
 }
 .page-teaching #undergraduate-courses-table .course-code-col {
-	width: 12%;
+	width: 8%;
 }
 .page-teaching #undergraduate-courses-table .course-name-col {
-	width: 38%;
+	width: 42%;
 }
 .page-teaching #undergraduate-courses-table .course-remarks-col {
-	width: 20%;
+	width: 22%;
 }
 .page-teaching #undergraduate-courses-table .course-records-col {
-	width: 30%;
+	width: 28%;
 }
 .page-teaching #undergraduate-courses-table th,
 .page-teaching #undergraduate-courses-table td {
@@ -2028,7 +2030,7 @@ nav#navBarBottom {
 }
 .page-teaching #undergraduate-courses-table th:last-child,
 .page-teaching #undergraduate-courses-table td:last-child {
-	padding-left: 24px;
+	padding-left: 18px;
 }
 
 .page-teaching .table-head-note {
