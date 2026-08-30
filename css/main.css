@@ -876,6 +876,10 @@ nav#navBarBottom {
 	margin: 0;
 }
 
+.page-about .cn-teaching-text {
+	margin-top: 18px;
+}
+
 .page-about .contact-grid {
 	display: flex;
 	gap: 20px;
