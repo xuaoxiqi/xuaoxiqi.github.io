@@ -16,10 +16,16 @@ title: Publications
     
     <h3>Journal Papers</h3>
 
+    <div class="publication-summary" aria-live="polite">
+        <span><strong id="count-journal-papers">47</strong> Journal Papers</span>
+        <span class="publication-summary-separator" aria-hidden="true">·</span>
+        <span><strong class="publication-summary-lead" id="count-lead-papers">27</strong> First/Corresponding</span>
+    </div>
+
     <!-- Publication Overview (Populated by JS) -->
     <div class="publication-overview">
         <section class="stats-panel" aria-labelledby="journal-stats-title">
-            <h4 class="stats-panel-title" id="journal-stats-title">Journal Statistics</h4>
+            <h4 class="stats-panel-title" id="journal-stats-title">Selected Journals</h4>
             <div class="stats-container">
                 <div class="stat-item">J. Fluid Mech.<span class="stat-count" id="count-jfm">0+0</span></div>
                 <div class="stat-item">Phys. Rev. Fluids<span class="stat-count" id="count-prf">0+0</span></div>
@@ -1069,6 +1075,11 @@ title: Publications
             };
         }).filter(Boolean);
 
+        const journalPapersCount = document.getElementById('count-journal-papers');
+        const leadPapersCount = document.getElementById('count-lead-papers');
+        if (journalPapersCount) journalPapersCount.innerText = paperData.length;
+        if (leadPapersCount) leadPapersCount.innerText = paperData.filter(paper => paper.isLead).length;
+
         // Define journals to track (name in venue text -> key in map).
         const journalMap = {
             'International Journal of Heat and Mass Transfer': 'ijhmt',
@@ -1282,7 +1293,7 @@ title: Publications
                         ? Math.min(plotBottom + 16, point.y + 16)
                         : Math.max(12, point.y - 9);
                     svg.appendChild(createSvgElement('text', {
-                        class: 'chart-value-label',
+                        class: `chart-value-label chart-value-label-${seriesItem.key}`,
                         x: point.x,
                         y: labelY
                     }, String(point.value)));

@@ -1303,6 +1303,32 @@ nav#navBarBottom {
 	border-radius: 3px;
 }
 
+.page-publications .publication-summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 6px;
+	margin: -10px 0 18px;
+	color: var(--text-muted);
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.page-publications .publication-summary strong {
+	color: var(--primary-color);
+	font-size: 20px;
+	font-weight: 800;
+}
+
+.page-publications .publication-summary .publication-summary-lead {
+	color: var(--highlight-color);
+}
+
+.page-publications .publication-summary-separator {
+	color: #94a3b8;
+	font-weight: 700;
+}
+
 .page-publications .publication-overview {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1326,10 +1352,10 @@ nav#navBarBottom {
 }
 
 .page-publications .stats-container {
-	display: flex;
+	display: grid;
 	flex: 1;
-	flex-wrap: wrap;
-	align-content: flex-start;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	align-content: start;
 	gap: 10px;
 	margin-bottom: 10px;
 	background-color: white;
@@ -1348,6 +1374,10 @@ nav#navBarBottom {
 	font-weight: 600;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+	min-width: 0;
+	line-height: 1.3;
+	text-align: left;
 }
 .page-publications .stat-count {
 	background-color: var(--primary-color);
@@ -1357,6 +1387,7 @@ nav#navBarBottom {
 	margin-left: 8px;
 	font-size: 12px;
 	font-family: monospace;
+	flex: 0 0 auto;
 }
 .page-publications .stats-legend {
 	font-size: 12px;
@@ -1425,26 +1456,39 @@ nav#navBarBottom {
 
 .page-publications .chart-line-lead,
 .page-publications .chart-marker-lead {
-	stroke: var(--primary-color);
+	stroke: var(--highlight-color);
 }
 
 .page-publications .chart-line-coauthor,
 .page-publications .chart-marker-coauthor {
-	stroke: var(--highlight-color);
+	stroke: #94a3b8;
+}
+
+.page-publications .chart-line-lead {
+	stroke-width: 3;
 }
 
 .page-publications .chart-line-coauthor {
+	stroke-width: 2;
 	stroke-dasharray: 6 4;
 }
 
 .page-publications .chart-marker-lead {
-	fill: white;
-	stroke-width: 2.5;
+	fill: var(--highlight-color);
+	stroke-width: 2;
 }
 
 .page-publications .chart-marker-coauthor {
-	fill: var(--highlight-color);
+	fill: #94a3b8;
 	stroke-width: 1;
+}
+
+.page-publications .chart-value-label-lead {
+	fill: var(--highlight-color);
+}
+
+.page-publications .chart-value-label-coauthor {
+	fill: #64748b;
 }
 
 .page-publications .chart-marker-lead:focus,
@@ -1478,17 +1522,23 @@ nav#navBarBottom {
 }
 
 .page-publications .chart-legend-lead {
-	border: 2px solid var(--primary-color);
+	border: 2px solid var(--highlight-color);
 	border-radius: 50%;
-	background: white;
+	background: var(--highlight-color);
 }
 
 .page-publications .chart-legend-coauthor {
-	background: var(--highlight-color);
+	background: #94a3b8;
 }
 
 @media (max-width: 900px) {
 	.page-publications .publication-overview {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 560px) {
+	.page-publications .stats-container {
 		grid-template-columns: minmax(0, 1fr);
 	}
 }
