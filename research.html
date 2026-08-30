@@ -401,13 +401,27 @@ title: Research
             element.classList.toggle('expanded', !isExpanded);
             element.textContent = isExpanded ? 'Details' : 'Hide Details';
         }
+
+        function updateConferenceStats() {
+            const stats = document.querySelector('[data-conf-stats]');
+            const list = document.querySelector('[data-conf-section="conferences"]');
+            if (!stats || !list) return;
+
+            const featuredCount = list.querySelectorAll('.badge-invite, .badge-keynote').length;
+            stats.querySelector('[data-stat="featured"]').textContent = featuredCount;
+        }
+
+        document.addEventListener('DOMContentLoaded', updateConferenceStats);
     </script>
 
     <!-- === Conferences === -->
     <h2>Conferences and Talks (Selected)</h2>
     
     <h3>Conferences</h3>
-    <ol class="conf-list" reversed>
+    <div class="conf-stats" data-conf-stats>
+        <span><strong data-stat="featured">0</strong> Invited/Keynote</span>
+    </div>
+    <ol class="conf-list" data-conf-section="conferences" reversed>
         <li class="conf-item">
             <div class="conf-date">2026.08.07 - 12 | Hong Kong</div>
             <div class="conf-title">Wall modeled large eddy simulation of turbulent channel flow with unstable stratification</div>
@@ -581,7 +595,7 @@ title: Research
     </ol>
 
     <h3>University Seminars</h3>
-    <ol class="conf-list" reversed>
+    <ol class="conf-list" data-conf-section="seminars" reversed>
         <li class="conf-item">
             <div class="conf-date">2023.12.18 | Shenzhen</div>
             <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>

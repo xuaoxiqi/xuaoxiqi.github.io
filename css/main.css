@@ -1216,6 +1216,32 @@ nav#navBarBottom {
 
 .page-research .conf-item:hover::marker { color: var(--accent-color); }
 
+.page-research .conf-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 18px;
+}
+
+.page-research .conf-stats span {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 4px 8px;
+	background-color: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: 4px;
+	color: #475569;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.page-research .conf-stats strong {
+	color: var(--primary-color);
+	font-size: 14px;
+}
+
 .page-research .conf-date {
 	font-size: 12px;
 	font-weight: bold;
