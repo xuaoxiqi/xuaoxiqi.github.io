@@ -2008,16 +2008,19 @@ nav#navBarBottom {
 
 .page-teaching #undergraduate-courses-table {
 	table-layout: fixed;
-	min-width: 900px;
+	min-width: 1000px;
 }
 .page-teaching #undergraduate-courses-table .course-code-col {
 	width: 12%;
 }
 .page-teaching #undergraduate-courses-table .course-name-col {
-	width: 56%;
+	width: 38%;
+}
+.page-teaching #undergraduate-courses-table .course-remarks-col {
+	width: 20%;
 }
 .page-teaching #undergraduate-courses-table .course-records-col {
-	width: 32%;
+	width: 30%;
 }
 .page-teaching #undergraduate-courses-table th,
 .page-teaching #undergraduate-courses-table td {
@@ -2071,21 +2074,36 @@ nav#navBarBottom {
 	line-height: 1.35;
 	white-space: nowrap;
 }
-.page-teaching .course-summary-row:nth-child(2) span:nth-child(1) {
+.page-teaching .course-summary-row span:nth-child(1) {
 	width: 74px;
 	justify-content: center;
 }
-.page-teaching .course-summary-row:nth-child(2) span:nth-child(2) {
+.page-teaching .course-summary-row span:nth-child(2) {
 	width: 108px;
 	justify-content: center;
 }
-.page-teaching .course-summary-row:nth-child(2) span:nth-child(3) {
+.page-teaching .course-summary-row span:nth-child(3) {
 	width: 106px;
 	justify-content: center;
 }
 .page-teaching .course-summary-box b {
 	color: var(--primary-color);
 	font-weight: 800;
+}
+.page-teaching .course-remarks {
+	color: #475569;
+	font-size: 13px;
+	line-height: 1.45;
+}
+.page-teaching .course-remark {
+	display: inline-block;
+	font-weight: 700;
+}
+.page-teaching .course-remark span {
+	display: block;
+	margin-top: 3px;
+	color: var(--text-muted);
+	font-weight: 500;
 }
 .page-teaching .course-record-list {
 	margin: 0;
