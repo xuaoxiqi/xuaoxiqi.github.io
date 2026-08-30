@@ -2037,6 +2037,17 @@ nav#navBarBottom {
 	line-height: 1.35;
 	white-space: nowrap;
 }
+.page-teaching .course-summary-box .summary-scope {
+	border-color: var(--primary-color);
+	background: var(--primary-color);
+	color: #ffffff;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+.page-teaching .course-summary-box .summary-scope-recent {
+	border-color: var(--accent-color);
+	background: var(--accent-color);
+}
 .page-teaching .course-summary-box b {
 	color: var(--primary-color);
 	font-weight: 800;
