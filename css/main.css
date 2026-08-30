@@ -1992,6 +1992,12 @@ nav#navBarBottom {
 .page-teaching .modern-table tbody tr:hover { background-color: #eaf6f6; }
 .page-teaching .modern-table tbody tr:nth-of-type(even) { background-color: #f8fafc; }
 
+.page-teaching .table-head-note {
+	font-size: 11px;
+	font-weight: 500;
+	text-transform: none;
+	opacity: 0.85;
+}
 .page-teaching .course-code { font-family: 'Courier New', monospace; font-weight: bold; color: #555; }
 .page-teaching .course-page-link {
 	color: var(--primary-color) !important;
@@ -2004,6 +2010,23 @@ nav#navBarBottom {
 .page-teaching .course-tag {
 	font-size: 10px; padding: 2px 6px; border-radius: 4px; color: white;
 	text-transform: uppercase; font-weight: bold; display: inline-block; margin-top: 2px;
+}
+.page-teaching .course-record-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: var(--text-dark);
+	font-size: 13px;
+	line-height: 1.55;
+}
+.page-teaching .course-record-list li {
+	margin-bottom: 3px;
+}
+.page-teaching .course-record-list li:last-child {
+	margin-bottom: 0;
+}
+.page-teaching .course-record-list b {
+	color: var(--primary-color);
 }
 .page-teaching .tag-core { background-color: var(--tag-core); }
 .page-teaching .tag-elective { background-color: var(--tag-elective); }
