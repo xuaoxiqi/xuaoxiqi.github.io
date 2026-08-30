@@ -16,17 +16,31 @@ title: Publications
     
     <h3>Journal Papers</h3>
 
-    <!-- Stats Dashboard (Populated by JS) -->
-    <div class="stats-container">
-        <div class="stat-item">J. Fluid Mech.<span class="stat-count" id="count-jfm">0+0</span></div>
-        <div class="stat-item">Phys. Rev. Fluids<span class="stat-count" id="count-prf">0+0</span></div>
-        <div class="stat-item">Phys. Fluids<span class="stat-count" id="count-pof">0+0</span></div>
-        <div class="stat-item">Int. J. Heat Mass Transf.<span class="stat-count" id="count-ijhmt">0+0</span></div>
-        <div class="stat-item">Int. J. Heat Fluid Flow<span class="stat-count" id="count-ijhff">0+0</span></div>
-        <div class="stat-item">Acta Mech. Sin.<span class="stat-count" id="count-ams">0+0</span></div>
-    </div>
-    <div class="stats-legend">
-        <span><span class="legend-badge">X + Y</span> &nbsp; <b>X</b> = First or Corresponding Author; &nbsp; <b>Y</b> = Co-author</span>
+    <!-- Publication Overview (Populated by JS) -->
+    <div class="publication-overview">
+        <section class="stats-panel" aria-labelledby="journal-stats-title">
+            <h4 class="stats-panel-title" id="journal-stats-title">Journal Statistics</h4>
+            <div class="stats-container">
+                <div class="stat-item">J. Fluid Mech.<span class="stat-count" id="count-jfm">0+0</span></div>
+                <div class="stat-item">Phys. Rev. Fluids<span class="stat-count" id="count-prf">0+0</span></div>
+                <div class="stat-item">Phys. Fluids<span class="stat-count" id="count-pof">0+0</span></div>
+                <div class="stat-item">Int. J. Heat Mass Transf.<span class="stat-count" id="count-ijhmt">0+0</span></div>
+                <div class="stat-item">Int. J. Heat Fluid Flow<span class="stat-count" id="count-ijhff">0+0</span></div>
+                <div class="stat-item">Acta Mech. Sin.<span class="stat-count" id="count-ams">0+0</span></div>
+            </div>
+            <div class="stats-legend">
+                <span><span class="legend-badge">X + Y</span> &nbsp; <b>X</b> = First or Corresponding Author; &nbsp; <b>Y</b> = Co-author</span>
+            </div>
+        </section>
+
+        <section class="stats-panel" aria-labelledby="yearly-stats-title">
+            <h4 class="stats-panel-title" id="yearly-stats-title">Publications by Year</h4>
+            <div class="yearly-chart-container" id="yearly-publication-chart"></div>
+            <div class="yearly-chart-legend" aria-label="Chart legend">
+                <span><span class="chart-legend-marker chart-legend-lead" aria-hidden="true"></span>First or Corresponding Author</span>
+                <span><span class="chart-legend-marker chart-legend-coauthor" aria-hidden="true"></span>Co-author</span>
+            </div>
+        </section>
     </div>
 
     <h3>Submitted / Under Review</h3>
@@ -37,7 +51,7 @@ title: Publications
         <!-- submitted 3 -->
         <li class="pub-item recent">
             <div class="pub-content">
-                <div class="pub-authors"><b>A. Xu</b></div>
+                <div class="pub-authors"><b>A. Xu</b><sup>*</sup></div>
                 <div class="pub-title">Transport-aware ferry-angle pursuit in an unsteady double-gyre flow</div>
                 <div class="pub-venue"><i>Submitted</i> <b>2026</b>.</div>
                 <div class="pub-actions"><span class="badge-submitted">Submitted</span></div>
@@ -1031,9 +1045,31 @@ title: Publications
 <script>
     // AUTOMATIC STATS CALCULATION
     document.addEventListener("DOMContentLoaded", function() {
-        const papers = document.querySelectorAll('.pub-item');
-        
-        // Define Journals to Track (Name in venue text -> Key in map)
+        const publishedPapers = Array.from(document.querySelectorAll('ol.pub-list > .pub-item'));
+
+        const paperData = publishedPapers.map(paper => {
+            const authorsElement = paper.querySelector('.pub-authors');
+            const venueElement = paper.querySelector('.pub-venue');
+            if (!authorsElement || !venueElement) return null;
+
+            const authorsHTML = authorsElement.innerHTML.trim();
+            const compactAuthorsHTML = authorsHTML.replace(/\s+/g, '');
+            const authorsText = authorsElement.innerText.trim().replace(/\s+/g, ' ');
+            const venueText = venueElement.innerText;
+            const yearMatch = venueText.match(/\b(?:19|20)\d{2}\b/);
+
+            const isFirst = authorsText.startsWith('A. Xu');
+            const isCorresponding = compactAuthorsHTML.includes('A.Xu</b><sup>*</sup>') ||
+                compactAuthorsHTML.includes('A.Xu<sup>*</sup>');
+
+            return {
+                venueText,
+                year: yearMatch ? Number(yearMatch[0]) : null,
+                isLead: isFirst || isCorresponding
+            };
+        }).filter(Boolean);
+
+        // Define journals to track (name in venue text -> key in map).
         const journalMap = {
             'International Journal of Heat and Mass Transfer': 'ijhmt',
             'Journal of Fluid Mechanics': 'jfm',
@@ -1047,31 +1083,17 @@ title: Publications
             Object.values(journalMap).map(key => [key, {a:0, b:0}])
         );
 
-        papers.forEach(paper => {
-            const authorsHTML = paper.querySelector('.pub-authors').innerHTML.trim();
-            const venueText = paper.querySelector('.pub-venue').innerText;
-
-            // Find matching journal
+        paperData.forEach(paper => {
             let currentJournalKey = null;
             for (const [fullName, key] of Object.entries(journalMap)) {
-                if(venueText.includes(fullName)) {
+                if (paper.venueText.includes(fullName)) {
                     currentJournalKey = key;
                     break;
                 }
             }
 
-            if(currentJournalKey) {
-                // Logic: 
-                // 1. Is First Author? Check if starts with "<b>A. Xu</b>" or "A. Xu"
-                // 2. Is Corresponding? Check if contains "A. Xu</b><sup>*</sup>" or "A. Xu<sup>*</sup>"
-                
-                // Remove HTML tags for clean start checking, but keep structure for * check
-                const cleanAuthors = paper.querySelector('.pub-authors').innerText;
-                
-                const isFirst = authorsHTML.startsWith('<b>A. Xu</b>') || authorsHTML.startsWith('A. Xu');
-                const isCorr = authorsHTML.includes('A. Xu</b><sup>*</sup>') || authorsHTML.includes('A. Xu<sup>*</sup>');
-
-                if (isFirst || isCorr) {
+            if (currentJournalKey) {
+                if (paper.isLead) {
                     stats[currentJournalKey].a++;
                 } else {
                     stats[currentJournalKey].b++;
@@ -1082,7 +1104,200 @@ title: Publications
         // Update DOM
         for (const [key, val] of Object.entries(stats)) {
             const el = document.getElementById(`count-${key}`);
-            if(el) el.innerText = `${val.a}+${val.b}`;
+            if (el) el.innerText = `${val.a}+${val.b}`;
+        }
+
+        const yearlyCounts = new Map();
+        paperData.forEach(paper => {
+            if (!paper.year) return;
+            if (!yearlyCounts.has(paper.year)) {
+                yearlyCounts.set(paper.year, {lead: 0, coauthor: 0});
+            }
+
+            const counts = yearlyCounts.get(paper.year);
+            if (paper.isLead) {
+                counts.lead++;
+            } else {
+                counts.coauthor++;
+            }
+        });
+
+        const recordedYears = Array.from(yearlyCounts.keys()).sort((a, b) => a - b);
+        const yearlyData = [];
+        if (recordedYears.length) {
+            for (let year = recordedYears[0]; year <= recordedYears[recordedYears.length - 1]; year++) {
+                const counts = yearlyCounts.get(year) || {lead: 0, coauthor: 0};
+                yearlyData.push({year, lead: counts.lead, coauthor: counts.coauthor});
+            }
+        }
+
+        const chartContainer = document.getElementById('yearly-publication-chart');
+        if (!chartContainer) return;
+
+        if (!yearlyData.length) {
+            chartContainer.textContent = 'No published-paper data available.';
+            return;
+        }
+
+        const svgNamespace = 'http://www.w3.org/2000/svg';
+        const createSvgElement = (name, attributes = {}, text = null) => {
+            const element = document.createElementNS(svgNamespace, name);
+            Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+            if (text !== null) element.textContent = text;
+            return element;
+        };
+
+        let lastChartWidth = 0;
+        const renderYearlyChart = () => {
+            const width = Math.max(260, Math.round(chartContainer.clientWidth - 20));
+            if (Math.abs(width - lastChartWidth) < 2 && chartContainer.firstChild) return;
+            lastChartWidth = width;
+
+            const height = 230;
+            const margin = {top: 22, right: 16, bottom: 38, left: 42};
+            const plotWidth = width - margin.left - margin.right;
+            const plotHeight = height - margin.top - margin.bottom;
+            const plotBottom = margin.top + plotHeight;
+            const dataMaximum = Math.max(...yearlyData.flatMap(item => [item.lead, item.coauthor]));
+            const tickStep = Math.max(1, Math.ceil(dataMaximum / 4));
+            const axisMaximum = Math.max(1, Math.ceil(dataMaximum / tickStep) * tickStep);
+            const compactYears = width < 520;
+
+            const xPosition = index => yearlyData.length === 1
+                ? margin.left + plotWidth / 2
+                : margin.left + index * plotWidth / (yearlyData.length - 1);
+            const yPosition = value => margin.top + (axisMaximum - value) * plotHeight / axisMaximum;
+
+            chartContainer.replaceChildren();
+            const svg = createSvgElement('svg', {
+                class: 'publication-year-chart',
+                viewBox: `0 0 ${width} ${height}`,
+                role: 'img',
+                'aria-labelledby': 'publication-chart-title publication-chart-description'
+            });
+
+            svg.appendChild(createSvgElement('title', {id: 'publication-chart-title'}, 'Publications by Year'));
+            svg.appendChild(createSvgElement(
+                'desc',
+                {id: 'publication-chart-description'},
+                yearlyData.map(item => `${item.year}: ${item.lead} first or corresponding author, ${item.coauthor} co-author`).join('; ')
+            ));
+
+            for (let value = 0; value <= axisMaximum; value += tickStep) {
+                const y = yPosition(value);
+                svg.appendChild(createSvgElement('line', {
+                    class: 'chart-grid-line',
+                    x1: margin.left,
+                    x2: width - margin.right,
+                    y1: y,
+                    y2: y
+                }));
+                svg.appendChild(createSvgElement('text', {
+                    class: 'chart-axis-label',
+                    x: margin.left - 8,
+                    y: y + 4,
+                    'text-anchor': 'end'
+                }, String(value)));
+            }
+
+            svg.appendChild(createSvgElement('line', {
+                class: 'chart-axis-line',
+                x1: margin.left,
+                x2: margin.left,
+                y1: margin.top,
+                y2: plotBottom
+            }));
+            svg.appendChild(createSvgElement('line', {
+                class: 'chart-axis-line',
+                x1: margin.left,
+                x2: width - margin.right,
+                y1: plotBottom,
+                y2: plotBottom
+            }));
+            svg.appendChild(createSvgElement('text', {
+                class: 'chart-axis-label',
+                x: -height / 2,
+                y: 12,
+                transform: 'rotate(-90)',
+                'text-anchor': 'middle'
+            }, 'Papers'));
+
+            yearlyData.forEach((item, index) => {
+                svg.appendChild(createSvgElement('text', {
+                    class: 'chart-axis-label',
+                    x: xPosition(index),
+                    y: plotBottom + 25,
+                    'text-anchor': 'middle'
+                }, compactYears ? `'${String(item.year).slice(-2)}` : String(item.year)));
+            });
+
+            const series = [
+                {
+                    key: 'coauthor',
+                    label: 'Co-author',
+                    lineClass: 'chart-line chart-line-coauthor',
+                    markerClass: 'chart-marker-coauthor',
+                    marker: 'square'
+                },
+                {
+                    key: 'lead',
+                    label: 'First or Corresponding Author',
+                    lineClass: 'chart-line chart-line-lead',
+                    markerClass: 'chart-marker-lead',
+                    marker: 'circle'
+                }
+            ];
+
+            series.forEach(seriesItem => {
+                const points = yearlyData.map((item, index) => ({
+                    x: xPosition(index),
+                    y: yPosition(item[seriesItem.key]),
+                    value: item[seriesItem.key],
+                    year: item.year,
+                    sameValue: item.lead === item.coauthor
+                }));
+
+                const pathData = points.map((point, index) =>
+                    `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`
+                ).join(' ');
+                svg.appendChild(createSvgElement('path', {
+                    class: seriesItem.lineClass,
+                    d: pathData
+                }));
+
+                points.forEach(point => {
+                    const commonAttributes = {
+                        class: seriesItem.markerClass,
+                        tabindex: '0',
+                        role: 'img',
+                        'aria-label': `${point.year}, ${seriesItem.label}: ${point.value}`
+                    };
+                    const marker = seriesItem.marker === 'circle'
+                        ? createSvgElement('circle', {...commonAttributes, cx: point.x, cy: point.y, r: 4})
+                        : createSvgElement('rect', {...commonAttributes, x: point.x - 4, y: point.y - 4, width: 8, height: 8});
+                    marker.appendChild(createSvgElement('title', {}, `${point.year}: ${seriesItem.label} — ${point.value}`));
+                    svg.appendChild(marker);
+
+                    const labelY = seriesItem.key === 'coauthor' && point.sameValue
+                        ? Math.min(plotBottom + 16, point.y + 16)
+                        : Math.max(12, point.y - 9);
+                    svg.appendChild(createSvgElement('text', {
+                        class: 'chart-value-label',
+                        x: point.x,
+                        y: labelY
+                    }, String(point.value)));
+                });
+            });
+
+            chartContainer.appendChild(svg);
+        };
+
+        renderYearlyChart();
+        if ('ResizeObserver' in window) {
+            const resizeObserver = new ResizeObserver(() => window.requestAnimationFrame(renderYearlyChart));
+            resizeObserver.observe(chartContainer);
+        } else {
+            window.addEventListener('resize', renderYearlyChart);
         }
     });
 </script>
