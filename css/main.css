@@ -1355,7 +1355,7 @@ nav#navBarBottom {
 	display: grid;
 	flex: 1;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	align-content: start;
+	align-content: center;
 	gap: 10px;
 	margin-bottom: 10px;
 	background-color: white;
@@ -1365,12 +1365,13 @@ nav#navBarBottom {
 	border: 1px solid var(--border-color);
 }
 .page-publications .stat-item {
-	background-color: var(--bg-light-gray);
+	min-height: 42px;
+	background-color: #fbfcfd;
 	padding: 8px 12px;
 	border-radius: 6px;
 	font-size: 13px;
 	color: var(--text-dark);
-	border: 1px solid #e0e0e0;
+	border: 1px solid #eef2f5;
 	font-weight: 600;
 	display: flex;
 	align-items: center;
@@ -1380,14 +1381,32 @@ nav#navBarBottom {
 	text-align: left;
 }
 .page-publications .stat-count {
-	background-color: var(--primary-color);
-	color: white;
-	padding: 2px 8px;
-	border-radius: 4px;
+	display: inline-flex;
+	min-width: 50px;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	background-color: white;
+	padding: 2px 7px;
+	border: 1px solid #e2e8f0;
+	border-radius: 999px;
 	margin-left: 8px;
 	font-size: 12px;
-	font-family: monospace;
+	font-variant-numeric: tabular-nums;
+	font-weight: 700;
 	flex: 0 0 auto;
+}
+
+.page-publications .stat-count-lead {
+	color: var(--highlight-color);
+}
+
+.page-publications .stat-count-plus {
+	color: #cbd5e1;
+}
+
+.page-publications .stat-count-coauthor {
+	color: #64748b;
 }
 .page-publications .stats-legend {
 	font-size: 12px;
@@ -1399,12 +1418,29 @@ nav#navBarBottom {
 	line-height: 1.5;
 }
 .page-publications .legend-badge {
-	background-color: var(--primary-color);
-	color: white;
-	padding: 1px 6px;
-	border-radius: 4px;
-	font-family: monospace;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 3px;
+	min-width: 46px;
+	background-color: white;
+	padding: 2px 7px;
+	border: 1px solid #e2e8f0;
+	border-radius: 999px;
 	font-size: 11px;
+	font-weight: 700;
+}
+
+.page-publications .legend-lead {
+	color: var(--highlight-color);
+}
+
+.page-publications .legend-plus {
+	color: #cbd5e1;
+}
+
+.page-publications .legend-coauthor {
+	color: #64748b;
 }
 
 .page-publications .yearly-chart-container {

@@ -27,15 +27,15 @@ title: Publications
         <section class="stats-panel" aria-labelledby="journal-stats-title">
             <h4 class="stats-panel-title" id="journal-stats-title">Selected Journals</h4>
             <div class="stats-container">
-                <div class="stat-item">J. Fluid Mech.<span class="stat-count" id="count-jfm">0+0</span></div>
-                <div class="stat-item">Phys. Rev. Fluids<span class="stat-count" id="count-prf">0+0</span></div>
-                <div class="stat-item">Phys. Fluids<span class="stat-count" id="count-pof">0+0</span></div>
-                <div class="stat-item">Int. J. Heat Mass Transf.<span class="stat-count" id="count-ijhmt">0+0</span></div>
-                <div class="stat-item">Int. J. Heat Fluid Flow<span class="stat-count" id="count-ijhff">0+0</span></div>
-                <div class="stat-item">Acta Mech. Sin.<span class="stat-count" id="count-ams">0+0</span></div>
+                <div class="stat-item">J. Fluid Mech.<span class="stat-count" id="count-jfm"><span class="stat-count-lead">0</span><span class="stat-count-plus">+</span><span class="stat-count-coauthor">0</span></span></div>
+                <div class="stat-item">Phys. Rev. Fluids<span class="stat-count" id="count-prf"><span class="stat-count-lead">0</span><span class="stat-count-plus">+</span><span class="stat-count-coauthor">0</span></span></div>
+                <div class="stat-item">Phys. Fluids<span class="stat-count" id="count-pof"><span class="stat-count-lead">0</span><span class="stat-count-plus">+</span><span class="stat-count-coauthor">0</span></span></div>
+                <div class="stat-item">Int. J. Heat Mass Transf.<span class="stat-count" id="count-ijhmt"><span class="stat-count-lead">0</span><span class="stat-count-plus">+</span><span class="stat-count-coauthor">0</span></span></div>
+                <div class="stat-item">Int. J. Heat Fluid Flow<span class="stat-count" id="count-ijhff"><span class="stat-count-lead">0</span><span class="stat-count-plus">+</span><span class="stat-count-coauthor">0</span></span></div>
+                <div class="stat-item">Acta Mech. Sin.<span class="stat-count" id="count-ams"><span class="stat-count-lead">0</span><span class="stat-count-plus">+</span><span class="stat-count-coauthor">0</span></span></div>
             </div>
             <div class="stats-legend">
-                <span><span class="legend-badge">X + Y</span> &nbsp; <b>X</b> = First or Corresponding Author; &nbsp; <b>Y</b> = Co-author</span>
+                <span><span class="legend-badge"><span class="legend-lead">X</span><span class="legend-plus">+</span><span class="legend-coauthor">Y</span></span> &nbsp; <b>X</b> = First or Corresponding Author; &nbsp; <b>Y</b> = Co-author</span>
             </div>
         </section>
 
@@ -1115,7 +1115,11 @@ title: Publications
         // Update DOM
         for (const [key, val] of Object.entries(stats)) {
             const el = document.getElementById(`count-${key}`);
-            if (el) el.innerText = `${val.a}+${val.b}`;
+            if (!el) continue;
+            const leadCount = el.querySelector('.stat-count-lead');
+            const coauthorCount = el.querySelector('.stat-count-coauthor');
+            if (leadCount) leadCount.innerText = val.a;
+            if (coauthorCount) coauthorCount.innerText = val.b;
         }
 
         const yearlyCounts = new Map();
