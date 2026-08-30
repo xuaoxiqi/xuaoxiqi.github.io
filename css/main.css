@@ -1999,6 +1999,28 @@ nav#navBarBottom {
 .page-teaching .modern-table tbody tr:hover { background-color: #eaf6f6; }
 .page-teaching .modern-table tbody tr:nth-of-type(even) { background-color: #f8fafc; }
 
+.page-teaching #undergraduate-courses-table {
+	table-layout: fixed;
+	min-width: 900px;
+}
+.page-teaching #undergraduate-courses-table .course-code-col {
+	width: 12%;
+}
+.page-teaching #undergraduate-courses-table .course-name-col {
+	width: 56%;
+}
+.page-teaching #undergraduate-courses-table .course-records-col {
+	width: 32%;
+}
+.page-teaching #undergraduate-courses-table th,
+.page-teaching #undergraduate-courses-table td {
+	vertical-align: middle;
+}
+.page-teaching #undergraduate-courses-table th:last-child,
+.page-teaching #undergraduate-courses-table td:last-child {
+	padding-left: 24px;
+}
+
 .page-teaching .table-head-note {
 	font-size: 11px;
 	font-weight: 500;
@@ -2212,8 +2234,9 @@ nav#navBarBottom {
 }
 
 .page-tensor-analysis-course .course-breadcrumb a {
-	border-bottom: 1px solid transparent;
-	color: var(--primary-color);
+	border-bottom: 1px solid rgba(29, 78, 95, 0.45);
+	color: var(--primary-color) !important;
+	font-weight: 700;
 	text-decoration: none;
 }
 
