@@ -1260,6 +1260,7 @@ nav#navBarBottom {
 .page-research .badge-invite { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
 .page-research .badge-keynote { background-color: #ffe0b2; color: #e65100; border: 1px solid #ffcc80; }
 .page-research .badge-oral { background-color: #e2e8f0; color: #475569; border: 1px solid #cbd5e1; }
+.page-research .badge-seminar { background-color: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
 
 .page-research .conf-link {
 	font-size: 11px;
