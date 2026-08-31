@@ -2809,23 +2809,23 @@ nav#navBarBottom {
 
 .page-tensor-analysis-course .course-return-actions {
 	display: flex;
-	position: sticky;
-	top: 104px;
+	position: fixed;
+	top: clamp(320px, 58vh, 560px);
+	left: max(22px, calc((100vw - 1280px) / 2 - 124px));
 	z-index: 30;
 	justify-content: flex-start;
 	width: max-content;
-	height: 0;
 	margin: 0;
-	transform: translate(calc(-100% - 22px), 2px);
+	transform: translateY(-50%);
 }
 
 .page-tensor-analysis-course .course-return-button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 48px;
-	height: 48px;
-	min-height: 48px;
+	width: 52px;
+	height: 52px;
+	min-height: 52px;
 	padding: 0;
 	border: 1px solid rgba(255,255,255,0.32);
 	border-radius: 50%;
@@ -2841,7 +2841,7 @@ nav#navBarBottom {
 .page-tensor-analysis-course .course-return-icon {
 	display: block;
 	width: auto;
-	height: 25px;
+	height: 27px;
 	object-fit: contain;
 	opacity: 0.92;
 	transition: opacity 0.2s ease, transform 0.2s ease;
@@ -2870,23 +2870,22 @@ nav#navBarBottom {
 @media (max-width: 1520px) and (min-width: 721px) {
 	.page-tensor-analysis-course .course-return-actions {
 		position: fixed;
-		top: 108px;
-		left: 14px;
+		top: 58vh;
+		left: 10px;
 		width: auto;
-		height: auto;
-		transform: none;
+		transform: translateY(-50%);
 	}
 
 	.page-tensor-analysis-course .course-return-button {
-		width: 44px;
-		height: 44px;
-		min-width: 44px;
-		min-height: 44px;
+		width: 46px;
+		height: 46px;
+		min-width: 46px;
+		min-height: 46px;
 		padding: 0;
 	}
 
 	.page-tensor-analysis-course .course-return-icon {
-		height: 23px;
+		height: 24px;
 	}
 }
 
