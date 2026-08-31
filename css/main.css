@@ -2690,6 +2690,11 @@ nav#navBarBottom {
 	white-space: nowrap;
 }
 
+.page-tensor-analysis-course .resource-status.is-released {
+	background: rgba(65, 177, 164, 0.14);
+	color: #2c7a72;
+}
+
 .page-tensor-analysis-course .resource-date {
 	color: #7b8d98;
 	font-family: 'Courier New', monospace;
