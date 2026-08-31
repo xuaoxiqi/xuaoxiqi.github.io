@@ -2807,6 +2807,38 @@ nav#navBarBottom {
 	text-decoration: none;
 }
 
+.page-tensor-analysis-course .course-return-actions {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 34px;
+}
+
+.page-tensor-analysis-course .course-return-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 42px;
+	padding: 9px 18px;
+	border: 1px solid var(--primary-color);
+	border-radius: 6px;
+	background: var(--primary-color);
+	color: #ffffff !important;
+	font-weight: 800;
+	line-height: 1.2;
+	text-decoration: none;
+	box-shadow: 0 8px 18px rgba(29, 78, 95, 0.16);
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.page-tensor-analysis-course .course-return-button:hover {
+	border-color: var(--accent-color);
+	background: var(--accent-color);
+	color: #ffffff !important;
+	font-weight: 800;
+	transform: translateY(-1px);
+	box-shadow: 0 10px 22px rgba(65, 177, 164, 0.18);
+}
+
 @media (max-width: 980px) {
 	.page-tensor-analysis-course .course-hero,
 	.page-tensor-analysis-course .overview-grid,
@@ -2854,6 +2886,14 @@ nav#navBarBottom {
 	.page-tensor-analysis-course .resource-release-list li {
 		grid-template-columns: 1fr;
 		gap: 5px;
+	}
+
+	.page-tensor-analysis-course .course-return-actions {
+		justify-content: stretch;
+	}
+
+	.page-tensor-analysis-course .course-return-button {
+		width: 100%;
 	}
 
 	.page-tensor-analysis-course .workflow-step:not(:last-child) {
