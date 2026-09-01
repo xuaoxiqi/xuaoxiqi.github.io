@@ -2664,6 +2664,11 @@ nav#navBarBottom {
 	line-height: 1.45;
 }
 
+.page-tensor-analysis-course .resource-release-list .resource-alignment-spacer {
+	visibility: hidden;
+	pointer-events: none;
+}
+
 .page-tensor-analysis-course .resource-release-list li:last-child {
 	border-bottom: 0;
 }
