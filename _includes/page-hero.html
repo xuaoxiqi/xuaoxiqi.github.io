@@ -61,10 +61,12 @@
                 <dt>{{ include.stat_2_label }}</dt>
                 <dd{% if include.stat_2_compact %} class="page-hero__stat-value--compact"{% endif %}>{{ include.stat_2_value }}</dd>
             </div>
+            {% if include.stat_3_value %}
             <div>
                 <dt>{{ include.stat_3_label }}</dt>
                 <dd>{{ include.stat_3_value }}</dd>
             </div>
+            {% endif %}
         </dl>
         {% endif %}
     </div>

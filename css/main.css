@@ -464,7 +464,8 @@ nav#navBarTop {
 
 .navBarListLeft { flex-wrap: wrap; }
 
-nav a {
+#navBarTop a,
+#navBarBottom a {
 	color: var(--text-light) !important;
 	text-decoration: none;
 	transition: all 0.2s ease-in-out;
@@ -474,13 +475,15 @@ nav a {
 	opacity: 0.85;
 }
 
-nav a:hover {
+#navBarTop a:hover,
+#navBarBottom a:hover {
 	background-color: rgba(255,255,255,0.15) !important;
 	color: #ffffff !important;
 	opacity: 1;
 }
 
-nav a.active-nav {
+#navBarTop a.active-nav,
+#navBarBottom a.active-nav {
 	color: var(--highlight-active) !important;
 	font-weight: 800 !important;
 	opacity: 1 !important;
@@ -565,8 +568,10 @@ nav#navBarBottom {
 		display: flex !important;
 	}
 
-	nav a { padding: 5px 8px; font-size: 15px; }
-	nav a.active-nav { font-size: 15px !important; }
+	#navBarTop a,
+	#navBarBottom a { padding: 5px 8px; font-size: 15px; }
+	#navBarTop a.active-nav,
+	#navBarBottom a.active-nav { font-size: 15px !important; }
 }
 
 @media (max-width: 600px) {
@@ -1050,7 +1055,7 @@ nav#navBarBottom {
 
 .page-home .main-content { min-width: 0; padding-left: 10px; }
 
-.page-home .home-intro-card {
+.page-home .home-profiles-card {
 	margin-bottom: 30px;
 	padding: 20px 22px;
 	border: 1px solid var(--border-color);
@@ -1060,15 +1065,8 @@ nav#navBarBottom {
 	box-shadow: 0 3px 12px rgba(17, 52, 62, 0.05);
 }
 
-.page-home .home-intro-card > p {
-	margin: 0;
-	color: #2f4650;
-	font-size: 16px;
-	line-height: 1.8;
-}
-
 .page-home .identity-links {
-	margin-top: 16px;
+	margin-top: 0;
 }
 
 .page-home .identity-links__label {
@@ -1110,6 +1108,7 @@ nav#navBarBottom {
 	border-color: var(--accent-color);
 	background: #edf8f6;
 	color: var(--accent-color);
+	font-weight: 600;
 }
 
 .page-home h2 {
@@ -1205,6 +1204,34 @@ nav#navBarBottom {
 }
 
 .page-about .bio-text strong { color: var(--primary-color); }
+
+.page-about .page-hero__meta {
+	display: block;
+	margin-top: 8px;
+	color: #dbecee;
+	font-size: clamp(15px, 1.8vw, 17px);
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 1.65;
+}
+
+.page-about .page-hero__meta li {
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+}
+
+.page-about .page-hero__meta a {
+	color: inherit;
+	border: 0;
+	text-decoration: none;
+}
+
+.page-about .page-hero__meta a:hover,
+.page-about .page-hero__meta a:focus-visible {
+	color: #ffffff;
+}
 
 .page-about .bio-text a,
 .page-about .about-education a {
@@ -3996,12 +4023,13 @@ nav#navBarBottom {
 	z-index: 1;
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	object-position: center;
+	background: #eef4f4;
 	transition: transform 0.45s ease;
 }
 
-.page-news .news-card:hover .news-cover img { transform: scale(1.035); }
+.page-news .news-card:hover .news-cover img { transform: none; }
 
 .page-news .news-cover-label {
 	position: absolute;
