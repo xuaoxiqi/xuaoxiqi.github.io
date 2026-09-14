@@ -6,6 +6,8 @@
     <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
     <meta name="description" content="{{ page.description }}" />
     <meta name="keywords" content="Ao Xu,A. Xu,axu@nwpu.edu.cn,axu@connect.ust.hk">
+    {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+    {% if page.base_root %}<base href="{{ '/' | relative_url }}">{% endif %}
 
     <title>Ao Xu (NPU) | {{ page.title }}</title>
     
