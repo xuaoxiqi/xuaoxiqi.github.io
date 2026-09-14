@@ -2,6 +2,14 @@
 layout: main
 description: News, media coverage, and research highlights from Ao Xu's group at Northwestern Polytechnical University.
 title: News
+hero_eyebrow: Research · Recognition · Community
+hero_title: News & Media
+hero_intro: Selected coverage of our research, people, and academic activities.
+hero_meta:
+  - Research Highlights
+  - Recognition
+  - Academic Events
+hero_mark: N
 # Add new coverage at the top of this list. The cards below are rendered automatically.
 news:
   - date: "July 26, 2026"
@@ -131,31 +139,11 @@ news:
     url: "https://mp.weixin.qq.com/s/N6SFkS9MazieM3NoxlrBaA"
 ---
 
-<div id="divTitleNav">
-    <a href="./index.html" aria-label="Back to homepage" class="navDock nav-back-icon">&larr;</a>
-</div>
-
 <div id="divPost">
 
     <main id="articlePost" class="page-news">
 
-        <header class="news-hero">
-            <div class="news-hero-content">
-                <p class="news-eyebrow">Research · Recognition · Community</p>
-                <h1>News &amp; Media</h1>
-                <p class="news-hero-intro">
-                    Selected coverage of our research, people, and academic activities.
-                </p>
-                <div class="news-hero-meta" aria-label="News archive summary">
-                    <span><strong>{{ page.news | size }}</strong> featured stories</span>
-                    <span aria-hidden="true">·</span>
-                    <span>Latest: {{ page.news.first.date }}</span>
-                </div>
-            </div>
-            <div class="news-hero-mark" aria-hidden="true">
-                <span>N</span>
-            </div>
-        </header>
+        {% include page-hero.html %}
 
         <section class="news-feed" aria-labelledby="latest-news-heading">
             <div class="news-section-heading">

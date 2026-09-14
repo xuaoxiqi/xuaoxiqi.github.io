@@ -2,6 +2,14 @@
 layout: main
 description: Photo gallery of our research group and academic activities.
 title: Gallery
+hero_eyebrow: People & Moments
+hero_title: Gallery
+hero_intro: Moments from research, collaboration, academic events, and life with our group.
+hero_meta:
+  - Research Group
+  - Academic Events
+  - Collaborations
+hero_mark: G
 photos:
   - file: "20260627-datong-six-university-mechanics-forum-talk.jpg"
     date: "June 27, 2026"
@@ -118,19 +126,11 @@ photos:
     caption: "Group photo with the PhD defense committee after the doctoral defense."
 ---
 
-<div id="divTitleNav">
-    <a href="./index.html" aria-label="Back to homepage" class="navDock nav-back-icon">&larr;</a>
-</div>
-
 <div id="divPost">
 
     <article id="articlePost" class="page-gallery">
 
-        <h2 class="gallery-header">Group Gallery</h2>
-
-        <p class="gallery-intro">
-            Welcome to our gallery! Here are some moments captured with our team members, collaborators, alumni, and at various academic conferences.
-        </p>
+        {% include page-hero.html %}
 
         <div class="photo-grid">
             {% for photo in page.photos %}
