@@ -4,16 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="rjPzO6U1Itlhx05BZ1b_8nCvoOzXsWobDUC5jwCQTaY" />
-    <meta name="description" content="{{ page.description }}" />
+    <meta name="description" content="{{ page.description | default: site.description | escape }}" />
     <meta name="keywords" content="Ao Xu,A. Xu,axu@nwpu.edu.cn,axu@connect.ust.hk">
     {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
     {% if page.base_root %}<base href="{{ '/' | relative_url }}">{% endif %}
 
-    <title>Ao Xu (NPU) | {{ page.title }}</title>
+    {% assign canonical_path = page.url %}
+    {% if page.title == 'Homepage' %}{% assign canonical_path = '/' %}{% endif %}
+    <link rel="canonical" href="{{ canonical_path | absolute_url }}" />
+
+    <title>{% if page.seo_title %}{{ page.seo_title | escape }}{% else %}{{ page.title | escape }} | Ao Xu (徐翱){% endif %}</title>
     
     <link rel="icon" type="image/vnd.microsoft.icon" href="./favicon.ico" sizes="57x57" />
     
-    <link rel="author" type="text/html" href="https://www.linkedin.com/pub/ao-xu/30/a72/a29" />
+    <link rel="author" type="text/html" href="https://www.linkedin.com/in/ao-xu-a29a7230" />
     <link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/3.0/" />
     
     <link rel="stylesheet" type="text/css" href="{{ '/css/main.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}" media="all" />
@@ -45,7 +49,7 @@
         <ul class="navBarListLeft">
             <li>
                 <!-- Check if page title is Homepage to set active class -->
-                <a href="./index.html" style="padding: 0;" class="{% if page.title == 'Homepage' %}active-nav{% endif %}">
+                <a href="{{ '/' | relative_url }}" style="padding: 0;" class="{% if page.title == 'Homepage' %}active-nav{% endif %}">
                     <img src="./images/home.png" alt="home" title="Home" class="navDock" height="28" style="display:block;">
                 </a>
             </li>
@@ -88,11 +92,11 @@
         
         <!-- Right Side: Social Icons (Now always visible via CSS changes) -->
         <ul class="navBarListRight">
-            <li class="social-text"><b>Ao</b> on</li>
+            <li class="social-text"><b>Ao Xu</b> on</li>
             <!--<li><a href="https://scholar.google.com/citations?user=HO_Bf4IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><img src="./images/googleScholar.png" alt="google scholar" title="Google Scholar" class="navDock" height="28"></a></li>-->
             <li><a href="https://www.scopus.com/authid/detail.uri?authorId=56828706500" target="_blank" rel="noopener noreferrer"><img src="./images/Scopus.png" alt="Scopus" title="Scopus" class="navDock" height="28"></a></li>
             <li><a href="https://www.webofscience.com/wos/author/rid/J-4000-2015" target="_blank" rel="noopener noreferrer"><img src="./images/Researcher.jpg" alt="Researcher" title="Researcher" class="navDock" height="28"></a></li>
-            <li><a href="https://www.linkedin.com/pub/ao-xu/30/a72/a29" target="_blank" rel="noopener noreferrer"><img src="./images/linkedin.png" alt="Linked In" title="Linked In" class="navDock" height="28"></a></li>
+            <li><a href="https://www.linkedin.com/in/ao-xu-a29a7230" target="_blank" rel="noopener noreferrer"><img src="./images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="navDock" height="28"></a></li>
             <li><a href="https://github.com/xuaoxiqi" target="_blank" rel="noopener noreferrer"><img src="./images/github.png" alt="github" title="GitHub" class="navDock" height="28"></a></li>
         </ul>
     </nav>
@@ -127,7 +131,7 @@
     <nav id="navBarBottom">
         <div class="navBarListLeft">            
             <div>    
-                ©2013-2026 Ao Xu | <strong>Discussion on multiscale transport phenomena is welcomed.</strong>
+                ©2013-2026 Ao Xu (徐翱) | <strong>Discussion on multiscale transport phenomena is welcomed.</strong>
             </div>
         </div>
         

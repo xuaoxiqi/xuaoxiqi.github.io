@@ -1,2 +1,6 @@
+title: Ao Xu (徐翱)
+description: Academic website of Ao Xu (徐翱), a fluid mechanics researcher at Northwestern Polytechnical University.
+url: https://xuaoxiqi.github.io
+baseurl: ""
 include: images, css, js, publications, videos, codes, gif
 exclude: [news-backups]

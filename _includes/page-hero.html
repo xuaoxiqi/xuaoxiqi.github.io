@@ -13,7 +13,13 @@
         {% if page.hero_meta %}
         <ul class="page-hero__meta" aria-label="Page topics">
             {% for item in page.hero_meta %}
-            <li>{{ item }}</li>
+            <li>
+                {% if item.href %}
+                <a href="{{ item.href }}" target="_blank" rel="noopener noreferrer">{{ item.label }}</a>
+                {% else %}
+                {{ item }}
+                {% endif %}
+            </li>
             {% endfor %}
         </ul>
         {% endif %}

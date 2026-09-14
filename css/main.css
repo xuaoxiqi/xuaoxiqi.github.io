@@ -734,6 +734,16 @@ nav#navBarBottom {
 	background: rgba(255, 255, 255, 0.06);
 }
 
+.page-hero__meta a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.page-hero__meta a:hover,
+.page-hero__meta a:focus-visible {
+	color: #ffffff;
+}
+
 .page-hero__aside {
 	position: relative;
 	z-index: 2;
@@ -969,7 +979,7 @@ nav#navBarBottom {
 	font-size: 26px;
 	color: var(--primary-color);
 	font-weight: 700;
-	margin-bottom: 5px;
+	margin: 0 0 5px;
 }
 
 .page-home .profile-title {
@@ -1039,6 +1049,68 @@ nav#navBarBottom {
 }
 
 .page-home .main-content { min-width: 0; padding-left: 10px; }
+
+.page-home .home-intro-card {
+	margin-bottom: 30px;
+	padding: 20px 22px;
+	border: 1px solid var(--border-color);
+	border-left: 4px solid var(--accent-color);
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 3px 12px rgba(17, 52, 62, 0.05);
+}
+
+.page-home .home-intro-card > p {
+	margin: 0;
+	color: #2f4650;
+	font-size: 16px;
+	line-height: 1.8;
+}
+
+.page-home .identity-links {
+	margin-top: 16px;
+}
+
+.page-home .identity-links__label {
+	display: block;
+	margin-bottom: 8px;
+	color: var(--primary-color);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.page-home .identity-links ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.page-home .identity-links a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 32px;
+	padding: 6px 10px;
+	border: 1px solid #c8dadd;
+	border-radius: 999px;
+	background: #f6f9f9;
+	color: var(--primary-color);
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.25;
+	text-decoration: none;
+}
+
+.page-home .identity-links a:hover,
+.page-home .identity-links a:focus-visible {
+	border-color: var(--accent-color);
+	background: #edf8f6;
+	color: var(--accent-color);
+}
 
 .page-home h2 {
 	font-family: 'Droid Sans', sans-serif;
@@ -1133,6 +1205,36 @@ nav#navBarBottom {
 }
 
 .page-about .bio-text strong { color: var(--primary-color); }
+
+.page-about .bio-text a,
+.page-about .about-education a {
+	color: var(--primary-color);
+	text-decoration: none;
+	border-bottom: 1px dotted currentColor;
+}
+
+.page-about .bio-text a:hover,
+.page-about .bio-text a:focus-visible,
+.page-about .about-education a:hover,
+.page-about .about-education a:focus-visible {
+	color: var(--accent-color);
+}
+
+.page-about .about-education {
+	display: grid;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.page-about .about-education li {
+	padding: 15px 18px;
+	border: 1px solid var(--border-color);
+	border-radius: 7px;
+	background: #fff;
+	line-height: 1.65;
+}
 
 .page-about .role-highlight {
 	background-color: #e0f2f1;
