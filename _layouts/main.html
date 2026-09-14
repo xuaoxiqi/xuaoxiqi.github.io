@@ -67,6 +67,11 @@
             <li>
                 <a href="./gallery.html" class="{% if page.title == 'Gallery' %}active-nav{% endif %}">Gallery</a>
             </li>
+
+            <!-- News Link -->
+            <li>
+                <a href="./news.html" class="{% if page.title == 'News' %}active-nav{% endif %}">News</a>
+            </li>
             
             <!-- Publications Link -->
             <li>
@@ -106,7 +111,8 @@
                 '/research.html': 'research',
                 '/publications.html': 'publications',
                 '/teaching.html': 'teaching',
-                '/facilities.html': 'facilities'
+                '/facilities.html': 'facilities',
+                '/news.html': 'news'
             };
             var cls = map[path];
             if (cls) {

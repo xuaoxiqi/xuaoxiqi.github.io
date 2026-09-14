@@ -1,0 +1,100 @@
+---
+layout: main
+description: News, media coverage, and research highlights from Ao Xu's group at Northwestern Polytechnical University.
+title: News
+# Add new coverage at the top of this list. The cards below are rendered automatically.
+news:
+  - date: "July 25, 2026"
+    datetime: "2026-07-25"
+    source: "极端力学研究院"
+    category: "Research Highlight"
+    title: "西工大航空学院/极端力学研究院徐翱在JFM发表论文，揭示湍流中的节能导航机制"
+    summary: "A Journal of Fluid Mechanics study reveals mechanisms for energy-efficient navigation in turbulent flows."
+    image: "https://mmbiz.qpic.cn/mmbiz_jpg/hcffhREiaWyLrkS3xS6k9jtvsDuL5pOm0NfBMzQsw5pb39rpic8nzDgIuGTBDujRLE80LxqcCxYMEB1kLwImrrdoesL4UJ178icjNMjRF1Kaog/0?wx_fmt=jpeg"
+    url: "https://mp.weixin.qq.com/s/34naaEaJRLzQjLcWjuqePw"
+
+  - date: "January 13, 2026"
+    datetime: "2026-01-13"
+    source: "极端力学研究院"
+    category: "Research Highlight"
+    title: "西工大航空学院/极端力学研究院徐翱在JFM发表论文，提出面向无人机稀疏观测的Track-to-Flow超分辨框架"
+    summary: "A Journal of Fluid Mechanics paper introduces Track-to-Flow, a super-resolution framework designed for sparse UAV observations."
+    image: "https://mmbiz.qpic.cn/mmbiz_jpg/HsJlHctGFzvIHBqNLvpPY4oV9WZ7QgUANqiaSsVk99ziaZJQcBl6fTYxdzhSWFrdeeU2wEu5J7IcF1eoM6ibiaRZDw/0?wx_fmt=jpeg"
+    url: "https://mp.weixin.qq.com/s?__biz=MzkxNjE2ODQ2OQ%3D%3D&amp;mid=2247484480&amp;idx=1&amp;sn=238505609e6685edc653e56ddf203237&amp;chksm=c0cc5ad0daf3f4783bd128f0642bf6b3dec5b18b709201ca438d8074bb9bcc40ff52ee68871a"
+---
+
+<div id="divTitleNav">
+    <a href="./index.html" aria-label="Back to homepage" class="navDock nav-back-icon">&larr;</a>
+</div>
+
+<div id="divPost">
+
+    <main id="articlePost" class="page-news">
+
+        <header class="news-hero">
+            <div class="news-hero-content">
+                <p class="news-eyebrow">Research · Recognition · Community</p>
+                <h1>News &amp; Media</h1>
+                <p class="news-hero-intro">
+                    Selected coverage of our research, people, and academic activities.
+                </p>
+                <div class="news-hero-meta" aria-label="News archive summary">
+                    <span><strong>{{ page.news | size }}</strong> featured stories</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Latest: {{ page.news.first.date }}</span>
+                </div>
+            </div>
+            <div class="news-hero-mark" aria-hidden="true">
+                <span>N</span>
+            </div>
+        </header>
+
+        <section class="news-feed" aria-labelledby="latest-news-heading">
+            <div class="news-section-heading">
+                <div>
+                    <p class="news-section-kicker">Media archive</p>
+                    <h2 id="latest-news-heading">Latest coverage</h2>
+                </div>
+                <p>Stories are listed in reverse chronological order.</p>
+            </div>
+
+            <div class="news-list">
+                {% for item in page.news %}
+                <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+                    <a class="news-cover-link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" aria-label="Read: {{ item.title | escape }}">
+                        <div class="news-cover">
+                            <img src="{{ item.image }}" alt="Cover image for {{ item.title | escape }}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                            <span class="news-cover-label">Media coverage</span>
+                        </div>
+                    </a>
+
+                    <div class="news-card-content">
+                        <div class="news-card-meta">
+                            <time datetime="{{ item.datetime }}" itemprop="datePublished">{{ item.date }}</time>
+                            <span class="news-meta-divider" aria-hidden="true"></span>
+                            <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                                <span itemprop="name">{{ item.source }}</span>
+                            </span>
+                        </div>
+
+                        <span class="news-category">{{ item.category }}</span>
+                        <h3 itemprop="headline">
+                            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+                        </h3>
+                        <p itemprop="description">{{ item.summary }}</p>
+
+                        <a class="news-read-more" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+                            Read original <span lang="zh-CN">/ 阅读原文</span>
+                            <span class="news-external-arrow" aria-hidden="true">&nearr;</span>
+                        </a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+    </main>
+
+    <div class="div0"></div>
+
+</div>
