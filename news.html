@@ -143,7 +143,9 @@ news:
 
     <main id="articlePost" class="page-news">
 
-        {% include page-hero.html %}
+        {% assign news_count = page.news | size %}
+        {% assign latest_news_date = page.news.first.date %}
+        {% include page-hero.html stat_1_value=news_count stat_1_label="Featured stories" stat_2_value=latest_news_date stat_2_label="Latest coverage" stat_3_value="3" stat_3_label="Coverage themes" %}
 
         <section class="news-feed" aria-labelledby="latest-news-heading">
             <div class="news-section-heading">

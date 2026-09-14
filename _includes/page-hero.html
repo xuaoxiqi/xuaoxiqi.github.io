@@ -19,7 +19,47 @@
         {% endif %}
     </div>
 
-    {% if page.hero_mark %}
-    <div class="page-hero__mark" aria-hidden="true">{{ page.hero_mark }}</div>
-    {% endif %}
+    <div class="page-hero__aside">
+        {% if page.hero_mark %}
+        <div class="page-hero__mark" aria-hidden="true">{{ page.hero_mark }}</div>
+        {% endif %}
+
+        {% if page.hero_links %}
+        <p class="page-hero__aside-label">Explore this page</p>
+        <div class="page-hero__links" role="navigation" aria-label="Page sections">
+            {% for link in page.hero_links %}
+            <a href="{{ link.href }}">
+                <span>{{ link.label }}</span>
+                <span class="page-hero__link-arrow" aria-hidden="true">↓</span>
+            </a>
+            {% endfor %}
+        </div>
+        {% elsif page.hero_stats %}
+        <p class="page-hero__aside-label">At a glance</p>
+        <dl class="page-hero__stats">
+            {% for stat in page.hero_stats %}
+            <div>
+                <dt>{{ stat.label }}</dt>
+                <dd{% if stat.id %} id="{{ stat.id }}"{% endif %}>{{ stat.value }}</dd>
+            </div>
+            {% endfor %}
+        </dl>
+        {% elsif include.stat_1_value %}
+        <p class="page-hero__aside-label">At a glance</p>
+        <dl class="page-hero__stats">
+            <div>
+                <dt>{{ include.stat_1_label }}</dt>
+                <dd>{{ include.stat_1_value }}</dd>
+            </div>
+            <div>
+                <dt>{{ include.stat_2_label }}</dt>
+                <dd>{{ include.stat_2_value }}</dd>
+            </div>
+            <div>
+                <dt>{{ include.stat_3_label }}</dt>
+                <dd>{{ include.stat_3_value }}</dd>
+            </div>
+        </dl>
+        {% endif %}
+    </div>
 </header>

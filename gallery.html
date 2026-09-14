@@ -130,7 +130,9 @@ photos:
 
     <article id="articlePost" class="page-gallery">
 
-        {% include page-hero.html %}
+        {% assign gallery_count = page.photos | size %}
+        {% assign latest_photo_date = page.photos.first.date %}
+        {% include page-hero.html stat_1_value=gallery_count stat_1_label="Photographs" stat_2_value=latest_photo_date stat_2_label="Latest entry" stat_3_value="2017–2026" stat_3_label="Archive span" %}
 
         <div class="photo-grid">
             {% for photo in page.photos %}
