@@ -255,7 +255,12 @@ news:
 
         {% assign news_count = page.news | size %}
         {% assign news_source_count = page.news | map: "source" | uniq | size %}
-        {% include page-hero.html stat_1_value=news_count stat_1_label="Featured stories" stat_2_value=news_source_count stat_2_label="Sources" %}
+        {% assign newest_news = page.news | first %}
+        {% assign oldest_news = page.news | last %}
+        {% assign newest_news_year = newest_news.datetime | slice: 0, 4 %}
+        {% assign oldest_news_year = oldest_news.datetime | slice: 0, 4 %}
+        {% capture news_archive_span %}{{ oldest_news_year }}–{{ newest_news_year }}{% endcapture %}
+        {% include page-hero.html stat_1_value=news_count stat_1_label="Featured stories" stat_2_value=news_source_count stat_2_label="Sources" stat_3_value=news_archive_span stat_3_label="Archive span" %}
 
         <section class="news-feed" aria-labelledby="latest-news-heading">
             <div class="news-section-heading">

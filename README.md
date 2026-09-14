@@ -12,6 +12,12 @@ Force-refresh every cold archive and its downloaded images:
 node scripts/archive-news.js --refresh
 ```
 
+Cover selection follows the original webpage metadata (`og:image`), matching the cover chosen by WeChat. A substantial static body image is used only when the page does not provide cover metadata. Generate a labeled sheet for visual review with:
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File scripts/build-news-cover-audit.ps1 -OutputPath news-cover-audit.png
+```
+
 Restore one story temporarily when its original link becomes unavailable:
 
 ```powershell

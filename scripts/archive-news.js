@@ -176,14 +176,81 @@ function extensionFor(url, contentType) {
   return 'jpg';
 }
 
+function imageDimensions(bytes, extension) {
+  try {
+    if (extension === 'png' && bytes.length >= 24 && bytes.toString('ascii', 1, 4) === 'PNG') {
+      return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+    }
+    if (extension === 'gif' && bytes.length >= 10 && bytes.toString('ascii', 0, 3) === 'GIF') {
+      return { width: bytes.readUInt16LE(6), height: bytes.readUInt16LE(8) };
+    }
+    if (extension === 'jpg' && bytes.length >= 12 && bytes[0] === 0xff && bytes[1] === 0xd8) {
+      let offset = 2;
+      while (offset + 9 < bytes.length) {
+        if (bytes[offset] !== 0xff) { offset += 1; continue; }
+        const marker = bytes[offset + 1];
+        if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) {
+          return { width: bytes.readUInt16BE(offset + 7), height: bytes.readUInt16BE(offset + 5) };
+        }
+        if (marker === 0xd8 || marker === 0xd9) { offset += 2; continue; }
+        const segmentLength = bytes.readUInt16BE(offset + 2);
+        if (segmentLength < 2) break;
+        offset += segmentLength + 2;
+      }
+    }
+    if (extension === 'webp' && bytes.length >= 30 && bytes.toString('ascii', 0, 4) === 'RIFF' && bytes.toString('ascii', 8, 12) === 'WEBP') {
+      const format = bytes.toString('ascii', 12, 16);
+      if (format === 'VP8X') {
+        return {
+          width: 1 + bytes.readUIntLE(24, 3),
+          height: 1 + bytes.readUIntLE(27, 3)
+        };
+      }
+      if (format === 'VP8 ' && bytes.length >= 30) {
+        return { width: bytes.readUInt16LE(26) & 0x3fff, height: bytes.readUInt16LE(28) & 0x3fff };
+      }
+      if (format === 'VP8L' && bytes.length >= 25) {
+        const b1 = bytes[21];
+        const b2 = bytes[22];
+        const b3 = bytes[23];
+        const b4 = bytes[24];
+        return {
+          width: 1 + (((b2 & 0x3f) << 8) | b1),
+          height: 1 + (((b4 & 0x0f) << 10) | (b3 << 2) | ((b2 & 0xc0) >> 6))
+        };
+      }
+    }
+  } catch (error) {}
+  return { width: 0, height: 0 };
+}
+
 async function downloadImage(url, directory, stem) {
   const response = await fetchResponse(url);
   const bytes = Buffer.from(await response.arrayBuffer());
   const extension = extensionFor(url, response.headers.get('content-type'));
+  const dimensions = imageDimensions(bytes, extension);
   const fileName = stem + '.' + extension;
   fs.mkdirSync(directory, { recursive: true });
-  fs.writeFileSync(path.join(directory, fileName), bytes);
-  return { fileName: fileName, bytes: bytes.length };
+  const finalPath = path.join(directory, fileName);
+  const temporaryPath = path.join(directory, '.' + fileName + '.download-' + process.pid + '-' + Date.now());
+  fs.writeFileSync(temporaryPath, bytes);
+  let saved = false;
+  try {
+    for (let attempt = 0; attempt < 6; attempt += 1) {
+      try {
+        if (fs.existsSync(finalPath)) fs.unlinkSync(finalPath);
+        fs.renameSync(temporaryPath, finalPath);
+        saved = true;
+        break;
+      } catch (error) {
+        if (attempt === 5) throw error;
+        await new Promise(function (resolve) { setTimeout(resolve, 250 * (attempt + 1)); });
+      }
+    }
+  } finally {
+    if (!saved && fs.existsSync(temporaryPath)) fs.unlinkSync(temporaryPath);
+  }
+  return { fileName: fileName, extension: extension, bytes: bytes.length, width: dimensions.width, height: dimensions.height };
 }
 
 async function mapWithConcurrency(values, limit, worker) {
@@ -200,7 +267,7 @@ async function mapWithConcurrency(values, limit, worker) {
   return results;
 }
 
-async function localizeImages(content, slug, directory, pageUrl) {
+async function localizeImages(content, slug, directory, pageUrl, preferredCoverIndex) {
   const tags = content.match(/<img\b[^>]*>/gi) || [];
   const urls = [];
   for (const tag of tags) {
@@ -208,12 +275,20 @@ async function localizeImages(content, slug, directory, pageUrl) {
     if (source && !urls.includes(source)) urls.push(source);
   }
   const localMap = new Map();
+  const downloads = new Array(urls.length);
   let downloadedBytes = 0;
   let failedImages = 0;
   await mapWithConcurrency(urls, 5, async function (url, index) {
     try {
       const saved = await downloadImage(url, directory, String(index + 1).padStart(3, '0'));
       localMap.set(url, './images/news/' + slug + '/' + saved.fileName);
+      downloads[index] = {
+        url: url,
+        extension: saved.extension,
+        width: saved.width,
+        height: saved.height,
+        bytes: saved.bytes
+      };
       downloadedBytes += saved.bytes;
     } catch (error) {
       failedImages += 1;
@@ -227,11 +302,21 @@ async function localizeImages(content, slug, directory, pageUrl) {
     const alt = attributeValue(tag, 'alt') || 'Archived article image';
     return '<img src="' + escapeHtml(local) + '" alt="' + escapeHtml(alt) + '" loading="lazy" decoding="async">';
   });
+  const preferredCover = /^\d+$/.test(String(preferredCoverIndex || '')) ? downloads[Number(preferredCoverIndex) - 1] : null;
+  const coverCandidate = preferredCover || downloads.filter(Boolean).find(function (image) {
+    if (image.extension === 'gif' || image.bytes < 5000) return false;
+    const substantialLandscape = image.width >= 480 && image.height >= 180;
+    const substantialPortrait = image.width >= 300 && image.height >= 320;
+    if (!substantialLandscape && !substantialPortrait) return false;
+    const ratio = image.width / image.height;
+    return ratio >= 0.3 && ratio <= 5;
+  });
   return {
     content: rewritten,
     imageCount: localMap.size,
     failedImages: failedImages,
-    downloadedBytes: downloadedBytes
+    downloadedBytes: downloadedBytes,
+    coverUrl: coverCandidate ? coverCandidate.url : ''
   };
 }
 
@@ -323,8 +408,12 @@ function archivePage(item, body, archivedAt) {
   ].join('\n');
 }
 
-function existingCover(directory) {
+function existingCover(directory, configuredImage) {
   if (!fs.existsSync(directory)) return '';
+  const configured = configuredImage && configuredImage.startsWith('./images/news/') ? path.basename(configuredImage) : '';
+  if (configured && /^cover\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(configured) && fs.existsSync(path.join(directory, configured))) {
+    return configured;
+  }
   const cover = fs.readdirSync(directory).find(function (fileName) {
     return /^cover\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(fileName);
   });
@@ -336,7 +425,7 @@ async function archiveItem(item, refresh) {
   const directory = path.join(imageRoot, slug);
   const archivePath = path.join(archiveRoot, slug + '.html');
   const backupPath = path.join(backupRoot, slug + '.zip');
-  const savedCover = existingCover(directory);
+  const savedCover = existingCover(directory, item.image);
   if (!refresh && (fs.existsSync(backupPath) || fs.existsSync(archivePath)) && savedCover) {
     process.stdout.write('[keep] ' + item.datetime + ' ' + item.title + '\n');
     return {
@@ -353,21 +442,27 @@ async function archiveItem(item, refresh) {
   process.stdout.write('[archive] ' + item.datetime + ' ' + item.title + '\n');
   const html = await fetchText(item.url);
   const body = extractMainContent(html);
-  const firstImage = (body.match(/<img\b[^>]*>/i) || [])[0] || '';
-  const fallbackCover = normalizedRemoteUrl(attributeValue(firstImage, 'data-src') || attributeValue(firstImage, 'src'), item.url);
-  const localized = await localizeImages(body, slug, directory, item.url);
+  const localized = await localizeImages(body, slug, directory, item.url, item.cover_index);
   const safeBody = sanitizeArticleHtml(localized.content, item.url);
   if (safeBody.replace(/<[^>]+>/g, '').trim().length < 80) {
     throw new Error('Extracted article body is unexpectedly short');
   }
-  const coverUrl = normalizedRemoteUrl(metaImage(html), item.url) || fallbackCover;
+  const metadataCover = normalizedRemoteUrl(metaImage(html), item.url);
+  const coverUrl = metadataCover || localized.coverUrl;
+  const coverMethod = metadataCover ? 'page metadata' : 'article image';
   let coverPath = item.image;
   let coverBytes = 0;
   if (coverUrl) {
     const cover = await downloadImage(coverUrl, directory, 'cover');
     coverPath = './images/news/' + slug + '/' + cover.fileName;
     coverBytes = cover.bytes;
+    for (const fileName of fs.readdirSync(directory)) {
+      if (/^cover\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(fileName) && fileName !== cover.fileName) {
+        fs.unlinkSync(path.join(directory, fileName));
+      }
+    }
   }
+  process.stdout.write('  cover selected from ' + coverMethod + '\n');
   const archivedAt = new Date().toISOString().slice(0, 10);
   fs.mkdirSync(archiveRoot, { recursive: true });
   fs.writeFileSync(archivePath, archivePage(item, safeBody, archivedAt), 'utf8');
@@ -389,8 +484,11 @@ async function main() {
   const items = parseNews(source);
   const limitFlag = process.argv.find(function (arg) { return arg.startsWith('--limit='); });
   const limit = limitFlag ? Number(limitFlag.split('=')[1]) : items.length;
+  const slugFlag = process.argv.find(function (arg) { return arg.startsWith('--slug='); });
+  const requestedSlug = slugFlag ? slugFlag.slice('--slug='.length) : '';
   const refresh = process.argv.includes('--refresh');
-  const selected = items.slice(0, limit);
+  const selected = requestedSlug ? items.filter(function (item) { return articleSlug(item.url) === requestedSlug; }) : items.slice(0, limit);
+  if (requestedSlug && selected.length === 0) throw new Error('No news item found for slug ' + requestedSlug);
   const results = [];
   for (const item of selected) {
     try {
@@ -421,7 +519,9 @@ async function main() {
   if (expandedArchives) {
     const shell = process.platform === 'win32' ? 'powershell.exe' : 'pwsh';
     const packScript = path.join(root, 'scripts', 'pack-news-archives.ps1');
-    const packed = childProcess.spawnSync(shell, ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', packScript], {
+    const packArguments = ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', packScript];
+    if (process.argv.includes('--keep-expanded')) packArguments.push('-KeepExpanded');
+    const packed = childProcess.spawnSync(shell, packArguments, {
       cwd: root,
       stdio: 'inherit'
     });

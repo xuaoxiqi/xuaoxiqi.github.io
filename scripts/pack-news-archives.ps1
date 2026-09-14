@@ -220,6 +220,13 @@ if (-not $SkipCoverOptimization) {
         if ($coverPath -notmatch '^images/news/') { continue }
         $absoluteCover = Join-Path $repoRoot ($coverPath -replace '/', '\')
         if ((Test-Path -LiteralPath $absoluteCover) -and (Optimize-Cover $absoluteCover)) { $optimizedCount += 1 }
+        if (Test-Path -LiteralPath $absoluteCover) {
+            $coverDirectory = Split-Path $absoluteCover -Parent
+            $coverName = Split-Path $absoluteCover -Leaf
+            Get-ChildItem -LiteralPath $coverDirectory -File | Where-Object {
+                $_.Name -match '^cover\.(?:avif|gif|jpe?g|png|svg|webp)$' -and $_.Name -ne $coverName
+            } | ForEach-Object { Remove-Item -LiteralPath $_.FullName -Force }
+        }
     }
 }
 
