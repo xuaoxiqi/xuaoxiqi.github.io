@@ -1080,18 +1080,24 @@ nav#navBarBottom {
 }
 
 .page-home .identity-links ul {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+	max-width: 1080px;
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+
+.page-home .identity-links li {
+	min-width: 0;
 }
 
 .page-home .identity-links a {
 	display: inline-flex;
 	align-items: center;
 	gap: 7px;
+	width: 100%;
 	min-height: 32px;
 	padding: 6px 10px;
 	border: 1px solid #c8dadd;
@@ -1134,6 +1140,18 @@ nav#navBarBottom {
 	background: #edf8f6;
 	color: var(--accent-color);
 	font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+	.page-home .identity-links ul {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 600px) {
+	.page-home .identity-links ul {
+		grid-template-columns: 1fr;
+	}
 }
 
 .page-home h2 {
