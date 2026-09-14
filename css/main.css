@@ -1091,6 +1091,7 @@ nav#navBarBottom {
 .page-home .identity-links a {
 	display: inline-flex;
 	align-items: center;
+	gap: 7px;
 	min-height: 32px;
 	padding: 6px 10px;
 	border: 1px solid #c8dadd;
@@ -1102,6 +1103,30 @@ nav#navBarBottom {
 	line-height: 1.25;
 	text-decoration: none;
 }
+
+.page-home .identity-link__icon {
+	width: 18px;
+	height: 18px;
+	flex: 0 0 18px;
+	border-radius: 3px;
+	object-fit: contain;
+}
+
+.page-home .identity-link__mark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #ffffff;
+	font-size: 7px;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	line-height: 1;
+}
+
+.page-home .identity-link__mark--orcid { background: #7da51b; }
+.page-home .identity-link__mark--npu { background: #23558a; }
+.page-home .identity-link__mark--iem { background: #17766d; }
+.page-home .identity-link__mark--ijhmt { background: #d7662e; }
 
 .page-home .identity-links a:hover,
 .page-home .identity-links a:focus-visible {
