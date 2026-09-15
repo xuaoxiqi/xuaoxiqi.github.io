@@ -4105,7 +4105,7 @@ nav#navBarBottom {
 	gap: 10px;
 	align-items: center;
 	color: var(--text-muted);
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 600;
 }
 
@@ -4137,7 +4137,7 @@ nav#navBarBottom {
 	margin: 8px 0 0;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
-	font-size: clamp(20px, 2.5vw, 27px);
+	font-size: clamp(19px, 2.1vw, 24px);
 	font-weight: 700;
 	line-height: 1.42;
 	letter-spacing: -0.015em;
