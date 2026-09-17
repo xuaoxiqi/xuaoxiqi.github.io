@@ -1,6 +1,6 @@
 {
     "version":  1,
-    "updatedAt":  "2026-09-14T08:42:29Z",
+    "updatedAt":  "2026-09-17T02:51:21Z",
     "archives":  [
                      {
                          "slug":  "LuVEQpcX4G6IeCWxjF09WQ",
@@ -302,6 +302,19 @@
                          "sha256":  "b7976a9025970e500cf86992d599664159485056122760d30cd7ba54432be703"
                      },
                      {
+                         "slug":  "maths-hust-edu-cn-9248",
+                         "title":  "【学术报告】2021年9月25日徐翱副教授举办学术讲座",
+                         "source":  "华中科技大学数学与统计学院",
+                         "publishedAt":  "2021-09-16",
+                         "originalUrl":  "https://maths.hust.edu.cn/info/1117/9248.htm",
+                         "archivedAt":  "2026-09-17",
+                         "package":  "./news-backups/maths-hust-edu-cn-9248.zip",
+                         "cover":  "./images/news/maths-hust-edu-cn-9248/cover.svg",
+                         "bytes":  1885,
+                         "files":  1,
+                         "sha256":  "1968010e208181ab20b0f7e1124d5a6deb2aa471807b56e4ecbc4b5017c5559f"
+                     },
+                     {
                          "slug":  "N6SFkS9MazieM3NoxlrBaA",
                          "title":  "极端力学研究院郗恒东团队揭示热湍流中大尺度环流反转的机制",
                          "source":  "极端力学研究院",
@@ -326,6 +339,19 @@
                          "bytes":  421433,
                          "files":  2,
                          "sha256":  "70148b3edadc9e440650daa5ba1b81c07aae0f989ce1a678af72bcabcc7d122f"
+                     },
+                     {
+                         "slug":  "maths-hust-edu-cn-6781",
+                         "title":  "【学术报告】2019年5月8日下午徐翱副教授来我院举办学术讲座",
+                         "source":  "华中科技大学数学与统计学院",
+                         "publishedAt":  "2019-05-05",
+                         "originalUrl":  "https://maths.hust.edu.cn/info/1293/6781.htm",
+                         "archivedAt":  "2026-09-17",
+                         "package":  "./news-backups/maths-hust-edu-cn-6781.zip",
+                         "cover":  "./images/news/maths-hust-edu-cn-6781/cover.svg",
+                         "bytes":  2121,
+                         "files":  1,
+                         "sha256":  "21ea7442c5329795a6dee392ea3462bd91d9c48f0113ff3d94294990a6f1bdf7"
                      },
                      {
                          "slug":  "2M5yhP5BeZ24zAd2q8Hlcg",

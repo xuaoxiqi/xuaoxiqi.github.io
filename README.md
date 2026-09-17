@@ -12,7 +12,9 @@ Force-refresh every cold archive and its downloaded images:
 node scripts/archive-news.js --refresh
 ```
 
-Cover selection follows the original webpage metadata (`og:image`), matching the cover chosen by WeChat. A substantial static body image is used only when the page does not provide cover metadata. Generate a labeled sheet for visual review with:
+Cover selection follows the original webpage metadata (`og:image`), matching the cover chosen by WeChat. A substantial static body image is used only when the page does not provide cover metadata. For source pages with neither cover metadata nor article images, use a clearly editorial text cover rather than a site header or unrelated image. The HUST seminar announcements are examples.
+
+Generate a labeled sheet for visual review with:
 
 ```powershell
 powershell.exe -ExecutionPolicy Bypass -File scripts/build-news-cover-audit.ps1 -OutputPath news-cover-audit.png

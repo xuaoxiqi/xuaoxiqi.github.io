@@ -449,7 +449,7 @@ async function archiveItem(item, refresh) {
   }
   const metadataCover = normalizedRemoteUrl(metaImage(html), item.url);
   const coverUrl = metadataCover || localized.coverUrl;
-  const coverMethod = metadataCover ? 'page metadata' : 'article image';
+  const coverMethod = metadataCover ? 'page metadata' : localized.coverUrl ? 'article image' : savedCover ? 'existing local cover' : 'no available image';
   let coverPath = item.image;
   let coverBytes = 0;
   if (coverUrl) {
@@ -475,6 +475,7 @@ async function archiveItem(item, refresh) {
     imageCount: localized.imageCount,
     failedImages: localized.failedImages,
     bytes: localized.downloadedBytes + coverBytes,
+    coverDownloaded: Boolean(coverUrl),
     reused: false
   };
 }
@@ -529,7 +530,7 @@ async function main() {
     if (packed.status !== 0) throw new Error('Cold-archive packaging failed with exit code ' + packed.status);
   }
   const totalBytes = results.reduce(function (sum, result) { return sum + result.bytes; }, 0);
-  const totalImages = results.reduce(function (sum, result) { return sum + result.imageCount + (result.reused ? 0 : 1); }, 0);
+  const totalImages = results.reduce(function (sum, result) { return sum + result.imageCount + (result.coverDownloaded ? 1 : 0); }, 0);
   const failures = results.reduce(function (sum, result) { return sum + result.failedImages; }, 0);
   const reused = results.filter(function (result) { return result.reused; }).length;
   const archived = results.length - reused;
