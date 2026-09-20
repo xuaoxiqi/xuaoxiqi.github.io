@@ -2599,14 +2599,12 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 	padding: 20px;
 	background: white;
 	border: 1px solid var(--border-color);
-	border-left: 5px solid var(--accent-color);
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	transition: box-shadow 0.2s ease;
 }
 .page-teaching .graduate-item:hover,
 .page-teaching .graduate-item:focus-within {
-	border-left-color: var(--highlight-color);
 	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 .page-teaching .graduate-thumb {
