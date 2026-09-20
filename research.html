@@ -3,42 +3,31 @@ layout: main
 description: Research by Ao Xu (徐翱) on turbulence structure and transport, heat and mass transfer, computational fluid dynamics, and multiscale modeling.
 title: Research
 seo_title: Research | Ao Xu (徐翱) | Turbulence and Fluid Mechanics
+hero_eyebrow: Research Focus
 hero_title: Research
 hero_intro: Turbulence structure, transport mechanisms, and multiscale simulation across complex flows.
 hero_meta:
   - Turbulence
   - Heat & Mass Transport
   - Multiscale Modeling
-hero_links:
-  - label: Research Interests
-    href: "#research-interests"
-  - label: Projects
-    href: "#projects"
-  - label: Conferences & Talks
-    href: "#conferences-talks"
-  - label: Professional Services
-    href: "#professional-services"
+hero_mark: R
+hero_stats:
+  - value: "-"
+    label: Projects
+    id: count-research-projects
+  - value: "-"
+    label: Conferences
+    id: count-research-conferences
+  - value: "-"
+    label: University seminars
+    id: count-research-seminars
 ---
 
 <div id="divPost">
 
     <article id="articlePost" class="page-research">
 
-    <header class="research-header">
-        <h1>{{ page.hero_title }}</h1>
-        <p>{{ page.hero_intro }}</p>
-        <ul class="research-topics" aria-label="Research topics">
-            {% for topic in page.hero_meta %}
-            <li>{{ topic }}</li>
-            {% endfor %}
-        </ul>
-    </header>
-
-    <nav class="research-nav" aria-label="Research page sections">
-        {% for link in page.hero_links %}
-        <a href="{{ link.href }}">{{ link.label }}</a>
-        {% endfor %}
-    </nav>
+    {% include page-hero.html %}
 
     <!-- === Research Interests === -->
     <h2 id="research-interests">Research Interests</h2>
@@ -702,83 +691,92 @@ hero_links:
         </div>
     </div>
 
-    <h3>Journal Reviewer</h3>
+    <h3 id="journal-reviewer">Journal Reviewer</h3>
     <div class="reviewer-grid">
         <div class="publisher-card">
-            <span class="publisher-name">Elsevier</span>
+            <span class="publisher-name">Elsevier / Cell Press / KeAi</span>
             <div class="journal-tags-container">
-                <a href="https://www.sciencedirect.com/journal/annals-of-nuclear-energy" target="_blank" rel="noopener noreferrer" class="journal-tag">Ann. Nucl. Energy</a>
-                <a href="https://www.journals.elsevier.com/applied-energy" target="_blank" rel="noopener noreferrer" class="journal-tag">Appl. Energy</a>
-                <a href="https://www.journals.elsevier.com/applied-surface-science" target="_blank" rel="noopener noreferrer" class="journal-tag">Appl. Surf. Sci.</a>
-                <a href="https://www.journals.elsevier.com/applied-thermal-engineering" target="_blank" rel="noopener noreferrer" class="journal-tag">Appl. Therm. Eng.</a>
-                <a href="https://www.journals.elsevier.com/computers-and-mathematics-with-applications/" target="_blank" rel="noopener noreferrer" class="journal-tag">Comput. Math. Appl.</a>
-                <a href="https://www.sciencedirect.com/journal/computer-physics-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Comput. Phys. Commun.</a>
-                <a href="https://www.journals.elsevier.com/chemical-engineering-journal" target="_blank" rel="noopener noreferrer" class="journal-tag">Chem. Eng. J.</a>
-                <a href="https://www.journals.elsevier.com/chemical-engineering-science" target="_blank" rel="noopener noreferrer" class="journal-tag">Chem. Eng. Sci.</a>
-                <a href="https://www.journals.elsevier.com/composites-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Compos. Commun.</a>
-                <a href="https://www.journals.elsevier.com/diamond-and-related-materials" target="_blank" rel="noopener noreferrer" class="journal-tag">Diamond Relat. Mater.</a>
-                <a href="https://www.journals.elsevier.com/energy-conversion-and-management" target="_blank" rel="noopener noreferrer" class="journal-tag">Energy Conv. Manag.</a>
-                <a href="https://www.journals.elsevier.com/electrochimica-acta" target="_blank" rel="noopener noreferrer" class="journal-tag">Electrochim. Acta</a>
-                <a href="https://www.journals.elsevier.com/international-communications-in-heat-and-mass-transfer" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. Comm. Heat Mass Transf.</a>
-                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Heat Mass Transf.</a>
-                <a href="https://www.journals.elsevier.com/international-journal-of-multiphase-flow/" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Multiphase Flow</a>
-                <a href="https://www.sciencedirect.com/journal/international-journal-of-heat-and-fluid-flow/" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Heat Fluid Flow</a>
-                <a href="https://www.sciencedirect.com/journal/international-journal-of-thermofluids" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Thermofluids</a>
-                <a href="https://www.sciencedirect.com/journal/international-journal-of-advanced-nuclear-reactor-design-and-technology" target="_blank" rel="noopener noreferrer" class="journal-tag">Int. J. Adv. Nucl. React. Des. Tech.</a>
-                <a href="https://www.sciencedirect.com/journal/journal-of-computational-science" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Comput. Sci.</a>
-                <a href="https://www.sciencedirect.com/journal/journal-of-energy-storage" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Energy Storage</a>
-                <a href="https://www.journals.elsevier.com/journal-of-wind-engineering-and-industrial-aerodynamics" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Wind Eng. Ind. Aerodyn.</a>
-                <a href="https://www.journals.elsevier.com/journal-of-power-sources" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Power Sources</a>
-                <a href="https://www.sciencedirect.com/journal/materials-today-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Mater. Today Commun.</a>
-                <a href="https://www.journals.elsevier.com/mathematics-and-computers-in-simulation/" target="_blank" rel="noopener noreferrer" class="journal-tag">Math. Comput. Simul.</a>
-                <a href="https://www.journals.elsevier.com/journal-of-alloys-and-compounds" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Alloys Compd.</a>
-                <a href="https://www.journals.elsevier.com/journal-of-petroleum-science-and-engineering" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Pet. Sci. Eng.</a>
-                <a href="https://www.sciencedirect.com/journal/materials-today-nano" target="_blank" rel="noopener noreferrer" class="journal-tag">Mater. Today Nano</a>
+                <a href="https://www.sciencedirect.com/journal/annals-of-nuclear-energy" target="_blank" rel="noopener noreferrer" class="journal-tag">Annals of Nuclear Energy</a>
+                <a href="https://www.journals.elsevier.com/applied-energy" target="_blank" rel="noopener noreferrer" class="journal-tag">Applied Energy</a>
+                <a href="https://www.sciencedirect.com/journal/applied-materials-today" target="_blank" rel="noopener noreferrer" class="journal-tag">Applied Materials Today</a>
+                <a href="https://www.journals.elsevier.com/applied-surface-science" target="_blank" rel="noopener noreferrer" class="journal-tag">Applied Surface Science</a>
+                <a href="https://www.journals.elsevier.com/applied-thermal-engineering" target="_blank" rel="noopener noreferrer" class="journal-tag">Applied Thermal Engineering</a>
+                <a href="https://www.sciencedirect.com/journal/case-studies-in-thermal-engineering" target="_blank" rel="noopener noreferrer" class="journal-tag">Case Studies in Thermal Engineering</a>
+                <a href="https://www.journals.elsevier.com/chemical-engineering-journal" target="_blank" rel="noopener noreferrer" class="journal-tag">Chemical Engineering Journal</a>
+                <a href="https://www.journals.elsevier.com/chemical-engineering-science" target="_blank" rel="noopener noreferrer" class="journal-tag">Chemical Engineering Science</a>
+                <a href="https://www.sciencedirect.com/journal/chinese-journal-of-physics" target="_blank" rel="noopener noreferrer" class="journal-tag">Chinese Journal of Physics</a>
+                <a href="https://www.journals.elsevier.com/composites-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Composites Communications</a>
+                <a href="https://www.sciencedirect.com/journal/computer-physics-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Computer Physics Communications</a>
+                <a href="https://www.journals.elsevier.com/computers-and-mathematics-with-applications/" target="_blank" rel="noopener noreferrer" class="journal-tag">Computers &amp; Mathematics with Applications</a>
+                <a href="https://www.journals.elsevier.com/diamond-and-related-materials" target="_blank" rel="noopener noreferrer" class="journal-tag">Diamond and Related Materials</a>
+                <a href="https://www.journals.elsevier.com/electrochimica-acta" target="_blank" rel="noopener noreferrer" class="journal-tag">Electrochimica Acta</a>
+                <a href="https://www.journals.elsevier.com/energy-conversion-and-management" target="_blank" rel="noopener noreferrer" class="journal-tag">Energy Conversion and Management</a>
+                <a href="https://www.sciencedirect.com/journal/environmental-modelling-and-software" target="_blank" rel="noopener noreferrer" class="journal-tag">Environmental Modelling &amp; Software</a>
+                <a href="https://www.sciencedirect.com/journal/geoenergy-science-and-engineering" target="_blank" rel="noopener noreferrer" class="journal-tag">Geoenergy Science and Engineering <span class="journal-former-title">(formerly Journal of Petroleum Science and Engineering)</span></a>
+                <a href="https://www.sciencedirect.com/journal/heliyon" target="_blank" rel="noopener noreferrer" class="journal-tag">Heliyon</a>
+                <a href="https://www.journals.elsevier.com/international-communications-in-heat-and-mass-transfer" target="_blank" rel="noopener noreferrer" class="journal-tag">International Communications in Heat and Mass Transfer</a>
+                <a href="https://www.sciencedirect.com/journal/international-journal-of-advanced-nuclear-reactor-design-and-technology" target="_blank" rel="noopener noreferrer" class="journal-tag">International Journal of Advanced Nuclear Reactor Design and Technology</a>
+                <a href="https://www.sciencedirect.com/journal/international-journal-of-heat-and-fluid-flow/" target="_blank" rel="noopener noreferrer" class="journal-tag">International Journal of Heat and Fluid Flow</a>
+                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer" target="_blank" rel="noopener noreferrer" class="journal-tag">International Journal of Heat and Mass Transfer</a>
+                <a href="https://www.journals.elsevier.com/international-journal-of-multiphase-flow/" target="_blank" rel="noopener noreferrer" class="journal-tag">International Journal of Multiphase Flow</a>
+                <a href="https://www.sciencedirect.com/journal/international-journal-of-thermal-sciences" target="_blank" rel="noopener noreferrer" class="journal-tag">International Journal of Thermal Sciences</a>
+                <a href="https://www.sciencedirect.com/journal/international-journal-of-thermofluids" target="_blank" rel="noopener noreferrer" class="journal-tag">International Journal of Thermofluids</a>
+                <a href="https://www.journals.elsevier.com/journal-of-alloys-and-compounds" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Alloys and Compounds</a>
+                <a href="https://www.sciencedirect.com/journal/journal-of-computational-science" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Computational Science</a>
+                <a href="https://www.sciencedirect.com/journal/journal-of-energy-storage" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Energy Storage</a>
+                <a href="https://www.journals.elsevier.com/journal-of-power-sources" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Power Sources</a>
+                <a href="https://www.journals.elsevier.com/journal-of-wind-engineering-and-industrial-aerodynamics" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Wind Engineering and Industrial Aerodynamics</a>
+                <a href="https://www.sciencedirect.com/journal/materials-today-communications" target="_blank" rel="noopener noreferrer" class="journal-tag">Materials Today Communications</a>
+                <a href="https://www.sciencedirect.com/journal/materials-today-nano" target="_blank" rel="noopener noreferrer" class="journal-tag">Materials Today Nano</a>
+                <a href="https://www.journals.elsevier.com/mathematics-and-computers-in-simulation/" target="_blank" rel="noopener noreferrer" class="journal-tag">Mathematics and Computers in Simulation</a>
+                <a href="https://www.sciencedirect.com/journal/thermal-science-and-engineering-progress" target="_blank" rel="noopener noreferrer" class="journal-tag">Thermal Science and Engineering Progress</a>
             </div>
         </div>
 
         <div class="publisher-card">
             <span class="publisher-name">Cambridge / AIP / ASME</span>
             <div class="journal-tags-container">
-                <a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Fluid Mech.</a>
-                <a href="https://aip.scitation.org/journal/phf" target="_blank" rel="noopener noreferrer" class="journal-tag">Phys. Fluids</a>
-                <a href="http://heattransfer.asmedigitalcollection.asme.org/journal.aspx" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Heat Transfer</a>
-                <a href="http://energyresources.asmedigitalcollection.asme.org/journal.aspx" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Energy Res. Tech.</a>
+                <a href="https://pubs.aip.org/aip/adv" target="_blank" rel="noopener noreferrer" class="journal-tag">AIP Advances</a>
+                <a href="https://asmedigitalcollection.asme.org/heattransfer" target="_blank" rel="noopener noreferrer" class="journal-tag">ASME Journal of Heat and Mass Transfer <span class="journal-former-title">(formerly Journal of Heat Transfer)</span></a>
+                <a href="https://asmedigitalcollection.asme.org/energyresources" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Energy Resources Technology</a>
+                <a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Fluid Mechanics</a>
+                <a href="https://pubs.aip.org/aip/pof" target="_blank" rel="noopener noreferrer" class="journal-tag">Physics of Fluids</a>
             </div>
         </div>
 
         <div class="publisher-card">
             <span class="publisher-name">Springer / RSC / IOP</span>
             <div class="journal-tags-container">
-                <a href="https://pubs.rsc.org/en/journals/journal/ee" target="_blank" rel="noopener noreferrer" class="journal-tag">Energy Environ. Sci.</a>
-                <a href="https://pubs.rsc.org/en/journals/journal/ta" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Mater. Chem. A</a>
-                <a href="https://pubs.rsc.org/en/journals/journal/cp" target="_blank" rel="noopener noreferrer" class="journal-tag">Phys. Chem. Chem. Phys.</a>
-                <a href="http://applmathmech.cqjtu.edu.cn/EN/volumn/current.shtml" target="_blank" rel="noopener noreferrer" class="journal-tag">Appl. Math. Mech.</a>
-                <a href="https://www.springer.com/journal/11831" target="_blank" rel="noopener noreferrer" class="journal-tag">Arch. Comput. Methods Eng.</a>
-                <a href="https://www.springer.com/journal/10973" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Therm. Anal. Calorim.</a>
-                <a href="https://link.springer.com/journal/11242" target="_blank" rel="noopener noreferrer" class="journal-tag">Transp. Porous Med.</a>
-                <a href="https://iopscience.iop.org/journal/1945-7111" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Electrochem. Soc.</a>
+                <a href="https://link.springer.com/journal/42774" target="_blank" rel="noopener noreferrer" class="journal-tag">Advances in Aerodynamics</a>
+                <a href="http://applmathmech.cqjtu.edu.cn/EN/volumn/current.shtml" target="_blank" rel="noopener noreferrer" class="journal-tag">Applied Mathematics and Mechanics (English Edition)</a>
+                <a href="https://www.springer.com/journal/11831" target="_blank" rel="noopener noreferrer" class="journal-tag">Archives of Computational Methods in Engineering</a>
+                <a href="https://pubs.rsc.org/en/journals/journal/ee" target="_blank" rel="noopener noreferrer" class="journal-tag">Energy &amp; Environmental Science</a>
+                <a href="https://pubs.rsc.org/en/journals/journal/ta" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Materials Chemistry A</a>
+                <a href="https://iopscience.iop.org/journal/1945-7111" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of The Electrochemical Society</a>
+                <a href="https://www.springer.com/journal/10973" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Thermal Analysis and Calorimetry</a>
+                <a href="https://pubs.rsc.org/en/journals/journal/cp" target="_blank" rel="noopener noreferrer" class="journal-tag">Physical Chemistry Chemical Physics</a>
+                <a href="https://link.springer.com/journal/11242" target="_blank" rel="noopener noreferrer" class="journal-tag">Transport in Porous Media</a>
             </div>
         </div>
 
         <div class="publisher-card">
-            <span class="publisher-name">AIAA / Begell / Taylor</span>
+            <span class="publisher-name">AIAA / Begell House / Taylor &amp; Francis</span>
             <div class="journal-tags-container">
-                <a href="https://arc.aiaa.org/loi/jtht" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Thermophys. Heat Transf.</a>
-                <a href="http://www.begellhouse.com/journals/porous-media.html" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Porous Media</a>
-                <a href="https://www.tandfonline.com/toc/unht20/current" target="_blank" rel="noopener noreferrer" class="journal-tag">Num. Heat Transf. A</a>
+                <a href="http://www.begellhouse.com/journals/porous-media.html" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Porous Media</a>
+                <a href="https://arc.aiaa.org/loi/jtht" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Thermophysics and Heat Transfer</a>
+                <a href="https://www.tandfonline.com/toc/unht20/current" target="_blank" rel="noopener noreferrer" class="journal-tag">Numerical Heat Transfer, Part A: Applications</a>
             </div>
         </div>
 
         <div class="publisher-card">
             <span class="publisher-name">Domestic (CN)</span>
             <div class="journal-tags-container">
-                <a href="http://www.kqdlxxb.com/" target="_blank" rel="noopener noreferrer" class="journal-tag">Acta Aerodyn. Sin.</a>
-                <a href="https://www.springer.com/engineering/mechanics/journal/10409" target="_blank" rel="noopener noreferrer" class="journal-tag">Acta Mech. Sin.</a>
-                <a href="https://iopscience.iop.org/journal/0256-307X" target="_blank" rel="noopener noreferrer" class="journal-tag">Chin. Phys. Lett.</a>
-                <a href="http://engine.scichina.com/publisher/scp/journal/CSB" target="_blank" rel="noopener noreferrer" class="journal-tag">Chin. Sci. Bull.</a>
-                <a href="https://link.springer.com/journal/11431" target="_blank" rel="noopener noreferrer" class="journal-tag">Sci. China Tech. Sci.</a>
-                <a href="http://www.jhydrodynamics.com/" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Hydrodynamics</a>
+                <a href="http://www.kqdlxxb.com/" target="_blank" rel="noopener noreferrer" class="journal-tag">Acta Aerodynamica Sinica</a>
+                <a href="https://www.springer.com/engineering/mechanics/journal/10409" target="_blank" rel="noopener noreferrer" class="journal-tag">Acta Mechanica Sinica</a>
+                <a href="https://iopscience.iop.org/journal/0256-307X" target="_blank" rel="noopener noreferrer" class="journal-tag">Chinese Physics Letters</a>
+                <a href="http://www.jhydrodynamics.com/" target="_blank" rel="noopener noreferrer" class="journal-tag">Journal of Hydrodynamics</a>
+                <a href="https://www.sciencedirect.com/journal/science-bulletin" target="_blank" rel="noopener noreferrer" class="journal-tag">Science Bulletin <span class="journal-former-title">(formerly Chinese Science Bulletin)</span></a>
+                <a href="https://link.springer.com/journal/11431" target="_blank" rel="noopener noreferrer" class="journal-tag">Science China Technological Sciences</a>
             </div>
         </div>
     </div>
