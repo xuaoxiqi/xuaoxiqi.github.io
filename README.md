@@ -1,4 +1,63 @@
-powershell.exe -ExecutionPolicy Bypass -File scripts/update-funding.ps1
+## Funding Statistics
+
+Update the project publication counts and lists in `research.html` from the local
+PDFs linked in `publications.html`. Run these commands from the repository root.
+Node.js and `pdftotext` must be available on `PATH`; `pdftotextCommand` in
+`data/funding-projects.json` can also specify the executable's absolute path.
+
+```powershell
+# Check the results without changing research.html.
+node scripts/update-funding.js --dry-run
+
+# Show the funding IDs detected in each PDF.
+node scripts/update-funding.js --dry-run --verbose
+
+# Write the updated counts and publication lists.
+node scripts/update-funding.js
+```
+
+The PowerShell entry point delegates to the same Node.js script and returns its
+exit code. The existing parameters remain supported:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/update-funding.ps1 -DryRun
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/update-funding.ps1 -DryRun -Verbose
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/update-funding.ps1
+```
+
+Only the content between `funding:auto:start` and `funding:auto:end` comments is
+regenerated. Project titles, funding amounts, targets and page layout are preserved.
+An empty result is rendered as `0 papers`, without a placeholder publication.
+
+- PDF filenames ending in `_arXiv.pdf` are classified as `coming`; other PDFs are
+  classified as `completed`. When a matching final PDF exists beside an arXiv PDF,
+  the final version takes precedence. Publication status is not checked online.
+- Publication labels come from the PDF filename, without its numeric prefix or
+  `_arXiv` suffix. Renaming a PDF changes its generated label on the next run.
+- `R1`, `R2`, etc. indicate the order of recognized funding IDs in the PDF's funding
+  or acknowledgements section, with a full-text fallback when no section is found.
+  For example, `1+4+2` means one first-ranked, four second-ranked and two third-ranked
+  acknowledgements. Funding IDs absent from `rankTokens` do not participate in ranking.
+- Missing project configuration, missing ranking tokens, invalid markers or PDF
+  extraction failures stop the update with a nonzero exit code before any write.
+
+To add a project, add its recognized funding IDs to `rankTokens` and its project
+entry to `projects` in `data/funding-projects.json`. Each project's `grantIds` must
+refer to IDs in `rankTokens` (omitting `grantIds` uses the project ID). Add the
+corresponding `completed` and/or `coming` blocks to its research-page entry:
+
+```html
+<!-- funding:auto:start project=GRANT_ID status=completed -->
+(Completed) 0 papers:
+<!-- funding:auto:end -->
+<!-- funding:auto:start project=GRANT_ID status=coming -->
+<br>(Coming..) 0 papers:
+<!-- funding:auto:end -->
+```
+
+Run the focused regression checks with `node --test scripts/update-funding.test.js`.
+
+## News Archives
 
 Archive new stories added to `news.html`. Each story is downloaded, packaged into its own verified ZIP under `news-backups`, and removed from the live site except for its lightweight cover image:
 

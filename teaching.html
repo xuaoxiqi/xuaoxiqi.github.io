@@ -12,12 +12,12 @@ hero_meta:
   - Open Resources
 hero_mark: T
 hero_links:
-  - label: Supervised Students
-    href: "#supervised-students"
-  - label: Teaching at NPU
+  - label: Tensor Analysis
+    href: "./tensor-analysis.html"
+  - label: Viscous Fluid Mechanics
+    href: "./viscous-fluid-mechanics.html"
+  - label: All Courses
     href: "#teaching-npu"
-  - label: Teaching at HKUST
-    href: "#teaching-hkust"
 ---
 
 <div id="divPost">
@@ -25,15 +25,15 @@ hero_links:
     <article id="articlePost" class="page-teaching">
 
     {% include page-hero.html %}
-    
+
     <!-- ============================================== -->
     <!-- SUPERVISED STUDENTS SECTION -->
     <!-- ============================================== -->
     <section aria-labelledby="supervised-students">
         <h2 id="supervised-students" class="teaching-header">Supervised Students</h2>
         
-        <h3 id="phd-candidates" class="teaching-subheader">Ph.D. Candidates</h3>
-        <div class="student-grid">
+        <h3 id="phd-candidates" class="teaching-subheader" data-student-list="#phd-students"><span>Ph.D. Candidates</span></h3>
+        <div id="phd-students" class="student-grid">
             <div class="student-card">
                 <span class="student-name">Li-Ping Zhu <span class="student-name-cn">(朱丽萍)</span></span>
                 <span class="student-time">Sep 2026 - Present</span>
@@ -56,8 +56,8 @@ hero_links:
             </div>
         </div>
         
-        <h3 id="master-candidates" class="teaching-subheader">Master's Candidates</h3>
-        <div class="student-grid">
+        <h3 id="master-candidates" class="teaching-subheader" data-student-list="#master-students"><span>Master's Candidates</span></h3>
+        <div id="master-students" class="student-grid">
             <div class="student-card">
                 <span class="student-name">Hao Ren <span class="student-name-cn">(任昊)</span></span>
                 <span class="student-time">Sep 2026 - Present</span>
@@ -76,8 +76,8 @@ hero_links:
             </div>
         </div>
 
-        <h3 id="master-graduate" class="teaching-subheader">Master's Graduates</h3>
-        <ul class="graduate-list">
+        <h3 id="master-graduate" class="teaching-subheader" data-student-list="#master-graduates"><span>Master's Graduates</span></h3>
+        <ul id="master-graduates" class="graduate-list">
             
             <!-- Zheng Zhao -->
             <li class="graduate-item">
@@ -217,19 +217,20 @@ hero_links:
         </ul>
         
         <!-- Awards Section -->
+        <!-- Each certificate or scholarship <time> counts as one award, including repeat winners. -->
         <h3 id="honors-awards" class="teaching-subheader">Students' Honors and Awards</h3>
         
         <!-- 1. Outstanding Grad Student -->
         <div class="award-category">
             <span class="award-title">University Outstanding Graduate Student Award (学校“优秀研究生”)</span>
             <div class="cert-gallery">
-                <div class="cert-item"><a href="./pdf/优秀研究生-2021-李博韬.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2021-李博韬.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Bo-Tao Li <span>(2021)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀研究生-2022-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2022-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀研究生-2023-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2023-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀研究生-2025-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2025-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2025)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀研究生-2022-吴华林.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2022-吴华林.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Hua-Lin Wu <span>(2022)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀研究生-2023-吴华林.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2023-吴华林.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Hua-Lin Wu <span>(2023)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀研究生-2025-赵峥.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2025-赵峥.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Zheng Zhao <span>(2025)</span></div></a></div>
+                <div class="cert-item" data-recipient="bo-tao-li"><a href="./pdf/优秀研究生-2021-李博韬.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2021-李博韬.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Bo-Tao Li <span>(2021)</span></div></a></div>
+                <div class="cert-item" data-recipient="ben-rui-xu"><a href="./pdf/优秀研究生-2022-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2022-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div></a></div>
+                <div class="cert-item" data-recipient="ben-rui-xu"><a href="./pdf/优秀研究生-2023-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2023-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div></a></div>
+                <div class="cert-item" data-recipient="ben-rui-xu"><a href="./pdf/优秀研究生-2025-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2025-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2025)</span></div></a></div>
+                <div class="cert-item" data-recipient="hua-lin-wu"><a href="./pdf/优秀研究生-2022-吴华林.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2022-吴华林.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Hua-Lin Wu <span>(2022)</span></div></a></div>
+                <div class="cert-item" data-recipient="hua-lin-wu"><a href="./pdf/优秀研究生-2023-吴华林.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2023-吴华林.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Hua-Lin Wu <span>(2023)</span></div></a></div>
+                <div class="cert-item" data-recipient="zheng-zhao"><a href="./pdf/优秀研究生-2025-赵峥.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀研究生-2025-赵峥.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Zheng Zhao <span>(2025)</span></div></a></div>
             </div>
         </div>
 
@@ -237,9 +238,9 @@ hero_links:
         <div class="award-category">
             <span class="award-title">University Outstanding Graduating Student Award (学校“优秀毕业生”)</span>
             <div class="cert-gallery">
-                <div class="cert-item"><a href="./pdf/优秀毕业生-2023-李博韬.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2023-李博韬.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Bo-Tao Li <span>(2023)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀毕业生-2024-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2024-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀毕业生-2025-李瑞琦.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2025-李瑞琦.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Rui-Qi Li <span>(2025)</span></div></a></div>
+                <div class="cert-item" data-recipient="bo-tao-li"><a href="./pdf/优秀毕业生-2023-李博韬.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2023-李博韬.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Bo-Tao Li <span>(2023)</span></div></a></div>
+                <div class="cert-item" data-recipient="ben-rui-xu"><a href="./pdf/优秀毕业生-2024-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2024-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div></a></div>
+                <div class="cert-item" data-recipient="rui-qi-li"><a href="./pdf/优秀毕业生-2025-李瑞琦.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀毕业生-2025-李瑞琦.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Rui-Qi Li <span>(2025)</span></div></a></div>
             </div>
         </div>
         
@@ -247,8 +248,8 @@ hero_links:
         <div class="award-category">
             <span class="award-title">University Outstanding Master's Thesis (学校“优秀硕士学位论文”)</span>
             <div class="cert-gallery">
-                <div class="cert-item"><a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀硕士学位论文-2024-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀硕士学位论文-2025-李瑞琦.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Rui-Qi Li <span>(2025)</span></div></a></div>
+                <div class="cert-item" data-recipient="ben-rui-xu"><a href="./pdf/优秀硕士学位论文-2024-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀硕士学位论文-2024-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2024)</span></div></a></div>
+                <div class="cert-item" data-recipient="rui-qi-li"><a href="./pdf/优秀硕士学位论文-2025-李瑞琦.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/优秀硕士学位论文-2025-李瑞琦.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Rui-Qi Li <span>(2025)</span></div></a></div>
             </div>
         </div>
         
@@ -256,8 +257,8 @@ hero_links:
         <div class="award-category">
             <span class="award-title">National Scholarship for Graduate Students (研究生国家奖学金)</span>
             <div class="cert-gallery">
-                <div class="cert-item"><a href="./pdf/研究生国家奖学金-2022-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/研究生国家奖学金-2022-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div></a></div>
-                <div class="cert-item"><a href="./pdf/研究生国家奖学金-2023-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/研究生国家奖学金-2023-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div></a></div>
+                <div class="cert-item" data-recipient="ben-rui-xu"><a href="./pdf/研究生国家奖学金-2022-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/研究生国家奖学金-2022-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2022)</span></div></a></div>
+                <div class="cert-item" data-recipient="ben-rui-xu"><a href="./pdf/研究生国家奖学金-2023-许本瑞.pdf" target="_blank" rel="noopener noreferrer"><div class="cert-thumb-container"><img src="./images/certificate/研究生国家奖学金-2023-许本瑞.jpg" alt="Cert" loading="lazy"></div><div class="cert-caption">Ben-Rui Xu <span>(2023)</span></div></a></div>
             </div>
         </div>
         
@@ -265,11 +266,31 @@ hero_links:
         <div class="award-category">
             <span class="award-title">Other Scholarships</span>
             <ul class="award-sublist">
-                <li><b>First-Class Academic Scholarship:</b> Bo-Tao Li (2021); Ben-Rui Xu (2022, 2023, 2025); Hua-Lin Wu (2022, 2023); Li-Sheng Jiang (2022)</li>
-                <li><b>First-Class Scholarship:</b> Ben-Rui Xu (2022; 2023)</li>
-                <li><b>Second-Class Scholarship:</b> Ben-Rui Xu (2025)</li>
-                <li><b>Wu Ya-Jun Special Scholarship:</b> Hua-Lin Wu (2022)</li>
-                <li><b>Kewei Special Scholarship:</b> Li-Sheng Jiang (2022)</li>
+                <li>
+                    <b class="scholarship-title">First-Class Academic Scholarship</b>
+                    <div class="scholarship-recipients">
+                        <span data-recipient="bo-tao-li">Bo-Tao Li (<time datetime="2021">2021</time>)</span>;
+                        <span data-recipient="ben-rui-xu">Ben-Rui Xu (<time datetime="2022">2022</time>, <time datetime="2023">2023</time>, <time datetime="2025">2025</time>)</span>;
+                        <span data-recipient="hua-lin-wu">Hua-Lin Wu (<time datetime="2022">2022</time>, <time datetime="2023">2023</time>)</span>;
+                        <span data-recipient="li-sheng-jiang">Li-Sheng Jiang (<time datetime="2022">2022</time>)</span>
+                    </div>
+                </li>
+                <li>
+                    <b class="scholarship-title">First-Class Scholarship</b>
+                    <div class="scholarship-recipients"><span data-recipient="ben-rui-xu">Ben-Rui Xu (<time datetime="2022">2022</time>, <time datetime="2023">2023</time>)</span></div>
+                </li>
+                <li>
+                    <b class="scholarship-title">Second-Class Scholarship</b>
+                    <div class="scholarship-recipients"><span data-recipient="ben-rui-xu">Ben-Rui Xu (<time datetime="2025">2025</time>)</span></div>
+                </li>
+                <li>
+                    <b class="scholarship-title">Wu Ya-Jun Special Scholarship</b>
+                    <div class="scholarship-recipients"><span data-recipient="hua-lin-wu">Hua-Lin Wu (<time datetime="2022">2022</time>)</span></div>
+                </li>
+                <li>
+                    <b class="scholarship-title">Kewei Special Scholarship</b>
+                    <div class="scholarship-recipients"><span data-recipient="li-sheng-jiang">Li-Sheng Jiang (<time datetime="2022">2022</time>)</span></div>
+                </li>
             </ul>
         </div>
     </section>
@@ -283,9 +304,11 @@ hero_links:
     <h3 class="teaching-subheader">1. Teaching Courses</h3>
     
     <div class="section-divider">Undergraduate Courses</div>
-    <p id="undergraduate-course-summary" class="summary-note">
-        All undergraduate course records: <span data-summary-stat="all-courses">--</span> undergraduate courses, <span data-summary-stat="all-hours">--</span> actual teaching hours, and <span data-summary-stat="all-students">--</span> student enrollments.
-    </p>
+    <dl id="undergraduate-course-summary" class="teaching-totals" aria-label="All undergraduate course records">
+        <div><dt>Undergraduate courses</dt><dd data-summary-stat="all-courses">--</dd></div>
+        <div><dt>Actual teaching hours</dt><dd data-summary-stat="all-hours">--</dd></div>
+        <div><dt>Student enrollments</dt><dd data-summary-stat="all-students">--</dd></div>
+    </dl>
     <div class="table-container">
         <table id="undergraduate-courses-table" class="modern-table">
             <caption class="visually-hidden">Undergraduate courses taught at NPU</caption>
@@ -301,7 +324,9 @@ hero_links:
                     <th scope="col">Code</th>
                     <th scope="col">Course Name</th>
                     <th scope="col">Remarks</th>
-                    <th scope="col">Teaching Records<br><span class="table-head-note">(Actual Hours / Students)</span></th>
+                    <th scope="col">Teaching Records
+                        <span class="course-record-head"><span>Semester</span><span>Hours</span><span>Students</span></span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -322,8 +347,8 @@ hero_links:
                     </td>
                     <td>
                         <ul class="course-record-list">
-                            <li data-term="Spring 2021" data-year="2021" data-hours="32" data-students="25"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2020" data-year="2020" data-hours="32" data-students="37"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2021" data-year="2021" data-hours="32" data-students="25"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2020" data-year="2020" data-hours="32" data-students="37"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -344,9 +369,9 @@ hero_links:
                     </td>
                     <td>
                         <ul class="course-record-list">
-                            <li data-term="Spring 2024" data-year="2024" data-hours="4" data-students="120"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2023" data-year="2023" data-hours="4" data-students="116"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2021" data-year="2021" data-hours="4" data-students="111"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2024" data-year="2024" data-hours="4" data-students="120"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2023" data-year="2023" data-hours="4" data-students="116"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2021" data-year="2021" data-hours="4" data-students="111"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -367,10 +392,10 @@ hero_links:
                     </td>
                     <td>
                         <ul class="course-record-list">
-                            <li data-term="Fall 2026" data-year="2026" data-hours="32" data-students="17"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2024" data-year="2024" data-hours="32" data-students="10"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2023" data-year="2023" data-hours="32" data-students="21"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2022" data-year="2022" data-hours="32" data-students="26"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Fall 2026" data-year="2026" data-hours="32" data-students="17"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2024" data-year="2024" data-hours="32" data-students="10"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2023" data-year="2023" data-hours="32" data-students="21"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2022" data-year="2022" data-hours="32" data-students="26"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -391,10 +416,10 @@ hero_links:
                     </td>
                     <td>
                         <ul class="course-record-list">
-                            <li data-term="Fall 2026" data-year="2026" data-hours="12" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Fall 2025" data-year="2025" data-hours="12" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Fall 2024" data-year="2024" data-hours="12" data-students="22"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2023" data-year="2023" data-hours="16" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Fall 2026" data-year="2026" data-hours="12" data-students="20"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Fall 2025" data-year="2025" data-hours="12" data-students="20"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Fall 2024" data-year="2024" data-hours="12" data-students="22"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2023" data-year="2023" data-hours="16" data-students="20"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -415,10 +440,10 @@ hero_links:
                     </td>
                     <td>
                         <ul class="course-record-list">
-                            <li data-term="Fall 2026" data-year="2026" data-hours="6" data-students="25"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Fall 2025" data-year="2025" data-hours="6" data-students="27"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Fall 2024" data-year="2024" data-hours="6" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2023" data-year="2023" data-hours="4" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Fall 2026" data-year="2026" data-hours="6" data-students="25"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Fall 2025" data-year="2025" data-hours="6" data-students="27"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Fall 2024" data-year="2024" data-hours="6" data-students="20"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2023" data-year="2023" data-hours="4" data-students="20"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -439,8 +464,8 @@ hero_links:
                     </td>
                     <td>
                         <ul class="course-record-list">
-                            <li data-term="Spring 2026" data-year="2026" data-hours="16" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
-                            <li data-term="Spring 2025" data-year="2025" data-hours="16" data-students="20"><b data-record-term></b>: <span data-record-metrics></span></li>
+                            <li data-term="Spring 2026" data-year="2026" data-hours="16" data-students="20"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
+                            <li data-term="Spring 2025" data-year="2025" data-hours="16" data-students="20"><b data-record-term></b><span data-record-hours></span><span data-record-students></span></li>
                         </ul>
                     </td>
                 </tr>
@@ -451,7 +476,7 @@ hero_links:
 
     <div class="section-divider">Graduate Courses</div>
     <div class="table-container">
-        <table class="modern-table">
+        <table class="modern-table graduate-courses-table">
             <caption class="visually-hidden">Graduate courses taught at NPU</caption>
             <thead>
                 <tr>
@@ -466,13 +491,13 @@ hero_links:
                     <td class="course-code">M01M12024</td>
                     <td><b>Introduction to Turbulence</b> <span class="course-translation">(English-Taught / 全英文课程)</span></td>
                     <td><span class="course-tag tag-elective">Elective</span></td>
-                    <td>Spring 2020, 2021, 2022, 2023, 2024, 2025, 2026</td>
+                    <td data-label="Semesters">Spring 2020, 2021, 2022, 2023, 2024, 2025, 2026</td>
                 </tr>
                 <tr>
                     <td class="course-code">D01A11004</td>
                     <td><b>New Progress in Fluid Mechanics</b> <span class="course-translation">(流体力学研究的新进展)</span></td>
                     <td><span class="course-tag tag-elective">Lecture</span></td>
-                    <td>Fall 2023</td>
+                    <td data-label="Semesters">Fall 2023</td>
                 </tr>
             </tbody>
         </table>
@@ -489,7 +514,7 @@ hero_links:
     </div>
 
     <!-- (4) Innovation Projects -->
-    <h3 class="teaching-subheader">3. Undergraduate Innovation Training Projects</h3>
+    <h3 id="innovation-projects" class="teaching-subheader">3. Undergraduate Innovation Training Projects</h3>
     <p class="summary-note">Supervised 8 projects involving 38 students.</p>
     <ul class="supervision-list">
         <li class="supervision-item">
@@ -527,7 +552,7 @@ hero_links:
     </ul>
 
     <!-- (5) Undergraduate Thesis -->
-    <h3 class="teaching-subheader">4. Undergraduate Thesis Supervision</h3>
+    <h3 id="undergraduate-theses" class="teaching-subheader">4. Undergraduate Thesis Supervision</h3>
     <p class="summary-note">Supervised 18 students' graduation theses.</p>
     
     <div class="award-category" style="padding:15px;">
@@ -676,7 +701,9 @@ hero_links:
                     var term = record.getAttribute('data-term') || 'Record ' + (j + 1);
 
                     setText(record, '[data-record-term]', term);
-                    setText(record, '[data-record-metrics]', formatNumber(hours) + ' h / ' + formatNumber(students) + ' students');
+                    setText(record, '[data-record-hours]', formatNumber(hours) + ' h');
+                    setText(record, '[data-record-students]', formatNumber(students));
+                    record.setAttribute('aria-label', term + ': ' + formatNumber(hours) + ' hours, ' + formatNumber(students) + ' students');
 
                     addTerm(allStats, term);
                     allStats.hours += hours;
@@ -697,6 +724,8 @@ hero_links:
             setText(summary, '[data-summary-stat="all-students"]', formatNumber(allTotals.students));
         })();
     </script>
+
+    <script src="./js/teaching.js" defer></script>
 
     </article>
     

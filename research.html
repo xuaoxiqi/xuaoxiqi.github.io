@@ -3,120 +3,705 @@ layout: main
 description: Research by Ao Xu (徐翱) on turbulence structure and transport, heat and mass transfer, computational fluid dynamics, and multiscale modeling.
 title: Research
 seo_title: Research | Ao Xu (徐翱) | Turbulence and Fluid Mechanics
-hero_eyebrow: Research Focus
 hero_title: Research
 hero_intro: Turbulence structure, transport mechanisms, and multiscale simulation across complex flows.
 hero_meta:
   - Turbulence
   - Heat & Mass Transport
   - Multiscale Modeling
-hero_mark: R
 hero_links:
   - label: Research Interests
     href: "#research-interests"
-  - label: Professional Services
-    href: "#professional-services"
   - label: Projects
     href: "#projects"
   - label: Conferences & Talks
     href: "#conferences-talks"
+  - label: Professional Services
+    href: "#professional-services"
 ---
 
 <div id="divPost">
 
     <article id="articlePost" class="page-research">
 
-    {% include page-hero.html %}
-    
+    <header class="research-header">
+        <h1>{{ page.hero_title }}</h1>
+        <p>{{ page.hero_intro }}</p>
+        <ul class="research-topics" aria-label="Research topics">
+            {% for topic in page.hero_meta %}
+            <li>{{ topic }}</li>
+            {% endfor %}
+        </ul>
+    </header>
+
+    <nav class="research-nav" aria-label="Research page sections">
+        {% for link in page.hero_links %}
+        <a href="{{ link.href }}">{{ link.label }}</a>
+        {% endfor %}
+    </nav>
+
     <!-- === Research Interests === -->
     <h2 id="research-interests">Research Interests</h2>
-    
-    <div class="interest-block">
-        <p class="interest-text">
-            I am currently working as an associate professor at Northwestern Polytechnical University. 
-            My research is focused on <b>turbulence structure and transport mechanism</b>, which include:
-        </p>
-        <ul style="margin-bottom:15px; padding-left:20px;">
-            <li>(i) Vortices evolution in turbulent thermal convection, particularly during flow reversal process;</li>
-            <li>(ii) Heat transport mechanism in turbulence, and strategies to enhance/weaken heat transfer efficiency with active or passive flow controls;</li>
-            <li>(iii) Mass transport mechanism in turbulence, and strategies to weaken mixing for pollutant particles or enhance mixing for chemically reactive flows.</li>
-        </ul>
-        <div class="interest-img-container">
-            <img src="./images/research/turbulent_research.png" alt="Turbulence Research">
-        </div>
-    </div>
 
-    <div class="interest-block">
+    <section class="interest-block" aria-labelledby="turbulence-transport">
+        <h3 id="turbulence-transport">Turbulence and Transport</h3>
         <p class="interest-text">
-            My PhD thesis focused on mesoscopic modeling and simulation of complex fluid flows using 
-            <a href="./research_LBM.html"><strong>lattice Boltzmann method (LBM)</strong></a>.
-            Efforts are devoted to investigate <a class="publications" href="./research_LBM_gasLiquidTwoPhase.html">gas-liquid two-phase flows</a>, 
-            <a class="publications" href="./research_LBM_particulateFlows.html">particulate flows</a>,
-            and <a class="publications" href="./research_LBM_porousMedia.html">flows in porous media</a>.
-            It would be much more difficult to complete these simulations without the use of various 
-            <a href="./research_HPC.html"><strong>high performance computing (HPC)</strong></a> techniques,
-            such as <a class="publications" href="./research_HPC_OpenMP.html">OpenMP</a>, <a class="publications" href="./research_HPC_MPI.html">MPI</a>,
-            and <a class="publications" href="./research_HPC_OpenACC.html">OpenACC</a>. 
+            As an associate professor at Northwestern Polytechnical University, I study
+            <strong>turbulence structure and transport mechanisms</strong>, with a focus on:
+        </p>
+        <ul class="research-focus-list">
+            <li><strong>Flow structures.</strong> Vortex evolution in turbulent thermal convection, particularly during flow reversal.</li>
+            <li><strong>Heat transport.</strong> Heat transfer mechanisms and active or passive flow controls to enhance or suppress heat transfer.</li>
+            <li><strong>Mass transport.</strong> Controlling mixing to limit pollutant dispersion or enhance chemically reactive flows.</li>
+        </ul>
+        <figure class="interest-img-container">
+            <a href="./images/research/turbulent_research.png" target="_blank" rel="noopener noreferrer" aria-label="View turbulence research figure at full size">
+                <img src="./images/research/turbulent_research.png" alt="Overview of research on turbulence structures, heat transport and mass transport">
+            </a>
+        </figure>
+    </section>
+
+    <section class="interest-block" aria-labelledby="multiscale-modeling">
+        <h3 id="multiscale-modeling">Multiscale Modeling</h3>
+        <p class="interest-text">
+            My PhD research focused on mesoscopic modeling with the
+            <a href="./research_LBM.html"><strong>lattice Boltzmann method (LBM)</strong></a>,
+            including <a href="./research_LBM_gasLiquidTwoPhase.html">gas-liquid two-phase flows</a>,
+            <a href="./research_LBM_particulateFlows.html">particulate flows</a> and
+            <a href="./research_LBM_porousMedia.html">flows in porous media</a>.
         </p>
         <p class="interest-text">
-            During my postdoc at HKUST, my research interests also extend to microscopic simulations, such as 
-            calculating <a class="publications" href="./research_MD_transportProperties.html">intrinsic transport properties</a> with 
-            <a href="./research_MD.html"><strong>molecular dynamics (MD)</strong></a> simulations,
-            and <a class="publications" href="./research_DFT_adsorbatesSurfaces.html">adsorbates on surfaces</a> using <a href="./research_DFT.html"><strong>density functional theory (DFT)</strong></a> calculation.
+            These simulations draw on <a href="./research_HPC.html"><strong>high performance computing (HPC)</strong></a>,
+            including <a href="./research_HPC_OpenMP.html">OpenMP</a>,
+            <a href="./research_HPC_MPI.html">MPI</a> and <a href="./research_HPC_OpenACC.html">OpenACC</a>.
         </p>
-        <div class="interest-img-container">
-            <img src="./images/research/Multiscale_Modeling.png" alt="Multiscale Modeling">
+        <p class="interest-text">
+            During my postdoc at HKUST, I extended this work to microscopic simulations:
+            <a href="./research_MD.html"><strong>molecular dynamics (MD)</strong></a> for
+            <a href="./research_MD_transportProperties.html">intrinsic transport properties</a>, and
+            <a href="./research_DFT.html"><strong>density functional theory (DFT)</strong></a> for
+            <a href="./research_DFT_adsorbatesSurfaces.html">adsorbates on surfaces</a>.
+        </p>
+        <figure class="interest-img-container">
+            <a href="./images/research/Multiscale_Modeling.png" target="_blank" rel="noopener noreferrer" aria-label="View multiscale modeling figure at full size">
+                <img src="./images/research/Multiscale_Modeling.png" alt="Overview of multiscale modeling from microscopic to mesoscopic simulations" loading="lazy">
+            </a>
+        </figure>
+    </section>
+
+    <!-- === Projects Section === -->
+    <h2 id="projects">Projects</h2>
+
+    <h3>Current &amp; Upcoming</h3>
+    <ul class="project-list">
+        <!-- Project 14 -->
+        <li class="project-card" data-start="2027-01-01">
+            <div class="project-header"><span>2027.01 - 2030.12</span><span class="status-badge badge-upcoming">Upcoming</span></div>
+            <h4 class="project-title">地形-热力-剪切协同作用下湍流结构演化及自推进体智能响应</h4>
+            <div class="project-funder">国家自然科学基金面上项目 <span class="project-grant">12672289</span></div>
+            <div class="project-meta"><span>RMB 530,000</span></div>
+            <details class="project-publications">
+                <summary>Publications</summary>
+                <div class="detail-content">
+                    <div class="project-target">(Target) 6-8 papers</div>
+                    <!-- funding:auto:start project=12672289 status=completed -->
+                    (Completed) 0 papers:
+                    <!-- funding:auto:end -->
+                    <!-- funding:auto:start project=12672289 status=coming -->
+                    <br>(Coming..) 0 papers:
+                    <!-- funding:auto:end -->
+                </div>
+            </details>
+        </li>
+
+        <!-- Project 13 -->
+        <li class="project-card">
+            <div class="project-header"><span>2026.01 - 2027.12</span><span class="status-badge badge-active">Active</span></div>
+            <h4 class="project-title">湍流结构与热-质输运</h4>
+            <div class="project-funder">中央高校基本科研业务费 <span class="project-grant">D5000260269</span></div>
+            <div class="project-meta"><span>RMB 200,000</span></div>
+            <details class="project-publications">
+                <summary>Publications</summary>
+                <div class="detail-content">
+                    <div class="project-target">(Target) 3-5 papers</div>
+                    <!-- funding:auto:start project=D5000260269 status=completed -->
+                    (Completed) 0+0+0+0+1 papers:<br>
+                    i) JFM2026_LearningTraverseConvective_R5;
+                    <!-- funding:auto:end -->
+                    <!-- funding:auto:start project=D5000260269 status=coming -->
+                    <br>(Coming..) 0+0+0+0+1 papers:<br>
+                    i) SUBMITTED2026_BuoyancyInducedVelocity_R5;
+                    <!-- funding:auto:end -->
+                </div>
+            </details>
+        </li>
+
+
+        <!-- Project 12 -->
+        <li class="project-card">
+            <div class="project-header"><span>2025.07 - 2028.07</span><span class="status-badge badge-active">Active</span></div>
+            <h4 class="project-title">省青年拔尖人才项目</h4>
+            <div class="project-meta"><span>RMB 500,000</span></div>
+        </li>
+
+        <!-- Project 11 -->
+        <li class="project-card">
+            <div class="project-header"><span>2024.12 - 2027.12</span><span class="status-badge badge-active">Active</span></div>
+            <h4 class="project-title">无人机敏捷飞行技术</h4>
+            <div class="project-funder">JKW173计划重点项目</div>
+            <div class="project-meta"><span>RMB 150,000 / 17,300,000</span><span>Rank 9 / 16</span></div>
+        </li>
+
+        <!-- Project 10 -->
+        <li class="project-card">
+            <div class="project-header"><span>2024.01 - 2028.12</span><span class="status-badge badge-active">Active</span></div>
+            <h4 class="project-title">极端流动的多过程问题研究</h4>
+            <div class="project-funder">国家自然科学基金基础科学中心项目 <span class="project-grant">12388101</span></div>
+            <div class="project-meta"><span>RMB 485,700 <del>1,200,000</del> / 60,000,000</span><span>20 / 300</span></div>
+            <details class="project-publications">
+                <summary>Publications</summary>
+                <div class="detail-content">
+                    <div class="project-target">(Target) 8 papers</div>
+                    <!-- funding:auto:start project=12388101 status=completed -->
+                    (Completed) 1+4+2 papers:<br>
+                    vii) JFM2026_LearningTraverseConvective_R2; vi) POF2026_TriggeringExtremeEvents_R1; v) JFM2026_SuperResolutionReconstruction_R2; iv) IJHMT2026_InterpolationSupplementedLattice_R2; iii) JFM2025_TemporalModulationMixed_R3; ii) JFM2024_ParticleTransportDeposition_R3; i) JFM2024_PrandtlNumberDependence_R2;
+                    <!-- funding:auto:end -->
+                    <!-- funding:auto:start project=12388101 status=coming -->
+                    <br>(Coming..) 1+1 papers:<br>
+                    ii) SUBMITTED2026_BuoyancyInducedVelocity_R2; i) AMS2026_RevisitEddyViscosity_R1;
+                    <!-- funding:auto:end -->
+                </div>
+            </details>
+        </li>
+
+        <!-- Project 9 -->
+        <li class="project-card">
+            <div class="project-header"><span>2023.01 - 2026.12</span><span class="status-badge badge-active">Active</span></div>
+            <h4 class="project-title">热湍流中颗粒的被动迁移及主动推进</h4>
+            <div class="project-funder">国家自然科学基金面上项目 <span class="project-grant">12272311</span></div>
+            <div class="project-meta"><span>RMB 550,000 + 75,000</span></div>
+            <details class="project-publications">
+                <summary>Publications</summary>
+                <div class="detail-content">
+                    <div class="project-target">(Target) 6-8 papers</div>
+                    <!-- funding:auto:start project=12272311 status=completed -->
+                    (Completed) 9+2 papers:<br>
+                    xi) JFM2026_LearningTraverseConvective_R1; x) POF2026_TriggeringExtremeEvents_R2; ix) JFM2026_SuperResolutionReconstruction_R1; viii) IJHMT2026_InterpolationSupplementedLattice_R1; vii) JFM2025_TemporalModulationMixed_R1; vi) JFM2024_ParticleTransportDeposition_R1; v) IJHMT2024_ParticleResolvedThermal_R1; iv) PRF2023_PoreScaleStatistics_R1; iii) JFM2023_WallShearedThermal_R1; ii) PRF2023_LongDistanceMigration_R1; i) IJHMT2023_MultiGPUThermal_R2;
+                    <!-- funding:auto:end -->
+                    <!-- funding:auto:start project=12272311 status=coming -->
+                    <br>(Coming..) 1+1 papers:<br>
+                    ii) SUBMITTED2026_BuoyancyInducedVelocity_R1; i) AMS2026_RevisitEddyViscosity_R2;
+                    <!-- funding:auto:end -->
+                </div>
+            </details>
+        </li>
+    </ul>
+
+    <h3>Completed</h3>
+    <ul class="project-list">
+
+        <!-- Project 8 -->
+        <li class="project-card inactive">
+            <div class="project-header"><span>2024.01 - 2026.12</span><span class="status-badge badge-inactive">Completed</span></div>
+            <h4 class="project-title">中国科协青年人才托举工程</h4>
+            <div class="project-funder">2023QNRC001</div>
+            <div class="project-meta"><span>RMB 300,000</span></div>
+            <details class="project-publications">
+                <summary>Publications</summary>
+                <div class="detail-content">
+                    <div class="project-target">(Target) 6 papers</div>
+                    <!-- funding:auto:start project=2023QNRC001 status=completed -->
+                    (Completed) 0+0+2+5 papers:<br>
+                    vii) JFM2026_LearningTraverseConvective_R4; vi) POF2026_TriggeringExtremeEvents_R4; v) JFM2026_SuperResolutionReconstruction_R4; iv) IJHMT2026_InterpolationSupplementedLattice_R3; iii) JFM2025_TemporalModulationMixed_R4; ii) JFM2024_ParticleTransportDeposition_R4; i) JFM2024_PrandtlNumberDependence_R3;
+                    <!-- funding:auto:end -->
+                    <!-- funding:auto:start project=2023QNRC001 status=coming -->
+                    <br>(Coming..) 0+0+1+1 papers:<br>
+                    ii) SUBMITTED2026_BuoyancyInducedVelocity_R4; i) AMS2026_RevisitEddyViscosity_R3;
+                    <!-- funding:auto:end -->
+                </div>
+            </details>
+        </li>
+
+        <!-- Project 7 -->
+        <li class="project-card inactive">
+            <div class="project-header"><span>2024.10 - 2026.04</span><span class="status-badge badge-inactive">Completed</span></div>
+            <h4 class="project-title">集群无人机飞行控制技术</h4>
+            <div class="project-funder">JKW173计划技术领域基金项目</div>
+            <div class="project-meta"><span>RMB 100,000 / 1,250,000</span><span>Rank 4 / 11</span></div>
+        </li>
+
+        <!-- Project 6 -->
+        <li class="project-card inactive">
+            <div class="project-header"><span>2024.06 - 2025.09</span><span class="status-badge badge-inactive">Completed</span></div>
+            <h4 class="project-title">气隙域涡流性能测试系统及平台设计、试验</h4>
+            <div class="project-funder">中国船舶重工集团公司第七〇四研究所</div>
+            <div class="project-meta"><span>RMB 450,000</span></div>
+        </li>
+
+        <!-- Project 5 -->
+        <li class="project-card inactive">
+            <div class="project-header"><span>2021.01 - 2022.12</span><span class="status-badge badge-inactive">Completed</span></div>
+            <h4 class="project-title">格子Boltzmann水滴结冰模型的发展及其应用</h4>
+            <div class="project-funder">国防KGJ实验室基金</div>
+            <div class="project-meta"><span>RMB 50,000</span></div>
+            <details class="project-publications">
+                <summary>Publications</summary>
+                <div class="detail-content">
+                    <div class="project-target">(Target) 2-3 papers</div>
+                    <!-- funding:auto:start project=IADL20200301 status=completed -->
+                    (Completed) 0+0+2 papers:<br>
+                    ii) IJHMT2024_ParticleResolvedThermal_R3; i) IJHMT2023_MultiGPUThermal_R3;
+                    <!-- funding:auto:end -->
+                </div>
+            </details>
+        </li>
+
+        <!-- Project 4 -->
+        <li class="project-card inactive">
+            <div class="project-header"><span>2020.06 - 2022.12</span><span class="status-badge badge-inactive">Completed</span></div>
+            <h4 class="project-title">湍热对流拟序结构作用下颗粒运动规律的研究</h4>
+            <div class="project-funder">国防KGJ某重大工程青年项目</div>
+            <div class="project-meta"><span>RMB 350,000</span></div>
+            <details class="project-publications">
+                <summary>Publications</summary>
+                <div class="detail-content">
+                    <div class="project-target">(Target) 2-3 papers</div>
+                    <!-- funding:auto:start project=GJXM92579 status=completed -->
+                    (Completed) 0+0+4+1 papers:<br>
+                    v) PRF2023_LongDistanceMigration_R3; iv) IJHMT2023_MultiGPUThermal_R4; iii) POF2022_MigrationSelfPropelling_R3; ii) POF2022_ProductionTransportVorticity_R3; i) POF2020_CorrelationInternalFlow_R3;
+                    <!-- funding:auto:end -->
+                </div>
+            </details>
+        </li>
+
+        <!-- Project 3 -->
+        <li class="project-card inactive">
+            <div class="project-header"><span>2020.01 - 2022.12</span><span class="status-badge badge-inactive">Completed</span></div>
+            <h4 class="project-title">基于格子Boltzmann方法的三维热对流中非球形固体颗粒运动规律研究</h4>
+            <div class="project-funder">国家自然科学基金青年科学基金项目 <span class="project-grant">11902268</span></div>
+            <div class="project-meta"><span>RMB 260,000 + 43,000</span></div>
+            <details class="project-publications">
+                <summary>Publications</summary>
+                <div class="detail-content">
+                    <div class="project-target">(Target) 3-5 papers</div>
+                    <!-- funding:auto:start project=11902268 status=completed -->
+                    (Completed) 7+2+1 papers:<br>
+                    x) IJHMT2024_ParticleResolvedThermal_R2; ix) IJHMT2023_MultiGPUThermal_R1; viii) POF2022_MigrationSelfPropelling_R1; vii) POF2022_ProductionTransportVorticity_R1; vi) JFM2022_CounterFlowOrbiting_R3; v) JFM2021_TristableFlowStates_R1; iv) POF2020_CorrelationInternalFlow_R1; iii) POF2020_TransportDepositionDilute_R1; ii) IJHMT2020_CurvedLatticeBoltzmann_R2; i) POF2019_StatisticsTemperatureThermal_R1;
+                    <!-- funding:auto:end -->
+                </div>
+            </details>
+        </li>
+
+        <!-- Project 2 -->
+        <li class="project-card inactive">
+            <div class="project-header"><span>2020.01 - 2021.12</span><span class="status-badge badge-inactive">Completed</span></div>
+            <h4 class="project-title">基于格子Boltzmann方法的超疏水表面过冷水滴结冰介观机理研究</h4>
+            <div class="project-funder">国防KGJ重点实验室基金</div>
+            <div class="project-meta"><span>RMB 175,000</span></div>
+        </li>
+
+        <!-- Project 1 -->
+        <li class="project-card inactive">
+            <div class="project-header"><span>2019.01 - 2021.12</span><span class="status-badge badge-inactive">Completed</span></div>
+            <h4 class="project-title">羽流作用下固体颗粒运动规律的研究</h4>
+            <div class="project-funder">中央高校基本科研业务费 <span class="project-grant">D5000200570</span></div>
+            <div class="project-meta"><span>RMB 400,000</span></div>
+        </li>
+    </ul>
+
+    <!-- === Conferences === -->
+    <h2 id="conferences-talks">Conferences and Talks (Selected)</h2>
+
+    <div class="research-section-heading">
+        <h3>Conferences</h3>
+        <div class="conf-stats" data-conf-stats hidden>
+            <span><strong data-stat="featured"></strong> Invited/Keynote</span>
         </div>
     </div>
+    <ol class="conf-list" data-conf-section="conferences" reversed>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2026.08.07 - 12</span><span class="conf-city">Hong Kong</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Wall modeled large eddy simulation of turbulent channel flow with unstable stratification</div>
+                    <div class="conf-venue">The 32nd International Conference on Computational & Experimental Engineering and Sciences <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2026-第三十二届计算与实验科学工程国际会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2026.08.07 - 11</span><span class="conf-city">Qingdao</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">高瑞利数热湍流中自驱动体的主动推进</div>
+                    <div class="conf-venue">第十四届全国流体力学学术会议 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2026-第十四届全国流体力学学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2026.07.10 - 12</span><span class="conf-city">Mianyang</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">不稳定热分层槽道流的壁面模化大涡模拟</div>
+                    <div class="conf-venue">2026年壁湍流基础问题青年学术研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2026.06.26 - 28</span><span class="conf-city">Datong</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">湍流结构与热-质输运</div>
+                    <div class="conf-venue">2026第四届六校力学学术论坛 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2026.06.01 - 05</span><span class="conf-city">Lyon</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Learning to traverse convective flows at moderate to high Rayleigh numbers</div>
+                    <div class="conf-venue">10th International Conference on Rayleigh-Bénard Turbulence (第十届瑞利-伯纳德湍流国际会议) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.12.26 - 28</span><span class="conf-city">Shenzhen</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">不稳定热分层槽道流的壁面模化大涡模拟</div>
+                    <div class="conf-venue">稀薄气体与湍流的多尺度非平衡流动学术研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.11.28 - 30</span><span class="conf-city">Beijing</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">热湍流中自驱动体的主动推进</div>
+                    <div class="conf-venue">中国力学学会青年托举人才与导师交流会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.11.22 - 23</span><span class="conf-city">Lanzhou</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">热湍流结构与物质输运</div>
+                    <div class="conf-venue">四校力学论坛-2025 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.11.14 - 16</span><span class="conf-city">Shanghai</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">热湍流中自驱动体的主动推进</div>
+                    <div class="conf-venue">第十四届全国流体力学青年研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.10.31 - 11.02</span><span class="conf-city">Xi'an</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">剪切热湍流的研究进展</div>
+                    <div class="conf-venue">第二届极端流动与多过程问题研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.10.24 - 26</span><span class="conf-city">Hangzhou</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">热湍流中自驱动颗粒的主动推进</div>
+                    <div class="conf-venue">第四届全国多相流青年学者研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-第四届全国多相流青年学者研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.09.01 - 02</span><span class="conf-city">Beijing</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
+                    <div class="conf-venue">JFM/FLOW Symposium China 2025 (JFM/FLOW 2025中国专题研讨会) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-JFM-FLOW中国专题研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.07.18 - 21</span><span class="conf-city">Changsha</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">热湍流结构与颗粒输运</div>
+                    <div class="conf-venue">中国力学大会-2025 (流体力学分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2025-中国力学大会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.07.20</span><span class="conf-city">Changsha</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">复杂流动与传热传质的格子玻尔兹曼模拟</div>
+                    <div class="conf-venue">AMS创刊40周年座谈会暨力学学科前瞻研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-AMS创刊40周年座谈会暨力学学科前瞻研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.04.19 - 20</span><span class="conf-city">Nanchang</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">剪切热湍流中颗粒的输运与沉积</div>
+                    <div class="conf-venue">2025年全国湍流与流动稳定性专题研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-全国湍流与流动稳定性专题研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2025.02.26</span><span class="conf-city">Xi'an</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
+                    <div class="conf-venue">多相流数值模拟前沿进展研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2024.10.25 - 27</span><span class="conf-city">Ningbo</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
+                    <div class="conf-venue">International Symposium on Multiphase Flows - 2024 (国际多相流学术研讨会) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2024-国际多相流学术研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2024.09.20 - 22</span><span class="conf-city">Taiyuan</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">剪切热湍流结构演化与颗粒输运</div>
+                    <div class="conf-venue">2024流固耦合前沿问题及无网格方法应用研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2024.09.18 - 19</span><span class="conf-city">Xi'an</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Temporal modulation on mixed convection in turbulent channels</div>
+                    <div class="conf-venue">Workshop on Theory and Modeling of Fluid Excitation (流体激励理论与建模研讨会) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2024.08.21 - 23</span><span class="conf-city">Beijing</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
+                    <div class="conf-venue">2nd BICTAM-CISM Symposium on Dispersed Multiphase Flows (第二届北京国际力学中心与意大利国际力学中心离散多相流研讨会) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2024.08.09 - 13</span><span class="conf-city">Harbin</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">热湍流中颗粒的主动推进</div>
+                    <div class="conf-venue">第十三届全国流体力学学术会议 (湍流与稳定性分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2024-第十三届全国流体力学学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2024.08.05</span><span class="conf-city">Lanzhou</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">剪切热湍流结构演化与颗粒输运</div>
+                    <div class="conf-venue">“多相流多过程耦合流动”学术研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2024.08.02 - 04</span><span class="conf-city">Lanzhou</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">时变壁面温度对槽道湍流结构演化的影响</div>
+                    <div class="conf-venue">2024壁湍流基础问题青年学术研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2023.10.16 - 20</span><span class="conf-city">Xi'an</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Self-propelling Particles Surfing in Turbulent Thermal Convection</div>
+                    <div class="conf-venue">9th International Conference on Rayleigh-Bénard Turbulence (第九届瑞利-伯纳德湍流国际会议) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2023.08.08 - 12</span><span class="conf-city">Beijing</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Migrating of a Self-propelling Particle in Thermal Turbulence</div>
+                    <div class="conf-venue">17th Asian Congress of Fluid Mechanics (第十七届亚洲流体力学大会) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2023.07.07 - 11</span><span class="conf-city">Lanzhou</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Control the Migration of Self-propelling Particle in Thermal Turbulence</div>
+                    <div class="conf-venue">IUTAM Symposium on Turbulent Structure and Particles-Turbulence Interaction (国际理论与应用力学联合会湍流结构及颗粒-湍流相互作用研讨会) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2023.04.19</span><span class="conf-city">Hong Kong</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Energy-efficient propulsion of self-propelling particle in turbulent environments</div>
+                    <div class="conf-venue">Bilateral Academic Conference between NPU and HKUST (西北工业大学与香港科技大学双边学术会议) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2023-西北工业大学与香港科技大学双边学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2023.04.14 - 17</span><span class="conf-city">Ningbo</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>
+                    <div class="conf-venue">2023年全国湍流与流动稳定性专题研讨会 <span class="badge-conf badge-keynote">Keynote</span> <a href="./pdf/主旨报告-2023-全国湍流与流动稳定性研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2022.11.18 - 21</span><span class="conf-city">Xi'an (Hybrid)</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>
+                    <div class="conf-venue">第十二届全国流体力学学术会议 (湍流与稳定性分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2022-第十二届全国流体力学学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2022.11.05 - 10</span><span class="conf-city">Online</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">二维圆形对流腔中的大尺度环流反转</div>
+                    <div class="conf-venue">中国力学大会-2021+1 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2020.01.03</span><span class="conf-city">Beijing</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">LBM多功能数值模拟软件的开发及其在室内污染物颗粒防治中的应用</div>
+                    <div class="conf-venue">“自然环境湍流两相流的高精度计算仿真”研讨会 <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2019.09.03 - 05</span><span class="conf-city">Xi'an</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Thermal effects on the sedimentation behavior of elliptical particles</div>
+                    <div class="conf-venue">Workshop on Multiphase Flow Computations and Fluid Flow Physics (多相流动计算方法及流体物理学术研讨会) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2018.12.07</span><span class="conf-city">Xi'an</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">A three-dimensional pseudo-potential-based lattice Boltzmann model for multiphase flows with large density ratio and variable surface tension</div>
+                    <div class="conf-venue">Workshop on Multiphase Flow and Free Surface Dynamics (多相流及自由面动力学研讨会) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2018.08.10 - 15</span><span class="conf-city">Beijing</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Effect of fiber orientation on the effective mass diffusivity of fibrous porous media</div>
+                    <div class="conf-venue">16th International Heat Transfer Conferences (第十六届国际传热大会) <span class="badge-conf badge-oral">Oral</span></div>
+                </div>
+            </div>
+        </li>
+    </ol>
+
+    <h3>University Seminars</h3>
+    <ol class="conf-list" data-conf-section="seminars" reversed>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2023.12.18</span><span class="conf-city">Shenzhen</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>
+                    <div class="conf-venue">南方科技大学机械与能源工程系 <span class="badge-conf badge-seminar">Seminar</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2021.09.25</span><span class="conf-city">Online</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">热湍流中大尺度环流反转的机制</div>
+                    <div class="conf-venue">工程建模与科学计算湖北省重点实验室 <span class="badge-conf badge-seminar">Seminar</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2019.05.08</span><span class="conf-city">Wuhan</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">基于格子Boltzmann方法的热对流模拟</div>
+                    <div class="conf-venue">华中科技大学数学与统计学院 <span class="badge-conf badge-seminar">Seminar</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2017.09.18</span><span class="conf-city">Beijing</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Lattice Boltzmann Modeling of Complex Multiphase Transport Phenomena in Fuel Cells and Flow Batteries</div>
+                    <div class="conf-venue">清华大学热能系 <span class="badge-conf badge-seminar">Seminar</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="conf-item">
+            <div class="conf-entry">
+                <div class="conf-date"><span>2017.09.15</span><span class="conf-city">Hefei</span></div>
+                <div class="conf-content">
+                    <div class="conf-title">Lattice Boltzmann Modeling of Complex Multiphase Transport Phenomena in Fuel Cells and Flow Batteries</div>
+                    <div class="conf-venue">中国科学技术大学热科学和能源工程系 <span class="badge-conf badge-seminar">Seminar</span></div>
+                </div>
+            </div>
+        </li>
+    </ol>
 
     <!-- === Professional Services === -->
     <h2 id="professional-services">Professional Services</h2>
-    
+
     <h3>Editorial Board</h3>
     <div class="editor-list">
-        <!-- Associate Editor -->
         <div class="editor-card">
-            <div class="editor-role">
-                <span style="font-size:20px;">✒️</span> Associate Editor 
-                <span class="editor-years">2021 - Present</span>
-            </div>
             <div class="editor-journal">
-                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer/editorial-board" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
-                    International Journal of Heat and Mass Transfer
-                </a>
+                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer/editorial-board" target="_blank" rel="noopener noreferrer">International Journal of Heat and Mass Transfer</a>
+                <span class="editor-publisher">Elsevier</span>
             </div>
-            <div class="editor-publisher">(Elsevier)</div>
+            <div class="editor-appointments">
+                <div class="editor-role"><span>Associate Editor</span><span class="editor-years">2021 - Present</span></div>
+                <div class="editor-role"><span>Managing Editor</span><span class="editor-years">2019 - 2021</span></div>
+            </div>
         </div>
-
-        <!-- Managing Editor IJHMT -->
         <div class="editor-card">
-            <div class="editor-role" style="font-size:16px;">
-                <span style="font-size:18px;">📝</span> Managing Editor
-                <span class="editor-years">2019 - 2021</span>
-            </div>
             <div class="editor-journal">
-                <a href="https://www.journals.elsevier.com/international-journal-of-heat-and-mass-transfer/editorial-board" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
-                    International Journal of Heat and Mass Transfer
-                </a>
+                <a href="https://www.journals.elsevier.com/applied-thermal-engineering/editorial-board" target="_blank" rel="noopener noreferrer">Applied Thermal Engineering</a>
+                <span class="editor-publisher">Elsevier</span>
             </div>
-            <div class="editor-publisher">(Elsevier)</div>
-        </div>
-
-        <!-- Managing Editor ATE -->
-        <div class="editor-card">
-            <div class="editor-role" style="font-size:16px;">
-                <span style="font-size:18px;">📝</span> Managing Editor
-                <span class="editor-years">2017 - 2018</span>
+            <div class="editor-appointments">
+                <div class="editor-role"><span>Managing Editor</span><span class="editor-years">2017 - 2018</span></div>
             </div>
-            <div class="editor-journal">
-                <a href="https://www.journals.elsevier.com/applied-thermal-engineering/editorial-board" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
-                    Applied Thermal Engineering
-                </a>
-            </div>
-            <div class="editor-publisher">(Elsevier)</div>
         </div>
     </div>
-   
+
     <h3>Journal Reviewer</h3>
     <div class="reviewer-grid">
         <div class="publisher-card">
@@ -151,7 +736,7 @@ hero_links:
                 <a href="https://www.sciencedirect.com/journal/materials-today-nano" target="_blank" rel="noopener noreferrer" class="journal-tag">Mater. Today Nano</a>
             </div>
         </div>
-        
+
         <div class="publisher-card">
             <span class="publisher-name">Cambridge / AIP / ASME</span>
             <div class="journal-tags-container">
@@ -161,7 +746,7 @@ hero_links:
                 <a href="http://energyresources.asmedigitalcollection.asme.org/journal.aspx" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Energy Res. Tech.</a>
             </div>
         </div>
-        
+
         <div class="publisher-card">
             <span class="publisher-name">Springer / RSC / IOP</span>
             <div class="journal-tags-container">
@@ -175,7 +760,7 @@ hero_links:
                 <a href="https://iopscience.iop.org/journal/1945-7111" target="_blank" rel="noopener noreferrer" class="journal-tag">J. Electrochem. Soc.</a>
             </div>
         </div>
-        
+
         <div class="publisher-card">
             <span class="publisher-name">AIAA / Begell / Taylor</span>
             <div class="journal-tags-container">
@@ -184,7 +769,7 @@ hero_links:
                 <a href="https://www.tandfonline.com/toc/unht20/current" target="_blank" rel="noopener noreferrer" class="journal-tag">Num. Heat Transf. A</a>
             </div>
         </div>
-        
+
         <div class="publisher-card">
             <span class="publisher-name">Domestic (CN)</span>
             <div class="journal-tags-container">
@@ -198,450 +783,10 @@ hero_links:
         </div>
     </div>
 
-    <!-- === Projects Section === -->
-    <h2 id="projects">Projects</h2>
-    
-    <h3>Active</h3>
-    <ul class="project-list">
-        <!-- Project 14 -->
-        <li class="project-card">
-            <span class="status-badge badge-active">Active</span>
-            <div class="project-header">2027.01 - 2030.12</div>
-            <div class="project-title">地形-热力-剪切协同作用下湍流结构演化及自推进体智能响应 (国家自然科学基金面上项目, 12672289)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">
-                RMB 53w <br>
-                (Target) 6-8 papers;<br>
-                <!-- funding:auto:start project=12672289 status=completed -->
-                (Completed)  papers:<br>
-                i) _R;
-                <!-- funding:auto:end -->
-                <!-- funding:auto:start project=12672289 status=coming -->
-                <br>(Coming..)  papers:<br>
-                i) _R;
-                <!-- funding:auto:end -->
-            </div>
-        </li>
+    <script src="./js/research.js" defer></script>
 
-        <!-- Project 13 -->
-        <li class="project-card">
-            <span class="status-badge badge-active">Active</span>
-            <div class="project-header">2026.01 - 2027.12</div>
-            <div class="project-title">湍流结构与热-质输运 (中央高校基本科研业务费, D5000260269)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">
-                RMB 20w <br>
-                (Target) 3-5 papers;<br>
-                <!-- funding:auto:start project=D5000260269 status=completed -->
-                (Completed) 0 papers:
-                <!-- funding:auto:end -->
-                <!-- funding:auto:start project=D5000260269 status=coming -->
-                <br>(Coming..) 0 papers:
-                <!-- funding:auto:end -->
-            </div>
-        </li>
-        
-        
-        <!-- Project 12 -->
-        <li class="project-card">
-            <span class="status-badge badge-active">Active</span>
-            <div class="project-header">2025.07 - 2028.07</div>
-            <div class="project-title">省青年拔尖人才项目</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">RMB 50w</div>
-        </li>
-        
-        <!-- Project 11 -->
-        <li class="project-card">
-            <span class="status-badge badge-active">Active</span>
-            <div class="project-header">2024.12 - 2027.12</div>
-            <div class="project-title">无人机敏捷飞行技术 (JKW173计划重点项目)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">RMB 15w / 1730w, Rank 9 / 16</div>
-        </li>
-        
-        <!-- Project 10 -->
-        <li class="project-card">
-            <span class="status-badge badge-active">Active</span>
-            <div class="project-header">2024.01 - 2028.12</div>
-            <div class="project-title">极端流动的多过程问题研究 (国家自然科学基金基础科学中心项目, 12388101)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">
-                RMB 48.57w <del>120w</del> / 6000w, 20 / 300 <br>
-                (Target) 8 papers<br>
-                <!-- funding:auto:start project=12388101 status=completed -->
-                (Completed) 1+4+2 papers:<br>
-                vii) JFM2026_Learning_R2; vi) PoF_Triggering_R1; v) JFM2026_Super_R2; iv) IJHMT2026_Interpolation_R2; iii) JFM2025_Temporal_R3; ii) JFM2024_Transport_R3; i) JFM2024_Prandtl_R2;
-                <!-- funding:auto:end -->
-                <!-- funding:auto:start project=12388101 status=coming -->
-                <br>(Coming..) 1+1 papers:<br>
-                ii) JFM_Velocity_R2; i) AMS_Revisit_R1;
-                <!-- funding:auto:end -->
-            </div>
-        </li>
-
-        <!-- Project 9 -->
-        <li class="project-card">
-            <span class="status-badge badge-active">Active</span>
-            <div class="project-header">2023.01 - 2026.12</div>
-            <div class="project-title">热湍流中颗粒的被动迁移及主动推进 (国家自然科学基金面上项目, 12272311)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">
-                RMB 55w+7.5w <br>
-                (Target) 6-8 papers;<br>
-                <!-- funding:auto:start project=12272311 status=completed -->
-                (Completed) 9+2 papers:<br>
-                xi) JFM2026_Learning_R1; x) PoF_Triggering_R2; ix) JFM2026_Super_R1; viii) IJHMT2026_Interpolation_R1; vii) JFM2025_Temporal_R1; vi) JFM2024_Transport_R1; v) IJHMT2024_Particle_R1; iv) PRF2023_Pore_R1; iii) JFM2023_Wall_R1; ii) PRF2023_Long_R1; i) IJHMT2023_Multi_R2;
-                <!-- funding:auto:end -->
-                <!-- funding:auto:start project=12272311 status=coming -->
-                <br>(Coming..) 1+1 papers:<br>
-                ii) JFM_Velocity_R1; i) AMS_Revisit_R2;
-                <!-- funding:auto:end -->
-            </div>
-        </li>
-    </ul>
-
-    <h3>Inactive</h3>
-    <ul class="project-list">
-    
-        <!-- Project 8 -->
-        <li class="project-card inactive">
-            <span class="status-badge badge-inactive">Completed</span>
-            <div class="project-header">2024.01 - 2026.12</div>
-            <div class="project-title">中国科协青年人才托举工程 (2023QNRC001)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">
-                RMB 30w <br>
-                (Target) 6 papers;<br>
-                <!-- funding:auto:start project=2023QNRC001 status=completed -->
-                (Completed) 0+0+2+5 papers:<br>
-                vii) JFM2026_Learning_R4; vi) PoF_Triggering_R4; v) JFM2026_Super_R4; iv) IJHMT2026_Interpolation_R3; iii) JFM2025_Temporal_R4; ii) JFM2024_Transport_R4; i) JFM2024_Prandtl_R3;
-                <!-- funding:auto:end -->
-                <!-- funding:auto:start project=2023QNRC001 status=coming -->
-                <br>(Coming..) 0+0+1+1 papers:<br>
-                ii) JFM_Velocity_R4; i) AMS_Revisit_R3;
-                <!-- funding:auto:end -->
-            </div>
-        </li>
-        
-        <!-- Project 7 -->
-        <li class="project-card inactive">
-            <span class="status-badge badge-inactive">Completed</span>
-            <div class="project-header">2024.10 - 2026.04</div>
-            <div class="project-title">集群无人机飞行控制技术 (JKW173计划技术领域基金项目)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">RMB 10w / 125w, Rank 4 / 11</div>
-        </li>
-        
-        <!-- Project 6 -->
-        <li class="project-card inactive">
-            <span class="status-badge badge-inactive">Completed</span>
-            <div class="project-header">2024.06 - 2025.09</div>
-            <div class="project-title">气隙域涡流性能测试系统及平台设计、试验 (中国船舶重工集团公司第七〇四研究所)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">RMB 45w</div>
-        </li>
-        
-        <!-- Project 5 -->
-        <li class="project-card inactive">
-            <span class="status-badge badge-inactive">Completed</span>
-            <div class="project-header">2021.01 - 2022.12</div>
-            <div class="project-title">格子Boltzmann水滴结冰模型的发展及其应用 (国防KGJ实验室基金)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">
-                RMB 5w <br>
-                (Target) 2-3 papers;<br>
-                <!-- funding:auto:start project=IADL20200301 status=completed -->
-                (Completed) 0+0+2 papers:<br>
-                ii) IJHMT2024_Particle_R3; i) IJHMT2023_Multi_R3;
-                <!-- funding:auto:end -->
-            </div>
-        </li>
-
-        <!-- Project 4 -->
-        <li class="project-card inactive">
-            <span class="status-badge badge-inactive">Completed</span>
-            <div class="project-header">2020.06 - 2022.12</div>
-            <div class="project-title">湍热对流拟序结构作用下颗粒运动规律的研究 (国防KGJ某重大工程青年项目)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">
-                RMB 35w <br>
-                (Target) 2-3 papers;<br>
-                <!-- funding:auto:start project=GJXM92579 status=completed -->
-                (Completed) 0+0+4+1 papers:<br>
-                v) PRF2023_Long_R3; iv) IJHMT2023_Multi_R4; iii) POF2022_Migration_R3; ii) POF2022_Production_R3; i) POF2020_Correlation_R3;
-                <!-- funding:auto:end -->
-            </div>
-        </li>
-            
-        <!-- Project 3 -->
-        <li class="project-card inactive">
-            <span class="status-badge badge-inactive">Completed</span>
-            <div class="project-header">2020.01 - 2022.12</div>
-            <div class="project-title">基于格子Boltzmann方法的三维热对流中非球形固体颗粒运动规律研究 (国家自然科学基金青年科学基金项目, 11902268)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">
-                RMB 26w+4.3w <br>
-                (Target) 3-5 papers;<br>
-                <!-- funding:auto:start project=11902268 status=completed -->
-                (Completed) 7+2+1 papers:<br>
-                x) IJHMT2024_Particle_R2; ix) IJHMT2023_Multi_R1; viii) POF2022_Migration_R1; vii) POF2022_Production_R1; vi) JFM2022_Counter_R3; v) JFM2021_Tristable_R1; iv) POF2020_Correlation_R1; iii) POF2020_Transport_R1; ii) IJHMT2020_Curved_R2; i) POF2019_Statistics_R1;
-                <!-- funding:auto:end -->
-            </div>
-        </li>
-        
-        <!-- Project 2 -->
-        <li class="project-card inactive">
-            <span class="status-badge badge-inactive">Completed</span>
-            <div class="project-header">2020.01 - 2021.12</div>
-            <div class="project-title">基于格子Boltzmann方法的超疏水表面过冷水滴结冰介观机理研究 (国防KGJ重点实验室基金)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">RMB 17.5w</div>
-        </li>
-            
-        <!-- Project 1 -->
-        <li class="project-card inactive">
-            <span class="status-badge badge-inactive">Completed</span>
-            <div class="project-header">2019.01 - 2021.12</div>
-            <div class="project-title">羽流作用下固体颗粒运动规律的研究 (中央高校基本科研业务费, D5000200570)</div>
-            <div class="project-details-toggle" onclick="toggleDetails(this)">Details</div>
-            <div class="detail-content">RMB 40w</div>
-        </li>
-    </ul>
-
-    <script>
-        function toggleDetails(element) {
-            const detailsContent = element.nextElementSibling;
-            const isExpanded = detailsContent.style.display === 'block';
-            
-            detailsContent.style.display = isExpanded ? 'none' : 'block';
-            element.classList.toggle('expanded', !isExpanded);
-            element.textContent = isExpanded ? 'Details' : 'Hide Details';
-        }
-
-        function updateConferenceStats() {
-            const stats = document.querySelector('[data-conf-stats]');
-            const list = document.querySelector('[data-conf-section="conferences"]');
-            if (!stats || !list) return;
-
-            const featuredCount = list.querySelectorAll('.badge-invite, .badge-keynote').length;
-            stats.querySelector('[data-stat="featured"]').textContent = featuredCount;
-        }
-
-        document.addEventListener('DOMContentLoaded', updateConferenceStats);
-    </script>
-
-    <!-- === Conferences === -->
-    <h2 id="conferences-talks">Conferences and Talks (Selected)</h2>
-    
-    <h3>Conferences</h3>
-    <div class="conf-stats" data-conf-stats>
-        <span><strong data-stat="featured">0</strong> Invited/Keynote</span>
-    </div>
-    <ol class="conf-list" data-conf-section="conferences" reversed>
-        <li class="conf-item">
-            <div class="conf-date">2026.08.07 - 12 | Hong Kong</div>
-            <div class="conf-title">Wall modeled large eddy simulation of turbulent channel flow with unstable stratification</div>
-            <div class="conf-venue">The 32nd International Conference on Computational & Experimental Engineering and Sciences <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2026-第三十二届计算与实验科学工程国际会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2026.08.07 - 11 | Qingdao</div>
-            <div class="conf-title">高瑞利数热湍流中自驱动体的主动推进</div>
-            <div class="conf-venue">第十四届全国流体力学学术会议 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2026-第十四届全国流体力学学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2026.07.10 - 12 | Mianyang</div>
-            <div class="conf-title">不稳定热分层槽道流的壁面模化大涡模拟</div>
-            <div class="conf-venue">2026年壁湍流基础问题青年学术研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2026.06.26 - 28 | Datong</div>
-            <div class="conf-title">湍流结构与热-质输运</div>
-            <div class="conf-venue">2026第四届六校力学学术论坛 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2026.06.01 - 05 | Lyon</div>
-            <div class="conf-title">Learning to traverse convective flows at moderate to high Rayleigh numbers</div>
-            <div class="conf-venue">10th International Conference on Rayleigh-Bénard Turbulence (第十届瑞利-伯纳德湍流国际会议) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.12.26 - 28 | Shenzhen</div>
-            <div class="conf-title">不稳定热分层槽道流的壁面模化大涡模拟</div>
-            <div class="conf-venue">稀薄气体与湍流的多尺度非平衡流动学术研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.11.28 - 30 | Beijing</div>
-            <div class="conf-title">热湍流中自驱动体的主动推进</div>
-            <div class="conf-venue">中国力学学会青年托举人才与导师交流会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.11.22 - 23 | Lanzhou</div>
-            <div class="conf-title">热湍流结构与物质输运</div>
-            <div class="conf-venue">四校力学论坛-2025 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.11.14 - 16 | Shanghai</div>
-            <div class="conf-title">热湍流中自驱动体的主动推进</div>
-            <div class="conf-venue">第十四届全国流体力学青年研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.10.31 - 11.02 | Xi'an</div>
-            <div class="conf-title">剪切热湍流的研究进展</div>
-            <div class="conf-venue">第二届极端流动与多过程问题研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.10.24 - 26 | Hangzhou</div>
-            <div class="conf-title">热湍流中自驱动颗粒的主动推进</div>
-            <div class="conf-venue">第四届全国多相流青年学者研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-第四届全国多相流青年学者研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.09.01 - 02 | Beijing</div>
-            <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
-            <div class="conf-venue">JFM/FLOW Symposium China 2025 (JFM/FLOW 2025中国专题研讨会) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-JFM-FLOW中国专题研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.07.18 - 21 | Changsha</div>
-            <div class="conf-title">热湍流结构与颗粒输运</div>
-            <div class="conf-venue">中国力学大会-2025 (流体力学分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2025-中国力学大会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.07.20 | Changsha</div>
-            <div class="conf-title">复杂流动与传热传质的格子玻尔兹曼模拟</div>
-            <div class="conf-venue">AMS创刊40周年座谈会暨力学学科前瞻研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-AMS创刊40周年座谈会暨力学学科前瞻研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.04.19 - 20 | Nanchang</div>
-            <div class="conf-title">剪切热湍流中颗粒的输运与沉积</div>
-            <div class="conf-venue">2025年全国湍流与流动稳定性专题研讨会 <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2025-全国湍流与流动稳定性专题研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2025.02.26 | Xi'an</div>
-            <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
-            <div class="conf-venue">多相流数值模拟前沿进展研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2024.10.25 - 27 | Ningbo</div>
-            <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
-            <div class="conf-venue">International Symposium on Multiphase Flows - 2024 (国际多相流学术研讨会) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2024-国际多相流学术研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2024.09.20 - 22 | Taiyuan</div>
-            <div class="conf-title">剪切热湍流结构演化与颗粒输运</div>
-            <div class="conf-venue">2024流固耦合前沿问题及无网格方法应用研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2024.09.18 - 19 | Xi'an</div>
-            <div class="conf-title">Temporal modulation on mixed convection in turbulent channels</div>
-            <div class="conf-venue">Workshop on Theory and Modeling of Fluid Excitation (流体激励理论与建模研讨会) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2024.08.21 - 23 | Beijing</div>
-            <div class="conf-title">Particle transport and deposition in wall-sheared thermal turbulence</div>
-            <div class="conf-venue">2nd BICTAM-CISM Symposium on Dispersed Multiphase Flows (第二届北京国际力学中心与意大利国际力学中心离散多相流研讨会) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2024.08.09 - 13 | Harbin</div>
-            <div class="conf-title">热湍流中颗粒的主动推进</div>
-            <div class="conf-venue">第十三届全国流体力学学术会议 (湍流与稳定性分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2024-第十三届全国流体力学学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2024.08.05 | Lanzhou</div>
-            <div class="conf-title">剪切热湍流结构演化与颗粒输运</div>
-            <div class="conf-venue">“多相流多过程耦合流动”学术研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2024.08.02 - 04 | Lanzhou</div>
-            <div class="conf-title">时变壁面温度对槽道湍流结构演化的影响</div>
-            <div class="conf-venue">2024壁湍流基础问题青年学术研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2023.10.16 - 20 | Xi'an</div>
-            <div class="conf-title">Self-propelling Particles Surfing in Turbulent Thermal Convection</div>
-            <div class="conf-venue">9th International Conference on Rayleigh-Bénard Turbulence (第九届瑞利-伯纳德湍流国际会议) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2023.08.08 - 12 | Beijing</div>
-            <div class="conf-title">Migrating of a Self-propelling Particle in Thermal Turbulence</div>
-            <div class="conf-venue">17th Asian Congress of Fluid Mechanics (第十七届亚洲流体力学大会) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2023.07.07 - 11 | Lanzhou</div>
-            <div class="conf-title">Control the Migration of Self-propelling Particle in Thermal Turbulence</div>
-            <div class="conf-venue">IUTAM Symposium on Turbulent Structure and Particles-Turbulence Interaction (国际理论与应用力学联合会湍流结构及颗粒-湍流相互作用研讨会) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2023.04.19 | Hong Kong</div>
-            <div class="conf-title">Energy-efficient propulsion of self-propelling particle in turbulent environments</div>
-            <div class="conf-venue">Bilateral Academic Conference between NPU and HKUST (西北工业大学与香港科技大学双边学术会议) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/邀请报告-2023-西北工业大学与香港科技大学双边学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2023.04.14 - 17 | Ningbo</div>
-            <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>
-            <div class="conf-venue">2023年全国湍流与流动稳定性专题研讨会 <span class="badge-conf badge-keynote">Keynote</span> <a href="./pdf/主旨报告-2023-全国湍流与流动稳定性研讨会.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2022.11.18 - 21 | Xi'an (Hybrid)</div>
-            <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>
-            <div class="conf-venue">第十二届全国流体力学学术会议 (湍流与稳定性分会场) <span class="badge-conf badge-invite">Invited</span> <a href="./pdf/分会场邀请报告-2022-第十二届全国流体力学学术会议.pdf" target="_blank" rel="noopener noreferrer" class="conf-link">[PDF]</a></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2022.11.05 - 10 | Online</div>
-            <div class="conf-title">二维圆形对流腔中的大尺度环流反转</div>
-            <div class="conf-venue">中国力学大会-2021+1 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2020.01.03 | Beijing</div>
-            <div class="conf-title">LBM多功能数值模拟软件的开发及其在室内污染物颗粒防治中的应用</div>
-            <div class="conf-venue">“自然环境湍流两相流的高精度计算仿真”研讨会 <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2019.09.03 - 05 | Xi'an</div>
-            <div class="conf-title">Thermal effects on the sedimentation behavior of elliptical particles</div>
-            <div class="conf-venue">Workshop on Multiphase Flow Computations and Fluid Flow Physics (多相流动计算方法及流体物理学术研讨会) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2018.12.07 | Xi'an</div>
-            <div class="conf-title">A three-dimensional pseudo-potential-based lattice Boltzmann model for multiphase flows with large density ratio and variable surface tension</div>
-            <div class="conf-venue">Workshop on Multiphase Flow and Free Surface Dynamics (多相流及自由面动力学研讨会) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2018.08.10 - 15 | Beijing</div>
-            <div class="conf-title">Effect of fiber orientation on the effective mass diffusivity of fibrous porous media</div>
-            <div class="conf-venue">16th International Heat Transfer Conferences (第十六届国际传热大会) <span class="badge-conf badge-oral">Oral</span></div>
-        </li>
-    </ol>
-
-    <h3>University Seminars</h3>
-    <ol class="conf-list" data-conf-section="seminars" reversed>
-        <li class="conf-item">
-            <div class="conf-date">2023.12.18 | Shenzhen</div>
-            <div class="conf-title">湍流场中自驱动颗粒的节能推进</div>
-            <div class="conf-venue">南方科技大学机械与能源工程系 <span class="badge-conf badge-seminar">Seminar</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2021.09.25 | Online</div>
-            <div class="conf-title">热湍流中大尺度环流反转的机制</div>
-            <div class="conf-venue">工程建模与科学计算湖北省重点实验室 <span class="badge-conf badge-seminar">Seminar</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2019.05.08 | Wuhan</div>
-            <div class="conf-title">基于格子Boltzmann方法的热对流模拟</div>
-            <div class="conf-venue">华中科技大学数学与统计学院 <span class="badge-conf badge-seminar">Seminar</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2017.09.18 | Beijing</div>
-            <div class="conf-title">Lattice Boltzmann Modeling of Complex Multiphase Transport Phenomena in Fuel Cells and Flow Batteries</div>
-            <div class="conf-venue">清华大学热能系 <span class="badge-conf badge-seminar">Seminar</span></div>
-        </li>
-        <li class="conf-item">
-            <div class="conf-date">2017.09.15 | Hefei</div>
-            <div class="conf-title">Lattice Boltzmann Modeling of Complex Multiphase Transport Phenomena in Fuel Cells and Flow Batteries</div>
-            <div class="conf-venue">中国科学技术大学热科学和能源工程系 <span class="badge-conf badge-seminar">Seminar</span></div>
-        </li>
-    </ol>
-    
     </article>
-    
+
     <div class="div0"></div>
-    
+
 </div>

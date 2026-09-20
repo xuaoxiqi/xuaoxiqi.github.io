@@ -14,6 +14,48 @@ const verbose = args.has("--verbose");
 const config = JSON.parse(fs.readFileSync(CONFIG_PATH, "utf8"));
 const rankTokens = config.rankTokens || [];
 const projects = config.projects || [];
+const fundingBlockPattern =
+  /([ \t]*)<!-- funding:auto:start\s+project=([^\s]+)\s+status=([^\s]+)\s*-->\r?\n[\s\S]*?\r?\n[ \t]*<!-- funding:auto:end -->/g;
+
+function validateFundingConfiguration(html) {
+  const projectIds = new Set(projects.map((project) => project.id));
+  const tokenIds = new Set(rankTokens.map((token) => token.id));
+  const issues = new Set();
+
+  for (const project of projects) {
+    const grantIds = project.grantIds || [project.id];
+    if (grantIds.length === 0) {
+      issues.add(`Project ${project.id} has no grantIds in data/funding-projects.json.`);
+    }
+    for (const grantId of grantIds) {
+      if (!tokenIds.has(grantId)) {
+        issues.add(`Project ${project.id}: grant ${grantId} is missing from rankTokens in data/funding-projects.json.`);
+      }
+    }
+  }
+
+  const blocks = [...html.matchAll(fundingBlockPattern)];
+  if (blocks.length === 0) {
+    issues.add("No valid funding:auto blocks found in research.html.");
+  }
+  const starts = html.match(/<!--\s*funding:auto:start\b/g) || [];
+  const ends = html.match(/<!--\s*funding:auto:end\s*-->/g) || [];
+  if (starts.length !== blocks.length || ends.length !== blocks.length) {
+    issues.add("Malformed or unmatched funding:auto markers in research.html.");
+  }
+  for (const [, , projectId, status] of blocks) {
+    if (!projectIds.has(projectId)) {
+      issues.add(`research.html references project ${projectId}, which is missing from projects in data/funding-projects.json.`);
+    }
+    if (status !== "completed" && status !== "coming") {
+      issues.add(`Project ${projectId}: unsupported funding status "${status}" in research.html.`);
+    }
+  }
+
+  if (issues.size > 0) {
+    throw new Error(`Funding configuration is incomplete:\n- ${[...issues].join("\n- ")}`);
+  }
+}
 
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -258,13 +300,12 @@ function renderBlock(projectId, status, indent, results, eol = "\n") {
 
 function updateResearch(results) {
   const html = fs.readFileSync(RESEARCH_PATH, "utf8");
+  validateFundingConfiguration(html);
   const crlfCount = (html.match(/\r\n/g) || []).length;
   const lfOnlyCount = (html.match(/(?<!\r)\n/g) || []).length;
   const eol = crlfCount >= lfOnlyCount ? "\r\n" : "\n";
-  const markerPattern =
-    /([ \t]*)<!-- funding:auto:start\s+project=([^\s]+)\s+status=([^\s]+)\s*-->\r?\n[\s\S]*?\r?\n[ \t]*<!-- funding:auto:end -->/g;
   let replacements = 0;
-  const updated = html.replace(markerPattern, (match, indent, projectId, status) => {
+  const updated = html.replace(fundingBlockPattern, (match, indent, projectId, status) => {
     replacements += 1;
     return [
       `${indent}<!-- funding:auto:start project=${projectId} status=${status} -->`,
@@ -295,8 +336,18 @@ function printSummary(results) {
   }
 }
 
-const entries = parsePublications();
-const results = buildProjectResults(entries);
-const replacementCount = updateResearch(results);
-printSummary(results);
-console.log(`${dryRun ? "Checked" : "Updated"} ${replacementCount} funding block(s) in research.html.`);
+try {
+  const unknownArgs = [...args].filter((arg) => arg !== "--dry-run" && arg !== "--verbose");
+  if (unknownArgs.length > 0) {
+    throw new Error(`Unknown argument(s): ${unknownArgs.join(", ")}. Supported options: --dry-run, --verbose.`);
+  }
+  validateFundingConfiguration(fs.readFileSync(RESEARCH_PATH, "utf8"));
+  const entries = parsePublications();
+  const results = buildProjectResults(entries);
+  const replacementCount = updateResearch(results);
+  printSummary(results);
+  console.log(`${dryRun ? "Checked" : "Updated"} ${replacementCount} funding block(s) in research.html.`);
+} catch (error) {
+  console.error(error.message);
+  process.exitCode = 1;
+}
