@@ -1433,6 +1433,7 @@ body.page-research nav#navBarBottom {
     font-family: 'Droid Sans', 'Segoe UI', Tahoma, sans-serif;
     line-height: 1.7;
     text-align: left;
+    background: transparent;
     border-radius: 0;
     box-shadow: none;
     letter-spacing: 0;
@@ -1476,7 +1477,7 @@ body.page-research nav#navBarBottom {
     display: flex;
     flex-wrap: wrap;
     gap: 0 32px;
-    padding: 0;
+    padding: 0 20px;
     border-top: 1px solid #dfe5e6;
     border-bottom: 1px solid #dfe5e6;
     background: #fff;
@@ -1531,8 +1532,25 @@ body.page-research nav#navBarBottom {
     letter-spacing: 0;
 }
 
+.page-research .interest-block,
+.page-research .project-card,
+.page-research .conf-item,
+.page-research .editor-card,
+.page-research .publisher-card {
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #dfe6e8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(32, 48, 54, 0.05);
+}
+
 .page-research .interest-block {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
+    padding: 24px 28px;
+}
+
+.page-research .interest-block > h3 {
+    margin-top: 0;
 }
 
 .page-research .interest-text {
@@ -1561,7 +1579,7 @@ body.page-research nav#navBarBottom {
 .page-research .interest-img-container {
     width: 88%;
     max-width: 1000px;
-    margin: 28px auto 36px;
+    margin: 28px auto 8px;
 }
 
 .page-research .interest-img-container a {
@@ -1586,18 +1604,38 @@ body.page-research nav#navBarBottom {
 }
 
 .page-research .project-list {
+    display: grid;
+    gap: 16px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .page-research .project-card {
-    padding: 22px 0;
-    border-bottom: 1px solid #e5e9ea;
+    padding: 20px 24px;
+    border-left: 4px solid var(--accent-color);
 }
 
-.page-research .project-card:first-child {
-    padding-top: 4px;
+.page-research .project-card:has(.badge-upcoming) {
+    border-left-color: #b99346;
+}
+
+.page-research .project-card,
+.page-research .conf-item,
+.page-research .editor-card,
+.page-research .publisher-card {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-research .project-card:hover,
+.page-research .project-card:focus-within,
+.page-research .conf-item:hover,
+.page-research .editor-card:hover,
+.page-research .publisher-card:hover {
+    border-top-color: #c1d3d3;
+    border-right-color: #c1d3d3;
+    border-bottom-color: #c1d3d3;
+    box-shadow: 0 4px 14px rgba(32, 48, 54, 0.08);
 }
 
 .page-research .project-header {
@@ -1683,8 +1721,9 @@ body.page-research nav#navBarBottom {
 }
 
 .page-research .project-card.inactive {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding: 16px 24px;
+    border-left-color: #a7b2b8;
+    box-shadow: 0 1px 5px rgba(32, 48, 54, 0.04);
 }
 
 .page-research .project-card.inactive .project-title {
@@ -1719,13 +1758,14 @@ body.page-research nav#navBarBottom {
 }
 
 .page-research .conf-item {
-    padding: 18px 0 18px 8px;
-    border-bottom: 1px solid #e5e9ea;
+    padding: 16px 20px;
+    margin-bottom: 12px;
 }
 
 .page-research .conf-item::marker {
     color: #657078;
     font-size: 12px;
+    font-weight: 700;
     font-variant-numeric: tabular-nums;
 }
 
@@ -1789,16 +1829,17 @@ body.page-research nav#navBarBottom {
     font-size: 12px;
 }
 
+.page-research .editor-list {
+    display: grid;
+    gap: 16px;
+}
+
 .page-research .editor-card {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 310px;
     gap: 24px;
-    padding: 20px 0;
-    border-bottom: 1px solid #e5e9ea;
-}
-
-.page-research .editor-card:first-child {
-    padding-top: 4px;
+    padding: 22px 24px;
+    border-left: 4px solid var(--primary-color);
 }
 
 .page-research .editor-journal {
@@ -1835,17 +1876,29 @@ body.page-research nav#navBarBottom {
     font-variant-numeric: tabular-nums;
 }
 
+.page-research .reviewer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
 .page-research .publisher-card {
     display: grid;
-    grid-template-columns: 180px minmax(0, 1fr);
-    gap: 24px;
-    padding: 18px 0;
-    border-bottom: 1px solid #e5e9ea;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    gap: 12px;
+    padding: 20px 24px;
+}
+
+.page-research .publisher-card:first-child {
+    grid-column: 1 / -1;
 }
 
 .page-research .publisher-name {
-    color: #58636a;
-    font-size: 13px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e7ecee;
+    color: var(--primary-color);
+    font-size: 14px;
     font-weight: 700;
 }
 
@@ -1878,6 +1931,7 @@ body.page-research nav#navBarBottom {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0 16px;
+        padding: 0 12px;
     }
 
     #articlePost.page-research .research-nav a {
@@ -1889,15 +1943,19 @@ body.page-research nav#navBarBottom {
     .page-research .research-header p { font-size: 16px; }
     .page-research h2 { margin-top: 40px; font-size: 23px; }
     .page-research h3 { font-size: 18px; }
+    .page-research .interest-block { padding: 20px 16px; }
     .page-research .interest-img-container { width: 100%; }
+    .page-research .project-card,
+    .page-research .project-card.inactive { padding: 18px 16px; }
     .page-research .project-title { font-size: 16px; }
     .page-research .conf-entry { grid-template-columns: minmax(0, 1fr); gap: 6px; }
     .page-research .conf-date { flex-direction: row; flex-wrap: wrap; gap: 4px 14px; }
     .page-research .conf-list { padding-left: 24px; }
-    .page-research .conf-item { padding-left: 4px; }
-    .page-research .editor-card { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .page-research .conf-item { padding: 16px; }
+    .page-research .editor-card { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 20px 16px; }
     .page-research .editor-appointments { max-width: 360px; }
-    .page-research .publisher-card { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .page-research .reviewer-grid { grid-template-columns: minmax(0, 1fr); }
+    .page-research .publisher-card { gap: 10px; padding: 20px 16px; }
 }
 
 /* === Page: Publications (publications.html) === */
