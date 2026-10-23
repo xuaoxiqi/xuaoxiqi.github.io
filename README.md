@@ -1,3 +1,17 @@
+## Thermal Soaring Animation
+
+Place new animation files in the repository root using the name
+`Thermal_Soaring_V<number>.html`, for example `Thermal_Soaring_V29.html`.
+Use positive integer versions without leading zeros and keep these standalone
+HTML files without YAML front matter. During each Jekyll build, `research.html`
+automatically embeds the highest numeric version from `site.static_files`.
+Older versions may be kept or removed; no Research page edit is needed.
+Commit and publish the new file through the normal website workflow.
+
+The local `_/preview-research.cjs` preview also discovers versions on each page
+request, so refreshing the page picks up newly added files. Opening the raw
+Research HTML directly with `file://` does not render Liquid templates.
+
 ## Funding Statistics
 
 Update the project publication counts and lists in `research.html` from the local

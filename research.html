@@ -57,9 +57,23 @@ hero_stats:
             and adaptive control. I am interested in how aircraft can exploit atmospheric energy to sustain
             unpowered flight and improve flight efficiency.
         </p>
-        <iframe class="thermal-soaring-frame" src="./Thermal_Soaring_V28.html"
+        {% assign soaring_version = 0 %}
+        {% assign soaring_path = '' %}
+        {% for file in site.static_files %}
+            {% if file.path contains '/Thermal_Soaring_V' %}
+                {% assign version = file.path | remove: '/Thermal_Soaring_V' | remove: '.html' | plus: 0 %}
+                {% assign expected_path = '/Thermal_Soaring_V' | append: version | append: '.html' %}
+                {% if file.path == expected_path and version > soaring_version %}
+                    {% assign soaring_version = version %}
+                    {% assign soaring_path = file.path %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if soaring_path != '' %}
+        <iframe class="thermal-soaring-frame" src="{{ soaring_path | relative_url }}"
             title="Thermal soaring: gliding, thermal entry, circling ascent, and flight control"
             loading="lazy" width="1200" height="900"></iframe>
+        {% endif %}
         <h4 class="research-application-title">Related Publications</h4>
         <ul class="research-focus-list">
             <li><strong>A. Xu</strong>; H.L. Wu; B.R. Xu; H.D. Xi<sup>*</sup>.

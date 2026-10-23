@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>热滑翔 · Thermal Soaring V23 | 动画 · 徐翱</title>
+<title>热滑翔 · Thermal Soaring V29 | 动画 · 徐翱</title>
 <style>
 :root{--bg:#061420;--panel:#102637;--line:#294d60;--white:#f2f8fd;--muted:#a2bed0;--mint:#53e4cb;--cyan:#74caff;--drag:#ff947c;--gravity:#ffd16c;--gold:#f9dc9c}
 *{box-sizing:border-box}html{min-height:100%;background:var(--bg)}
@@ -21,9 +21,7 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
 .mainstage:after{content:"";position:absolute;pointer-events:none;inset:0;background:linear-gradient(90deg,#04122053,transparent 38%,transparent 83%,#071b2620),linear-gradient(0deg,#06131d2b,transparent 30%)}
 .stageid{position:absolute;top:18px;left:18px;z-index:2;max-width:370px;background:#081f30e6;backdrop-filter:blur(7px);border:1px solid #3e647a;border-radius:12px;padding:11px 14px}
 .stageid .num{font-size:13px;letter-spacing:2px;color:#75ecd2;font-weight:800;margin-bottom:5px}.stageid h2{font-size:26px;margin:0 0 3px}.stageid .en{color:#b9d9e9;font-size:15px}
-.scriptbox{position:absolute;left:0;right:0;bottom:0;z-index:2;border:none;border-radius:0;background:linear-gradient(0deg,rgba(2,16,28,.91) 0%,rgba(2,16,28,.76) 78%,transparent 100%);padding:14px 26px 10px;color:#f4fbff;font-size:clamp(21px,1.85vw,26px);font-weight:720;letter-spacing:.3px;line-height:1.42;text-align:center;text-wrap:balance;text-shadow:0 2px 5px #00111f,0 0 12px #00111f;pointer-events:none}
-/* Scene-specific intentional line breaks: never let balanced wrapping split key words. */
-.scriptbox.manual-break{white-space:pre-line;text-wrap:wrap;padding-left:12px;padding-right:12px;font-size:clamp(20px,1.79vw,25px)}
+.scriptbox{position:absolute;left:0;right:0;bottom:0;z-index:2;border:none;border-radius:0;background:linear-gradient(0deg,rgba(2,16,28,.91) 0%,rgba(2,16,28,.76) 78%,transparent 100%);padding:14px 26px 10px;color:#f4fbff;font-size:clamp(21px,1.85vw,26px);font-weight:720;letter-spacing:.3px;line-height:1.42;text-align:center;text-wrap:balance;line-break:strict;text-shadow:0 2px 5px #00111f,0 0 12px #00111f;pointer-events:none}
 .side{display:flex;flex-direction:column;gap:10px}.sidecard{padding:0;border:none;background:transparent;box-shadow:none}.sidecard h3{font-size:19px;margin:0 0 7px}.sidecard .desc{font-size:15px;color:#afc9da;line-height:1.58;margin:0 0 11px}
 .viewframe{position:relative;overflow:hidden;border-radius:8px;border:1px solid #2b5062;background:#0b2533}
 .viewframe canvas{display:block;width:100%;height:100%;border:0;background:transparent}
@@ -35,6 +33,13 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
 #altitude{height:128px}.formula{margin-top:7px;background:#123449;border:1px solid #2d6172;padding:8px 6px;border-radius:9px;color:#f6dfaa;font-size:14px;line-height:1.5;font-weight:700;text-align:center}.formula small{display:block;font-size:14px;font-weight:400;color:#b5d0df}
 .scenebar{padding:12px 16px 13px;margin-top:12px}.barhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}.barhead strong{font-size:15px}.barhead small{font-size:14px;color:#98bbcd;margin-left:7px}
 .minicontrols{display:flex;gap:8px;align-items:center}.timer{font-size:15px;color:#d2f5eb;font-variant-numeric:tabular-nums;font-weight:760}.controlbtn{font-size:15px;font-weight:800;border:1px solid #376b79;border-radius:8px;background:#184252;color:#f0fffe;padding:9px 13px;cursor:pointer}.controlbtn:hover,.controlbtn:focus-visible{background:#246176}
+.minicontrols{flex-wrap:wrap}
+.speedgroup{display:inline-flex;align-items:center;border:1px solid #376b79;border-radius:9px;overflow:hidden;background:#102b3d;white-space:nowrap}
+.speedbtn{font-family:inherit;font-size:14px;font-weight:800;line-height:1.2;min-height:37px;border:0;color:#c9dfe9;padding:9px 12px;background:transparent;cursor:pointer;white-space:nowrap}
+.speedbtn+.speedbtn{border-left:1px solid #376b79}
+.speedbtn.active{color:#082c36;background:#75e4ce}
+.speedbtn:hover:not(.active),.speedbtn:focus-visible:not(.active){background:#215069;color:white}
+@media(max-width:600px){.minicontrols{gap:6px}.speedbtn{font-size:13px;min-height:35px;padding:8px 10px}}
 .scrubwrap{display:flex;align-items:center;gap:12px}.scrublabel{white-space:nowrap;font-size:14px;color:#9fc2d4}
 #seek{width:100%;height:28px;cursor:ew-resize;accent-color:#64e7c7;margin:0;appearance:none;background:transparent;touch-action:pan-y}
 #seek::-webkit-slider-runnable-track{height:7px;border-radius:999px;border:1px solid #3e6571;background:linear-gradient(90deg,#52d7c3 0%,#80cfff var(--played,0%),#1d3b50 var(--played,0%),#1d3b50 100%)}
@@ -143,7 +148,7 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
 </section>
 </aside>
 </section>
-<section class="scenebar"><div class="barhead"><div class="minicontrols"><span class="timer" id="clock">00:00 / 00:50</span><button class="controlbtn" type="button" id="pause" aria-label="暂停动画">Ⅱ 暂停</button><button class="controlbtn" type="button" id="replay" aria-label="从头重播">↻ 重播</button></div></div>
+<section class="scenebar"><div class="barhead"><div class="minicontrols"><span class="timer" id="clock">00:00 / 00:50</span><button class="controlbtn" type="button" id="pause" aria-label="暂停动画">Ⅱ 暂停</button><button class="controlbtn" type="button" id="replay" aria-label="从头重播">↻ 重播</button><div class="speedgroup" role="group" aria-label="播放速度"><button class="speedbtn active" type="button" id="rate1" aria-pressed="true" title="正常速度">1× 正常</button><button class="speedbtn" type="button" id="rate2" aria-pressed="false" title="两倍速度">2× 加速</button></div></div></div>
 <div class="scrubwrap"><span class="scrublabel">00:00</span><input id="seek" aria-label="拖动选择动画进度" type="range" min="0" max="50" step="0.01" value="0"><span class="scrublabel">00:50</span></div><div class="scenes" id="sceneStrip"></div></section>
 
 </main>
@@ -155,10 +160,10 @@ const durations=[7,6,18,9,5,5], starts=[0,7,13,31,40,45], ends=[7,13,31,40,45,50
 const SCENES=[
  {name:'寻找热羽流',en:'Search for a thermal',zh:'没有发动机推力，滑翔机仍能靠逐渐降低高度向前飞行。它在背景水平风中寻找能够帮助自己爬升的热羽流。',eng:'The glider follows a shallow descending glide while searching for rising air.',hint:'搜索上升气流'},
  {name:'进入热羽流',en:'Thermal entry',zh:'找到热羽流后，飞行员倾斜机翼，转入盘旋，尽量留在上升气流中。',eng:'The pilot rolls into a coordinated turn and starts circling in the thermal.',hint:'建立盘旋'},
- {name:'盘旋爬升',en:'Thermalling',zh:'热空气不断向上升，滑翔机则在其中盘旋。虽然它相对周围空气\n仍在下沉，但热气流上升得更快，于是飞机就能越飞越高。',eng:'Rising air lets the glider climb while circling.',hint:'持续盘旋爬升'},
+ {name:'盘旋爬升',en:'Thermalling',zh:'热空气不断向上升，滑翔机则在其中盘旋。虽然它相对周围空气仍在下沉，但热气流上升得更快，于是飞机就能越飞越高。',eng:'Rising air lets the glider climb while circling.',hint:'持续盘旋爬升'},
  {name:'修正盘旋中心',en:'Thermal centering',zh:'热羽流中心的上升气流通常更强。飞行员不断微调盘旋位置，让飞机留在最有利的区域。',eng:'Small corrections keep the glider near the best rising air.',hint:'修正盘旋中心'},
  {name:'退出热羽流',en:'Thermal exit',zh:'攒够高度，滑翔机逐渐恢复机翼水平，离开热羽流。',eng:'The glider exits the thermal and prepares for the next glide.',hint:'退出热羽流'},
- {name:'跨区滑翔',en:'Cross-country glide',zh:'接下来，滑翔机用刚获得的高度换取航程，\n向下一股热羽流飞去，周而复始。',eng:'The glider trades altitude for forward travel and searches for the next thermal.',hint:'跨区滑翔'}
+ {name:'跨区滑翔',en:'Cross-country glide',zh:'接下来，滑翔机用刚获得的高度换取航程，向下一股热羽流飞去，周而复始。',eng:'The glider trades altitude for forward travel and searches for the next thermal.',hint:'跨区滑翔'}
 ];
 for(let i=0;i<6;i++){$('sceneStrip').insertAdjacentHTML('beforeend',`<button class="sceneitem" type="button" id="scene${i}" data-idx="${i}" aria-label="跳转第${i+1}幕"><span class="idx">0${i+1} / 06</span><span class="name">${SCENES[i].name}</span></button>`)}
 const clamp=(a,l=0,r=1)=>Math.max(l,Math.min(r,a)),mix=(a,b,s)=>a+(b-a)*s,smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
@@ -425,6 +430,7 @@ function yawview(t){const st=stateAt(t),{ctx,w,h}=canvas('yawview'),cx=w/2,cy=h*
 }
 function format(t){return String(Math.floor(t/60)).padStart(2,'0')+':'+String(Math.floor(t%60)).padStart(2,'0')}
 let time=0,lastMs=null,playing=true,scrubbing=false,lastScene=-1;
+let playbackRate=1;
 let lastReadoutMs=-Infinity,lastReadoutPhase=-1;
 function updateReadouts(s,force=false){
  const now=performance.now();
@@ -440,13 +446,24 @@ function updateReadouts(s,force=false){
  $('climbChip').style.color=s.groundVz>=0?'#77edd0':'#ffcc96';
 }
 function display(t,forceReadouts=false){t=clamp(t,0,TOTAL);let s=stateAt(t),i=s.phase,scene=SCENES[i];
- if(lastScene!==i){$('stageNo').textContent=`SCENE 0${i+1} / 06`;$('stageTitle').textContent=scene.name;$('stageEn').textContent=scene.en;$('scriptText').textContent=scene.zh;$('scriptText').classList.toggle('manual-break',i===2||i===5);for(let j=0;j<6;j++){$('scene'+j).classList.toggle('active',j===i);$('scene'+j).setAttribute('aria-current',j===i?'step':'false')}lastScene=i}
+ if(lastScene!==i){$('stageNo').textContent=`SCENE 0${i+1} / 06`;$('stageTitle').textContent=scene.name;$('stageEn').textContent=scene.en;$('scriptText').textContent=scene.zh;for(let j=0;j<6;j++){$('scene'+j).classList.toggle('active',j===i);$('scene'+j).setAttribute('aria-current',j===i?'step':'false')}lastScene=i}
  updateReadouts(s,forceReadouts);
  $('clock').textContent=`${format(t)} / 00:50`;if(!scrubbing)$('seek').value=String(t);$('seek').style.setProperty('--played',(100*t/TOTAL).toFixed(2)+'%');
  world(t);pitchview(t);velview(t);rollview(t);yawview(t);
 }
 function sync(){let b=$('pause');b.textContent=playing?'Ⅱ 暂停':'▶ 播放';b.setAttribute('aria-label',playing?'暂停动画':'继续播放')}
 function seekTo(v){time=clamp(Number(v)||0,0,TOTAL);display(time,true)}
+function setPlaybackRate(rate){
+ playbackRate=rate;
+ for(const [id,r] of [['rate1',1],['rate2',2]]){
+  const btn=$(id), active=r===rate;
+  btn.classList.toggle('active',active);
+  btn.setAttribute('aria-pressed',String(active));
+ }
+ lastMs=null;
+}
+$('rate1').addEventListener('click',()=>setPlaybackRate(1));
+$('rate2').addEventListener('click',()=>setPlaybackRate(2));
 $('pause').addEventListener('click',()=>{playing=!playing;sync()});$('replay').addEventListener('click',()=>{time=0;playing=true;lastMs=null;sync();display(time)});
 const seek=$('seek');let shouldResume=false;
 seek.addEventListener('pointerdown',()=>{shouldResume=playing;scrubbing=true;playing=false;sync()});
@@ -456,8 +473,8 @@ seek.addEventListener('pointerup',endScrub);seek.addEventListener('pointercancel
 seek.addEventListener('blur',()=>{if(scrubbing)endScrub()});
 for(let j=0;j<6;j++){$('scene'+j).addEventListener('click',()=>{playing=false;sync();seekTo(starts[j]+.05)})}
 document.addEventListener('keydown',event=>{if(event.target===seek)return;if(event.code==='Space'&&!(event.target instanceof HTMLButtonElement)){event.preventDefault();playing=!playing;sync()}else if(event.key==='ArrowRight'){seekTo(time+1)}else if(event.key==='ArrowLeft'){seekTo(time-1)}});
-function animate(ms){if(lastMs===null)lastMs=ms;let dt=Math.min((ms-lastMs)/1000,.08);lastMs=ms;if(playing&&!scrubbing){time+=dt;if(time>=TOTAL){time%=TOTAL;lastScene=-1;}}display(time);requestAnimationFrame(animate)}
-window.demoSeek=v=>{playing=false;sync();seekTo(v)};window.demoResume=()=>{playing=true;lastMs=null;sync()};
+function animate(ms){if(lastMs===null)lastMs=ms;let dt=Math.min((ms-lastMs)/1000,.08);lastMs=ms;if(playing&&!scrubbing){time+=dt*playbackRate;if(time>=TOTAL){time%=TOTAL;lastScene=-1;}}display(time);requestAnimationFrame(animate)}
+window.demoSeek=v=>{playing=false;sync();seekTo(v)};window.demoGetRate=()=>playbackRate;window.demoResume=()=>{playing=true;lastMs=null;sync()};
 window.demoCheck=()=>[3,9,19,23,35,42,48].map(t=>{let s=stateAt(t);return{t,phase:s.phase+1,bank:s.bank,pitch:s.pitch,yaw:s.yaw,aoa:s.aoa,gammaA:s.gammaA,gammaG:s.gammaG,wind:s.localWind,airVelocity:s.airVel,groundVelocity:s.groundVel,velocityClosure:norm(sub(s.groundVel,add(s.airVel,s.localWind))),dotLiftAir:dot(s.lift,s.airHat),dotDragAir:dot(s.drag,s.airHat),gravity:s.weight,range:s.glideDistance}});
 window.addEventListener('resize',()=>display(time,true));document.addEventListener('visibilitychange',()=>{lastMs=null});sync();display(0,true);requestAnimationFrame(animate);
 })();
