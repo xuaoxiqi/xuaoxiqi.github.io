@@ -2,6 +2,33 @@
     const page = document.querySelector('#articlePost.page-research');
     if (!page) return;
 
+    const soaringFrame = page.querySelector('.thermal-soaring-frame');
+    if (soaringFrame) {
+        let sizeObserver;
+        function fitSoaringFrame() {
+            if (sizeObserver) sizeObserver.disconnect();
+            let body;
+            try {
+                body = soaringFrame.contentDocument && soaringFrame.contentDocument.body;
+            } catch {
+                // Local file previews may have opaque origins; retain the scrollable fallback.
+                return;
+            }
+            if (!body) return;
+            const resize = () => {
+                const height = Math.ceil(body.getBoundingClientRect().height);
+                if (height > 0 && soaringFrame.style.height !== `${height}px`) {
+                    soaringFrame.style.height = `${height}px`;
+                }
+            };
+            resize();
+            sizeObserver = new ResizeObserver(resize);
+            sizeObserver.observe(body);
+        }
+        soaringFrame.addEventListener('load', fitSoaringFrame);
+        fitSoaringFrame();
+    }
+
     const conferences = page.querySelector('[data-conf-section="conferences"]');
     const stats = page.querySelector('[data-conf-stats]');
     function updateResearchStats() {

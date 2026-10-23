@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>热滑翔 · Thermal Soaring | 动画 · 徐翱</title>
+<style>
+:root{--bg:#061420;--panel:#102637;--line:#294d60;--white:#f2f8fd;--muted:#a2bed0;--mint:#53e4cb;--cyan:#74caff;--drag:#ff947c;--gravity:#ffd16c;--gold:#f9dc9c}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}
+body{margin:0;background:radial-gradient(ellipse at 9% 0%,#1b455a 0,transparent 44%),#061420;font-family:Inter,'Segoe UI','Microsoft YaHei','PingFang SC',system-ui,sans-serif;color:var(--white);font-size:16px}
+.shell{max-width:1510px;margin:auto;padding:20px 23px 28px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:15px}
+.eyebrow{color:var(--mint);font-size:13px;font-weight:800;letter-spacing:2.7px;margin-bottom:5px}
+h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin:0}h1 span{color:#83e4d4}
+.parameters{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}
+.chip{font-size:14px;border:1px solid #355367;border-radius:999px;background:#102a39;padding:8px 12px;color:#b7d4e3;white-space:nowrap}.chip b{color:#f8ffff}.chip.primary{border-color:#2b9286;background:#164144;color:#c1ffef}
+.stagegrid{display:grid;grid-template-columns:minmax(0,1fr) 405px;gap:13px;align-items:stretch}
+.mainstage,.sidecard,.scenebar{border:1px solid #2e4d63;border-radius:16px;background:#091b2d;box-shadow:0 13px 35px #020b17a3;overflow:hidden}
+.mainstage{position:relative;min-height:645px;isolation:isolate}#world{display:block;width:100%;height:645px}
+.mainstage:after{content:"";position:absolute;pointer-events:none;inset:0;background:linear-gradient(90deg,#04122053,transparent 38%,transparent 83%,#071b2620),linear-gradient(0deg,#06131d2b,transparent 30%)}
+.stageid{position:absolute;top:18px;left:18px;z-index:2;max-width:370px;background:#081f30e6;backdrop-filter:blur(7px);border:1px solid #3e647a;border-radius:12px;padding:11px 14px}
+.stageid .num{font-size:13px;letter-spacing:2px;color:#75ecd2;font-weight:800;margin-bottom:5px}.stageid h2{font-size:26px;margin:0 0 3px}.stageid .en{color:#b9d9e9;font-size:15px}
+.scriptbox{position:absolute;left:0;right:0;bottom:0;z-index:2;border:none;border-radius:0;background:linear-gradient(0deg,rgba(2,16,28,.91) 0%,rgba(2,16,28,.76) 78%,transparent 100%);padding:14px 26px 10px;color:#f4fbff;font-size:clamp(21px,1.85vw,26px);font-weight:720;letter-spacing:.3px;line-height:1.42;text-align:center;text-wrap:balance;text-shadow:0 2px 5px #00111f,0 0 12px #00111f;pointer-events:none}
+.side{display:flex;flex-direction:column;gap:10px}.sidecard{padding:12px 14px}.sidecard h3{font-size:19px;margin:0 0 7px}.sidecard .desc{font-size:15px;color:#afc9da;line-height:1.58;margin:0 0 11px}
+.viewframe{position:relative;overflow:hidden;border-radius:8px;border:1px solid #2b5062;background:#0b2533}
+.viewframe canvas{display:block;width:100%;height:100%;border:0;background:transparent}
+.pitchframe{height:362px}.angles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:11px}.angles .viewframe{height:220px}
+.pitch-readouts{position:absolute;left:10px;right:10px;bottom:10px;display:flex;justify-content:center;align-items:center;gap:16px;pointer-events:none;flex-wrap:nowrap}.angle-readout.pitch{margin-top:0}.angle-readout{display:flex;align-items:baseline;justify-content:center;gap:5px;flex-wrap:nowrap;font-size:14px;line-height:1.15;font-weight:650;white-space:nowrap}.angle-readout strong{font-size:19px;font-weight:850;font-variant-numeric:tabular-nums;letter-spacing:.15px}.angle-readout.aoa{color:#f8d99d}.angle-readout.pitch{color:#d2def5}.angle-readout.gamma{color:#b7cbda}
+/* Identical fixed-height bottom readouts keep Roll and Yaw perfectly aligned. */
+.mini-readout{position:absolute;bottom:9px;left:0;right:0;height:28px;display:flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;color:#d3f4fb;font-size:15px;line-height:1;font-weight:650;font-variant-numeric:tabular-nums;pointer-events:none;text-shadow:0 2px 4px #071a2c}.mini-readout strong{font-size:19px;font-weight:850;line-height:1}.mini-readout.roll{color:#b5f9ec}.mini-readout.yaw{color:#d1f2ff}
+.physmetrics{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:12px;font-size:15px;color:#c2dae5}.physmetrics b{color:#fff;font-variant-numeric:tabular-nums}
+#altitude{height:128px}.formula{margin-top:7px;background:#123449;border:1px solid #2d6172;padding:8px 6px;border-radius:9px;color:#f6dfaa;font-size:14px;line-height:1.5;font-weight:700;text-align:center}.formula small{display:block;font-size:14px;font-weight:400;color:#b5d0df}
+.scenebar{padding:12px 16px 13px;margin-top:12px}.barhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}.barhead strong{font-size:15px}.barhead small{font-size:14px;color:#98bbcd;margin-left:7px}
+.minicontrols{display:flex;gap:8px;align-items:center}.timer{font-size:15px;color:#d2f5eb;font-variant-numeric:tabular-nums;font-weight:760}.controlbtn{font-size:15px;font-weight:800;border:1px solid #376b79;border-radius:8px;background:#184252;color:#f0fffe;padding:9px 13px;cursor:pointer}.controlbtn:hover,.controlbtn:focus-visible{background:#246176}
+.scrubwrap{display:flex;align-items:center;gap:12px}.scrublabel{white-space:nowrap;font-size:14px;color:#9fc2d4}
+#seek{width:100%;height:28px;cursor:ew-resize;accent-color:#64e7c7;margin:0;appearance:none;background:transparent;touch-action:pan-y}
+#seek::-webkit-slider-runnable-track{height:7px;border-radius:999px;border:1px solid #3e6571;background:linear-gradient(90deg,#52d7c3 0%,#80cfff var(--played,0%),#1d3b50 var(--played,0%),#1d3b50 100%)}
+#seek::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;border:3px solid #e6fff8;background:#61e7c9;box-shadow:0 0 0 3px #28675b;margin-top:-7px}
+#seek::-moz-range-track{height:7px;background:#1d3b50;border:1px solid #3e6571;border-radius:999px}
+#seek::-moz-range-progress{height:7px;background:#52d7c3}#seek::-moz-range-thumb{height:19px;width:19px;border-radius:50%;border:3px solid #e6fff8;background:#61e7c9}
+.scenes{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:7px}
+.sceneitem{font-family:inherit;font-size:14px;text-align:left;cursor:pointer;color:#bed6df;border-radius:8px;border:1px solid #2e4e62;background:#10293c;min-height:58px;padding:9px 10px}.sceneitem .idx{display:block;font-size:13px;color:#78a6b9;font-weight:800;letter-spacing:1px;margin-bottom:3px}.sceneitem .name{font-weight:800}.sceneitem.active{background:#20525a;border-color:#54bea4;color:white}.sceneitem:hover{border-color:#68d4ba}
+.copyright-overlay{position:absolute;right:15px;top:13px;z-index:3;border:1px solid #4e8390;border-radius:9px;background:#071f30e8;padding:10px 14px;color:#f0fffb;font-size:17px;letter-spacing:.2px;font-weight:750;text-shadow:0 1px 3px #001320}
+@media(max-width:1100px){.stagegrid{grid-template-columns:minmax(0,1fr) 365px}.mainstage{min-height:600px}#world{height:600px}}
+@media(max-width:850px){.stagegrid{grid-template-columns:1fr}.mainstage{min-height:510px}#world{height:510px}.side{display:block}.stageid h2{font-size:23px}.copyright-overlay{font-size:15px}}
+@media(max-width:600px){.shell{padding:13px 10px 20px}.side{grid-template-columns:1fr}.mainstage{min-height:450px}#world{height:450px}.stageid{top:9px;left:9px;padding:9px 10px;max-width:56%}.stageid h2{font-size:19px}.stageid .num{font-size:13px}.stageid .en{font-size:14px}.scriptbox{left:0;right:0;bottom:0;font-size:19px;line-height:1.4;padding:11px 13px 9px;letter-spacing:0}.copyright-overlay{right:8px;top:9px;font-size:14px;padding:8px 9px;max-width:44%;text-align:right}.angles .viewframe{height:220px}.pitchframe{height:333px}.pitch-readouts{left:8px;right:8px;bottom:9px;gap:8px}.angle-readout{font-size:12px;gap:4px}.angle-readout strong{font-size:16px}.mini-readout{font-size:13px;gap:4px}.mini-readout strong{font-size:17px}.scenes{grid-template-columns:repeat(3,1fr)}.sceneitem{font-size:13px}.chip{font-size:13px}}
+
+/* V17: independent, responsive velocity diagram, built on the V15 animation engine. */
+.stagegrid{grid-template-columns:minmax(0,1fr) 520px}
+.analysis-panels{display:grid;grid-template-columns:minmax(0,1.56fr) minmax(0,1fr);gap:9px;align-items:stretch}
+.analysis-panels .pitchframe,.analysis-panels .velocityframe{height:342px;min-width:0}
+.velocityframe{position:relative;background:#0a2130;border-color:#416a79}
+.velocity-header{position:absolute;top:11px;left:10px;right:7px;pointer-events:none;font-size:15px;font-weight:780;color:#d4edf8;white-space:nowrap}
+.velocity-header small{display:block;font-size:13px;margin-top:3px;font-weight:700;color:#a3c1d5}
+.velocity-legend{position:absolute;bottom:9px;left:10px;right:5px;pointer-events:none;display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700;line-height:1.25}
+@media(max-width:1100px){.stagegrid{grid-template-columns:minmax(0,1fr) 470px}}
+@media(max-width:850px){.stagegrid{grid-template-columns:1fr}}
+@media(max-width:600px){.analysis-panels{grid-template-columns:1fr}.analysis-panels .pitchframe{height:308px}.analysis-panels .velocityframe{height:245px}.velocity-legend{font-size:13px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;text-align:center;left:6px;right:6px}.velocity-header{font-size:16px}.velocity-header small{display:inline-block;margin-left:8px}}
+
+/* Reserve fixed vertical bands for the velocity heading, diagram and legend. */
+.velocityframe{display:flex;flex-direction:column}
+.velocity-header{position:static;order:0;flex:0 0 58px;padding:10px 9px 0;height:58px;font-size:15px}
+.velocity-header small{margin-top:3px;font-size:12px}
+.velocityframe #velview{position:static;order:1;flex:1 1 auto;min-height:0;height:auto;width:100%}
+.velocity-legend{position:static;order:2;flex:0 0 77px;padding:7px 9px 6px;border-top:1px solid #345569;background:#0a2635;font-size:12px;line-height:1.2;gap:4px}
+.velocity-legend .scale-note{font-size:11px;color:#95aeba;letter-spacing:.2px}
+@media(max-width:600px){.analysis-panels .velocityframe{height:270px}.velocity-header{flex-basis:52px;height:52px;padding:9px 11px 0}.velocity-legend{flex-basis:68px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:5px 5px 4px;align-content:center;font-size:11px}.velocity-legend .scale-note{grid-column:1/-1;font-size:11px}}
+/* Keep angle values in their own band when embedded in a narrower research page. */
+.pitchframe{display:flex;flex-direction:column}
+.pitchframe canvas{flex:1 1 auto;min-height:0;height:auto}
+.pitch-readouts{position:static;flex:0 0 54px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:3px 6px 8px}
+.pitch-readouts .angle-readout{flex-direction:column;align-items:center;justify-content:center;gap:4px;white-space:normal;text-align:center;font-size:12px}
+.pitch-readouts .angle-readout strong{font-size:16px;white-space:nowrap}
+.minicontrols{flex-wrap:wrap}.timer,.controlbtn{white-space:nowrap}
+@media(max-width:1100px){.stagegrid{grid-template-columns:1fr}}
+@media(max-width:600px){.angles{grid-template-columns:1fr}.pitch-readouts{flex-basis:68px}.stageid{max-width:calc(56% - 12px)}.copyright-overlay{max-width:calc(44% - 12px)}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="head"><div><h1>热滑翔 <span>Thermal Soaring</span></h1></div>
+<div class="parameters"><span class="chip">热羽流 <b>2.4 m/s</b></span><span class="chip">盘旋倾角 <b>35°</b></span><span class="chip">盘旋空速 <b>24 m/s</b></span><span class="chip">滑翔空速 <b>30 m/s</b></span><span class="chip">滑翔比 <b>30:1</b></span></div></header>
+<main>
+<section class="stagegrid">
+<div class="mainstage"><canvas id="world" aria-label="滑翔机三维示意、热羽流、飞行航迹与方向正确的空气动力"></canvas>
+<div class="copyright-overlay">© 2026 西北工业大学 · 徐翱</div>
+<div class="stageid"><div class="num" id="stageNo">SCENE 01 / 06</div><h2 id="stageTitle">寻找热羽流</h2><div class="en" id="stageEn">Search for a thermal</div></div>
+<div class="scriptbox" id="scriptText">没有发动机推力，滑翔机一边缓缓下降，一边寻找能够托起它的上升气流。</div>
+</div>
+<aside class="side">
+<section class="sidecard">
+<div class="analysis-panels">
+<div class="viewframe pitchframe">
+<canvas id="pitchview" aria-label="侧视：俯仰角、迎角，空速、阻力和升力三矢量从同一原点出发"></canvas>
+<div class="pitch-readouts" aria-live="off"><div class="angle-readout pitch">俯仰角 θ <strong id="pitch">+3.1°</strong></div><div class="angle-readout gamma">航迹角 γₐ <strong id="gammaa">−1.9°</strong></div><div class="angle-readout aoa">迎角 α <strong id="aoa">5.0°</strong></div></div>
+</div>
+<div class="viewframe velocityframe">
+<canvas id="velview" aria-label="速度三角形：对地速度等于空速加当地风速"></canvas>
+<div class="velocity-header">速度关系 <small>Vg = Vₐ + w</small></div>
+<div class="velocity-legend">
+<span style="color:#b6a5ff">Vg · 对地速度</span><span style="color:#60e9ce">Vₐ · 空速（相对空气）</span><span style="color:#ffc17d">w · 当地风速</span>
+</div>
+</div>
+</div>
+<div class="angles">
+<div class="viewframe"><canvas id="rollview" aria-label="正视：滚转角以及升力和重力方向"></canvas><div class="mini-readout roll" aria-live="off">滚转角 φ <strong id="bank">0°</strong></div></div>
+<div class="viewframe"><canvas id="yawview" aria-label="俯视：偏航角，机头相对于固定水平坐标轴的朝向"></canvas><div class="mini-readout yaw" aria-live="off">偏航角 ψ <strong id="yaw">0°</strong></div></div>
+</div>
+<div class="physmetrics"><span>空速 <b id="speed">30.0 m/s</b></span><span>地面升降率 <b id="climb">−1.0 m/s</b></span></div>
+</section>
+</aside>
+</section>
+<section class="scenebar"><div class="barhead"><div class="minicontrols"><span class="timer" id="clock">00:00 / 00:50</span><button class="controlbtn" type="button" id="pause" aria-label="暂停动画">Ⅱ 暂停</button><button class="controlbtn" type="button" id="replay" aria-label="从头重播">↻ 重播</button></div></div>
+<div class="scrubwrap"><span class="scrublabel">00:00</span><input id="seek" aria-label="拖动选择动画进度" type="range" min="0" max="50" step="0.01" value="0"><span class="scrublabel">00:50</span></div><div class="scenes" id="sceneStrip"></div></section>
+
+</main>
+</div>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id), PI=Math.PI,TAU=PI*2, DEG=PI/180;
+const durations=[7,6,18,9,5,5], starts=[0,7,13,31,40,45], ends=[7,13,31,40,45,50],TOTAL=50;
+const SCENES=[
+ {name:'寻找热羽流',en:'Search for a thermal',zh:'没有发动机推力，滑翔机一边缓缓下降，一边寻找能够托起它的上升气流。',eng:'The glider follows a shallow descending glide while searching for rising air.',hint:'搜索上升气流'},
+ {name:'进入热羽流',en:'Thermal entry',zh:'找到热羽流后，飞行员倾斜机翼，转入盘旋，尽量留在上升气流中。',eng:'The pilot rolls into a coordinated turn and starts circling in the thermal.',hint:'建立盘旋'},
+ {name:'盘旋爬升',en:'Thermalling',zh:'热空气不断向上升，滑翔机则在其中盘旋。虽然它相对周围空气仍在下沉，但热气流上升得更快，于是飞机就能越飞越高。',eng:'Rising air lets the glider climb while circling.',hint:'持续盘旋爬升'},
+ {name:'修正盘旋中心',en:'Thermal centering',zh:'热羽流中心的上升气流通常更强。飞行员不断微调盘旋位置，让飞机留在最有利的区域。',eng:'Small corrections keep the glider near the best rising air.',hint:'修正盘旋中心'},
+ {name:'退出热羽流',en:'Thermal exit',zh:'攒够高度，滑翔机逐渐恢复机翼水平，离开热羽流。',eng:'The glider exits the thermal and prepares for the next glide.',hint:'退出热羽流'},
+ {name:'跨区滑翔',en:'Cross-country glide',zh:'接下来，滑翔机用刚获得的高度换取航程，向下一股热羽流飞去，周而复始。',eng:'The glider trades altitude for forward travel and searches for the next thermal.',hint:'跨区滑翔'}
+];
+for(let i=0;i<6;i++){$('sceneStrip').insertAdjacentHTML('beforeend',`<button class="sceneitem" type="button" id="scene${i}" data-idx="${i}" aria-label="跳转第${i+1}幕"><span class="idx">0${i+1} / 06</span><span class="name">${SCENES[i].name}</span></button>`)}
+const clamp=(a,l=0,r=1)=>Math.max(l,Math.min(r,a)),mix=(a,b,s)=>a+(b-a)*s,smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
+const vec=(x,y,z)=>({x,y,z}),add=(a,b)=>vec(a.x+b.x,a.y+b.y,a.z+b.z),sub=(a,b)=>vec(a.x-b.x,a.y-b.y,a.z-b.z),mul=(a,n)=>vec(a.x*n,a.y*n,a.z*n),dot=(a,b)=>a.x*b.x+a.y*b.y+a.z*b.z,cross=(a,b)=>vec(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x),norm=a=>Math.hypot(a.x,a.y,a.z),unit=a=>mul(a,1/(norm(a)||1)),UP=vec(0,0,1),DOWN=vec(0,0,-1);
+function which(t){return t<7?0:t<13?1:t<31?2:t<40?3:t<45?4:5}
+function bz(s,p0,p1,p2,p3){let a=1-s;return add(add(mul(p0,a*a*a),mul(p1,3*a*a*s)),add(mul(p2,3*a*s*s),mul(p3,s*s*s)))}
+function position(t,phase=which(t)){
+ const s=clamp((t-starts[phase])/durations[phase]);
+ if(phase===0)return vec(mix(-570,-190,s),-84,mix(184,177,s));
+ if(phase===1)return bz(s,vec(-190,-84,177),vec(-130,-107,176),vec(-55,-84,180),vec(0,-84,180));
+ if(phase===2){let theta=-PI/2+TAU*2*s;return vec(84*Math.cos(theta),84*Math.sin(theta),180+67.5*s)}
+ if(phase===3){let theta=-PI/2+TAU*(2+s),a=smooth(s),r=84-6*a,cx=22*a;return vec(cx+r*Math.cos(theta),r*Math.sin(theta),247.5+33.75*s)}
+ if(phase===4){let a=smooth(s);return bz(s,vec(22,-78,281.25),vec(85,-78,284),vec(130,-76,278),vec(190,-78,279))}
+ const a=s;return vec(190+2400*a,-78+215*smooth(a),279-80*a);
+}
+function deriv(t,phase){let eps=.006,lo=Math.max(starts[phase],t-eps),hi=Math.min(ends[phase],t+eps);if(hi-lo<1e-8){lo=Math.max(starts[phase],t-.02);hi=Math.min(ends[phase],t+.02)}return mul(sub(position(hi,phase),position(lo,phase)),1/Math.max(hi-lo,1e-7))}
+function stateAt(t){t=clamp(t,0,TOTAL);const phase=which(t),s=clamp((t-starts[phase])/durations[phase]),pos=position(t,phase);
+ let bank=0,speed=30,sink=1,wind=0,aoa=5;
+ if(phase===1){let a=smooth(s);bank=35*a;speed=mix(30,24,a);sink=mix(1,.9,a);wind=2.4*a;aoa=mix(5,5.3,a)}
+ if(phase===2){bank=35;speed=24;sink=.9;wind=2.4;aoa=5.3}
+ if(phase===3){bank=35+3*Math.sin(TAU*2*s);speed=24;sink=.9;wind=2.4;aoa=5.3+.25*Math.sin(TAU*2*s)}
+ if(phase===4){let a=smooth(s);bank=35*(1-a);speed=mix(24,30,a);sink=mix(.9,1,a);wind=2.4*(1-a);aoa=mix(5.3,5,a)}
+ let tan=deriv(t,phase),horizontal=unit(vec(tan.x,tan.y,0));
+ if(phase===2||phase===3){ // Analytical tangent stabilizes attitude during circling and allows continuous yaw updates.
+   let theta=-PI/2+TAU*(phase===2?2*s:2+s);let r=phase===3?84-6*smooth(s):84;
+   if(phase===2)horizontal=unit(vec(-Math.sin(theta),Math.cos(theta),0));
+   else {let da=6*s*(1-s),dr=-6*da,dc=22*da;let angular=TAU;horizontal=unit(vec(dc+dr*Math.cos(theta)-r*Math.sin(theta)*angular,dr*Math.sin(theta)+r*Math.cos(theta)*angular,0))}
+ }
+ const airVel=vec(horizontal.x*Math.sqrt(speed*speed-sink*sink),horizontal.y*Math.sqrt(speed*speed-sink*sink),-sink),airHat=unit(airVel),verticalPlane=unit(sub(UP,mul(airHat,dot(UP,airHat)))),left=unit(cross(UP,airHat));
+ const lift=unit(add(mul(verticalPlane,Math.cos(bank*DEG)),mul(left,Math.sin(bank*DEG))));
+ const bodyForward=unit(add(mul(airHat,Math.cos(aoa*DEG)),mul(verticalPlane,Math.sin(aoa*DEG))));
+ const rightWing=unit(cross(bodyForward,lift));
+ const pitch=Math.asin(clamp(bodyForward.z,-1,1))/DEG;
+ let yaw=(Math.atan2(bodyForward.y,bodyForward.x)/DEG+360)%360;if(yaw>359.95)yaw=0;
+ const groundVz=phase===0?-1:phase===1?mix(-1,1.5,smooth(s)):phase===2||phase===3?1.5:phase===4?mix(1.5,-1,smooth(s)):-1;
+ return{t,phase,s,pos,speed,sink,wind,bank,aoa,pitch,yaw,groundVz,airHat,airVel,verticalPlane,bodyForward,lift,rightWing,drag:mul(airHat,-1),weight:DOWN,horizontal,glideDistance:phase===5?2400*s:0};
+}
+function canvas(id){const c=$(id),rect=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2),w=Math.max(10,rect.width),h=Math.max(10,rect.height);if(c.width!==Math.round(w*d)||c.height!==Math.round(h*d)){c.width=Math.round(w*d);c.height=Math.round(h*d)}let ctx=c.getContext('2d');ctx.setTransform(d,0,0,d,0,0);ctx.clearRect(0,0,w,h);return{ctx,w,h}}
+function poly(ctx,points,fill,stroke,width=1){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.lineWidth=width;ctx.strokeStyle=stroke;ctx.stroke()}}
+function line(ctx,a,b,color='#fff',width=1,alpha=1){ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();ctx.restore()}
+function arrow(ctx,a,b,color,width=2.7,label=''){const theta=Math.atan2(b[1]-a[1],b[0]-a[0]);ctx.save();ctx.shadowBlur=6;ctx.shadowColor=color;line(ctx,a,b,color,width);ctx.shadowBlur=0;poly(ctx,[b,[b[0]-11*Math.cos(theta-.5),b[1]-11*Math.sin(theta-.5)],[b[0]-11*Math.cos(theta+.5),b[1]-11*Math.sin(theta+.5)]],color);if(label){ctx.font='800 18px Segoe UI,Arial';ctx.lineWidth=4;ctx.strokeStyle='#072233';ctx.textAlign='center';let x=b[0]+13*Math.cos(theta),y=b[1]+13*Math.sin(theta);ctx.strokeText(label,x,y);ctx.fillStyle=color;ctx.fillText(label,x,y)}ctx.restore()}
+function label(ctx,text,x,y,color='#d4eaf7',size=15,align='center'){ctx.save();ctx.font=`700 ${size}px Segoe UI,Arial`;ctx.textAlign=align;ctx.lineWidth=3;ctx.strokeStyle='#082136';ctx.strokeText(text,x,y);ctx.fillStyle=color;ctx.fillText(text,x,y);ctx.restore()}
+function topGlider(ctx,x,y,angle,size=1){
+ ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.scale(size,size);
+ // Nose points to +x, canopy, high-aspect tapered wings, fuselage and tailplane.
+ ctx.beginPath();ctx.moveTo(28,0);ctx.bezierCurveTo(26,-2.5,17,-3,8,-3);
+ ctx.lineTo(3,-7);ctx.lineTo(-4,-25);ctx.lineTo(-10,-24);ctx.lineTo(-6,-4.2);
+ ctx.lineTo(-18,-2.5);ctx.lineTo(-22,-10);ctx.lineTo(-26,-10);ctx.lineTo(-25,-1.4);
+ ctx.lineTo(-29,0);ctx.lineTo(-25,1.4);ctx.lineTo(-26,10);ctx.lineTo(-22,10);
+ ctx.lineTo(-18,2.5);ctx.lineTo(-6,4.2);ctx.lineTo(-10,24);ctx.lineTo(-4,25);
+ ctx.lineTo(3,7);ctx.lineTo(8,3);ctx.bezierCurveTo(17,3,26,2.5,28,0);ctx.closePath();
+ ctx.fillStyle='#f6fdff';ctx.strokeStyle='#4b879c';ctx.lineWidth=1.2;ctx.fill();ctx.stroke();
+ ctx.beginPath();ctx.ellipse(13.5,0,7,2.6,0,0,TAU);ctx.fillStyle='#2e789c';ctx.fill();
+ ctx.strokeStyle='#c2e0ee';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-4,-23);ctx.lineTo(4,-5);ctx.moveTo(-4,23);ctx.lineTo(4,5);ctx.stroke();
+ ctx.restore();
+}
+function bg(ctx,w,h,st){let g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0,'#0c2e4d');g.addColorStop(.55,'#245677');g.addColorStop(.78,'#3d6876');g.addColorStop(1,'#0d2b33');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+ // World-relative parallax across the final glide: near terrain moves faster than distant ridges.
+ const travel=Math.max(0,st.pos.x-190),shift=travel;
+ for(let j=0;j<3;j++){let yy=h*(.65+j*.069);ctx.beginPath();ctx.moveTo(0,h);ctx.lineTo(0,yy);for(let x=0;x<=w+9;x+=9){let xx=x+shift*[.09,.25,.5][j];let y=yy+17*Math.sin(xx*.012+j)+7*Math.sin(xx*.036+j*2.4)+4*Math.sin(xx*.061+j);ctx.lineTo(x,y)}ctx.lineTo(w,h);ctx.closePath();ctx.fillStyle=['#254f63a9','#173f54e0','#113248'][j];ctx.fill()}
+ // Surface relief and fields slide past as the plane advances.
+ ctx.save();ctx.beginPath();ctx.rect(0,h*.76,w,h*.24);ctx.clip();let delta=shift*.85;
+ for(let i=-4;i<19;i++){let x=((i*116-delta*.7)%(w+450)+(w+450))%(w+450)-220;
+ let y=h*.82+(i%3)*12;ctx.fillStyle=['#1c584c','#275a47','#3b6043','#1d4c47'][((i%4)+4)%4];ctx.beginPath();ctx.ellipse(x,y+30,115,25,0,0,TAU);ctx.fill();line(ctx,[x-48,y+21],[x+48,y+20],'#71906f',1,.18);
+ if(i%3===0){ctx.fillStyle='#a0c5bb';for(let k=0;k<6;k++){let xx=x-36+15*k,yy=y+17+Math.sin(i+k)*3;ctx.fillRect(xx,yy,3,2)}}}
+ // Animated river meander and ridgeline move as fixed landscape features relative to viewer.
+ ctx.strokeStyle='#4b9aad55';ctx.lineWidth=13;ctx.beginPath();for(let x=-15;x<=w+15;x+=8){let xx=x+delta*.5,y=h*.95+18*Math.sin(xx*.007);x<0?ctx.moveTo(x,y):ctx.lineTo(x,y)}ctx.stroke();
+ // Rows of landmarks are anchored to the earth, not to the viewport.
+ for(let i=-6;i<26;i++){
+   let lx=((i*93-shift*1.42)%(w+270)+(w+270))%(w+270)-120;
+   let ly=h*.885+15*Math.sin(i*1.8);
+   ctx.fillStyle='#a9c6ae88';ctx.fillRect(lx,ly,6,3);
+   ctx.fillStyle='#0b4237cc';
+   for(let k=0;k<3;k++){ctx.beginPath();ctx.arc(lx-9+9*k,ly+11+(k%2)*3,3.4,0,TAU);ctx.fill()}
+ }
+ ctx.restore();
+ // Sparse atmospheric light drifting slowly.
+ for(let j=0;j<5;j++){let x=((j*292+110-shift*.025)%(w+370)+(w+370))%(w+370)-100,y=h*(.21+.075*(j%3));ctx.fillStyle='#cce5f511';ctx.beginPath();ctx.ellipse(x,y,65+12*(j%3),15,0,0,TAU);ctx.fill()}
+}
+function projection(st,w,h){let focusx,focusy=-60,zoom=1.15;const s=st.s;
+ if(st.phase===0){focusx=w<610?st.pos.x-4:-340;zoom=1.00}
+ else if(st.phase===1){focusx=mix(-160,0,smooth(s));zoom=1.27}
+ else if(st.phase===2||st.phase===3){focusx=st.phase===3?10:0;focusy=0;zoom=1.38}
+ else if(st.phase===4){focusx=mix(25,160,smooth(s));focusy=-50;zoom=mix(1.33,1.08,smooth(s))}
+ else{focusx=st.pos.x+(w<610?-6:155);focusy=-65;zoom=.97}
+ const f=p=>{const dx=p.x-focusx,dy=p.y-focusy,dz=p.z-st.pos.z;return[w*.48+zoom*(dx*.90-dy*.39),(w<610?h*.47:h*.60)+zoom*(dx*.12+dy*.27-dz*1.08)]};return{p:f,zoom,focusx,focusy}
+}
+function thermal(ctx,p,st){let center=vec(0,0,0),base=p(center),top=p(vec(0,0,340));if(base[0]<-170||base[0]>ctx.canvas.clientWidth+170)return;
+ ctx.save();let gg=ctx.createLinearGradient(0,top[1],0,base[1]);gg.addColorStop(0,'#fab36508');gg.addColorStop(.2,'#ffd08449');gg.addColorStop(.58,'#eea76444');gg.addColorStop(1,'#f49a5340');poly(ctx,[p(vec(-110,-15,0)),p(vec(-88,-15,340)),p(vec(88,-15,340)),p(vec(110,-15,0))],gg);
+ for(let i=0;i<16;i++){let a=i*2.4,rr=12+(i*37)%84,z=(i*33+st.t*70)%325;let pt=p(vec(rr*Math.cos(a),rr*Math.sin(a),z));ctx.beginPath();ctx.arc(pt[0],pt[1],2.5,0,TAU);ctx.fillStyle='#ffcc85a8';ctx.fill()}
+ for(let j=-1;j<=1;j++){let x=j*52,z=55+((st.t*37+j*83+340)%235);arrow(ctx,p(vec(x,-12,z)),p(vec(x,-12,z+41)),'#ffc477',2.2)}
+ const tag=p(vec(0,0,340));label(ctx,'UPDRAFT · 2.4 m/s',ctx.canvas.clientWidth<610?ctx.canvas.clientWidth*.75:tag[0],ctx.canvas.clientWidth<610?140:tag[1]-17,'#fdd79a',15);ctx.restore();
+}
+function trail(ctx,p,t){const n=Math.max(1,Math.ceil(t/.11));let last=null;for(let i=0;i<=n;i++){let tt=t*i/n,pt=p(position(tt));if(last){let col=tt<13?'#a8dfed':tt<40?'#72e9d8':tt<45?'#afdfff':'#ffdd9f';line(ctx,last,pt,col,2.5,.83)}last=pt}}
+function glider(ctx,p,st){let ex=3.22*Math.max(.56,Math.min(1,ctx.canvas.clientWidth/800));const point=(f,r,n)=>p(add(add(add(st.pos,mul(st.bodyForward,f*ex)),mul(st.rightWing,r*ex)),mul(st.lift,n*ex)));
+ // Simplified standard glider planform: tapered high-aspect wing, slender fuselage, tailplane and vertical fin.
+ const wing1=point(-1.4,-30,0),wing2=point(-1.4,30,0),wingLtip=point(-1.6,-33,0),wingRtip=point(-1.6,33,0),nose=point(18,0,0),tail=point(-21,0,0),cog=point(0,0,0);
+ ctx.save();ctx.shadowBlur=10;ctx.shadowColor='#8ce7fff0';poly(ctx,[point(1,-3,0),point(-.5,-17,0),wingLtip,wing1,point(-5,-3,0),point(-5,3,0),wing2,wingRtip,point(-.5,17,0),point(1,3,0)],'#f0fbff','#d2edff',1);ctx.shadowBlur=0;
+ poly(ctx,[point(-18,-8.6,0),point(-15,-7,0),point(-15,7,0),point(-18,8.6,0)],'#d6e6f3','#f5fcff',1);
+ line(ctx,tail,nose,'#08253a',10);line(ctx,tail,nose,'#ecf8ff',7);
+ poly(ctx,[point(-21,0,0),point(-18,0,6),point(-15,0,.1)],'#b8d8e7','#e5f7ff',1);
+ let cp=point(4,0,1);ctx.beginPath();ctx.ellipse(cp[0],cp[1],5.2,3.2,Math.atan2(nose[1]-tail[1],nose[0]-tail[0]),0,TAU);ctx.fillStyle='#28526b';ctx.fill();ctx.strokeStyle='#e9faff';ctx.lineWidth=1;ctx.stroke();
+ ctx.fillStyle='#faffff';ctx.beginPath();ctx.arc(cog[0],cog[1],2.2,0,TAU);ctx.fill();ctx.restore();return cog}
+function forces(ctx,p,st,cg){let base=p(st.pos);function ep(dir,length){let far=p(add(st.pos,mul(dir,80))),dx=far[0]-base[0],dy=far[1]-base[1],n=Math.hypot(dx,dy)||1;return[cg[0]+length*dx/n,cg[1]+length*dy/n]}
+ arrow(ctx,cg,ep(st.lift,73),'#74caff',3.1,'Lift');arrow(ctx,cg,ep(st.drag,65),'#ff947c',3.0,'Drag');arrow(ctx,cg,ep(st.weight,74),'#ffd16c',3.1,'mg');
+ // Velocity is not an aerodynamic force: drawn separate from force triad.
+ let va=ep(st.airHat,95);ctx.save();ctx.setLineDash([5,5]);line(ctx,[cg[0]+8,cg[1]-6],[va[0]+8,va[1]-6],'#b9f4ed',1.8,.65);ctx.restore();
+}
+function topView(ctx,st,w,h){if(w<610||!(st.phase>=1&&st.phase<=3))return;
+ const X=w-137,Y=172,R=74;ctx.save();ctx.fillStyle='#071e2cf0';ctx.strokeStyle='#477c8b';ctx.lineWidth=1;
+ ctx.beginPath();ctx.roundRect(X-R-15,Y-R-37,R*2+32,R*2+68,12);ctx.fill();ctx.stroke();
+ label(ctx,'俯视图 / TOP VIEW',X,Y-R-18,'#d0f1f7',15);
+ ctx.beginPath();ctx.arc(X,Y,R*.74,0,TAU);ctx.fillStyle='#ffb56c25';ctx.fill();ctx.strokeStyle='#edb779a9';ctx.lineWidth=1.3;ctx.stroke();
+ ctx.beginPath();ctx.arc(X,Y,R*.24,0,TAU);ctx.fillStyle='#ffbb6780';ctx.fill();
+ if(st.phase===3){ctx.save();ctx.setLineDash([4,5]);ctx.strokeStyle='#b1d9ee';ctx.beginPath();ctx.arc(X+13,Y,R*.79,0,TAU);ctx.stroke();ctx.restore()}
+ const theta=st.phase===1?-PI/2+(PI/2)*st.s:-PI/2+TAU*(st.phase===2?2*st.s:2+st.s);
+ const radius=st.phase===3?R*.65:R*.77,x=X+radius*Math.cos(theta),y=Y+radius*Math.sin(theta);
+ // A legible fixed-wing glider silhouette, not the two intersecting lines of the earlier inset.
+ topGlider(ctx,x,y,theta+PI/2,0.57);
+ label(ctx,'机翼 + 机身',X,Y+R+15,'#a9d9e5',13);
+ ctx.restore();
+}
+function nextThermal(ctx,w,h,t){let s=clamp((t-45)/5),x=w*(.86-.27*smooth(s)),y=h*(.74+.045*s),ht=75+215*smooth(s),ww=26+69*smooth(s);ctx.save();let grad=ctx.createLinearGradient(0,y-ht,0,y);grad.addColorStop(0,'#f3c38b41');grad.addColorStop(.35,'#fbb2738b');grad.addColorStop(1,'#ffc38418');poly(ctx,[[x-ww,y],[x-ww*.55,y-ht],[x+ww*.55,y-ht],[x+ww,y]],grad);for(let i=0;i<5;i++){let yy=y-22-i*(ht-35)/5+(t*14%15);arrow(ctx,[x-15+i*8,yy+11],[x-15+i*8,yy-12],'#ffc77d',2.1)}label(ctx,'NEXT THERMAL',x,y-ht-10,'#f8dba7',15);ctx.restore()}
+function world(t){const st=stateAt(t),{ctx,w,h}=canvas('world');bg(ctx,w,h,st);let pr=projection(st,w,h);if(st.phase<5)thermal(ctx,pr.p,st);trail(ctx,pr.p,t);if(st.phase===5)nextThermal(ctx,w,h,t);
+ if(st.phase===3){ctx.save();ctx.setLineDash([4,6]);ctx.strokeStyle='#b9d7e5a8';ctx.beginPath();for(let i=0;i<=100;i++){let a=i*TAU/100,pt=pr.p(vec(84*Math.cos(a),84*Math.sin(a),st.pos.z));i?ctx.lineTo(...pt):ctx.moveTo(...pt)}ctx.stroke();ctx.restore()}
+ let cg=glider(ctx,pr.p,st);forces(ctx,pr.p,st,cg);topView(ctx,st,w,h);
+ if(st.phase===2||st.phase===3){label(ctx,'w = 2.4 m/s ↑',w<610?w*.73:w*.20,w<610?h*.54:h*.68,'#ffc98a',15);label(ctx,'相对空气下沉 0.9 m/s',w<610?w*.73:w*.22,w<610?h*.59:h*.72,'#b3e9e0',14)}
+
+
+}
+function textCanvas(ctx,t,x,y,clr='#cae2ed',sz=14){ctx.save();ctx.fillStyle=clr;ctx.font=`${sz}px Segoe UI,Arial`;ctx.textAlign='left';ctx.fillText(t,x,y);ctx.restore()}
+function pitchview(t){
+ const st=stateAt(t),{ctx,w,h}=canvas('pitchview');
+ const gammaTrue=-Math.asin(st.sink/st.speed), thetaTrue=st.pitch*DEG;
+ // The three arrows share one physical origin, and use the same deliberately enlarged angle.
+ // Drag is always antiparallel to displayed Va; projected Lift is always perpendicular to it.
+ const scale=4.1, gamma=gammaTrue*scale, theta=thetaTrue*scale;
+ const center=[w*.30,h*.56], cx=center[0],cy=center[1];
+ const aDirection=[Math.cos(gamma),-Math.sin(gamma)];
+ const dDirection=[-aDirection[0],-aDirection[1]];
+ const lDirection=[aDirection[1],-aDirection[0]];
+ // Pitch diagram is drawn in the instantaneous air-velocity vertical plane;
+ // roll reduces the magnitude of the lift projected into this plane.
+ const liftLength=72*Math.max(.68,Math.cos(st.bank*DEG));
+ const vLength=Math.min(134,w*.42), dragLength=Math.min(70,w*.25);
+ const pt=(unitVec,length)=>[cx+length*unitVec[0],cy+length*unitVec[1]];
+ const vTip=pt(aDirection,vLength), dTip=pt(dDirection,dragLength), lTip=pt(lDirection,liftLength);
+ const bodyLen=Math.min(109,w*.365), bodyTip=[cx+bodyLen*Math.cos(theta),cy-bodyLen*Math.sin(theta)];
+ ctx.save();
+ textCanvas(ctx,'侧视 · Pitch / AoA',12,24,'#c8eaf5',17);
+ // Fixed Earth-horizontal reference.
+ ctx.save();ctx.setLineDash([5,5]);line(ctx,[12,cy],[w-12,cy],'#8baab9',1.5,.71);ctx.restore();
+ // Airframe reference (not a force), airspeed and aerodynamic force vectors all from the same origin.
+ line(ctx,center,bodyTip,'#f5fbff',4.0);
+ ctx.beginPath();ctx.arc(bodyTip[0],bodyTip[1],3,0,TAU);ctx.fillStyle='#f5fbff';ctx.fill();
+ arrow(ctx,center,vTip,'#60e9ce',3.2);
+ arrow(ctx,center,dTip,'#ff947c',3.0);
+ arrow(ctx,center,lTip,'#74caff',3.0);
+ // Enlarged angle arcs use the same air-velocity angle as the force arrows.
+ const arc=(r,a0,a1,col,lw)=>{ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=lw;ctx.arc(cx,cy,r,a0,a1,false);ctx.stroke()};
+ arc(49,-theta,0,'#a4baff',3.1);
+ arc(82,-theta,-gamma,'#ffcf7f',3.5);
+ arc(27,0,-gamma,'#93b0bd',1.5);
+ // Text is placed in separate regions away from vector tips and angle arcs.
+ label(ctx,'Lift',lTip[0]+10,lTip[1]-10,'#74caff',14,'left');
+ label(ctx,'Drag',Math.max(36,dTip[0]+9),dTip[1]-15,'#ff947c',14,'left');
+ label(ctx,'Vₐ',Math.min(w-22,vTip[0]+4),vTip[1]+24,'#7decd9',16);
+ label(ctx,'弦线',Math.min(w-55,bodyTip[0]+1),bodyTip[1]-14,'#f5fbff',14);
+ label(ctx,'水平线',w-38,cy-13,'#9cb9c6',13);
+ label(ctx,'θ',cx+59*Math.cos(theta*.5),cy-59*Math.sin(theta*.5)-12,'#b3c4ff',16);
+ label(ctx,'α',cx+90*Math.cos((theta+gamma)/2)-3,cy-90*Math.sin((theta+gamma)/2)+37,'#ffdc94',17);
+ label(ctx,'γₐ',cx+32*Math.cos(gamma*.5),cy-32*Math.sin(gamma*.5)+21,'#a6c1cd',12);
+ label(ctx,'θ = γₐ + α',w*.52,h-52,'#b6cfe1',13);
+ ctx.restore();
+}
+function velview(t){
+ const st=stateAt(t),{ctx,w,h}=canvas('velview');
+ ctx.save();
+ // The single HTML heading above and the single legend below own all explanatory text.
+ // This canvas draws only the dynamic velocity triangle.
+ const airVz=-st.sink, windVz=st.wind, groundVz=windVz+airVz;
+ const start=[Math.max(22,w*.16),h*.60];
+ const dx=Math.max(66,w-start[0]-34);
+ const vscale=Math.min(27,Math.max(15,(h*.39)/Math.max(st.sink+st.wind,.3)));
+ const A=[start[0]+dx,start[1]-vscale*airVz];
+ const G=[start[0]+dx,start[1]-vscale*groundVz];
+ ctx.save();ctx.setLineDash([3,5]);line(ctx,[start[0]-9,start[1]],[w-8,start[1]],'#79a0b3',1,.42);ctx.restore();
+ const legibility=Math.abs(G[1]-A[1]);
+ // Suppress duplicate coincident arrows when the vertical wind contribution is smaller than 11 pixels.
+ if(legibility>=11){
+   arrow(ctx,start,A,'#60e9ce',2.8);
+   arrow(ctx,A,G,'#f1a54d',3.0);
+   arrow(ctx,start,G,'#a992ff',3.1);
+   label(ctx,'Vₐ',A[0]-23,A[1]+22,'#76efdb',14);
+   label(ctx,'w',A[0]+11,(A[1]+G[1])*.5+5,'#ffd08d',14,'left');
+   label(ctx,'Vg',G[0]-24,G[1]-13,'#c7b7ff',14);
+ }else{
+   arrow(ctx,start,A,'#60e9ce',3.0);
+   label(ctx,windVz<.07?'Vg = Vₐ':'Vg ≈ Vₐ',A[0]-30,A[1]-17,'#d1dbff',13);
+ }
+ ctx.restore();
+}
+function rollview(t){const st=stateAt(t),{ctx,w,h}=canvas('rollview'),cx=w/2,cy=h*.49,a=st.bank*DEG;
+ line(ctx,[8,cy],[w-8,cy],'#89bed4',1.2,.55);ctx.save();ctx.setLineDash([4,4]);line(ctx,[cx,12],[cx,h-15],'#7da0b9',1,.32);ctx.restore();
+ let R=Math.min(w*.37,72);let ax=[cx-R*Math.cos(a),cy+R*Math.sin(a)],bx=[cx+R*Math.cos(a),cy-R*Math.sin(a)];
+ line(ctx,ax,bx,'#f7faff',6);ctx.fillStyle='#f7faff';ctx.beginPath();ctx.ellipse(cx,cy,9,6,0,0,TAU);ctx.fill();
+ // Stabilizer and fin clarify this is an aircraft shown head-on.
+ line(ctx,[cx-27*Math.cos(a),cy+27*Math.sin(a)+9],[cx+27*Math.cos(a),cy-27*Math.sin(a)+9],'#c4dae7',2.3);
+ arrow(ctx,[cx,cy],[cx-58*Math.sin(a),cy-58*Math.cos(a)],'#74caff',2.5,'Lift');
+ arrow(ctx,[cx,cy],[cx,cy+55],'#ffd16c',2.4,'mg');
+  textCanvas(ctx,'正视 · Roll',11,21,'#badfeb',15);
+}
+function yawview(t){const st=stateAt(t),{ctx,w,h}=canvas('yawview'),cx=w/2,cy=h*.49,R=Math.min(w*.42,h*.40);
+ ctx.save();ctx.strokeStyle='#597c91';ctx.lineWidth=1.3;ctx.beginPath();ctx.arc(cx,cy,R,0,TAU);ctx.stroke();ctx.restore();
+ line(ctx,[cx-R,cy],[cx+R,cy],'#7caac0',1,.34);line(ctx,[cx,cy-R],[cx,cy+R],'#7caac0',1,.34);
+ const psi=st.yaw*DEG,fx=Math.cos(psi),fy=-Math.sin(psi);
+ // Draw a recognizable sailplane planform instead of crossed strokes.
+ topGlider(ctx,cx,cy,-psi,1.16);
+ let r=R*.91;arrow(ctx,[cx,cy],[cx+fx*r,cy+fy*r],'#66e6cf',2.2);
+ textCanvas(ctx,'俯视 · Yaw',11,21,'#badfeb',15);
+ textCanvas(ctx,'+Y',cx+7,cy-R-3,'#a2c3d7',13);textCanvas(ctx,'+X',cx+R-10,cy-6,'#a2c3d7',13);
+
+}
+function format(t){return String(Math.floor(t/60)).padStart(2,'0')+':'+String(Math.floor(t%60)).padStart(2,'0')}
+let time=0,lastMs=null,playing=true,scrubbing=false,lastScene=-1;
+let lastReadoutMs=-Infinity,lastReadoutPhase=-1;
+function updateReadouts(s,force=false){
+ const now=performance.now();
+ if(!force&&s.phase===lastReadoutPhase&&now-lastReadoutMs<500)return;
+ lastReadoutMs=now;lastReadoutPhase=s.phase;
+ $('bank').textContent=Math.round(s.bank)+'°';
+ $('pitch').textContent=(s.pitch>=0?'+':'')+s.pitch.toFixed(1)+'°';
+ $('yaw').textContent=((Math.round(s.yaw/5)*5)%360)+'°';
+ const gammaA = -Math.asin(s.sink/s.speed)/DEG;
+ $('gammaa').textContent=(gammaA>=0?'+':'')+gammaA.toFixed(1)+'°';
+ $('aoa').textContent=s.aoa.toFixed(1)+'°';
+ $('speed').textContent=s.speed.toFixed(1)+' m/s';
+ $('climb').textContent=(s.groundVz>=0?'+':'−')+Math.abs(s.groundVz).toFixed(1)+' m/s';
+ $('climb').style.color=s.groundVz>=0?'#77edd0':'#ffcc96';
+}
+function display(t,forceReadouts=false){t=clamp(t,0,TOTAL);let s=stateAt(t),i=s.phase,scene=SCENES[i];
+ if(lastScene!==i){$('stageNo').textContent=`SCENE 0${i+1} / 06`;$('stageTitle').textContent=scene.name;$('stageEn').textContent=scene.en;$('scriptText').textContent=scene.zh;for(let j=0;j<6;j++){$('scene'+j).classList.toggle('active',j===i);$('scene'+j).setAttribute('aria-current',j===i?'step':'false')}lastScene=i}
+ updateReadouts(s,forceReadouts);
+ $('clock').textContent=`${format(t)} / 00:50`;if(!scrubbing)$('seek').value=String(t);$('seek').style.setProperty('--played',(100*t/TOTAL).toFixed(2)+'%');
+ world(t);pitchview(t);velview(t);rollview(t);yawview(t);
+}
+function sync(){let b=$('pause');b.textContent=playing?'Ⅱ 暂停':'▶ 播放';b.setAttribute('aria-label',playing?'暂停动画':'继续播放')}
+function seekTo(v){time=clamp(Number(v)||0,0,TOTAL);display(time,true)}
+$('pause').addEventListener('click',()=>{playing=!playing;sync()});$('replay').addEventListener('click',()=>{time=0;playing=true;lastMs=null;sync();display(time)});
+const seek=$('seek');let shouldResume=false;
+seek.addEventListener('pointerdown',()=>{shouldResume=playing;scrubbing=true;playing=false;sync()});
+seek.addEventListener('input',()=>{seekTo(seek.value)});
+function endScrub(){if(!scrubbing)return;scrubbing=false;playing=shouldResume;lastMs=null;sync();display(time)}
+seek.addEventListener('pointerup',endScrub);seek.addEventListener('pointercancel',endScrub);seek.addEventListener('change',()=>{if(!scrubbing){seekTo(seek.value)}});
+seek.addEventListener('blur',()=>{if(scrubbing)endScrub()});
+for(let j=0;j<6;j++){$('scene'+j).addEventListener('click',()=>{playing=false;sync();seekTo(starts[j]+.05)})}
+document.addEventListener('keydown',event=>{if(event.target===seek)return;if(event.code==='Space'&&!(event.target instanceof HTMLButtonElement)){event.preventDefault();playing=!playing;sync()}else if(event.key==='ArrowRight'){seekTo(time+1)}else if(event.key==='ArrowLeft'){seekTo(time-1)}});
+function animate(ms){if(lastMs===null)lastMs=ms;let dt=Math.min((ms-lastMs)/1000,.08);lastMs=ms;if(playing&&!scrubbing){time+=dt;if(time>=TOTAL){time%=TOTAL;lastScene=-1;}}display(time);requestAnimationFrame(animate)}
+window.demoSeek=v=>{playing=false;sync();seekTo(v)};window.demoResume=()=>{playing=true;lastMs=null;sync()};
+window.demoCheck=()=>[3,9,19,35,42,48].map(t=>{let s=stateAt(t);return{t,phase:s.phase+1,bank:s.bank,pitch:s.pitch,yaw:s.yaw,aoa:s.aoa,dotLiftAir:dot(s.lift,s.airHat),dotDragAir:dot(s.drag,s.airHat),gravity:s.weight,range:s.glideDistance}});
+window.addEventListener('resize',()=>display(time,true));document.addEventListener('visibilitychange',()=>{lastMs=null});sync();display(0,true);requestAnimationFrame(animate);
+})();
+</script>
+</body>
+</html>
