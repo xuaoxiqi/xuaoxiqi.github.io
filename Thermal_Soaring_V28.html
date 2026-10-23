@@ -22,6 +22,8 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
 .stageid{position:absolute;top:18px;left:18px;z-index:2;max-width:370px;background:#081f30e6;backdrop-filter:blur(7px);border:1px solid #3e647a;border-radius:12px;padding:11px 14px}
 .stageid .num{font-size:13px;letter-spacing:2px;color:#75ecd2;font-weight:800;margin-bottom:5px}.stageid h2{font-size:26px;margin:0 0 3px}.stageid .en{color:#b9d9e9;font-size:15px}
 .scriptbox{position:absolute;left:0;right:0;bottom:0;z-index:2;border:none;border-radius:0;background:linear-gradient(0deg,rgba(2,16,28,.91) 0%,rgba(2,16,28,.76) 78%,transparent 100%);padding:14px 26px 10px;color:#f4fbff;font-size:clamp(21px,1.85vw,26px);font-weight:720;letter-spacing:.3px;line-height:1.42;text-align:center;text-wrap:balance;text-shadow:0 2px 5px #00111f,0 0 12px #00111f;pointer-events:none}
+/* Scene-specific intentional line breaks: never let balanced wrapping split key words. */
+.scriptbox.manual-break{white-space:pre-line;text-wrap:wrap;padding-left:12px;padding-right:12px;font-size:clamp(20px,1.79vw,25px)}
 .side{display:flex;flex-direction:column;gap:10px}.sidecard{padding:0;border:none;background:transparent;box-shadow:none}.sidecard h3{font-size:19px;margin:0 0 7px}.sidecard .desc{font-size:15px;color:#afc9da;line-height:1.58;margin:0 0 11px}
 .viewframe{position:relative;overflow:hidden;border-radius:8px;border:1px solid #2b5062;background:#0b2533}
 .viewframe canvas{display:block;width:100%;height:100%;border:0;background:transparent}
@@ -153,10 +155,10 @@ const durations=[7,6,18,9,5,5], starts=[0,7,13,31,40,45], ends=[7,13,31,40,45,50
 const SCENES=[
  {name:'寻找热羽流',en:'Search for a thermal',zh:'没有发动机推力，滑翔机仍能靠逐渐降低高度向前飞行。它在背景水平风中寻找能够帮助自己爬升的热羽流。',eng:'The glider follows a shallow descending glide while searching for rising air.',hint:'搜索上升气流'},
  {name:'进入热羽流',en:'Thermal entry',zh:'找到热羽流后，飞行员倾斜机翼，转入盘旋，尽量留在上升气流中。',eng:'The pilot rolls into a coordinated turn and starts circling in the thermal.',hint:'建立盘旋'},
- {name:'盘旋爬升',en:'Thermalling',zh:'热空气不断向上升，滑翔机则在其中盘旋。虽然它相对周围空气仍在下沉，但热气流上升得更快，于是飞机就能越飞越高。',eng:'Rising air lets the glider climb while circling.',hint:'持续盘旋爬升'},
+ {name:'盘旋爬升',en:'Thermalling',zh:'热空气不断向上升，滑翔机则在其中盘旋。虽然它相对周围空气\n仍在下沉，但热气流上升得更快，于是飞机就能越飞越高。',eng:'Rising air lets the glider climb while circling.',hint:'持续盘旋爬升'},
  {name:'修正盘旋中心',en:'Thermal centering',zh:'热羽流中心的上升气流通常更强。飞行员不断微调盘旋位置，让飞机留在最有利的区域。',eng:'Small corrections keep the glider near the best rising air.',hint:'修正盘旋中心'},
  {name:'退出热羽流',en:'Thermal exit',zh:'攒够高度，滑翔机逐渐恢复机翼水平，离开热羽流。',eng:'The glider exits the thermal and prepares for the next glide.',hint:'退出热羽流'},
- {name:'跨区滑翔',en:'Cross-country glide',zh:'接下来，滑翔机用刚获得的高度换取航程，向下一股热羽流飞去，周而复始。',eng:'The glider trades altitude for forward travel and searches for the next thermal.',hint:'跨区滑翔'}
+ {name:'跨区滑翔',en:'Cross-country glide',zh:'接下来，滑翔机用刚获得的高度换取航程，\n向下一股热羽流飞去，周而复始。',eng:'The glider trades altitude for forward travel and searches for the next thermal.',hint:'跨区滑翔'}
 ];
 for(let i=0;i<6;i++){$('sceneStrip').insertAdjacentHTML('beforeend',`<button class="sceneitem" type="button" id="scene${i}" data-idx="${i}" aria-label="跳转第${i+1}幕"><span class="idx">0${i+1} / 06</span><span class="name">${SCENES[i].name}</span></button>`)}
 const clamp=(a,l=0,r=1)=>Math.max(l,Math.min(r,a)),mix=(a,b,s)=>a+(b-a)*s,smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
@@ -438,7 +440,7 @@ function updateReadouts(s,force=false){
  $('climbChip').style.color=s.groundVz>=0?'#77edd0':'#ffcc96';
 }
 function display(t,forceReadouts=false){t=clamp(t,0,TOTAL);let s=stateAt(t),i=s.phase,scene=SCENES[i];
- if(lastScene!==i){$('stageNo').textContent=`SCENE 0${i+1} / 06`;$('stageTitle').textContent=scene.name;$('stageEn').textContent=scene.en;$('scriptText').textContent=scene.zh;for(let j=0;j<6;j++){$('scene'+j).classList.toggle('active',j===i);$('scene'+j).setAttribute('aria-current',j===i?'step':'false')}lastScene=i}
+ if(lastScene!==i){$('stageNo').textContent=`SCENE 0${i+1} / 06`;$('stageTitle').textContent=scene.name;$('stageEn').textContent=scene.en;$('scriptText').textContent=scene.zh;$('scriptText').classList.toggle('manual-break',i===2||i===5);for(let j=0;j<6;j++){$('scene'+j).classList.toggle('active',j===i);$('scene'+j).setAttribute('aria-current',j===i?'step':'false')}lastScene=i}
  updateReadouts(s,forceReadouts);
  $('clock').textContent=`${format(t)} / 00:50`;if(!scrubbing)$('seek').value=String(t);$('seek').style.setProperty('--played',(100*t/TOTAL).toFixed(2)+'%');
  world(t);pitchview(t);velview(t);rollview(t);yawview(t);
