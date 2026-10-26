@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>热滑翔 · Thermal Soaring V29 | 动画 · 徐翱</title>
+<title>热滑翔 · Thermal Soaring V34 | 动画 · 徐翱</title>
 <style>
 :root{--bg:#061420;--panel:#102637;--line:#294d60;--white:#f2f8fd;--muted:#a2bed0;--mint:#53e4cb;--cyan:#74caff;--drag:#ff947c;--gravity:#ffd16c;--gold:#f9dc9c}
 *{box-sizing:border-box}html{min-height:100%;background:var(--bg)}
@@ -163,6 +163,26 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
 @keyframes captionAppear{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .scriptbox.caption-enter{animation:captionAppear .26s ease-out both}
 @media(prefers-reduced-motion:reduce){.scriptbox.caption-enter{animation:none}}
+
+/* V35: fullscreen uses the standard browser API, as in Dynamic Soaring.
+   Keep controls in their natural row rather than floating over the timeline.
+   On wide screens, fit the complete presentation into the visible viewport. */
+.tools{margin-left:auto;display:flex;gap:8px;align-items:center}
+.textbtn{border:none;background:transparent;color:#acd0e0;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;padding:8px 9px;border-radius:7px;white-space:nowrap}
+.textbtn:hover,.textbtn:focus-visible{color:#fff;background:#215069;outline-offset:2px}
+@media(max-width:600px){.tools{margin-left:0}.textbtn{font-size:13px;padding:7px 8px}}
+@media(min-width:851px){
+ html:fullscreen,html:fullscreen body{height:100%;overflow:hidden;background:#061420}
+ html:fullscreen .shell{height:100dvh;max-width:none;width:100%;padding:11px 18px 12px;display:flex;flex-direction:column;overflow:hidden}
+ html:fullscreen main{flex:1;min-height:0;display:flex;flex-direction:column}
+ html:fullscreen .stagegrid{flex:1;min-height:0}
+ html:fullscreen .mainstage,html:fullscreen .side{height:100%;min-height:0}
+ html:fullscreen #world{height:100%}
+ html:fullscreen .sidecard{height:100%;min-height:0}
+ html:fullscreen .scenebar{flex:0 0 auto;margin-top:8px;padding:9px 13px 10px}
+}
+/* At tablet and mobile widths, preserve normal stacked scrolling in fullscreen. */
+html:fullscreen body{background:#061420}
 </style>
 </head>
 <body>
@@ -203,7 +223,7 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
 </section>
 </aside>
 </section>
-<section class="scenebar"><div class="barhead"><div class="minicontrols"><span class="timer" id="clock">00:00 / 01:00</span><button class="controlbtn" type="button" id="pause" aria-label="暂停动画">Ⅱ 暂停</button><button class="controlbtn" type="button" id="replay" aria-label="从头重播">↻ 重播</button><div class="speedgroup" role="group" aria-label="播放速度"><button class="speedbtn active" type="button" id="rate1" aria-pressed="true" title="正常速度">1× 正常</button><button class="speedbtn" type="button" id="rate2" aria-pressed="false" title="两倍速度">2× 加速</button></div></div></div>
+<section class="scenebar"><div class="barhead"><div class="minicontrols"><span class="timer" id="clock">00:00 / 01:00</span><button class="controlbtn" type="button" id="pause" aria-label="暂停动画">Ⅱ 暂停</button><button class="controlbtn" type="button" id="replay" aria-label="从头重播">↻ 重播</button><div class="speedgroup" role="group" aria-label="播放速度"><button class="speedbtn active" type="button" id="rate1" aria-pressed="true" title="正常速度">1× 正常</button><button class="speedbtn" type="button" id="rate2" aria-pressed="false" title="两倍速度">2× 加速</button></div></div><div class="tools"><button class="textbtn" type="button" id="fullscreen" aria-label="进入全屏">全屏</button></div></div>
 <div class="scrubwrap"><span class="scrublabel">00:00</span><input id="seek" aria-label="拖动选择动画进度" type="range" min="0" max="60" step="0.01" value="0"><span class="scrublabel">01:00</span></div></section>
 
 </main>
@@ -214,7 +234,7 @@ const $=id=>document.getElementById(id), PI=Math.PI,TAU=PI*2, DEG=PI/180;
 const durations=[8,7,22,11,6,6], starts=[0,8,15,37,48,54], ends=[8,15,37,48,54,60],TOTAL=60;
 const SCENES=[
  {name:'寻找热羽流',en:'Search for a thermal',zh:'没有发动机推力，滑翔机依靠缓慢下降向前飞行，同时寻找上升热气流。',eng:'The glider follows a shallow descending glide while searching for rising air.',hint:'搜索上升气流'},
- {name:'进入热羽流',en:'Thermal entry',zh:'进入热羽流后，飞行员降低空速、倾斜机翼，让飞机转入盘旋。',eng:'The pilot rolls into a coordinated turn and starts circling in the thermal.',hint:'建立盘旋'},
+ {name:'进入热羽流',en:'Thermal entry',zh:'滑翔机正接近热羽流，飞行员逐渐降低空速、倾斜机翼，为进入盘旋做准备。',eng:'The pilot rolls into a coordinated turn and starts circling in the thermal.',hint:'建立盘旋'},
  {name:'盘旋爬升',en:'Thermalling',zh:'倾斜的升力提供向心分量，让滑翔机持续绕热羽流盘旋。',eng:'Rising air lets the glider climb while circling.',hint:'持续盘旋爬升'},
  {name:'修正盘旋中心',en:'Thermal centering',zh:'热羽流最强的上升区域并不总在原处，它也可能发生移动。',eng:'Small corrections keep the glider near the best rising air.',hint:'修正盘旋中心'},
  {name:'退出热羽流',en:'Thermal exit',zh:'获得足够高度后，滑翔机逐渐放平机翼，退出盘旋。',eng:'The glider exits the thermal and prepares for the next glide.',hint:'退出热羽流'},
@@ -223,7 +243,7 @@ const SCENES=[
 
 const NARRATION=[
  {at:0,zh:'没有发动机推力，滑翔机依靠缓慢下降向前飞行，同时寻找上升热气流。'},
- {at:8,zh:'进入热羽流后，飞行员降低空速、倾斜机翼，让飞机转入盘旋。'},
+ {at:8,zh:'滑翔机正接近热羽流，飞行员逐渐降低空速、倾斜机翼，为进入盘旋做准备。'},
  {at:15,zh:'倾斜的升力提供向心分量，让滑翔机持续绕热羽流盘旋。'},
  {at:22,zh:'它相对空气仍在缓慢下沉，但热气流上升更快，所以飞机相对地面爬升。'},
  {at:30,zh:'盘旋使滑翔机能够持续停留在热羽流中，上升气流则帮助它不断获得高度，积累重力势能。'},
@@ -244,6 +264,7 @@ function updateNarration(t){
 const clamp=(a,l=0,r=1)=>Math.max(l,Math.min(r,a)),mix=(a,b,s)=>a+(b-a)*s,smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
 const vec=(x,y,z)=>({x,y,z}),add=(a,b)=>vec(a.x+b.x,a.y+b.y,a.z+b.z),sub=(a,b)=>vec(a.x-b.x,a.y-b.y,a.z-b.z),mul=(a,n)=>vec(a.x*n,a.y*n,a.z*n),dot=(a,b)=>a.x*b.x+a.y*b.y+a.z*b.z,cross=(a,b)=>vec(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x),norm=a=>Math.hypot(a.x,a.y,a.z),unit=a=>mul(a,1/(norm(a)||1)),UP=vec(0,0,1),DOWN=vec(0,0,-1);
 const AMBIENT_HORIZONTAL_WIND=vec(5,0,0); // fixed +X background wind (m/s)
+const THERMAL_FOOTPRINT_RADIUS=105; // m; visible updraft footprint envelopes the 84 m circling radius
 function which(t){return t<8?0:t<15?1:t<37?2:t<48?3:t<54?4:5}
 function bz(s,p0,p1,p2,p3){let a=1-s;return add(add(mul(p0,a*a*a),mul(p1,3*a*a*s)),add(mul(p2,3*a*s*s),mul(p3,s*s*s)))}
 function position(t,phase=which(t)){
@@ -334,18 +355,22 @@ function bg(ctx,w,h,st){let g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0
  for(let j=0;j<5;j++){let x=((j*292+110-shift*.025)%(w+370)+(w+370))%(w+370)-100,y=h*(.21+.075*(j%3));ctx.fillStyle='#cce5f511';ctx.beginPath();ctx.ellipse(x,y,65+12*(j%3),15,0,0,TAU);ctx.fill()}
 }
 function projection(st,w,h){let focusx,focusy=-60,zoom=1.15;const s=st.s;
- if(st.phase===0){focusx=w<610?st.pos.x-4:-340;zoom=1.00}
- else if(st.phase===1){focusx=mix(-160,0,smooth(s));zoom=1.27}
+ // Scene 1 framing: move BOTH thermal and initial aircraft left on screen, avoiding the top-view inset.
+ // Only the virtual camera changes; actual position(t) and the physical thermal centre stay unchanged.
+ if(st.phase===0){focusx=w<610?st.pos.x+22:mix(-170,-80,smooth(s));zoom=mix(w<610?1:.82,1.27,smooth(s))}
+ else if(st.phase===1){focusx=mix(w<610?-160:-80,0,smooth(s));zoom=1.27}
  else if(st.phase===2||st.phase===3){focusx=st.phase===3?10:0;focusy=0;zoom=1.38}
  else if(st.phase===4){focusx=mix(25,160,smooth(s));focusy=-50;zoom=mix(1.33,1.08,smooth(s))}
  else{focusx=st.pos.x+(w<610?-6:155);focusy=-65;zoom=.97}
- const f=p=>{const dx=p.x-focusx,dy=p.y-focusy,dz=p.z-st.pos.z;return[w*.48+zoom*(dx*.90-dy*.39),(w<610?h*.47:h*.60)+zoom*(dx*.12+dy*.27-dz*1.08)]};return{p:f,zoom,focusx,focusy}
+ // Correct the image-plane handedness: the XY mapping must have the SAME orientation
+ // as the true top view (X right, Y up). This also fixes apparent orbit direction.
+ const f=p=>{const dx=p.x-focusx,dy=p.y-focusy,dz=p.z-st.pos.z;return[w*.48+zoom*(dx*.90-dy*.39),(w<610?h*.47:h*.60)+zoom*(dx*.12-dy*.27-dz*1.08)]};return{p:f,zoom,focusx,focusy}
 }
 function thermal(ctx,p,st){let center=vec(0,0,0),base=p(center),top=p(vec(0,0,340));if(base[0]<-170||base[0]>ctx.canvas.clientWidth+170)return;
  ctx.save();let gg=ctx.createLinearGradient(0,top[1],0,base[1]);gg.addColorStop(0,'#fab36508');gg.addColorStop(.2,'#ffd08449');gg.addColorStop(.58,'#eea76444');gg.addColorStop(1,'#f49a5340');poly(ctx,[p(vec(-110,-15,0)),p(vec(-88,-15,340)),p(vec(88,-15,340)),p(vec(110,-15,0))],gg);
  for(let i=0;i<16;i++){let a=i*2.4,rr=12+(i*37)%84,z=(i*33+st.t*70)%325;let pt=p(vec(rr*Math.cos(a),rr*Math.sin(a),z));ctx.beginPath();ctx.arc(pt[0],pt[1],2.5,0,TAU);ctx.fillStyle='#ffcc85a8';ctx.fill()}
  for(let j=-1;j<=1;j++){let x=j*52,z=55+((st.t*37+j*83+340)%235);arrow(ctx,p(vec(x,-12,z)),p(vec(x,-12,z+41)),'#ffc477',2.2)}
- const tag=p(vec(0,0,340));label(ctx,'UPDRAFT · 2.4 m/s',ctx.canvas.clientWidth<610?ctx.canvas.clientWidth*.75:tag[0],ctx.canvas.clientWidth<610?140:tag[1]-17,'#fdd79a',15);ctx.restore();
+ if(ctx.canvas.clientWidth>=610){const tag=p(vec(0,0,340));label(ctx,'UPDRAFT · 2.4 m/s',tag[0],tag[1]-17,'#fdd79a',15)}ctx.restore();
 }
 function trail(ctx,p,t){const n=Math.max(1,Math.ceil(t/.11));let last=null;for(let i=0;i<=n;i++){let tt=t*i/n,pt=p(position(tt));if(last){let col=tt<15?'#a8dfed':tt<48?'#72e9d8':tt<54?'#afdfff':'#ffdd9f';line(ctx,last,pt,col,2.5,.83)}last=pt}}
 function glider(ctx,p,st){let ex=3.22*Math.max(.56,Math.min(1,ctx.canvas.clientWidth/800));const point=(f,r,n)=>p(add(add(add(st.pos,mul(st.bodyForward,f*ex)),mul(st.rightWing,r*ex)),mul(st.lift,n*ex)));
@@ -362,54 +387,90 @@ function forces(ctx,p,st,cg){let base=p(st.pos);function ep(dir,length){let far=
  // Velocity is not an aerodynamic force: drawn separate from force triad.
  let va=ep(st.airHat,95);ctx.save();ctx.setLineDash([5,5]);line(ctx,[cg[0]+8,cg[1]-6],[va[0]+8,va[1]-6],'#b9f4ed',1.8,.65);ctx.restore();
 }
-function topView(ctx,st,w,h){if(w<610||!(st.phase>=1&&st.phase<=3))return;
- const X=w-137,Y=172,R=74;ctx.save();ctx.fillStyle='#071e2cf0';ctx.strokeStyle='#477c8b';ctx.lineWidth=1;
- ctx.beginPath();ctx.roundRect(X-R-15,Y-R-37,R*2+32,R*2+68,12);ctx.fill();ctx.stroke();
- label(ctx,'俯视图 / TOP VIEW',X,Y-R-18,'#d0f1f7',15);
- // broad thermal region
- ctx.beginPath();ctx.arc(X,Y,R*.74,0,TAU);ctx.fillStyle='#ffb56c25';ctx.fill();ctx.strokeStyle='#edb779a9';ctx.lineWidth=1.3;ctx.stroke();
- // brighter strongest-lift core; in centering stage this target shifts right to make the correction explicit
- const coreTarget=22*(R*.77/84), coreX = st.phase===3 ? X + coreTarget*st.s : X;
- ctx.beginPath();ctx.arc(coreX,Y,R*.24,0,TAU);ctx.fillStyle='#ffbb6780';ctx.fill();
- // reference orbit before centering
- if(st.phase===2||st.phase===3){ctx.save();ctx.setLineDash([4,5]);ctx.strokeStyle='rgba(177,217,238,.72)';ctx.beginPath();ctx.arc(X,Y,R*.77,0,TAU);ctx.stroke();ctx.restore()}
- let theta,x,y;
- if(st.phase===1){
-   theta=-PI/2+(PI/2)*st.s;
-   const radius=R*.77;
-   x=X+radius*Math.cos(theta); y=Y+radius*Math.sin(theta);
-   ctx.save();ctx.setLineDash([3,4]);ctx.strokeStyle='rgba(114,233,216,.65)';ctx.beginPath();ctx.arc(X,Y,radius,-PI/2,theta,false);ctx.stroke();ctx.restore();
- }else if(st.phase===2){
-   theta=-PI/2+TAU*(2*st.s);
-   const radius=R*.77;
-   x=X+radius*Math.cos(theta); y=Y+radius*Math.sin(theta);
-   ctx.save();ctx.strokeStyle='rgba(114,233,216,.82)';ctx.lineWidth=1.8;ctx.beginPath();ctx.arc(X,Y,radius,-PI/2,theta,false);ctx.stroke();ctx.restore();
- }else{ // phase 3: orbit center shifts right and radius decreases slightly, without lag
-   theta=-PI/2+TAU*(2+st.s);
-   const a=st.s, cxShift=(22*a)*(R*.77/84), radius=(84-6*a)*(R*.77/84);
-   x=X+cxShift+radius*Math.cos(theta); y=Y+radius*Math.sin(theta);
-   // actual correction path up to current time
-   ctx.save();ctx.strokeStyle='rgba(114,233,216,.9)';ctx.lineWidth=1.8;ctx.beginPath();
-   for(let k=0;k<=44;k++){
-     const u=st.s*k/44, shift=(22*u)*(R*.77/84), rr=(84-6*u)*(R*.77/84), th=-PI/2+TAU*(2+u);
-     const px=X+shift+rr*Math.cos(th), py=Y+rr*Math.sin(th);
-     if(k===0)ctx.moveTo(px,py); else ctx.lineTo(px,py);
-   }
-   ctx.stroke();
-   // target orbit after centering
-   ctx.save();ctx.setLineDash([3,5]);ctx.strokeStyle='rgba(255,211,144,.58)';ctx.beginPath();ctx.arc(X+coreTarget,Y,(84-6)*(R*.77/84),0,TAU);ctx.stroke();ctx.restore();
-   // indicate the drift of the effective orbit/strong core
-   arrow(ctx,[X,Y+R*.90],[coreX,Y+R*.90],'#ffd58f',1.9);
+function topView(ctx,st,w,h){
+ // An always-visible top-down view, sharing the SAME path and state with the main animation.
+ // Only points at times <= the current animation time are ever drawn.
+ const narrow=w<610;
+ const bw=narrow?154:204, bh=narrow?161:208;
+ const bx=w-bw-(narrow?8:14), by=narrow?94:70;
+ const cx=bx+bw*.50, cy=by+bh*.56;
+ const standardScale=narrow?.52:.66;
+ let scale=standardScale;
+ const s=st.s;
+ // Map camera is centred between the approaching aircraft and the *same*
+ // world-fixed thermal that drives the 3-D scene (centre x=y=0). There is
+ // no stage-2 camera jump and no separate, invented top-view flight route.
+ let focusX,focusY;
+ if(st.phase===0){
+   // In the last few seconds of searching, smoothly reveal the approaching
+   // thermal while keeping the aircraft in the inset. Match scene-2 start.
+   const reveal=smooth((st.pos.x+380)/190);
+   focusX=mix(st.pos.x-35,st.pos.x*.40,reveal);
+   focusY=mix(-84,-20,reveal);
+   scale=mix(standardScale,narrow?.385:.545,reveal);
  }
- topGlider(ctx,x,y,theta+PI/2,0.57);
- label(ctx,'机翼 + 机身',X,Y+R+15,'#a9d9e5',13);
- ctx.restore();
+ else if(st.phase===1){
+   // Include the real 105 m thermal footprint, even at entry's beginning.
+   // The glider is still outside it at 8 s; it crosses in near 13 s.
+   focusX=.40*st.pos.x;
+   focusY=mix(-20,0,smooth(s));
+   scale=mix(narrow?.385:.545,standardScale,smooth(s));
+ }
+ else if(st.phase===2){focusX=0;focusY=0}
+ else if(st.phase===3){focusX=12*s;focusY=0}
+ else if(st.phase===4){focusX=mix(12,112,smooth(s));focusY=mix(0,-40,smooth(s))}
+ else{focusX=112+(st.pos.x-190);focusY=-40+(st.pos.y+78)}
+ const xy=p=>[cx+(p.x-focusX)*scale,cy-(p.y-focusY)*scale];
+ ctx.save();
+ ctx.beginPath();ctx.roundRect(bx,by,bw,bh,11);
+ ctx.fillStyle='#071e2cf0';ctx.fill();ctx.strokeStyle='#477c8b';ctx.lineWidth=1.2;ctx.stroke();
+ label(ctx,'俯视轨迹',bx+13,by+23,'#d0f1f7',narrow?13:16,'left');
+ // Restrict content to the map viewport without clipping its title.
+ ctx.save();ctx.beginPath();ctx.rect(bx+5,by+34,bw-10,bh-40);ctx.clip();
+ // Cross-section of the existing thermal (NOT a planned/anticipated orbit).
+ // Outer footprint radius 105 m slightly encloses the actual 84 m orbit.
+ // Inner 38 m core indicates where upward flow is strongest; weak surrounding
+ // orange tint represents the broader rising-air region. All in world units.
+ // Display the same region in scene 1 when the map camera first reveals it.
+ if(st.phase<=4){
+   const coreX=st.phase===3?22*s:st.phase===4?22:0;
+   const q=xy(vec(coreX,0,0)),outer=THERMAL_FOOTPRINT_RADIUS*scale;
+   const glow=ctx.createRadialGradient(q[0],q[1],1,q[0],q[1],outer);
+   glow.addColorStop(0,'rgba(255,211,145,.42)');
+   glow.addColorStop(.34,'rgba(255,187,103,.29)');
+   glow.addColorStop(.73,'rgba(255,174,94,.17)');
+   glow.addColorStop(1,'rgba(255,174,94,.07)');
+   ctx.fillStyle=glow;ctx.beginPath();ctx.arc(q[0],q[1],outer,0,TAU);ctx.fill();
+   ctx.beginPath();ctx.arc(q[0],q[1],outer,0,TAU);
+   ctx.strokeStyle='rgba(255,204,134,.32)';ctx.lineWidth=1.15;ctx.stroke();
+   const coreRadius=38*scale;
+   const core=ctx.createRadialGradient(q[0],q[1],.5,q[0],q[1],coreRadius);
+   core.addColorStop(0,'rgba(255,226,162,.26)');
+   core.addColorStop(1,'rgba(255,204,125,0)');
+   ctx.fillStyle=core;ctx.beginPath();ctx.arc(q[0],q[1],coreRadius,0,TAU);ctx.fill();
+ }
+ // Trajectory is built ONLY from elapsed timestamps. Zero pre-drawn circles or next paths.
+ const n=Math.max(0,Math.ceil(st.t/.095));
+ if(n>0){
+   ctx.beginPath();
+   for(let k=0;k<=n;k++){
+     const tt=st.t*k/n;
+     const pp=xy(position(tt));
+     k===0?ctx.moveTo(pp[0],pp[1]):ctx.lineTo(pp[0],pp[1]);
+   }
+   ctx.strokeStyle='#72e9d8';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
+ }
+ // Use the exact same instantaneous state as in the main 3-D view.
+ const here=xy(st.pos);
+ const heading=-Math.atan2(st.bodyForward.y,st.bodyForward.x);
+ topGlider(ctx,here[0],here[1],heading,narrow?.37:.47);
+ ctx.restore();ctx.restore();
 }
 function nextThermal(ctx,w,h,t){let s=clamp((t-54)/6),x=w*(.86-.27*smooth(s)),y=h*(.74+.045*s),ht=75+215*smooth(s),ww=26+69*smooth(s);ctx.save();let grad=ctx.createLinearGradient(0,y-ht,0,y);grad.addColorStop(0,'#f3c38b41');grad.addColorStop(.35,'#fbb2738b');grad.addColorStop(1,'#ffc38418');poly(ctx,[[x-ww,y],[x-ww*.55,y-ht],[x+ww*.55,y-ht],[x+ww,y]],grad);for(let i=0;i<5;i++){let yy=y-22-i*(ht-35)/5+(t*14%15);arrow(ctx,[x-15+i*8,yy+11],[x-15+i*8,yy-12],'#ffc77d',2.1)}label(ctx,'NEXT THERMAL',x,y-ht-10,'#f8dba7',15);ctx.restore()}
 function world(t){const st=stateAt(t),{ctx,w,h}=canvas('world');bg(ctx,w,h,st);let pr=projection(st,w,h);if(st.phase<5)thermal(ctx,pr.p,st);trail(ctx,pr.p,t);if(st.phase===5)nextThermal(ctx,w,h,t);
  if(st.phase===3){ctx.save();ctx.setLineDash([4,6]);ctx.strokeStyle='#b9d7e5a8';ctx.beginPath();for(let i=0;i<=100;i++){let a=i*TAU/100,pt=pr.p(vec(84*Math.cos(a),84*Math.sin(a),st.pos.z));i?ctx.lineTo(...pt):ctx.moveTo(...pt)}ctx.stroke();ctx.restore()}
  let cg=glider(ctx,pr.p,st);forces(ctx,pr.p,st,cg);topView(ctx,st,w,h);
- if(st.phase===2||st.phase===3){label(ctx,'w = 2.4 m/s ↑',w<610?w*.73:w*.20,w<610?h*.54:h*.68,'#ffc98a',15);label(ctx,'相对空气下沉 0.9 m/s',w<610?w*.73:w*.22,w<610?h*.59:h*.72,'#b3e9e0',14)}
+ if(st.phase===2||st.phase===3){label(ctx,'w = 2.4 m/s ↑',w<610?w*.68:w*.20,w<610?h*.67:h*.68,'#ffc98a',15);label(ctx,'相对空气下沉 0.9 m/s',w<610?w*.66:w*.22,w<610?h*.73:h*.72,'#b3e9e0',14)}
 
 
 }
@@ -544,6 +605,20 @@ function setPlaybackRate(rate){
  }
  lastMs=null;
 }
+// Match Dynamic Soaring: request/exit browser fullscreen for the entire presentation.
+const fsButton=$('fullscreen');
+fsButton.addEventListener('click',async()=>{
+ try{
+   if(document.fullscreenElement)await document.exitFullscreen();
+   else await document.documentElement.requestFullscreen();
+ }catch(e){fsButton.textContent='浏览器不支持全屏'}
+});
+document.addEventListener('fullscreenchange',()=>{
+ const full=!!document.fullscreenElement;
+ fsButton.textContent=full?'退出全屏':'全屏';
+ fsButton.setAttribute('aria-label',full?'退出全屏':'进入全屏');
+ requestAnimationFrame(()=>display(time,true));
+});
 $('rate1').addEventListener('click',()=>setPlaybackRate(1));
 $('rate2').addEventListener('click',()=>setPlaybackRate(2));
 $('pause').addEventListener('click',()=>{playing=!playing;sync()});$('replay').addEventListener('click',()=>{time=0;playing=true;lastMs=null;sync();display(time)});
@@ -556,7 +631,8 @@ seek.addEventListener('blur',()=>{if(scrubbing)endScrub()});
 
 document.addEventListener('keydown',event=>{if(event.target===seek)return;if(event.code==='Space'&&!(event.target instanceof HTMLButtonElement)){event.preventDefault();playing=!playing;sync()}else if(event.key==='ArrowRight'){seekTo(time+1)}else if(event.key==='ArrowLeft'){seekTo(time-1)}});
 function animate(ms){if(lastMs===null)lastMs=ms;let dt=Math.min((ms-lastMs)/1000,.08);lastMs=ms;if(playing&&!scrubbing){time+=dt*playbackRate;if(time>=TOTAL){time%=TOTAL;lastScene=-1;}}display(time);requestAnimationFrame(animate)}
-window.demoSeek=v=>{playing=false;sync();seekTo(v)};window.demoGetRate=()=>playbackRate;window.demoResume=()=>{playing=true;lastMs=null;sync()};
+window.demoTopTraceInfo=t=>({time:t,points:Math.max(0,Math.ceil(t/.095))+1,firstTime:0,lastTime:t,position:position(t),heading:stateAt(t).yaw});window.demoSeek=v=>{playing=false;sync();seekTo(v)};window.demoGetRate=()=>playbackRate;window.demoResume=()=>{playing=true;lastMs=null;sync()};
+window.demoThermalAudit=t=>{const q=stateAt(t),r=Math.hypot(q.pos.x,q.pos.y);return{t:q.t,phase:q.phase+1,x:q.pos.x,y:q.pos.y,distanceFromThermal:r,thermalFootprintRadius:THERMAL_FOOTPRINT_RADIUS,orbitRadius:84,insideFootprint:r<=THERMAL_FOOTPRINT_RADIUS,projectedGliderUsesPosition:true}};
 window.demoCheck=()=>[3,9,19,23,35,42,48].map(t=>{let s=stateAt(t);return{t,phase:s.phase+1,bank:s.bank,pitch:s.pitch,yaw:s.yaw,aoa:s.aoa,gammaA:s.gammaA,gammaG:s.gammaG,wind:s.localWind,airVelocity:s.airVel,groundVelocity:s.groundVel,velocityClosure:norm(sub(s.groundVel,add(s.airVel,s.localWind))),dotLiftAir:dot(s.lift,s.airHat),dotDragAir:dot(s.drag,s.airHat),gravity:s.weight,range:s.glideDistance}});
 window.addEventListener('resize',()=>display(time,true));document.addEventListener('visibilitychange',()=>{lastMs=null});sync();display(0,true);requestAnimationFrame(animate);
 })();
