@@ -3,7 +3,7 @@ const path = require('path');
 const childProcess = require('child_process');
 
 const root = path.resolve(__dirname, '..');
-const newsPath = path.join(root, 'news.html');
+const newsPath = path.join(root, '_data', 'news.json');
 const archiveRoot = path.join(root, 'news-archive');
 const imageRoot = path.join(root, 'images', 'news');
 const backupRoot = path.join(root, 'news-backups');
@@ -27,27 +27,40 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
-function parseQuoted(value) {
-  const trimmed = value.trim();
-  return trimmed.startsWith('"') && trimmed.endsWith('"') ? JSON.parse(trimmed) : trimmed;
+function parseNews(source) {
+  const stories = JSON.parse(source);
+  if (!Array.isArray(stories) || !stories.length) throw new Error('News must contain a nonempty stories array');
+  const urls = new Set();
+  const slugs = new Set();
+  let previousDate = '9999-12-31';
+  for (const story of stories) {
+    for (const field of ['title', 'summary', 'category']) {
+      if (!story[field]) throw new Error('Story is missing ' + field);
+    }
+    if (!Array.isArray(story.reports) || !story.reports.length) throw new Error('Story has no reports: ' + story.title);
+    for (const report of story.reports) {
+      for (const field of ['title', 'source', 'date', 'datetime', 'url', 'image', 'archive']) {
+        if (!report[field]) throw new Error('Report is missing ' + field + ' in ' + story.title);
+      }
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(report.datetime)) throw new Error('Invalid report date: ' + report.datetime);
+      if (report.archive !== articleSlug(report.url)) throw new Error('Archive name does not match URL: ' + report.url);
+      if (urls.has(report.url) || slugs.has(report.archive)) throw new Error('Duplicate report or archive: ' + report.url);
+      urls.add(report.url);
+      slugs.add(report.archive);
+    }
+    const firstDate = story.reports.map(function (report) { return report.datetime; }).sort()[0];
+    if (firstDate > previousDate) throw new Error('Stories must be sorted by earliest report date: ' + story.title);
+    previousDate = firstDate;
+  }
+  return stories;
 }
 
-function parseNews(source) {
-  const frontMatter = source.split(/^---\s*$/m)[1];
-  const items = [];
-  let current = null;
-  for (const line of frontMatter.split(/\r?\n/)) {
-    const start = line.match(/^  - ([a-z_]+):\s*(.*)$/);
-    const property = line.match(/^    ([a-z_]+):\s*(.*)$/);
-    if (start) {
-      current = {};
-      current[start[1]] = parseQuoted(start[2]);
-      items.push(current);
-    } else if (property && current) {
-      current[property[1]] = parseQuoted(property[2]);
-    }
-  }
-  return items;
+function archiveItems(stories) {
+  return stories.flatMap(function (story, storyIndex) {
+    return story.reports.map(function (report, reportIndex) {
+      return Object.assign({}, report, { category: story.category, storyIndex: storyIndex, reportIndex: reportIndex });
+    });
+  });
 }
 
 function articleSlug(url) {
@@ -100,9 +113,22 @@ async function fetchText(url) {
   return (await fetchResponse(url)).text();
 }
 
+function thePaperDetail(html) {
+  const match = html.match(/<script\b[^>]*\bid=["']__NEXT_DATA__["'][^>]*>([\s\S]*?)<\/script\s*>/i);
+  if (!match) return null;
+  try {
+    const detail = JSON.parse(match[1]).props?.pageProps?.detailData?.contentDetail;
+    return detail && typeof detail.content === 'string' ? detail : null;
+  } catch (error) { return null; }
+}
+
 function metaImage(html) {
+  // The Paper's og:image is a generic platform icon; pic is its article cover.
+  const detail = thePaperDetail(html);
+  if (detail && detail.pic) return decodeEntities(detail.pic);
   const match = html.match(/<meta\s+property=["']og:image["']\s+content=["']([^"']*)["']/i);
-  return match ? decodeEntities(match[1]) : '';
+  const url = match ? decodeEntities(match[1]) : '';
+  return /^https?:\/\/file\.thepaper\.cn\/clt\/img\//i.test(url) ? '' : url;
 }
 
 function extractDivContent(html, markerPattern) {
@@ -128,9 +154,11 @@ function extractDivContent(html, markerPattern) {
 }
 
 function extractMainContent(html) {
+  const detail = thePaperDetail(html);
+  if (detail) return detail.content.replace(/\\"/g, '"');
   const selectors = [
     /id=["']js_content["']/i,
-    /id=["']vsb_content_2["']/i,
+    /id=["']vsb_content(?:_\d+)?["']/i,
     /class=["'][^"']*\bv_news_content\b[^"']*["']/i
   ];
   for (const selector of selectors) {
@@ -482,7 +510,8 @@ async function archiveItem(item, refresh) {
 
 async function main() {
   const source = fs.readFileSync(newsPath, 'utf8');
-  const items = parseNews(source);
+  const stories = parseNews(source);
+  const items = archiveItems(stories);
   const limitFlag = process.argv.find(function (arg) { return arg.startsWith('--limit='); });
   const limit = limitFlag ? Number(limitFlag.split('=')[1]) : items.length;
   const slugFlag = process.argv.find(function (arg) { return arg.startsWith('--slug='); });
@@ -493,26 +522,22 @@ async function main() {
   const results = [];
   for (const item of selected) {
     try {
-      results.push(await archiveItem(item, refresh));
+      results.push(Object.assign(await archiveItem(item, refresh), {
+        storyIndex: item.storyIndex, reportIndex: item.reportIndex
+      }));
     } catch (error) {
       process.stderr.write('[failed] ' + item.url + ': ' + error.message + '\n');
       process.exitCode = 1;
     }
   }
   if (results.length) {
-    let updated = source;
     for (const result of results) {
-      const oldLine = '    image: "' + result.oldImage + '"';
-      const newLine = '    image: "' + result.coverPath + '"';
-      if (updated.includes(oldLine)) updated = updated.replace(oldLine, newLine);
-      const defaultSlug = new URL(result.sourceUrl).pathname.split('/').filter(Boolean).pop();
-      const archiveLine = '    archive: "' + result.archiveSlug + '"';
-      const urlLine = '    url: "' + result.sourceUrl + '"';
-      if (result.archiveSlug !== defaultSlug && !updated.includes(archiveLine) && updated.includes(urlLine)) {
-        updated = updated.replace(urlLine, archiveLine + '\n' + urlLine);
-      }
+      const report = stories[result.storyIndex].reports[result.reportIndex];
+      report.image = result.coverPath;
+      report.archive = result.archiveSlug;
     }
-    fs.writeFileSync(newsPath, updated, 'utf8');
+    const updated = JSON.stringify(stories, null, 2) + '\n';
+    if (updated !== source) fs.writeFileSync(newsPath, updated, 'utf8');
   }
   const expandedArchives = fs.existsSync(archiveRoot) && fs.readdirSync(archiveRoot).some(function (fileName) {
     return fileName.toLowerCase().endsWith('.html');
@@ -538,7 +563,11 @@ async function main() {
     totalImages + ' images (' + (totalBytes / 1024 / 1024).toFixed(1) + ' MB); ' + failures + ' body images skipped.\n');
 }
 
-main().catch(function (error) {
-  process.stderr.write((error.stack || error.message) + '\n');
-  process.exitCode = 1;
-});
+module.exports = { parseNews, archiveItems, articleSlug, metaImage, extractMainContent };
+
+if (require.main === module) {
+  main().catch(function (error) {
+    process.stderr.write((error.stack || error.message) + '\n');
+    process.exitCode = 1;
+  });
+}

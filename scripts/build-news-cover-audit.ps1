@@ -9,25 +9,17 @@ $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 
 $repoRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$source = [IO.File]::ReadAllText((Join-Path $repoRoot 'news.html'))
-$frontMatter = [regex]::Match($source, '(?ms)^---\s*\r?\n(?<content>.*?)\r?\n---\s*(?:\r?\n|$)')
-$blocks = [regex]::Matches($frontMatter.Groups['content'].Value, '(?ms)^  - date: "(?<date>[^"]*)"\r?\n(?<rest>.*?)(?=^  - date:|\z)')
-
-function Property-FromBlock {
-    param([string]$Block, [string]$Name)
-    $match = [regex]::Match($Block, '(?m)^    ' + [regex]::Escape($Name) + ': "([^"]*)"$')
-    if ($match.Success) { return $match.Groups[1].Value }
-    return ''
-}
+$stories = [IO.File]::ReadAllText((Join-Path $repoRoot '_data\news.json')) | ConvertFrom-Json
 
 $items = @()
-foreach ($match in $blocks) {
-    $block = '  - date: "' + $match.Groups['date'].Value + '"' + [Environment]::NewLine + $match.Groups['rest'].Value
+foreach ($story in $stories) {
+    $primaryReport = $story.reports[0]
+    $firstReport = $story.reports | Sort-Object datetime | Select-Object -First 1
     $items += [pscustomobject]@{
-        Date = $match.Groups['date'].Value
-        Source = Property-FromBlock $block 'source'
-        Title = Property-FromBlock $block 'title'
-        Image = Property-FromBlock $block 'image'
+        Date = $firstReport.date
+        Source = $primaryReport.source
+        Title = $story.title
+        Image = $primaryReport.image
     }
 }
 
@@ -61,7 +53,10 @@ try {
 
         $imagePath = Join-Path $repoRoot (($item.Image -replace '^\./', '') -replace '/', '\')
         $imageRect = New-Object Drawing.Rectangle(($x + 10), ($y + 10), ($card.Width - 20), 205)
-        if (Test-Path -LiteralPath $imagePath) {
+        if ([IO.Path]::GetExtension($imagePath) -eq '.svg') {
+            $graphics.DrawString('SVG text cover - preview in browser', $labelFont, $mutedBrush, $imageRect.X, ($imageRect.Y + 90))
+        }
+        elseif (Test-Path -LiteralPath $imagePath) {
             $image = [Drawing.Image]::FromFile($imagePath)
             try {
                 $scale = [Math]::Min($imageRect.Width / $image.Width, $imageRect.Height / $image.Height)

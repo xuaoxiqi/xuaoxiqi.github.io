@@ -11,7 +11,7 @@ Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 $repoRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$newsPath = Join-Path $repoRoot 'news.html'
+$newsPath = Join-Path $repoRoot '_data\news.json'
 $archiveRoot = Join-Path $repoRoot 'news-archive'
 $imageRoot = Join-Path $repoRoot 'images\news'
 $backupRoot = Join-Path $repoRoot 'news-backups'
@@ -25,14 +25,6 @@ function Assert-WithinRoot {
     if (-not $fullPath.StartsWith($fullParent, [StringComparison]::OrdinalIgnoreCase)) {
         throw "Unsafe path outside expected root: $fullPath"
     }
-}
-
-function Get-PropertyValue {
-    param([string]$Block, [string]$Name)
-    $pattern = '(?m)^    ' + [regex]::Escape($Name) + ': "([^"]*)"$'
-    $match = [regex]::Match($Block, $pattern)
-    if ($match.Success) { return $match.Groups[1].Value }
-    return ''
 }
 
 function Get-Sha256 {
@@ -49,26 +41,18 @@ function Get-Sha256 {
 }
 
 function Get-NewsItems {
-    $source = [IO.File]::ReadAllText($newsPath)
-    $frontMatter = [regex]::Match($source, '(?ms)^---\s*\r?\n(?<content>.*?)\r?\n---\s*(?:\r?\n|$)')
-    if (-not $frontMatter.Success) { throw 'news.html front matter was not found.' }
-    $blocks = [regex]::Matches($frontMatter.Groups['content'].Value, '(?ms)^  - date: "(?<date>[^"]*)"\r?\n(?<rest>.*?)(?=^  - date:|\z)')
-    foreach ($match in $blocks) {
-        $block = '  - date: "' + $match.Groups['date'].Value + '"' + [Environment]::NewLine + $match.Groups['rest'].Value
-        $url = Get-PropertyValue $block 'url'
-        if (-not $url) { continue }
-        $slug = Get-PropertyValue $block 'archive'
-        if (-not $slug) {
-            $uri = [Uri]$url
-            $slug = $uri.AbsolutePath.TrimEnd('/').Split('/')[-1]
-        }
-        [pscustomobject]@{
-            Slug = $slug
-            Title = Get-PropertyValue $block 'title'
-            Source = Get-PropertyValue $block 'source'
-            PublishedAt = Get-PropertyValue $block 'datetime'
-            OriginalUrl = $url
-            Cover = Get-PropertyValue $block 'image'
+    $stories = [IO.File]::ReadAllText($newsPath) | ConvertFrom-Json
+    foreach ($story in $stories) {
+        if (-not $story.reports) { throw "Story has no reports: $($story.title)" }
+        foreach ($report in $story.reports) {
+            [pscustomobject]@{
+                Slug = $report.archive
+                Title = $report.title
+                Source = $report.source
+                PublishedAt = $report.datetime
+                OriginalUrl = $report.url
+                Cover = $report.image
+            }
         }
     }
 }

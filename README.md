@@ -73,7 +73,11 @@ Run the focused regression checks with `node --test scripts/update-funding.test.
 
 ## News Archives
 
-Archive new stories added to `news.html`. Each story is downloaded, packaged into its own verified ZIP under `news-backups`, and removed from the live site except for its lightweight cover image:
+News content is maintained in `_data/news.json` and rendered by `news.html`.
+Each event has one story card with a `reports` array. Add reports there, then run
+the command below. Each original report is downloaded and packaged into its own
+verified ZIP under `news-backups`; only its lightweight cover remains outside
+the package:
 
 ```powershell
 node scripts/archive-news.js
@@ -102,3 +106,23 @@ powershell.exe -ExecutionPolicy Bypass -File scripts/restore-news-archive.ps1 -S
 Running `node scripts/archive-news.js` again repackages any restored story. Package metadata and SHA-256 checksums are recorded in `news-backups/manifest.json`.
 
 The `news-backups` directory stays in the website source repository but is excluded from the generated Jekyll site, so cold archives do not add weight to normal page delivery.
+
+A story has `title`, `category`, `summary`, and one or more `reports`. Each report
+retains its original `title`, `source`, `date`, ISO `datetime`, `url`, local
+`image`, and unique `archive` slug. Optional `label` distinguishes reports from
+the same publisher. `source_note` identifies a platform without counting it as
+a separate source (for example, CSTAM's 澎湃号·政务 account).
+
+The first report supplies the story's cover and main link. Each story is dated
+by its earliest report, and stories are stored in reverse chronological order
+using that date. Additional reports keep their own publication dates and links.
+Stories about distinct events remain separate even when their research topics
+overlap. Merging cards does not merge or delete source ZIPs.
+
+The hero calculates Stories, Reports, Sources (unique source names across all
+reports), and Archive span from this data. Archive and cover-audit scripts use
+the same file. Report ZIP names and restore commands remain unchanged.
+
+The Paper articles use the page's structured article body and configured `pic`
+cover; its generic platform `og:image` icon is not an article cover. Run the
+archive parser checks with `node --test scripts/archive-news.test.js`.

@@ -1,6 +1,6 @@
 {
     "version":  1,
-    "updatedAt":  "2026-09-17T11:07:41Z",
+    "updatedAt":  "2026-10-28T07:03:38Z",
     "archives":  [
                      {
                          "slug":  "LuVEQpcX4G6IeCWxjF09WQ",
@@ -16,19 +16,6 @@
                          "sha256":  "2b80581bf9032e075ab3d6255f229f50cc095926d46b190a5482328b1eb13396"
                      },
                      {
-                         "slug":  "OM_HRIfo2i6blBJKHLajhg",
-                         "title":  "重点实验室徐翱副教授在JFM发表论文，揭示湍流中的节能导航机制",
-                         "source":  "飞行器基础布局全国重点实验室",
-                         "publishedAt":  "2026-07-26",
-                         "originalUrl":  "https://mp.weixin.qq.com/s/OM_HRIfo2i6blBJKHLajhg",
-                         "archivedAt":  "2026-09-14",
-                         "package":  "./news-backups/OM_HRIfo2i6blBJKHLajhg.zip",
-                         "cover":  "./images/news/OM_HRIfo2i6blBJKHLajhg/cover.jpg",
-                         "bytes":  273812,
-                         "files":  6,
-                         "sha256":  "e54cbcd1081ce7d64dc3f3b99e1887b351e50e095adc10aa01be6cec46139492"
-                     },
-                     {
                          "slug":  "34naaEaJRLzQjLcWjuqePw",
                          "title":  "西工大航空学院/极端力学研究院徐翱在JFM发表论文，揭示湍流中的节能导航机制",
                          "source":  "极端力学研究院",
@@ -42,17 +29,17 @@
                          "sha256":  "80424fe5fd994f7871b214f4b5ad79a60cc2a5285b739b493c1a5be32009063d"
                      },
                      {
-                         "slug":  "o-sINtBA_pbwZmb-vv__CA",
-                         "title":  "实验室徐翱团队在JFM发表论文，提出面向无人机稀疏观测的Track-to-Flow超分辨框架",
+                         "slug":  "OM_HRIfo2i6blBJKHLajhg",
+                         "title":  "重点实验室徐翱副教授在JFM发表论文，揭示湍流中的节能导航机制",
                          "source":  "飞行器基础布局全国重点实验室",
-                         "publishedAt":  "2026-01-17",
-                         "originalUrl":  "https://mp.weixin.qq.com/s/o-sINtBA_pbwZmb-vv__CA",
+                         "publishedAt":  "2026-07-26",
+                         "originalUrl":  "https://mp.weixin.qq.com/s/OM_HRIfo2i6blBJKHLajhg",
                          "archivedAt":  "2026-09-14",
-                         "package":  "./news-backups/o-sINtBA_pbwZmb-vv__CA.zip",
-                         "cover":  "./images/news/o-sINtBA_pbwZmb-vv__CA/cover.jpg",
-                         "bytes":  861808,
-                         "files":  4,
-                         "sha256":  "2d47afc310447d90ee3b2f81504a9fc8bf3f1db22c40efd9fb8dcc0c93e039ce"
+                         "package":  "./news-backups/OM_HRIfo2i6blBJKHLajhg.zip",
+                         "cover":  "./images/news/OM_HRIfo2i6blBJKHLajhg/cover.jpg",
+                         "bytes":  273812,
+                         "files":  6,
+                         "sha256":  "e54cbcd1081ce7d64dc3f3b99e1887b351e50e095adc10aa01be6cec46139492"
                      },
                      {
                          "slug":  "b7q4Zvi_FGOgggnsBG62SQ",
@@ -68,6 +55,19 @@
                          "sha256":  "e35e53b2d2d858ef8475cf4eba773b6adb46fc651fa8d482b21b84d07e83c735"
                      },
                      {
+                         "slug":  "o-sINtBA_pbwZmb-vv__CA",
+                         "title":  "实验室徐翱团队在JFM发表论文，提出面向无人机稀疏观测的Track-to-Flow超分辨框架",
+                         "source":  "飞行器基础布局全国重点实验室",
+                         "publishedAt":  "2026-01-17",
+                         "originalUrl":  "https://mp.weixin.qq.com/s/o-sINtBA_pbwZmb-vv__CA",
+                         "archivedAt":  "2026-09-14",
+                         "package":  "./news-backups/o-sINtBA_pbwZmb-vv__CA.zip",
+                         "cover":  "./images/news/o-sINtBA_pbwZmb-vv__CA/cover.jpg",
+                         "bytes":  861808,
+                         "files":  4,
+                         "sha256":  "2d47afc310447d90ee3b2f81504a9fc8bf3f1db22c40efd9fb8dcc0c93e039ce"
+                     },
+                     {
                          "slug":  "v41RklNg7JUvgiAVMM5C9g",
                          "title":  "南方科技大学成功举办“稀薄气体与湍流的多尺度非平衡流动” 学术研讨会",
                          "source":  "南科大力学与航空航天工程系",
@@ -81,6 +81,19 @@
                          "sha256":  "aaaab74096968e0ca2bf0620a3c8bcc4b988815dbdb0b9736c71af50409e8640"
                      },
                      {
+                         "slug":  "m-thepaper-cn-newsDetail_forward_32164314",
+                         "title":  "中国力学学会青托论坛暨青年托举人才与导师交流会纪要",
+                         "source":  "中国力学学会",
+                         "publishedAt":  "2025-12-12",
+                         "originalUrl":  "https://m.thepaper.cn/newsDetail_forward_32164314",
+                         "archivedAt":  "2026-10-28",
+                         "package":  "./news-backups/m-thepaper-cn-newsDetail_forward_32164314.zip",
+                         "cover":  "./images/news/m-thepaper-cn-newsDetail_forward_32164314/cover.jpg",
+                         "bytes":  2601166,
+                         "files":  19,
+                         "sha256":  "94029c36a3c8673e27c438e7f170235f3503b87a70fd290d20b66640a4a0a7bc"
+                     },
+                     {
                          "slug":  "FG9kwqCbLM2u_aLh8FEpqQ",
                          "title":  "会议回顾 | 2025 JFM/FLOW中国专题研讨会：从基础到应用的流体力学研究",
                          "source":  "JFM Flow 剑桥学术",
@@ -92,6 +105,19 @@
                          "bytes":  13372368,
                          "files":  24,
                          "sha256":  "03fda214c563385373c952214633728e4f6b1662e8d8b81e125bffc889a583b7"
+                     },
+                     {
+                         "slug":  "lixue-swjtu-edu-cn-15023",
+                         "title":  "第一届大西南应用数学和力学研讨会成功举办",
+                         "source":  "西南交通大学力学与航空航天学院",
+                         "publishedAt":  "2025-08-23",
+                         "originalUrl":  "https://lixue.swjtu.edu.cn/info/1059/15023.htm",
+                         "archivedAt":  "2026-10-28",
+                         "package":  "./news-backups/lixue-swjtu-edu-cn-15023.zip",
+                         "cover":  "./images/news/lixue-swjtu-edu-cn-15023/cover.png",
+                         "bytes":  5192647,
+                         "files":  16,
+                         "sha256":  "bec72574cbd846a14ee10912aea8c6a5ce5b357ef4d16c140d2d918e6501af4c"
                      },
                      {
                          "slug":  "jNAEBYoIK3_6hUgnFJ5x6w",
@@ -159,6 +185,19 @@
                          "sha256":  "a40786e3517f7a2ca6e4b22747cf473845e560e78a990ceb8ad81f7d8516dcae"
                      },
                      {
+                         "slug":  "m-thepaper-cn-newsDetail_forward_28452728",
+                         "title":  "2024壁湍流基础问题青年学术研讨会在兰州召开",
+                         "source":  "中国力学学会",
+                         "publishedAt":  "2024-08-17",
+                         "originalUrl":  "https://m.thepaper.cn/newsDetail_forward_28452728",
+                         "archivedAt":  "2026-10-28",
+                         "package":  "./news-backups/m-thepaper-cn-newsDetail_forward_28452728.zip",
+                         "cover":  "./images/news/m-thepaper-cn-newsDetail_forward_28452728/cover.jpg",
+                         "bytes":  590266,
+                         "files":  17,
+                         "sha256":  "e4415e74518f2e0bf6c7100201c494a3e08fd39066bbe199b97da83193ed3bf0"
+                     },
+                     {
                          "slug":  "-VCymU5-pRtxrZvI5akZIQ",
                          "title":  "力学与交叉学科发展论坛举行",
                          "source":  "北大科研",
@@ -170,32 +209,6 @@
                          "bytes":  9269626,
                          "files":  13,
                          "sha256":  "f0643d7c131a6dd7ad95edb717df4f2da697680a36c3788f4732d1b10feef290"
-                     },
-                     {
-                         "slug":  "OjdMGGONJjAuN7306tRVjQ",
-                         "title":  "喜报：航空学院徐翱老师入选第九届青年人才托举工程",
-                         "source":  "空院微视野",
-                         "publishedAt":  "2024-01-03",
-                         "originalUrl":  "https://mp.weixin.qq.com/s/OjdMGGONJjAuN7306tRVjQ",
-                         "archivedAt":  "2026-09-14",
-                         "package":  "./news-backups/OjdMGGONJjAuN7306tRVjQ.zip",
-                         "cover":  "./images/news/OjdMGGONJjAuN7306tRVjQ/cover.jpg",
-                         "bytes":  2474698,
-                         "files":  6,
-                         "sha256":  "1ac6b1ccfa83d67e2dd79a3e154f505ba85dac88bac915fa91c3df1f0800c712"
-                     },
-                     {
-                         "slug":  "e4tPwBT2FrqHyEq2sfBfaA",
-                         "title":  "喜报！祝贺西工大14位教师入选！",
-                         "source":  "西北工业大学",
-                         "publishedAt":  "2023-12-29",
-                         "originalUrl":  "https://mp.weixin.qq.com/s/e4tPwBT2FrqHyEq2sfBfaA",
-                         "archivedAt":  "2026-09-14",
-                         "package":  "./news-backups/e4tPwBT2FrqHyEq2sfBfaA.zip",
-                         "cover":  "./images/news/e4tPwBT2FrqHyEq2sfBfaA/cover.jpg",
-                         "bytes":  2906815,
-                         "files":  20,
-                         "sha256":  "7ed9bc9f9b3b0a3d1eb1ba31ba2a4becdf164e2ce4c72cc2d36d79d3d7a5f8a5"
                      },
                      {
                          "slug":  "9aoDYyWzW9UYblQEAVAbcw",
@@ -211,6 +224,32 @@
                          "sha256":  "b39d81059c3abb85d7996cab91534aa9e0343c89a10990edd5b6049c9eb5b896"
                      },
                      {
+                         "slug":  "e4tPwBT2FrqHyEq2sfBfaA",
+                         "title":  "喜报！祝贺西工大14位教师入选！",
+                         "source":  "西北工业大学",
+                         "publishedAt":  "2023-12-29",
+                         "originalUrl":  "https://mp.weixin.qq.com/s/e4tPwBT2FrqHyEq2sfBfaA",
+                         "archivedAt":  "2026-09-14",
+                         "package":  "./news-backups/e4tPwBT2FrqHyEq2sfBfaA.zip",
+                         "cover":  "./images/news/e4tPwBT2FrqHyEq2sfBfaA/cover.jpg",
+                         "bytes":  2906815,
+                         "files":  20,
+                         "sha256":  "7ed9bc9f9b3b0a3d1eb1ba31ba2a4becdf164e2ce4c72cc2d36d79d3d7a5f8a5"
+                     },
+                     {
+                         "slug":  "OjdMGGONJjAuN7306tRVjQ",
+                         "title":  "喜报：航空学院徐翱老师入选第九届青年人才托举工程",
+                         "source":  "空院微视野",
+                         "publishedAt":  "2024-01-03",
+                         "originalUrl":  "https://mp.weixin.qq.com/s/OjdMGGONJjAuN7306tRVjQ",
+                         "archivedAt":  "2026-09-14",
+                         "package":  "./news-backups/OjdMGGONJjAuN7306tRVjQ.zip",
+                         "cover":  "./images/news/OjdMGGONJjAuN7306tRVjQ/cover.jpg",
+                         "bytes":  2474698,
+                         "files":  6,
+                         "sha256":  "1ac6b1ccfa83d67e2dd79a3e154f505ba85dac88bac915fa91c3df1f0800c712"
+                     },
+                     {
                          "slug":  "zybpDrXdsrJ6nPbml1jEfg",
                          "title":  "南科大一周学术活动信息请查收（12.18-12.24）",
                          "source":  "南方科技大学",
@@ -222,6 +261,32 @@
                          "bytes":  8199474,
                          "files":  18,
                          "sha256":  "d1342cc6159b25fd5fcb572d1b4c40245c0451d54d9057428489c51d3580f585"
+                     },
+                     {
+                         "slug":  "hangkong-nwpu-edu-cn-25884",
+                         "title":  "喜讯丨航空学院18位学者入选2023年“全球前2%顶尖科学家榜单”",
+                         "source":  "西北工业大学航空学院",
+                         "publishedAt":  "2023-10-12",
+                         "originalUrl":  "https://hangkong.nwpu.edu.cn/info/1603/25884.htm",
+                         "archivedAt":  "2026-10-28",
+                         "package":  "./news-backups/hangkong-nwpu-edu-cn-25884.zip",
+                         "cover":  "./images/news/hangkong-nwpu-edu-cn-25884/cover.png",
+                         "bytes":  102662,
+                         "files":  2,
+                         "sha256":  "9812a9fdbde00dc6061e19cc42a6a94fe4bd0651510ae92ac70ad5cd6d84b181"
+                     },
+                     {
+                         "slug":  "AtY5xbdWcnu8a5oLBe_dDQ",
+                         "title":  "祝贺！西工大2023年优秀青年教师（吴亚军奖）集体亮相！",
+                         "source":  "西北工业大学",
+                         "publishedAt":  "2023-09-10",
+                         "originalUrl":  "https://mp.weixin.qq.com/s/AtY5xbdWcnu8a5oLBe_dDQ",
+                         "archivedAt":  "2026-09-14",
+                         "package":  "./news-backups/AtY5xbdWcnu8a5oLBe_dDQ.zip",
+                         "cover":  "./images/news/AtY5xbdWcnu8a5oLBe_dDQ/cover.jpg",
+                         "bytes":  1399952,
+                         "files":  18,
+                         "sha256":  "0c6a10737d19ca97307072fb9b57860e7de32baed86454bc80f4c272bc2e1967"
                      },
                      {
                          "slug":  "ePc7uGX7sN6FO_R60B-acg",
@@ -237,17 +302,30 @@
                          "sha256":  "ada710ddd6a1e4a5a48d337e3193016288fe302c3b370428af333f812796e86b"
                      },
                      {
-                         "slug":  "AtY5xbdWcnu8a5oLBe_dDQ",
-                         "title":  "祝贺！西工大2023年优秀青年教师（吴亚军奖）集体亮相！",
-                         "source":  "西北工业大学",
-                         "publishedAt":  "2023-09-10",
-                         "originalUrl":  "https://mp.weixin.qq.com/s/AtY5xbdWcnu8a5oLBe_dDQ",
-                         "archivedAt":  "2026-09-14",
-                         "package":  "./news-backups/AtY5xbdWcnu8a5oLBe_dDQ.zip",
-                         "cover":  "./images/news/AtY5xbdWcnu8a5oLBe_dDQ/cover.jpg",
-                         "bytes":  1399952,
-                         "files":  18,
-                         "sha256":  "0c6a10737d19ca97307072fb9b57860e7de32baed86454bc80f4c272bc2e1967"
+                         "slug":  "hangkong-nwpu-edu-cn-17514",
+                         "title":  "航空学院到香港高校交流访问暨人才招聘会",
+                         "source":  "西北工业大学航空学院",
+                         "publishedAt":  "2023-04-21",
+                         "originalUrl":  "https://hangkong.nwpu.edu.cn/info/1064/17514.htm",
+                         "archivedAt":  "2026-10-28",
+                         "package":  "./news-backups/hangkong-nwpu-edu-cn-17514.zip",
+                         "cover":  "./images/news/hangkong-nwpu-edu-cn-17514/cover.jpg",
+                         "bytes":  1782088,
+                         "files":  14,
+                         "sha256":  "7ae0282a5473875dfc3677722b8a4aef878a5c76395164b8c206ddebee22f1ff"
+                     },
+                     {
+                         "slug":  "hangkong-nwpu-edu-cn-17534",
+                         "title":  "首届“西北工业大学与香港科技大学双边学术论坛”在香港科技大学成功举办",
+                         "source":  "西北工业大学航空学院",
+                         "publishedAt":  "2023-04-21",
+                         "originalUrl":  "https://hangkong.nwpu.edu.cn/info/1064/17534.htm",
+                         "archivedAt":  "2026-10-28",
+                         "package":  "./news-backups/hangkong-nwpu-edu-cn-17534.zip",
+                         "cover":  "./images/news/hangkong-nwpu-edu-cn-17534/cover.jpg",
+                         "bytes":  807495,
+                         "files":  7,
+                         "sha256":  "fff1903875468bdc7874dd18231f0add26883a0f188345f03843d49de6aee8cd"
                      },
                      {
                          "slug":  "87_cTWxmphxgdF8p-WLlEQ",
@@ -274,6 +352,19 @@
                          "bytes":  589650,
                          "files":  2,
                          "sha256":  "0f37609d58a774ddae3fe6d5e6e12dbbdb8881be9d61ee87f63d0285a2fa13aa"
+                     },
+                     {
+                         "slug":  "news-nwpu-edu-cn-83289",
+                         "title":  "西工大举办力学学科发展与极端力学前沿论坛",
+                         "source":  "西北工业大学新闻网",
+                         "publishedAt":  "2022-10-28",
+                         "originalUrl":  "https://news.nwpu.edu.cn/info/1002/83289.htm",
+                         "archivedAt":  "2026-10-28",
+                         "package":  "./news-backups/news-nwpu-edu-cn-83289.zip",
+                         "cover":  "./images/news/news-nwpu-edu-cn-83289/cover.jpg",
+                         "bytes":  5189541,
+                         "files":  5,
+                         "sha256":  "c37014e7b69dd56458c3bef73ac5d9046871ea926b74d8d1d696990e636f5d05"
                      },
                      {
                          "slug":  "txAtRp9q7FBMMSnfCDliUg",
@@ -328,19 +419,6 @@
                          "sha256":  "1968010e208181ab20b0f7e1124d5a6deb2aa471807b56e4ecbc4b5017c5559f"
                      },
                      {
-                         "slug":  "N6SFkS9MazieM3NoxlrBaA",
-                         "title":  "极端力学研究院郗恒东团队揭示热湍流中大尺度环流反转的机制",
-                         "source":  "极端力学研究院",
-                         "publishedAt":  "2021-01-23",
-                         "originalUrl":  "https://mp.weixin.qq.com/s/N6SFkS9MazieM3NoxlrBaA",
-                         "archivedAt":  "2026-09-14",
-                         "package":  "./news-backups/N6SFkS9MazieM3NoxlrBaA.zip",
-                         "cover":  "./images/news/N6SFkS9MazieM3NoxlrBaA/cover.png",
-                         "bytes":  302347,
-                         "files":  2,
-                         "sha256":  "1c9a58e7122535a378ddeecae4031da43b88a1021f23d3a430bef70c4499c16f"
-                     },
-                     {
                          "slug":  "news-nwpu-edu-cn-75144",
                          "title":  "航空学院郗恒东团队揭示热湍流中大尺度环流反转的机制",
                          "source":  "西北工业大学新闻网",
@@ -352,6 +430,19 @@
                          "bytes":  421433,
                          "files":  2,
                          "sha256":  "70148b3edadc9e440650daa5ba1b81c07aae0f989ce1a678af72bcabcc7d122f"
+                     },
+                     {
+                         "slug":  "N6SFkS9MazieM3NoxlrBaA",
+                         "title":  "极端力学研究院郗恒东团队揭示热湍流中大尺度环流反转的机制",
+                         "source":  "极端力学研究院",
+                         "publishedAt":  "2021-01-23",
+                         "originalUrl":  "https://mp.weixin.qq.com/s/N6SFkS9MazieM3NoxlrBaA",
+                         "archivedAt":  "2026-09-14",
+                         "package":  "./news-backups/N6SFkS9MazieM3NoxlrBaA.zip",
+                         "cover":  "./images/news/N6SFkS9MazieM3NoxlrBaA/cover.png",
+                         "bytes":  302347,
+                         "files":  2,
+                         "sha256":  "1c9a58e7122535a378ddeecae4031da43b88a1021f23d3a430bef70c4499c16f"
                      },
                      {
                          "slug":  "maths-hust-edu-cn-6781",

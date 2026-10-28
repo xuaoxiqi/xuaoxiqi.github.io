@@ -1,0 +1,533 @@
+[
+  {
+    "category": "Research Highlight",
+    "title": "科研速递｜国家超级计算西安中心助力西北工业大学航空学院在《Physics of Fluids》发表论文！",
+    "summary": "Using high-performance computing from the National Supercomputing Center in Xi'an, the study examines extreme events and coherent-structure modulation in gust-forced wall turbulence.",
+    "reports": [
+      {
+        "date": "September 2, 2026",
+        "datetime": "2026-09-02",
+        "title": "科研速递｜国家超级计算西安中心助力西北工业大学航空学院在《Physics of Fluids》发表论文！",
+        "source": "秦岭超算",
+        "image": "./images/news/LuVEQpcX4G6IeCWxjF09WQ/cover.jpg",
+        "archive": "LuVEQpcX4G6IeCWxjF09WQ",
+        "url": "https://mp.weixin.qq.com/s/LuVEQpcX4G6IeCWxjF09WQ"
+      }
+    ]
+  },
+  {
+    "category": "Research Highlight",
+    "title": "JFM论文揭示湍流中的节能导航机制",
+    "summary": "A Journal of Fluid Mechanics study reveals mechanisms for energy-efficient navigation in turbulent flows.",
+    "reports": [
+      {
+        "date": "July 25, 2026",
+        "datetime": "2026-07-25",
+        "title": "西工大航空学院/极端力学研究院徐翱在JFM发表论文，揭示湍流中的节能导航机制",
+        "source": "极端力学研究院",
+        "image": "./images/news/34naaEaJRLzQjLcWjuqePw/cover.jpg",
+        "archive": "34naaEaJRLzQjLcWjuqePw",
+        "url": "https://mp.weixin.qq.com/s/34naaEaJRLzQjLcWjuqePw"
+      },
+      {
+        "date": "July 26, 2026",
+        "datetime": "2026-07-26",
+        "title": "重点实验室徐翱副教授在JFM发表论文，揭示湍流中的节能导航机制",
+        "source": "飞行器基础布局全国重点实验室",
+        "image": "./images/news/OM_HRIfo2i6blBJKHLajhg/cover.jpg",
+        "archive": "OM_HRIfo2i6blBJKHLajhg",
+        "url": "https://mp.weixin.qq.com/s/OM_HRIfo2i6blBJKHLajhg"
+      }
+    ]
+  },
+  {
+    "category": "Research Highlight",
+    "title": "JFM论文提出面向无人机稀疏观测的Track-to-Flow超分辨框架",
+    "summary": "A Journal of Fluid Mechanics paper introduces Track-to-Flow, a super-resolution framework for reconstructing high-resolution flow fields from sparse UAV observations.",
+    "reports": [
+      {
+        "date": "January 13, 2026",
+        "datetime": "2026-01-13",
+        "title": "西工大航空学院/极端力学研究院徐翱在JFM发表论文，提出面向无人机稀疏观测的Track-to-Flow超分辨框架",
+        "source": "极端力学研究院",
+        "image": "./images/news/b7q4Zvi_FGOgggnsBG62SQ/cover.jpg",
+        "archive": "b7q4Zvi_FGOgggnsBG62SQ",
+        "url": "https://mp.weixin.qq.com/s/b7q4Zvi_FGOgggnsBG62SQ"
+      },
+      {
+        "date": "January 17, 2026",
+        "datetime": "2026-01-17",
+        "title": "实验室徐翱团队在JFM发表论文，提出面向无人机稀疏观测的Track-to-Flow超分辨框架",
+        "source": "飞行器基础布局全国重点实验室",
+        "image": "./images/news/o-sINtBA_pbwZmb-vv__CA/cover.jpg",
+        "archive": "o-sINtBA_pbwZmb-vv__CA",
+        "url": "https://mp.weixin.qq.com/s/o-sINtBA_pbwZmb-vv__CA"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "南方科技大学成功举办“稀薄气体与湍流的多尺度非平衡流动” 学术研讨会",
+    "summary": "At this SUSTech workshop, Ao Xu presented wall-modeled large-eddy simulations of thermally stratified channel flow.",
+    "reports": [
+      {
+        "date": "December 31, 2025",
+        "datetime": "2025-12-31",
+        "title": "南方科技大学成功举办“稀薄气体与湍流的多尺度非平衡流动” 学术研讨会",
+        "source": "南科大力学与航空航天工程系",
+        "image": "./images/news/v41RklNg7JUvgiAVMM5C9g/cover.jpg",
+        "archive": "v41RklNg7JUvgiAVMM5C9g",
+        "url": "https://mp.weixin.qq.com/s/v41RklNg7JUvgiAVMM5C9g"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "中国力学学会青托论坛暨青年托举人才与导师交流会纪要",
+    "summary": "The society's meeting report features Ao Xu's presentation on active propulsion of self-propelled bodies in thermal turbulence at its Young Elite Scientists and Mentors Forum in Beijing.",
+    "reports": [
+      {
+        "date": "December 12, 2025",
+        "datetime": "2025-12-12",
+        "title": "中国力学学会青托论坛暨青年托举人才与导师交流会纪要",
+        "source": "中国力学学会",
+        "source_note": "澎湃号·政务",
+        "image": "./images/news/m-thepaper-cn-newsDetail_forward_32164314/cover.jpg",
+        "archive": "m-thepaper-cn-newsDetail_forward_32164314",
+        "url": "https://m.thepaper.cn/newsDetail_forward_32164314"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "会议回顾 | 2025 JFM/FLOW中国专题研讨会：从基础到应用的流体力学研究",
+    "summary": "The 2025 JFM/FLOW China Symposium brought together invited speakers from across fluid mechanics, including Ao Xu.",
+    "reports": [
+      {
+        "date": "September 10, 2025",
+        "datetime": "2025-09-10",
+        "title": "会议回顾 | 2025 JFM/FLOW中国专题研讨会：从基础到应用的流体力学研究",
+        "source": "JFM Flow 剑桥学术",
+        "image": "./images/news/FG9kwqCbLM2u_aLh8FEpqQ/cover.jpg",
+        "archive": "FG9kwqCbLM2u_aLh8FEpqQ",
+        "url": "https://mp.weixin.qq.com/s/FG9kwqCbLM2u_aLh8FEpqQ"
+      }
+    ]
+  },
+  {
+    "category": "Recognition",
+    "title": "徐翱获评《应用数学和力学》2023—2024年度优秀审稿专家",
+    "summary": "Ao Xu was named one of ten Outstanding Reviewers of Applied Mathematics and Mechanics for 2023–2024. The award list appears in a photograph within SWJTU's symposium report.",
+    "reports": [
+      {
+        "date": "August 23, 2025",
+        "datetime": "2025-08-23",
+        "title": "第一届大西南应用数学和力学研讨会成功举办",
+        "source": "西南交通大学力学与航空航天学院",
+        "image": "./images/news/lixue-swjtu-edu-cn-15023/cover.png",
+        "archive": "lixue-swjtu-edu-cn-15023",
+        "url": "https://lixue.swjtu.edu.cn/info/1059/15023.htm"
+      }
+    ]
+  },
+  {
+    "category": "Recognition",
+    "title": "回首征程，共谋发展——Acta Mechanica Sinica创刊40周年座谈会暨力学学科前瞻研讨会在长沙举行",
+    "summary": "At the journal's 40th-anniversary symposium, an Acta Mechanica Sinica review co-authored by Ao Xu was recognized among its outstanding papers.",
+    "reports": [
+      {
+        "date": "July 26, 2025",
+        "datetime": "2025-07-26",
+        "title": "回首征程，共谋发展——Acta Mechanica Sinica创刊40周年座谈会暨力学学科前瞻研讨会在长沙举行",
+        "source": "中国力学学会",
+        "image": "./images/news/jNAEBYoIK3_6hUgnFJ5x6w/cover.jpg",
+        "archive": "jNAEBYoIK3_6hUgnFJ5x6w",
+        "url": "https://mp.weixin.qq.com/s/jNAEBYoIK3_6hUgnFJ5x6w"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "新闻 | 2025年全国湍流与流动稳定性专题研讨会成功举办",
+    "summary": "News coverage of the 2025 National Symposium on Turbulence and Flow Stability.",
+    "reports": [
+      {
+        "date": "April 23, 2025",
+        "datetime": "2025-04-23",
+        "title": "新闻 | 2025年全国湍流与流动稳定性专题研讨会成功举办",
+        "source": "北大工学",
+        "image": "./images/news/kaNdZZyaPPXSjMnt3oCU6w/cover.jpg",
+        "archive": "kaNdZZyaPPXSjMnt3oCU6w",
+        "url": "https://mp.weixin.qq.com/s/kaNdZZyaPPXSjMnt3oCU6w"
+      }
+    ]
+  },
+  {
+    "category": "Research Highlight",
+    "title": "西工大航空学院/极端力学研究院徐翱在JFM发表论文，揭示时变壁面温度对剪切热湍流大尺度涡结构演化的影响规律",
+    "summary": "A Journal of Fluid Mechanics study investigates how time-varying wall temperature reshapes large-scale structures in sheared thermal turbulence.",
+    "reports": [
+      {
+        "date": "March 19, 2025",
+        "datetime": "2025-03-19",
+        "title": "西工大航空学院/极端力学研究院徐翱在JFM发表论文，揭示时变壁面温度对剪切热湍流大尺度涡结构演化的影响规律",
+        "source": "极端力学研究院",
+        "image": "./images/news/ZzKVdY7LL8K3hnoV32c_jA/cover.jpg",
+        "archive": "ZzKVdY7LL8K3hnoV32c_jA",
+        "url": "https://mp.weixin.qq.com/s/ZzKVdY7LL8K3hnoV32c_jA"
+      }
+    ]
+  },
+  {
+    "category": "Research Highlight",
+    "title": "西工大航空学院/极端力学研究院徐翱在JFM发表论文揭示剪切热湍流中颗粒的输运与沉积规律",
+    "summary": "A Journal of Fluid Mechanics study examines particle transport and deposition in sheared thermal turbulence.",
+    "reports": [
+      {
+        "date": "November 12, 2024",
+        "datetime": "2024-11-12",
+        "title": "西工大航空学院/极端力学研究院徐翱在JFM发表论文揭示剪切热湍流中颗粒的输运与沉积规律",
+        "source": "极端力学研究院",
+        "image": "./images/news/tqAhiOmihYyunfXE7uznfg/cover.jpg",
+        "archive": "tqAhiOmihYyunfXE7uznfg",
+        "url": "https://mp.weixin.qq.com/s/tqAhiOmihYyunfXE7uznfg"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "数学学院举办2024流固耦合前沿问题及无网格方法应用研讨会",
+    "summary": "At Taiyuan University of Technology's workshop on fluid–structure interaction and meshfree methods, Ao Xu discussed structure evolution and particle transport in sheared thermal turbulence.",
+    "reports": [
+      {
+        "date": "October 1, 2024",
+        "datetime": "2024-10-01",
+        "title": "数学学院举办2024流固耦合前沿问题及无网格方法应用研讨会",
+        "source": "太原理工大学数学学院",
+        "image": "./images/news/math-tyut-edu-cn-8093/cover.png",
+        "archive": "math-tyut-edu-cn-8093",
+        "url": "https://math.tyut.edu.cn/info/1053/8093.htm"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "2024壁湍流基础问题青年学术研讨会在兰州召开",
+    "summary": "Ao Xu presented how time-varying wall temperature affects the evolution of channel-turbulence structures in the Wall-Turbulence Simulation II session of the Lanzhou workshop.",
+    "reports": [
+      {
+        "date": "August 17, 2024",
+        "datetime": "2024-08-17",
+        "title": "2024壁湍流基础问题青年学术研讨会在兰州召开",
+        "source": "中国力学学会",
+        "source_note": "澎湃号·政务",
+        "image": "./images/news/m-thepaper-cn-newsDetail_forward_28452728/cover.jpg",
+        "archive": "m-thepaper-cn-newsDetail_forward_28452728",
+        "url": "https://m.thepaper.cn/newsDetail_forward_28452728"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "力学与交叉学科发展论坛举行",
+    "summary": "Ao Xu served as a session chair at the Peking University Forum on Mechanics and Interdisciplinary Development.",
+    "reports": [
+      {
+        "date": "May 9, 2024",
+        "datetime": "2024-05-09",
+        "title": "力学与交叉学科发展论坛举行",
+        "source": "北大科研",
+        "image": "./images/news/-VCymU5-pRtxrZvI5akZIQ/cover.jpg",
+        "archive": "-VCymU5-pRtxrZvI5akZIQ",
+        "url": "https://mp.weixin.qq.com/s/-VCymU5-pRtxrZvI5akZIQ"
+      }
+    ]
+  },
+  {
+    "category": "Recognition",
+    "title": "入选第九届中国科协青年人才托举工程",
+    "summary": "Ao Xu was selected for the ninth CAST Young Elite Scientists Sponsorship Program, with announcements from CSTAM, NPU, and its School of Aeronautics.",
+    "reports": [
+      {
+        "date": "December 25, 2023",
+        "datetime": "2023-12-25",
+        "title": "祝贺中国力学学会9位青年人才入选第九届中国科协青年人才托举工程",
+        "source": "中国力学学会",
+        "image": "./images/news/9aoDYyWzW9UYblQEAVAbcw/cover.jpg",
+        "archive": "9aoDYyWzW9UYblQEAVAbcw",
+        "url": "https://mp.weixin.qq.com/s/9aoDYyWzW9UYblQEAVAbcw"
+      },
+      {
+        "date": "December 29, 2023",
+        "datetime": "2023-12-29",
+        "title": "喜报！祝贺西工大14位教师入选！",
+        "source": "西北工业大学",
+        "image": "./images/news/e4tPwBT2FrqHyEq2sfBfaA/cover.jpg",
+        "archive": "e4tPwBT2FrqHyEq2sfBfaA",
+        "url": "https://mp.weixin.qq.com/s/e4tPwBT2FrqHyEq2sfBfaA"
+      },
+      {
+        "date": "January 3, 2024",
+        "datetime": "2024-01-03",
+        "title": "喜报：航空学院徐翱老师入选第九届青年人才托举工程",
+        "source": "空院微视野",
+        "image": "./images/news/OjdMGGONJjAuN7306tRVjQ/cover.jpg",
+        "archive": "OjdMGGONJjAuN7306tRVjQ",
+        "url": "https://mp.weixin.qq.com/s/OjdMGGONJjAuN7306tRVjQ"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "南科大一周学术活动信息请查收（12.18-12.24）",
+    "summary": "SUSTech's weekly academic program featured an invited talk by Ao Xu on self-propelling particles surfing in turbulent thermal convection.",
+    "reports": [
+      {
+        "date": "December 17, 2023",
+        "datetime": "2023-12-17",
+        "title": "南科大一周学术活动信息请查收（12.18-12.24）",
+        "source": "南方科技大学",
+        "image": "./images/news/zybpDrXdsrJ6nPbml1jEfg/cover.jpg",
+        "archive": "zybpDrXdsrJ6nPbml1jEfg",
+        "url": "https://mp.weixin.qq.com/s/zybpDrXdsrJ6nPbml1jEfg"
+      }
+    ]
+  },
+  {
+    "category": "Recognition",
+    "title": "喜讯丨航空学院18位学者入选2023年“全球前2%顶尖科学家榜单”",
+    "summary": "Ao Xu was included in the annual scientific-impact list in the 2023 edition of the World's Top 2% Scientists ranking, as reported by NPU's School of Aeronautics.",
+    "reports": [
+      {
+        "date": "October 12, 2023",
+        "datetime": "2023-10-12",
+        "title": "喜讯丨航空学院18位学者入选2023年“全球前2%顶尖科学家榜单”",
+        "source": "西北工业大学航空学院",
+        "image": "./images/news/hangkong-nwpu-edu-cn-25884/cover.png",
+        "archive": "hangkong-nwpu-edu-cn-25884",
+        "url": "https://hangkong.nwpu.edu.cn/info/1603/25884.htm"
+      }
+    ]
+  },
+  {
+    "category": "Recognition",
+    "title": "获2023年西北工业大学优秀青年教师（吴亚军奖）一等奖",
+    "summary": "Ao Xu received the first prize of the 2023 NPU Outstanding Young Teacher (Wu Yajun Award), recognized in university and School of Aeronautics reports.",
+    "reports": [
+      {
+        "date": "September 10, 2023",
+        "datetime": "2023-09-10",
+        "title": "祝贺！西工大2023年优秀青年教师（吴亚军奖）集体亮相！",
+        "source": "西北工业大学",
+        "image": "./images/news/AtY5xbdWcnu8a5oLBe_dDQ/cover.jpg",
+        "archive": "AtY5xbdWcnu8a5oLBe_dDQ",
+        "url": "https://mp.weixin.qq.com/s/AtY5xbdWcnu8a5oLBe_dDQ"
+      },
+      {
+        "date": "September 12, 2023",
+        "datetime": "2023-09-12",
+        "title": "躬耕教坛 强国有我——航空学院多位教师获得学校表彰奖励",
+        "source": "空院微视野",
+        "image": "./images/news/ePc7uGX7sN6FO_R60B-acg/cover.jpg",
+        "archive": "ePc7uGX7sN6FO_R60B-acg",
+        "url": "https://mp.weixin.qq.com/s/ePc7uGX7sN6FO_R60B-acg"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "赴香港高校交流暨西工大—港科大双边学术论坛",
+    "summary": "Ao Xu gave a research talk at the inaugural NPU–HKUST Bilateral Academic Forum and visited PolyU for discussions with Professor Dahua Shou on research collaboration and student training.",
+    "reports": [
+      {
+        "date": "April 21, 2023",
+        "datetime": "2023-04-21",
+        "title": "航空学院到香港高校交流访问暨人才招聘会",
+        "source": "西北工业大学航空学院",
+        "label": "香港交流报道",
+        "image": "./images/news/hangkong-nwpu-edu-cn-17514/cover.jpg",
+        "archive": "hangkong-nwpu-edu-cn-17514",
+        "url": "https://hangkong.nwpu.edu.cn/info/1064/17514.htm"
+      },
+      {
+        "date": "April 21, 2023",
+        "datetime": "2023-04-21",
+        "title": "首届“西北工业大学与香港科技大学双边学术论坛”在香港科技大学成功举办",
+        "source": "西北工业大学航空学院",
+        "label": "双边论坛报道",
+        "image": "./images/news/hangkong-nwpu-edu-cn-17534/cover.jpg",
+        "archive": "hangkong-nwpu-edu-cn-17534",
+        "url": "https://hangkong.nwpu.edu.cn/info/1064/17534.htm"
+      }
+    ]
+  },
+  {
+    "category": "Research Highlight",
+    "title": "西工大航空学院/极端力学研究院徐翱副教授在JFM发表论文揭示剪切热湍流中传热强化机制",
+    "summary": "A Journal of Fluid Mechanics paper reveals heat-transfer enhancement mechanisms in sheared thermal turbulence.",
+    "reports": [
+      {
+        "date": "April 11, 2023",
+        "datetime": "2023-04-11",
+        "title": "西工大航空学院/极端力学研究院徐翱副教授在JFM发表论文揭示剪切热湍流中传热强化机制",
+        "source": "极端力学研究院",
+        "image": "./images/news/87_cTWxmphxgdF8p-WLlEQ/cover.jpg",
+        "archive": "87_cTWxmphxgdF8p-WLlEQ",
+        "url": "https://mp.weixin.qq.com/s/87_cTWxmphxgdF8p-WLlEQ"
+      }
+    ]
+  },
+  {
+    "category": "Research Highlight",
+    "title": "西工大航空学院/极端力学研究院徐翱副教授在Physical Review Fluids发表论文揭示热湍流场中颗粒节能推进的机制",
+    "summary": "A Physical Review Fluids paper reveals a mechanism for energy-efficient propulsion of particles in thermal turbulence.",
+    "reports": [
+      {
+        "date": "March 10, 2023",
+        "datetime": "2023-03-10",
+        "title": "西工大航空学院/极端力学研究院徐翱副教授在Physical Review Fluids发表论文揭示热湍流场中颗粒节能推进的机制",
+        "source": "极端力学研究院",
+        "image": "./images/news/rJ0k9pfX0rrDpZuTX0jxvA/cover.jpg",
+        "archive": "rJ0k9pfX0rrDpZuTX0jxvA",
+        "url": "https://mp.weixin.qq.com/s/rJ0k9pfX0rrDpZuTX0jxvA"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "西工大举办力学学科发展与极端力学前沿论坛",
+    "summary": "At NPU's Forum on Mechanics Development and Frontiers of Extreme Mechanics, Ao Xu presented research on turbulent structures and transport in the fluid-mechanics session.",
+    "reports": [
+      {
+        "date": "October 28, 2022",
+        "datetime": "2022-10-28",
+        "title": "西工大举办力学学科发展与极端力学前沿论坛",
+        "source": "西北工业大学新闻网",
+        "image": "./images/news/news-nwpu-edu-cn-83289/cover.jpg",
+        "archive": "news-nwpu-edu-cn-83289",
+        "url": "https://news.nwpu.edu.cn/info/1002/83289.htm"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "首届JFM/FLOW 2022中国专题学术研讨会在西北工业大学成功举办",
+    "summary": "The first JFM/FLOW China Symposium was successfully held at Northwestern Polytechnical University.",
+    "reports": [
+      {
+        "date": "June 13, 2022",
+        "datetime": "2022-06-13",
+        "title": "首届JFM/FLOW 2022中国专题学术研讨会在西北工业大学成功举办",
+        "source": "极端力学研究院",
+        "image": "./images/news/txAtRp9q7FBMMSnfCDliUg/cover.jpg",
+        "archive": "txAtRp9q7FBMMSnfCDliUg",
+        "url": "https://mp.weixin.qq.com/s/txAtRp9q7FBMMSnfCDliUg"
+      }
+    ]
+  },
+  {
+    "category": "Recognition",
+    "title": "【青年人才蓄水池 】入选人才介绍：徐翱",
+    "summary": "A Chinese Society of Theoretical and Applied Mechanics profile introduces Ao Xu's research on turbulent structures and transport.",
+    "reports": [
+      {
+        "date": "April 9, 2022",
+        "datetime": "2022-04-09",
+        "title": "【青年人才蓄水池 】入选人才介绍：徐翱",
+        "source": "中国力学学会",
+        "image": "./images/news/-M13VBah0espRS4-ZUTl-g/cover.jpg",
+        "archive": "-M13VBah0espRS4-ZUTl-g",
+        "url": "https://mp.weixin.qq.com/s/-M13VBah0espRS4-ZUTl-g"
+      }
+    ]
+  },
+  {
+    "category": "Recognition",
+    "title": "航空新力量 ——徐翱",
+    "summary": "The School of Aeronautics profiles Ao Xu's education, research interests, and work on multiscale transport phenomena.",
+    "reports": [
+      {
+        "date": "November 23, 2021",
+        "datetime": "2021-11-23",
+        "title": "航空新力量 ——徐翱",
+        "source": "空院微视野",
+        "image": "./images/news/G6ISn67VMumkkoWrLwi1gQ/cover.jpg",
+        "archive": "G6ISn67VMumkkoWrLwi1gQ",
+        "url": "https://mp.weixin.qq.com/s/G6ISn67VMumkkoWrLwi1gQ"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "【学术报告】2021年9月25日徐翱副教授举办学术讲座",
+    "summary": "Ao Xu presented the mechanism behind large-scale circulation reversals in thermal turbulence, based on numerical simulations of circular convection cells.",
+    "reports": [
+      {
+        "date": "September 16, 2021",
+        "datetime": "2021-09-16",
+        "title": "【学术报告】2021年9月25日徐翱副教授举办学术讲座",
+        "source": "华中科技大学数学与统计学院",
+        "image": "./images/news/maths-hust-edu-cn-9248/cover.svg",
+        "archive": "maths-hust-edu-cn-9248",
+        "url": "https://maths.hust.edu.cn/info/1117/9248.htm"
+      }
+    ]
+  },
+  {
+    "category": "Research Highlight",
+    "title": "研究揭示热湍流中大尺度环流反转机制",
+    "summary": "Ao Xu and collaborators used direct numerical simulation to reveal how secondary vortices trigger large-scale circulation reversals in circular thermal-convection cells.",
+    "reports": [
+      {
+        "date": "January 18, 2021",
+        "datetime": "2021-01-18",
+        "title": "航空学院郗恒东团队揭示热湍流中大尺度环流反转的机制",
+        "source": "西北工业大学新闻网",
+        "image": "./images/news/news-nwpu-edu-cn-75144/cover.png",
+        "archive": "news-nwpu-edu-cn-75144",
+        "url": "https://news.nwpu.edu.cn/info/1003/75144.htm"
+      },
+      {
+        "date": "January 23, 2021",
+        "datetime": "2021-01-23",
+        "title": "极端力学研究院郗恒东团队揭示热湍流中大尺度环流反转的机制",
+        "source": "极端力学研究院",
+        "image": "./images/news/N6SFkS9MazieM3NoxlrBaA/cover.png",
+        "archive": "N6SFkS9MazieM3NoxlrBaA",
+        "url": "https://mp.weixin.qq.com/s/N6SFkS9MazieM3NoxlrBaA"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "【学术报告】2019年5月8日下午徐翱副教授来我院举办学术讲座",
+    "summary": "Ao Xu gave a seminar on lattice Boltzmann simulation of thermal convection, including model validation and GPU acceleration with OpenACC.",
+    "reports": [
+      {
+        "date": "May 5, 2019",
+        "datetime": "2019-05-05",
+        "title": "【学术报告】2019年5月8日下午徐翱副教授来我院举办学术讲座",
+        "source": "华中科技大学数学与统计学院",
+        "image": "./images/news/maths-hust-edu-cn-6781/cover.svg",
+        "archive": "maths-hust-edu-cn-6781",
+        "url": "https://maths.hust.edu.cn/info/1293/6781.htm"
+      }
+    ]
+  },
+  {
+    "category": "Academic Event",
+    "title": "第二届热能学术论坛(16)—香港科技大学徐翱博士报告会顺利举行",
+    "summary": "Ao Xu delivered a seminar at USTC on lattice Boltzmann modeling of complex multiphase transport in fuel cells and flow batteries.",
+    "reports": [
+      {
+        "date": "September 19, 2017",
+        "datetime": "2017-09-19",
+        "title": "第二届热能学术论坛(16)—香港科技大学徐翱博士报告会顺利举行",
+        "source": "USTC13",
+        "image": "./images/news/2M5yhP5BeZ24zAd2q8Hlcg/cover.jpg",
+        "archive": "2M5yhP5BeZ24zAd2q8Hlcg",
+        "url": "https://mp.weixin.qq.com/s/2M5yhP5BeZ24zAd2q8Hlcg"
+      }
+    ]
+  }
+]
