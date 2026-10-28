@@ -4425,8 +4425,9 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 	gap: 10px;
 	align-items: center;
 	color: var(--text-muted);
-	font-size: 14px;
+	font-size: 20px;
 	font-weight: 600;
+	line-height: 1.4;
 }
 
 .page-news .news-card-meta time {
@@ -4486,23 +4487,35 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 
 .page-news .news-card-actions {
 	display: flex;
-	flex-wrap: wrap;
-	gap: 10px 24px;
+	width: 100%;
+	flex-direction: column;
+	gap: 4px;
 	margin-top: auto;
-	padding-top: 17px;
+	padding-top: 14px;
+}
+
+.page-news .news-reports-label {
+	margin: 0 0 3px;
+	color: var(--text-muted);
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1.4;
 }
 
 .page-news .news-read-more {
-	display: inline-flex;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto auto;
 	align-items: center;
 	gap: 8px;
+	width: 100%;
 	margin: 0;
-	padding: 0 0 2px;
+	padding: 0 0 3px;
 	border: 0;
-	border-bottom: 2px solid var(--accent-color);
+	border-bottom: 1px solid var(--accent-color);
 	color: var(--primary-color);
 	font-size: 13px;
 	font-weight: 700;
+	line-height: 1.4;
 	text-decoration: none;
 }
 
@@ -4511,28 +4524,14 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 	font-weight: 700;
 }
 
-.page-news .news-card-actions--multiple {
-	width: 100%;
-	flex-direction: column;
-	gap: 4px;
-	padding-top: 14px;
+.page-news .news-report-source {
+	font-size: 20px;
+	overflow-wrap: anywhere;
 }
-
-.page-news .news-card-actions--multiple .news-read-more {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) auto auto;
-	gap: 8px;
-	width: 100%;
-	padding-bottom: 3px;
-	border-bottom-width: 1px;
-	line-height: 1.4;
-}
-
-.page-news .news-report-source { overflow-wrap: anywhere; }
 
 .page-news .news-report-date {
 	color: var(--text-muted);
-	font-size: 12px;
+	font-size: 20px;
 	font-weight: 600;
 	white-space: nowrap;
 }
@@ -4552,6 +4551,10 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 }
 
 @media (max-width: 720px) {
+	.page-news .news-card-meta,
+	.page-news .news-report-source,
+	.page-news .news-report-date { font-size: 18px; }
+
 	.page-news .news-section-heading {
 		align-items: flex-start;
 		flex-direction: column;

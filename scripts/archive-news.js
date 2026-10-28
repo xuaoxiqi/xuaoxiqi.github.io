@@ -43,6 +43,9 @@ function parseNews(source) {
         if (!report[field]) throw new Error('Report is missing ' + field + ' in ' + story.title);
       }
       if (!/^\d{4}-\d{2}-\d{2}$/.test(report.datetime)) throw new Error('Invalid report date: ' + report.datetime);
+      if (report.cover_index !== undefined && (!Number.isInteger(report.cover_index) || report.cover_index < 1)) {
+        throw new Error('cover_index must be a positive integer: ' + report.url);
+      }
       if (report.archive !== articleSlug(report.url)) throw new Error('Archive name does not match URL: ' + report.url);
       if (urls.has(report.url) || slugs.has(report.archive)) throw new Error('Duplicate report or archive: ' + report.url);
       urls.add(report.url);
@@ -330,7 +333,10 @@ async function localizeImages(content, slug, directory, pageUrl, preferredCoverI
     const alt = attributeValue(tag, 'alt') || 'Archived article image';
     return '<img src="' + escapeHtml(local) + '" alt="' + escapeHtml(alt) + '" loading="lazy" decoding="async">';
   });
-  const preferredCover = /^\d+$/.test(String(preferredCoverIndex || '')) ? downloads[Number(preferredCoverIndex) - 1] : null;
+  const preferredCover = preferredCoverIndex ? downloads[preferredCoverIndex - 1] : null;
+  if (preferredCoverIndex && !preferredCover) {
+    throw new Error('Requested cover image ' + preferredCoverIndex + ' is unavailable; keeping the existing cover');
+  }
   const coverCandidate = preferredCover || downloads.filter(Boolean).find(function (image) {
     if (image.extension === 'gif' || image.bytes < 5000) return false;
     const substantialLandscape = image.width >= 480 && image.height >= 180;
@@ -476,8 +482,8 @@ async function archiveItem(item, refresh) {
     throw new Error('Extracted article body is unexpectedly short');
   }
   const metadataCover = normalizedRemoteUrl(metaImage(html), item.url);
-  const coverUrl = metadataCover || localized.coverUrl;
-  const coverMethod = metadataCover ? 'page metadata' : localized.coverUrl ? 'article image' : savedCover ? 'existing local cover' : 'no available image';
+  const coverUrl = item.cover_index ? localized.coverUrl : metadataCover || localized.coverUrl;
+  const coverMethod = item.cover_index ? 'selected article image ' + item.cover_index : metadataCover ? 'page metadata' : localized.coverUrl ? 'article image' : savedCover ? 'existing local cover' : 'no available image';
   let coverPath = item.image;
   let coverBytes = 0;
   if (coverUrl) {

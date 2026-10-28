@@ -59,14 +59,7 @@ hero_mark: N
                         <div class="news-card-meta">
                             <time datetime="{{ first_report.datetime }}" itemprop="datePublished">{{ first_report.date }}</time>
                             <span class="news-meta-divider" aria-hidden="true"></span>
-                            {% if report_count > 1 %}
-                            <span>{{ report_count }} reports</span>
-                            {% else %}
-                            <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-                                <span itemprop="name">{{ primary_report.source }}</span>
-                                {% if primary_report.source_note %}<span>（{{ primary_report.source_note }}）</span>{% endif %}
-                            </span>
-                            {% endif %}
+                            <span>{{ report_count }} {% if report_count == 1 %}report{% else %}reports{% endif %}</span>
                         </div>
 
                         <span class="news-category">{{ item.category }}</span>
@@ -75,15 +68,12 @@ hero_mark: N
                         </h3>
                         <p itemprop="description">{{ item.summary }}</p>
 
-                        <div class="news-card-actions{% if report_count > 1 %} news-card-actions--multiple{% endif %}" aria-label="Original reports">
+                        <div class="news-card-actions" aria-label="Original reports">
+                            <p class="news-reports-label">Read original <span lang="zh-CN">/ 阅读原文</span></p>
                             {% for report in ordered_reports %}
                             <a class="news-read-more" href="{{ report.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ report.title | escape }} — {{ report.source | escape }} — {{ report.date }}">
-                                {% if report_count > 1 %}
-                                <span class="news-report-source">{{ report.source }}{% if report.label %} · {{ report.label }}{% endif %}{% if report.source_note %}（{{ report.source_note }}）{% endif %}</span>
+                                <span class="news-report-source" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">{{ report.source }}</span>{% if report.label %} · {{ report.label }}{% endif %}{% if report.source_note %}（{{ report.source_note }}）{% endif %}</span>
                                 <time class="news-report-date" datetime="{{ report.datetime }}">{{ report.datetime }}</time>
-                                {% else %}
-                                Read original <span lang="zh-CN">/ 阅读原文</span>
-                                {% endif %}
                                 <span class="news-external-arrow" aria-hidden="true">&nearr;</span>
                             </a>
                             {% endfor %}

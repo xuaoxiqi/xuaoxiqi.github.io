@@ -91,6 +91,10 @@ node scripts/archive-news.js --refresh
 
 Cover selection follows the original webpage metadata (`og:image`), matching the cover chosen by WeChat. A substantial static body image is used only when the page does not provide cover metadata. For source pages with neither cover metadata nor article images, use a clearly editorial text cover rather than a site header or unrelated image. The HUST seminar announcements are examples.
 
+For an explicitly chosen body image, set a positive, one-based `cover_index` on
+that report. This choice takes priority over page metadata on refresh. If that
+image cannot be downloaded, the refresh fails and retains the existing cover.
+
 Generate a labeled sheet for visual review with:
 
 ```powershell
