@@ -4432,15 +4432,8 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 
 .page-news .news-card-meta time {
 	color: var(--primary-color);
-	font-family: 'Courier New', monospace;
-	font-weight: 700;
-}
-
-.page-news .news-meta-divider {
-	display: inline-block;
-	width: 18px;
-	height: 1px;
-	background: var(--accent-color);
+	font-family: inherit;
+	font-weight: 600;
 }
 
 .page-news .news-category {

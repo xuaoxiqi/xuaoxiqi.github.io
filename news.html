@@ -46,7 +46,6 @@ hero_mark: N
                 {% assign primary_report = item.reports | first %}
                 {% assign ordered_reports = item.reports | sort: "datetime" %}
                 {% assign first_report = ordered_reports | first %}
-                {% assign report_count = item.reports | size %}
                 <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
                     <a class="news-cover-link" href="{{ primary_report.url }}" target="_blank" rel="noopener noreferrer" aria-label="Read: {{ primary_report.title | escape }}">
                         <div class="news-cover">
@@ -58,8 +57,6 @@ hero_mark: N
                     <div class="news-card-content">
                         <div class="news-card-meta">
                             <time datetime="{{ first_report.datetime }}" itemprop="datePublished">{{ first_report.date }}</time>
-                            <span class="news-meta-divider" aria-hidden="true"></span>
-                            <span>{{ report_count }} {% if report_count == 1 %}report{% else %}reports{% endif %}</span>
                         </div>
 
                         <span class="news-category">{{ item.category }}</span>

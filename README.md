@@ -94,6 +94,9 @@ Cover selection follows the original webpage metadata (`og:image`), matching the
 For an explicitly chosen body image, set a positive, one-based `cover_index` on
 that report. This choice takes priority over page metadata on refresh. If that
 image cannot be downloaded, the refresh fails and retains the existing cover.
+For a specific image link, set `cover_url` instead; it takes priority over both
+`cover_index` and page metadata. The image is still downloaded to the local
+cover file, and a failed download retains the existing cover.
 
 Generate a labeled sheet for visual review with:
 

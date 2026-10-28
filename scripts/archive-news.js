@@ -46,6 +46,9 @@ function parseNews(source) {
       if (report.cover_index !== undefined && (!Number.isInteger(report.cover_index) || report.cover_index < 1)) {
         throw new Error('cover_index must be a positive integer: ' + report.url);
       }
+      if (report.cover_url && !normalizedRemoteUrl(report.cover_url, report.url)) {
+        throw new Error('Invalid cover_url: ' + report.url);
+      }
       if (report.archive !== articleSlug(report.url)) throw new Error('Archive name does not match URL: ' + report.url);
       if (urls.has(report.url) || slugs.has(report.archive)) throw new Error('Duplicate report or archive: ' + report.url);
       urls.add(report.url);
@@ -482,8 +485,9 @@ async function archiveItem(item, refresh) {
     throw new Error('Extracted article body is unexpectedly short');
   }
   const metadataCover = normalizedRemoteUrl(metaImage(html), item.url);
-  const coverUrl = item.cover_index ? localized.coverUrl : metadataCover || localized.coverUrl;
-  const coverMethod = item.cover_index ? 'selected article image ' + item.cover_index : metadataCover ? 'page metadata' : localized.coverUrl ? 'article image' : savedCover ? 'existing local cover' : 'no available image';
+  const explicitCover = normalizedRemoteUrl(item.cover_url || '', item.url);
+  const coverUrl = explicitCover || (item.cover_index ? localized.coverUrl : metadataCover || localized.coverUrl);
+  const coverMethod = explicitCover ? 'explicit image URL' : item.cover_index ? 'selected article image ' + item.cover_index : metadataCover ? 'page metadata' : localized.coverUrl ? 'article image' : savedCover ? 'existing local cover' : 'no available image';
   let coverPath = item.image;
   let coverBytes = 0;
   if (coverUrl) {
