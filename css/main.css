@@ -4460,11 +4460,8 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 .page-news .news-card h3 a:hover { color: var(--accent-color); }
 
 .page-news .news-card-content > p {
-	display: -webkit-box;
-	overflow: hidden;
+	flex-shrink: 0;
 	margin: 14px 0 0;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
 	color: var(--text-muted);
 	font-size: 14px;
 	line-height: 1.7;
@@ -4570,8 +4567,8 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 
 @media (max-width: 520px) {
 	.page-news .news-card {
-		grid-template-rows: 190px 400px;
-		height: 590px;
+		grid-template-rows: 190px 460px;
+		height: 650px;
 	}
 	.page-news .news-cover,
 	.page-news .news-cover-link {
@@ -4583,6 +4580,10 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 }
 
 @media (max-width: 360px) {
+	.page-news .news-card {
+		grid-template-rows: 190px 530px;
+		height: 720px;
+	}
 	.page-news .news-card h3 { margin-top: 10px; }
 }
 
