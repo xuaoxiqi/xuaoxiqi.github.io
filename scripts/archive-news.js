@@ -165,6 +165,7 @@ function extractMainContent(html) {
   const selectors = [
     /id=["']js_content["']/i,
     /id=["']vsb_content(?:_\d+)?["']/i,
+    /id=["']articleDiv["']/i,
     /class=["'][^"']*\bv_news_content\b[^"']*["']/i
   ];
   for (const selector of selectors) {

@@ -73,3 +73,11 @@ test('existing WeChat metadata cover and article-body extraction remain supporte
   assert.equal(metaImage(html), 'https://example.org/wechat.jpg?a=1&b=2');
   assert.equal(extractMainContent(html), '<p>WeChat article</p>');
 });
+
+test('PKU articleDiv extraction excludes its similarly named style element and page navigation', function () {
+  const body = '<p>Conference report</p><div><img src="../../images/talk.jpg"><p>Speaker caption</p></div>';
+  const html = '<div>Navigation</div><div class="gp-article">' +
+    '<style id="articleDivCss">.gpCmsArticle00{}</style>' +
+    '<div id="articleDiv" class="gpCmsArticle00">' + body + '</div></div><div>Footer</div>';
+  assert.equal(extractMainContent(html), body);
+});
