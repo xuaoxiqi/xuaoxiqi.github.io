@@ -4426,7 +4426,7 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 	gap: 10px;
 	align-items: center;
 	color: var(--text-muted);
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 600;
 	line-height: 1.4;
 }
@@ -4462,11 +4462,11 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 
 .page-news .news-title-en {
 	margin-top: 7px;
-	color: var(--text-muted);
-	font-size: 0.67em;
-	font-weight: 600;
-	line-height: 1.45;
-	letter-spacing: 0;
+	color: inherit;
+	font-size: 1em;
+	font-weight: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
 	text-align: left;
 }
 
@@ -4476,8 +4476,9 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 	flex-shrink: 0;
 	margin: 14px 0 0;
 	color: var(--text-muted);
-	font-size: 14px;
-	line-height: 1.7;
+	font-size: 16px;
+	line-height: 1.65;
+	text-align: left;
 }
 
 .page-news .news-card-actions {
@@ -4520,13 +4521,13 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 }
 
 .page-news .news-report-source {
-	font-size: 20px;
+	font-size: 18px;
 	overflow-wrap: anywhere;
 }
 
 .page-news .news-report-date {
 	color: var(--text-muted);
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 600;
 	white-space: nowrap;
 }
@@ -4553,7 +4554,7 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 @media (max-width: 720px) {
 	.page-news .news-card-meta,
 	.page-news .news-report-source,
-	.page-news .news-report-date { font-size: 18px; }
+	.page-news .news-report-date { font-size: 16px; }
 
 	.page-news .news-section-heading {
 		align-items: flex-start;
