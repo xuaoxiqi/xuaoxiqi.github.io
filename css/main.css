@@ -4445,6 +4445,11 @@ body.page-teaching nav#navBarBottom { position: static; height: auto; min-height
 .page-news .news-title-zh,
 .page-news .news-title-en { display: block; }
 
+.page-news .news-title-zh {
+	color: var(--text-muted);
+	font-weight: 400;
+}
+
 .page-news .news-title-en {
 	margin-top: 7px;
 	color: inherit;
