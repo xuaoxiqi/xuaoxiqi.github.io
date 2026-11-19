@@ -1,7 +1,20 @@
 {
     "version":  1,
-    "updatedAt":  "2026-10-29T01:03:25Z",
+    "updatedAt":  "2026-11-19T02:11:06Z",
     "archives":  [
+                     {
+                         "slug":  "4-0zDsFSWik1ILKrxK-x1w",
+                         "title":  "讲座|工程科学学院科学前沿讲座“热湍流中自驱动体的主动推进”",
+                         "source":  "国科大工程科学学院",
+                         "publishedAt":  "2026-11-16",
+                         "originalUrl":  "https://mp.weixin.qq.com/s/4-0zDsFSWik1ILKrxK-x1w",
+                         "archivedAt":  "2026-11-19",
+                         "package":  "./news-backups/4-0zDsFSWik1ILKrxK-x1w.zip",
+                         "cover":  "./images/news/4-0zDsFSWik1ILKrxK-x1w/cover.jpg",
+                         "bytes":  6566328,
+                         "files":  16,
+                         "sha256":  "754d4cc1d66a18af2600fcb0aabef59378b0721fbbb8d69d2733daedf029d5c4"
+                     },
                      {
                          "slug":  "LuVEQpcX4G6IeCWxjF09WQ",
                          "title":  "科研速递｜国家超级计算西安中心助力西北工业大学航空学院在《Physics of Fluids》发表论文！",

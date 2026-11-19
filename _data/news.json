@@ -1,5 +1,22 @@
 [
   {
+    "category": "Academic Event",
+    "title": "学术报告｜国科大：热湍流中自驱动体的主动推进",
+    "title_en": "Academic Talks | UCAS: Active Propulsion of Self-Propelled Bodies in Thermal Turbulence",
+    "summary": "Ao Xu gave a seminar at UCAS on active propulsion of self-propelled bodies in thermal turbulence, including reinforcement-learning control for energy-efficient propulsion.",
+    "reports": [
+      {
+        "date": "November 16, 2026",
+        "datetime": "2026-11-16",
+        "title": "讲座|工程科学学院科学前沿讲座“热湍流中自驱动体的主动推进”",
+        "source": "国科大工程科学学院",
+        "image": "./images/news/4-0zDsFSWik1ILKrxK-x1w/cover.jpg",
+        "archive": "4-0zDsFSWik1ILKrxK-x1w",
+        "url": "https://mp.weixin.qq.com/s/4-0zDsFSWik1ILKrxK-x1w"
+      }
+    ]
+  },
+  {
     "category": "Research Highlight",
     "title": "科研进展｜周期平稳外力下壁湍流的极端事件与相干结构调制（PoF）",
     "title_en": "Research Highlights | Extreme Events and Coherent-Structure Modulation in Wall Turbulence under Cyclostationary Forcing (PoF)",
