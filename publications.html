@@ -18,7 +18,7 @@ hero_stats:
   - value: "28"
     label: First/corresponding
     id: count-lead-papers
-  - value: "2015–2026"
+  - value: "2015–2027"
     label: Publication span
 ---
 
@@ -148,6 +148,28 @@ hero_stats:
     <ol class="pub-list" reversed>
 
         <!--048-->
+        <li class="pub-item">
+            <div class="pub-content">
+                <div class="pub-authors">B.R. Xu; <b>A. Xu</b><sup>*</sup></div>
+                <div class="pub-title">Revisit eddy viscosity in pressure-driven wall turbulence at high Reynolds number</div>
+                <div class="pub-venue">
+                    <i>Acta Mechanica Sinica</i> <b>2027</b>, <i>43</i>, 360186.
+                    <div class="pub-links-row">
+                        <a href="https://doi.org/10.1007/s10409-026-60186-x" target="_blank" rel="noopener noreferrer" class="pub-text-link">DOI: 10.1007/s10409-026-60186-x</a>
+                        <a href="https://arxiv.org/abs/2604.09454" target="_blank" rel="noopener noreferrer" class="pub-text-link">arXiv:2604.09454</a>
+                    </div>
+                    <div class="pub-meta">Published online: NOV 17 2026</div>
+                </div>
+                <!-- Graphical Abstract -->
+                <div class="pub-graphic-abstract">
+                    <img src="./images/abstract/048_AMS2027_RevisitEddyViscosity.jpg" alt="Graphical Abstract">
+                </div>
+                <!-- Actions -->
+                <div class="pub-actions"><a class="btn-pdf" href="./publications/048_AMS2027_RevisitEddyViscosity.pdf">PDF</a></div>
+            </div>
+        </li>
+
+        <!--047-->
         <li class="pub-item recent">
             <div class="pub-content">
                 <div class="pub-authors">B.R. Xu; <b>A. Xu</b><sup>*</sup>; H.D. Xi</div>
@@ -160,13 +182,13 @@ hero_stats:
                 </div>
                 <!-- Graphical Abstract -->
                 <div class="pub-graphic-abstract">
-                    <img src="./images/abstract/048_JFM2026_BuoyancyInducedVelocity.jpg" alt="Graphical Abstract">
+                    <img src="./images/abstract/047_JFM2026_BuoyancyInducedVelocity.jpg" alt="Graphical Abstract">
                 </div>
-                <div class="pub-actions"><a class="btn-pdf" href="./publications/048_JFM2026_BuoyancyInducedVelocity_arXiv.pdf">PDF</a></div>
+                <div class="pub-actions"><a class="btn-pdf" href="./publications/047_JFM2026_BuoyancyInducedVelocity_arXiv.pdf">PDF</a></div>
             </div>
         </li>
 
-        <!--047-->
+        <!--046-->
         <li class="pub-item">
             <div class="pub-content">
                 <div class="pub-authors"><b>A. Xu</b>; H.L. Wu; B.R. Xu; H.D. Xi<sup>*</sup></div>
@@ -180,34 +202,12 @@ hero_stats:
                 </div>
                 <!-- Graphical Abstract -->
                 <div class="pub-graphic-abstract">
-                    <img src="./images/abstract/047_JFM2026_LearningTraverseConvective.jpg" alt="Graphical Abstract">
+                    <img src="./images/abstract/046_JFM2026_LearningTraverseConvective.jpg" alt="Graphical Abstract">
                 </div>
-                <div class="pub-actions"><a class="btn-pdf" href="./publications/047_JFM2026_LearningTraverseConvective.pdf">PDF</a></div>
+                <div class="pub-actions"><a class="btn-pdf" href="./publications/046_JFM2026_LearningTraverseConvective.pdf">PDF</a></div>
             </div>
         </li>
 
-        <!--046-->
-        <li class="pub-item">
-            <div class="pub-content">
-                <div class="pub-authors">B.R. Xu; <b>A. Xu</b><sup>*</sup></div>
-                <div class="pub-title">Revisit eddy viscosity in pressure-driven wall turbulence at high Reynolds number</div>
-                <div class="pub-venue">
-                    <i>Acta Mechanica Sinica</i> <b>2027</b>, <i>43</i>, 360186.
-                    <div class="pub-links-row">
-                        <a href="https://doi.org/10.1007/s10409-026-60186-x" target="_blank" rel="noopener noreferrer" class="pub-text-link">DOI: 10.1007/s10409-026-60186-x</a>
-                        <a href="https://arxiv.org/abs/2604.09454" target="_blank" rel="noopener noreferrer" class="pub-text-link">arXiv:2604.09454</a>
-                    </div>
-                    <div class="pub-meta">Published: NOV 17 2026</div>
-                </div>
-                <!-- Graphical Abstract -->
-                <div class="pub-graphic-abstract">
-                    <img src="./images/abstract/046_AMS2026_RevisitEddyViscosity.jpg" alt="Graphical Abstract">
-                </div>
-                <!-- Actions -->
-                <div class="pub-actions"><a class="btn-pdf" href="./publications/046_AMS2026_RevisitEddyViscosity.pdf">PDF</a></div>
-            </div>
-        </li>
-        
         <!--045-->
         <li class="pub-item recent">
             <div class="pub-content">
@@ -1180,9 +1180,8 @@ hero_stats:
             const compactAuthorsHTML = authorsHTML.replace(/\s+/g, '');
             const authorsText = authorsElement.innerText.trim().replace(/\s+/g, ' ');
             const venueText = venueElement.innerText;
-            // Prefer the publication date when the journal's issue year differs.
-            const yearMatch = venueText.match(/\bPublished:\s*[^|\r\n]*?\b((?:19|20)\d{2})\b/) ||
-                venueText.match(/\b((?:19|20)\d{2})\b/);
+            // Group by the journal's bibliographic year rather than the online date.
+            const yearMatch = venueText.match(/\b((?:19|20)\d{2})\b/);
 
             const isFirst = authorsText.startsWith('A. Xu');
             const isCorresponding = compactAuthorsHTML.includes('A.Xu</b><sup>*</sup>') ||
