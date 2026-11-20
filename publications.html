@@ -192,18 +192,19 @@ hero_stats:
                 <div class="pub-authors">B.R. Xu; <b>A. Xu</b><sup>*</sup></div>
                 <div class="pub-title">Revisit eddy viscosity in pressure-driven wall turbulence at high Reynolds number</div>
                 <div class="pub-venue">
-                    <i>Acta Mechanica Sinica</i> <b>2026</b>, <i>42</i>, 360186.
+                    <i>Acta Mechanica Sinica</i> <b>2027</b>, <i>43</i>, 360186.
                     <div class="pub-links-row">
                         <a href="https://doi.org/10.1007/s10409-026-60186-x" target="_blank" rel="noopener noreferrer" class="pub-text-link">DOI: 10.1007/s10409-026-60186-x</a>
                         <a href="https://arxiv.org/abs/2604.09454" target="_blank" rel="noopener noreferrer" class="pub-text-link">arXiv:2604.09454</a>
                     </div>
+                    <div class="pub-meta">Published: NOV 17 2026</div>
                 </div>
                 <!-- Graphical Abstract -->
                 <div class="pub-graphic-abstract">
                     <img src="./images/abstract/046_AMS2026_RevisitEddyViscosity.jpg" alt="Graphical Abstract">
                 </div>
                 <!-- Actions -->
-                <div class="pub-actions"><a class="btn-pdf" href="./publications/046_AMS2026_RevisitEddyViscosity_arXiv.pdf">PDF</a></div>
+                <div class="pub-actions"><a class="btn-pdf" href="./publications/046_AMS2026_RevisitEddyViscosity.pdf">PDF</a></div>
             </div>
         </li>
         
@@ -1179,7 +1180,9 @@ hero_stats:
             const compactAuthorsHTML = authorsHTML.replace(/\s+/g, '');
             const authorsText = authorsElement.innerText.trim().replace(/\s+/g, ' ');
             const venueText = venueElement.innerText;
-            const yearMatch = venueText.match(/\b(?:19|20)\d{2}\b/);
+            // Prefer the publication date when the journal's issue year differs.
+            const yearMatch = venueText.match(/\bPublished:\s*[^|\r\n]*?\b((?:19|20)\d{2})\b/) ||
+                venueText.match(/\b((?:19|20)\d{2})\b/);
 
             const isFirst = authorsText.startsWith('A. Xu');
             const isCorresponding = compactAuthorsHTML.includes('A.Xu</b><sup>*</sup>') ||
@@ -1187,7 +1190,7 @@ hero_stats:
 
             return {
                 venueText,
-                year: yearMatch ? Number(yearMatch[0]) : null,
+                year: yearMatch ? Number(yearMatch[1]) : null,
                 isLead: isFirst || isCorresponding
             };
         }).filter(Boolean);
