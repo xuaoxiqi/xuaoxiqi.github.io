@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="WMLES 入门教学笔记：从 N–S 离散、近壁动量通量到壁面应力闭合。">
+<title>理解 WMLES：从 N–S 离散到壁面应力模型</title>
+<style>
+:root{--ink:#202d36;--muted:#546671;--line:#e4e9ed;--link:#246e95;--soft:#f6f9fb;--mild:#f8fafb}
+*{box-sizing:border-box}
+html{font-size:16px}
+body{background:#f4f6f7;color:var(--ink);font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,-apple-system,sans-serif;margin:0;line-height:1.85;letter-spacing:.007em}
+article{max-width:960px;margin:40px auto 65px;padding:62px 74px 74px;background:#fff;border:1px solid #e9edf0;box-shadow:0 6px 25px rgba(25,53,72,.055)}
+h1{font-size:32px;line-height:1.4;margin:0 0 8px;letter-spacing:.005em;font-weight:750;color:#1b2d39}
+.subtitle{font-size:16px;color:#62727e;margin:0 0 29px;padding-bottom:25px;border-bottom:1px solid var(--line)}
+h2{font-size:24px;font-weight:730;line-height:1.55;border-bottom:1px solid var(--line);padding-bottom:11px;margin:58px 0 22px;color:#1f394b}
+h3{font-size:19px;font-weight:730;line-height:1.55;margin:39px 0 13px;color:#253c4b}
+h4{font-size:16px;font-weight:730;margin:0 0 12px;color:#2b4352}
+p{margin:14px 0 17px}strong{font-weight:740;color:#1a3648}
+math{font-family:"Cambria Math","STIX Two Math","Latin Modern Math",serif;font-size:1.05em}
+math[display="block"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:12px 6px;margin:15px auto 18px;font-size:1.18em;text-align:center}
+.diagram{margin:25px 0 29px}
+.diagram-frame{padding:14px 14px 10px;border:1px solid #dce6ec;border-radius:9px;background:#fcfdfe}
+.diagram svg{display:block;width:100%;height:auto}
+.diagram figcaption{font-size:13px;color:#637581;text-align:center;max-width:735px;margin:10px auto 0;line-height:1.65}
+.paired-formulas{display:grid;grid-template-columns:minmax(0,1fr);gap:15px;margin:26px 0}
+.formula-panel{border:1px solid #dce5eb;border-radius:8px;padding:18px 21px 16px;background:#fafbfd}
+.formula-panel h4{color:#204560;margin:0 0 10px}
+.formula-panel p{margin:5px 0 7px}
+.formula-panel .mini{font-size:14px;color:#596f7b;margin-top:9px}
+.formula-panel math[display="block"]{margin:8px auto 10px}
+.simple-flow{display:grid;grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr) 34px minmax(0,1fr);gap:7px;align-items:center;margin:24px 0 28px}
+.simple-flow>div{text-align:center;border:1px solid #dce5eb;background:#f8fafc;border-radius:6px;padding:14px 10px;font-size:14px;line-height:1.85}
+.simple-flow>span{text-align:center;font-size:21px;color:#758c9c}.simple-flow strong{font-size:16px}
+.method-compare{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin:24px 0}
+.method-card{padding:20px 22px;border:1px solid #dae5eb;border-radius:8px;background:#f9fbfc;min-width:0}
+.method-card h4{font-size:17px;color:#26475c;margin:0 0 9px}
+.method-card p{font-size:15px;margin:9px 0}
+.method-card math[display="block"]{font-size:1.1em;margin:12px 0}
+table{border-collapse:collapse;width:100%;margin:20px 0 25px;font-size:15px}
+th,td{padding:10px 14px;border-bottom:1px solid #e4e9ed}th{background:#f2f6f8;color:#314c5d}td{color:#304550}th:first-child,td:first-child{text-align:left}
+table math{font-size:1em}
+@media(max-width:860px){body{background:#fff}article{margin:0 auto;padding:36px 24px 55px;border:none;box-shadow:none}h1{font-size:27px}h2{font-size:22px;margin-top:48px}.method-card,.formula-panel{padding:16px 13px}.diagram-frame{padding:6px}}
+@media(max-width:570px){html{font-size:15px}article{padding:26px 16px 46px}math[display="block"]{font-size:1.06em}.simple-flow{grid-template-columns:1fr;gap:0}.simple-flow>span{transform:rotate(90deg);padding:3px 0}.method-card math[display="block"]{font-size:1.0em}table{font-size:13px}th,td{padding:9px 7px}}
+@media print{@page{size:A4;margin:17mm}body{background:white;font-size:10.6pt}article{max-width:none;margin:0;padding:0;border:none;box-shadow:none}h1{font-size:24pt}h2{font-size:18pt}h3{font-size:14pt}.diagram,.formula-panel,.method-card{break-inside:avoid}h2,h3,h4{break-after:avoid}.diagram svg{max-height:110mm}math[display="block"]{font-size:1.03em}}
+</style>
+</head>
+<body>
+<article>
+<h1 id="理解-wmles从-ns-离散到壁面应力模型">理解 WMLES：从 N–S
+离散到壁面应力模型</h1>
+<p class="subtitle">
+一份面向具有基础 CFD 与湍流知识读者的学习笔记
+</p>
+<p>在 CFD 中，我们给静止壁面施加无滑移条件，随后离散
+Navier–Stokes（N–S）方程计算内部速度。要理解
+WMLES，关键是看清这一过程中的一件事：<strong>壁面附近的速度更新已经包含了壁面与流体之间的动量交换。</strong>
+当近壁网格无法解析真实的速度分布时，这部分动量交换就需要适当建模。</p>
+<h2 id="wmles-究竟要解决什么问题">1. WMLES 究竟要解决什么问题？</h2>
+<h3 id="从熟悉的-ns-方程开始">1.1 从熟悉的 N–S 方程开始</h3>
+<p>考虑流体沿静止平板作单向流动，速度为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">U(y,t)</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+为壁面法向距离。暂时不考虑压力梯度和对流，只保留黏性动量扩散，N–S
+方程简化为</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>∂</mi><mi>U</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>ν</mi><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><mi>U</mi></mrow><mrow><mi>∂</mi><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{\partial U}{\partial t}
+=\nu\frac{\partial^2 U}{\partial y^2}.
+</annotation></semantics></math></p>
+<p>壁面处给定无滑移条件
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>w</mi></msub><mo>=</mo><mi>U</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U_w=U(0,t)=0</annotation></semantics></math>。通常我们会直接离散右侧的二阶导数。不过，利用牛顿黏性定律</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mi>μ</mi><mfrac><mrow><mi>∂</mi><mi>U</mi></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>μ</mi><mo>=</mo><mi>ρ</mi><mi>ν</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\tau=\mu\frac{\partial U}{\partial y},\qquad \mu=\rho\nu,
+</annotation></semantics></math></p>
+<p>同一个方程也可以写为</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><menclose notation="box"><mrow><mi>ρ</mi><mfrac><mrow><mi>∂</mi><mi>U</mi></mrow><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>∂</mi><mi>τ</mi></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\boxed{\rho\frac{\partial U}{\partial t}=\frac{\partial\tau}{\partial y}}.
+</annotation></semantics></math></p>
+<p>这里的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+是沿
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+方向传递
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+向动量的黏性剪切应力，单位为
+Pa，也就是单位面积、单位时间传递的动量。<strong>二阶导数与剪切应力梯度是同一个黏性扩散项的两种表达。</strong>
+因而，即使程序中没有单独设置一个“应力更新方程”，剪切应力所对应的动量通量仍然参与了速度更新。</p>
+<h3 id="两种完全等价的离散写法">1.2 两种完全等价的离散写法</h3>
+<p>使用<strong>单元中心有限体积网格</strong>。壁面位于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>；第一层单元覆盖
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>Δ</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">0\le y\le\Delta y</annotation></semantics></math>，平均速度（以中心值表示）为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>1</mn></msub><annotation encoding="application/x-tex">U_1</annotation></semantics></math>；第二层单元中心速度为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>2</mn></msub><annotation encoding="application/x-tex">U_2</annotation></semantics></math>。壁面到第一层中心的距离为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>w</mi></msub><mo>=</mo><mi>Δ</mi><mi>y</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">d_w=\Delta y/2</annotation></semantics></math>。</p>
+<figure class="diagram">
+<div class="diagram-frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-label="单元中心有限体积网格。第一层单元位于壁面与y等于Δy之间，中心速度U1；第二层中心速度U2。上表面的剪切动量通量τtop输入，壁面阻力τw输出。">
+      <defs>
+        <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2c7598"/></marker>
+        <marker id="arrowWarm" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#b47c3f"/></marker>
+        <marker id="arrowGray" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#698292"/></marker>
+      </defs>
+      <rect x="214" y="54" width="446" height="150" rx="4" fill="#f3f7fa" stroke="#d7e2ea"/>
+      <rect x="214" y="204" width="446" height="156" rx="4" fill="#edf5fa" stroke="#9fbfd0" stroke-width="1.5"/>
+      <rect x="214" y="360" width="446" height="25" fill="#4d5b64"/>
+      <path d="M180 360 L180 65" stroke="#718591" stroke-width="2" marker-end="url(#arrowGray)"/>
+      <text x="170" y="53" fill="#3f5664" text-anchor="end" font-size="18" font-weight="600">y</text>
+      <text x="164" y="363" fill="#526776" text-anchor="end" font-size="16">y = 0</text>
+      <text x="164" y="283" fill="#526776" text-anchor="end" font-size="16">y = Δy/2</text>
+      <text x="164" y="210" fill="#526776" text-anchor="end" font-size="16">y = Δy</text>
+      <text x="164" y="134" fill="#526776" text-anchor="end" font-size="16">y = 3Δy/2</text>
+      <circle cx="378" cy="282" r="7" fill="#246d95"/>
+      <circle cx="378" cy="129" r="7" fill="#246d95"/>
+      <text x="396" y="288" fill="#173f58" font-size="18" font-weight="650">第一层中心：U₁</text>
+      <text x="396" y="135" fill="#173f58" font-size="18" font-weight="650">第二层中心：U₂</text>
+      <text x="428" y="329" fill="#4c6a7c" font-size="16" text-anchor="middle">第一层控制体积</text>
+      <text x="437" y="407" text-anchor="middle" fill="#4d5b64" font-size="16">静止固体壁面：Uw = 0</text>
+      <path d="M575 199 L697 199" stroke="#2c7598" stroke-width="4" marker-end="url(#arrowBlue)"/>
+      <text x="704" y="193" fill="#246d95" font-size="17" font-weight="650">τ_top（上表面）</text>
+      <path d="M698 350 L578 350" stroke="#b47c3f" stroke-width="4" marker-end="url(#arrowWarm)"/>
+      <text x="704" y="345" fill="#94642d" font-size="17" font-weight="650">−τ_w（壁面阻力）</text>
+      <path d="M706 205 L706 352" stroke="#698292" stroke-width="1.6" stroke-dasharray="4 5"/>
+      <text x="717" y="282" fill="#5b7788" font-size="16">Δy</text>
+      <text x="702" y="77" fill="#687d88" font-size="14">箭头表示对第一层单元</text>
+      <text x="702" y="97" fill="#687d88" font-size="14">的切向动量作用</text>
+    </svg>
+</div>
+<figcaption>
+图
+1　第一层单元的上下边界分别与上方流体和固体壁面交换流向动量。图中取近壁流速沿正
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+方向、上表面输运为正的情况。
+</figcaption>
+</figure>
+<p>先看两个界面处的速度梯度。<strong>上表面</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>Δ</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">y=\Delta y</annotation></semantics></math>
+位于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>1</mn></msub><annotation encoding="application/x-tex">U_1</annotation></semantics></math>
+与
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>2</mn></msub><annotation encoding="application/x-tex">U_2</annotation></semantics></math>
+中间，采用以单元面为中心的中心差分：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mfrac><mrow><mi>∂</mi><mi>U</mi></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msub><mo>≈</mo><mfrac><mrow><msub><mi>U</mi><mn>2</mn></msub><mo>−</mo><msub><mi>U</mi><mn>1</mn></msub></mrow><mrow><mi>Δ</mi><mi>y</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left.\frac{\partial U}{\partial y}\right|_{\mathrm{top}}
+\approx\frac{U_2-U_1}{\Delta y}.
+</annotation></semantics></math></p>
+<p><strong>壁面</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>
+的下方没有流体单元，利用已知壁面速度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>w</mi></msub><annotation encoding="application/x-tex">U_w</annotation></semantics></math>
+与第一层中心速度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>1</mn></msub><annotation encoding="application/x-tex">U_1</annotation></semantics></math>，采用单侧差分：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mfrac><mrow><mi>∂</mi><mi>U</mi></mrow><mrow><mi>∂</mi><mi>y</mi></mrow></mfrac><mo stretchy="true" form="postfix">|</mo></mrow><mi>w</mi></msub><mo>≈</mo><mfrac><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>−</mo><msub><mi>U</mi><mi>w</mi></msub></mrow><mrow><mi>Δ</mi><mi>y</mi><mi>/</mi><mn>2</mn></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\left.\frac{\partial U}{\partial y}\right|_w
+\approx\frac{U_1-U_w}{\Delta y/2}.
+</annotation></semantics></math></p>
+<p>上表面采用以界面为中心的二阶差分，壁面采用一阶单侧差分。由此可计算两处的剪切应力。下面先对 1.1 节的应力形式进行离散，再比较两种速度更新写法。</p>
+<p>第一层单元的底面和顶面分别位于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>Δ</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">y=\Delta y</annotation></semantics></math>。将
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mrow><mo>∂</mo><mi>τ</mi></mrow><mrow><mo>∂</mo><mi>y</mi></mrow></mfrac><annotation encoding="application/x-tex">\frac{\partial\tau}{\partial y}</annotation></semantics></math>
+在该单元内取平均，就得到上下两个界面的应力差：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow>
+<msub><mrow><mo>⟨</mo><mfrac><mrow><mo>∂</mo><mi>τ</mi></mrow><mrow><mo>∂</mo><mi>y</mi></mrow></mfrac><mo>⟩</mo></mrow><mn>1</mn></msub>
+<mo>=</mo><mfrac><mrow><mi>τ</mi><mo>(</mo><mi>Δ</mi><mi>y</mi><mo>)</mo><mo>−</mo><mi>τ</mi><mo>(</mo><mn>0</mn><mo>)</mo></mrow><mrow><mi>Δ</mi><mi>y</mi></mrow></mfrac>
+<mo>=</mo><mfrac><mrow><msub><mi>τ</mi><mtext>top</mtext></msub><mo>−</mo><msub><mi>τ</mi><mi>w</mi></msub></mrow><mrow><mi>Δ</mi><mi>y</mi></mrow></mfrac><mi>.</mi>
+</mrow><annotation encoding="application/x-tex">\left\langle\frac{\partial\tau}{\partial y}\right\rangle_1=\frac{\tau(\Delta y)-\tau(0)}{\Delta y}=\frac{\tau_{\mathrm{top}}-\tau_w}{\Delta y}.</annotation></semantics></math></p>
+<p>这里的尖括号表示第一层单元内的空间平均。以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>1</mn></msub><annotation encoding="application/x-tex">U_1</annotation></semantics></math>
+表示该单元的平均速度，再用显式 Euler 格式离散时间导数，便得到</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow>
+<mi>ρ</mi><mfrac><mrow><msubsup><mi>U</mi><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>−</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup></mrow><mrow><mi>Δ</mi><mi>t</mi></mrow></mfrac>
+<mo>=</mo><mfrac><mrow><msubsup><mi>τ</mi><mtext>top</mtext><mi>n</mi></msubsup><mo>−</mo><msubsup><mi>τ</mi><mi>w</mi><mi>n</mi></msubsup></mrow><mrow><mi>Δ</mi><mi>y</mi></mrow></mfrac>
+</mrow></menclose><annotation encoding="application/x-tex">\boxed{\rho\frac{U_1^{n+1}-U_1^n}{\Delta t}=\frac{\tau_{\mathrm{top}}^n-\tau_w^n}{\Delta y}}</annotation></semantics></math></p>
+<p>这就是<strong>剪切应力的通量差分</strong>：两个界面的应力差决定第一层速度的变化。将应力写成刚才得到的速度梯度，得到“直接写速度差”的形式；保留应力符号，则得到“动量通量差”的形式。两者如下对照。</p>
+<div class="paired-formulas">
+<section class="formula-panel">
+<h4>
+① 传统 N–S 离散：直接写速度差
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msubsup><mi>U</mi><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>=</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>+</mo><mi>ν</mi><mfrac><mrow><mi>Δ</mi><mi>t</mi></mrow><mrow><mi>Δ</mi><mi>y</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mrow><msubsup><mi>U</mi><mn>2</mn><mi>n</mi></msubsup><mo>−</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup></mrow><mrow><mi>Δ</mi><mi>y</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>−</mo><msub><mi>U</mi><mi>w</mi></msub></mrow><mrow><mi>Δ</mi><mi>y</mi><mi>/</mi><mn>2</mn></mrow></mfrac><mo stretchy="true" form="postfix">]</mo></mrow></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{U_1^{n+1}=U_1^n+\nu\frac{\Delta t}{\Delta y}
+\left[\frac{U_2^n-U_1^n}{\Delta y}
+-\frac{U_1^n-U_w}{\Delta y/2}\right]}
+</annotation></semantics></math></p>
+<p class="mini">
+当
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>w</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U_w=0</annotation></semantics></math>，化简为
+</p>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>U</mi><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>=</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>+</mo><mi>ν</mi><mfrac><mrow><mi>Δ</mi><mi>t</mi></mrow><mrow><mi>Δ</mi><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>U</mi><mn>2</mn><mi>n</mi></msubsup><mo>−</mo><mn>3</mn><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+U_1^{n+1}=U_1^n+\nu\frac{\Delta t}{\Delta y^2}
+\left(U_2^n-3U_1^n\right).
+</annotation></semantics></math>
+</section>
+<section class="formula-panel">
+<h4>
+② 剪切应力视角：写成动量通量差
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msubsup><mi>U</mi><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>=</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>+</mo><mfrac><mrow><mi>Δ</mi><mi>t</mi></mrow><mrow><mi>ρ</mi><mi>Δ</mi><mi>y</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>τ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow><mi>n</mi></msubsup><mo>−</mo><msubsup><mi>τ</mi><mi>w</mi><mi>n</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{U_1^{n+1}=U_1^n+
+\frac{\Delta t}{\rho\Delta y}
+\left(\tau_{\mathrm{top}}^n-\tau_w^n\right)}
+</annotation></semantics></math></p>
+<p class="mini">
+其中，两个界面的应力由相同的速度梯度计算：
+</p>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>τ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow><mi>n</mi></msubsup></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>μ</mi><mfrac><mrow><msubsup><mi>U</mi><mn>2</mn><mi>n</mi></msubsup><mo>−</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup></mrow><mrow><mi>Δ</mi><mi>y</mi></mrow></mfrac><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>τ</mi><mi>w</mi><mi>n</mi></msubsup></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>μ</mi><mfrac><mrow><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>−</mo><msub><mi>U</mi><mi>w</mi></msub></mrow><mrow><mi>Δ</mi><mi>y</mi><mi>/</mi><mn>2</mn></mrow></mfrac><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\tau_{\mathrm{top}}^n&amp;=\mu\frac{U_2^n-U_1^n}{\Delta y},\\
+\tau_w^n&amp;=\mu\frac{U_1^n-U_w}{\Delta y/2}.
+\end{aligned}
+</annotation></semantics></math>
+</section>
+</div>
+<p>将右栏的两个界面应力代入速度更新式，并利用
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>=</mo><mi>ρ</mi><mi>ν</mi></mrow><annotation encoding="application/x-tex">\mu=\rho\nu</annotation></semantics></math>，就得到左栏的公式。可见，直接离散速度的二阶导数，已经包含了上下界面的动量通量；其中壁面通量的计算精度，会影响第一层速度的更新。</p>
+<h3 id="为什么粗网格需要专门处理壁面">1.3
+为什么粗网格需要专门处理壁面？</h3>
+<p>高雷诺数湍流的近壁速度分布在很薄的区域内变化迅速。网格足够细时，差分可以准确近似壁面梯度；若第一层中心距离壁面较远，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mn>1</mn></msub><mi>/</mi><msub><mi>d</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">U_1/d_w</annotation></semantics></math>
+反映的只是从壁面到采样点之间的平均斜率。</p>
+<figure class="diagram">
+<div class="diagram-frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 375" role="img" aria-label="粗网格下真实的弯曲近壁速度分布与壁面到第一层中心的直线差分近似。两者具有相同U1但壁面斜率不同。">
+      <defs><marker id="velArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#617d8e"/></marker></defs>
+      <path d="M120 314 L120 45" stroke="#617d8e" stroke-width="2" marker-end="url(#velArrow)"/>
+      <path d="M120 314 L708 314" stroke="#617d8e" stroke-width="2" marker-end="url(#velArrow)"/>
+      <text x="101" y="49" fill="#4d6473" font-size="18">y</text><text x="714" y="319" fill="#4d6473" font-size="18">U</text>
+      <path d="M120 314 L598 145" stroke="#b47c3f" stroke-width="3.4" stroke-dasharray="10 8"/>
+      <path d="M120 314 C335 310 560 267 598 145 C616 93 649 70 677 50" fill="none" stroke="#246d95" stroke-width="4" stroke-linecap="round"/>
+      <path d="M120 145 L645 145" stroke="#a9bac4" stroke-dasharray="6 7" stroke-width="1.5"/>
+      <circle cx="598" cy="145" r="6.5" fill="#246d95"/>
+      <text x="609" y="139" fill="#246d95" font-weight="700" font-size="18">U₁</text>
+      <text x="65" y="150" fill="#5a7280" font-size="16">d_w</text>
+      <text x="352" y="248" fill="#246d95" font-size="16" font-weight="600">近壁速度剖面</text>
+      <text x="236" y="180" fill="#a36d30" font-size="16" font-weight="600">粗网格线性近似</text>
+      <rect x="120" y="314" width="645" height="18" fill="#4d5b64"/>
+      <text x="443" y="353" fill="#566b78" text-anchor="middle" font-size="16">静止壁面：U = 0</text>
+    </svg>
+</div>
+<figcaption>
+图 2　同样满足
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>w</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U_w=0</annotation></semantics></math>
+和采样点速度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>1</mn></msub><annotation encoding="application/x-tex">U_1</annotation></semantics></math>，不同的近壁速度分布可以具有不同的壁面梯度。曲线是物理示意，不代表某一具体工况。
+</figcaption>
+</figure>
+<p>由于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>w</mi></msub><mo>=</mo><mi>μ</mi><msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>∂</mi><mi>U</mi><mi>/</mi><mi>∂</mi><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">\tau_w=\mu(\partial U/\partial y)_w</annotation></semantics></math>，错误的壁面梯度会带来壁面动量通量误差；而由
+1.2
+节的离散方程可见，这个误差会直接进入第一层的速度更新，并通过相邻单元间的输运影响其他位置。</p>
+<p>对城市高雷诺数湍流，壁面黏性长度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>ν</mi></msub><mo>=</mo><mi>ν</mi><mi>/</mi><msub><mi>u</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">\ell_\nu=\nu/u_\tau</annotation></semantics></math>
+往往远小于米级网格。用
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>=</mo><mn>1.5</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>5</mn></mrow></msup><mspace width="0.222em"></mspace><mrow><msup><mi mathvariant="normal">m</mi><mn mathvariant="normal">2</mn></msup><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">\nu=1.5\times10^{-5}\ \mathrm{m^2/s}</annotation></semantics></math>、代表性摩擦速度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>τ</mi></msub><mo>=</mo><mn>0.3</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">u_\tau=0.3\ \mathrm{m/s}</annotation></semantics></math>
+进行量级估算，得到：</p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 36%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">均匀网格尺寸
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\Delta y</annotation></semantics></math></th>
+<th style="text-align: center;">首层中心距壁面
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>w</mi></msub><annotation encoding="application/x-tex">d_w</annotation></semantics></math></th>
+<th
+style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>y</mi><mo>+</mo></msup><mo>=</mo><msub><mi>u</mi><mi>τ</mi></msub><msub><mi>d</mi><mi>w</mi></msub><mi>/</mi><mi>ν</mi></mrow><annotation encoding="application/x-tex">y^+=u_\tau d_w/\nu</annotation></semantics></math></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1 m</td>
+<td style="text-align: center;">0.5 m</td>
+<td style="text-align: right;">10,000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2 m</td>
+<td style="text-align: center;">1.0 m</td>
+<td style="text-align: right;">20,000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5 m</td>
+<td style="text-align: center;">2.5 m</td>
+<td style="text-align: right;">50,000</td>
+</tr>
+</tbody>
+</table>
+<p>这些数值说明米级网格无法解析黏性底层。这里的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">u_\tau</annotation></semantics></math>
+仅用于展示量级，真实建筑物表面的局部值会随位置变化。实际城市 LES
+需要把计算资源用于解析建筑绕流和较大尺度的湍流，同时为未解析的壁面动量交换建立模型。</p>
+<h2 id="wmles-的基本思想">2. WMLES 的基本思想</h2>
+<h3 id="用壁面律提供难以直接计算的动量通量">2.1
+用壁面律提供难以直接计算的动量通量</h3>
+<p>Wall-Resolved
+LES（WRLES）通过足够细的近壁网格直接计算壁面梯度。Wall-Modeled
+LES（WMLES）保留相对粗的网格，读取一个近壁采样位置的速度，再通过壁面律计算
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>τ</mi><mi>w</mi></msub><annotation encoding="application/x-tex">\tau_w</annotation></semantics></math>。</p>
+<div class="simple-flow"
+aria-label="近壁速度经过壁面律得到壁面应力，再参与CFD速度更新">
+<div>
+LES
+求得近壁速度<br><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>1</mn></msub><annotation encoding="application/x-tex">U_1</annotation></semantics></math></strong>
+</div>
+<span>→</span>
+<div>
+壁面律估算应力<br><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>τ</mi><mi>w</mi></msub><annotation encoding="application/x-tex">\tau_w</annotation></semantics></math></strong>
+</div>
+<span>→</span>
+<div>
+CFD 利用壁面通量<br><strong>更新
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mn>1</mn></msub><annotation encoding="application/x-tex">U_1</annotation></semantics></math></strong>
+</div>
+</div>
+<p>壁面律的作用，是用已知的近壁湍流统计规律，联系某个采样高度的速度与壁面剪切应力。下面以最常见的局部平衡模型为例。</p>
+<h3 id="为什么近壁速度能够决定壁面应力">2.2
+为什么近壁速度能够决定壁面应力？</h3>
+<p>对于统计稳定、局部近似平行的壁湍流，平均流向总剪切应力由分子黏性应力与
+Reynolds 剪切应力组成：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mi>μ</mi><mfrac><mrow><mi mathvariant="normal">d</mi><mi>U</mi></mrow><mrow><mi mathvariant="normal">d</mi><mi>y</mi></mrow></mfrac><mo>−</mo><mi>ρ</mi><mover><mrow><mi>u</mi><mi>′</mi><mi>v</mi><mi>′</mi></mrow><mo accent="true">¯</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\tau_{\mathrm{tot}}=\mu\frac{\mathrm d U}{\mathrm d y}
+-\rho\overline{u&#39;v&#39;}.
+</annotation></semantics></math></p>
+<p>在近壁对数区，可以近似认为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>≃</mo><msub><mi>τ</mi><mi>w</mi></msub><mo>=</mo><mi>ρ</mi><msubsup><mi>u</mi><mi>τ</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\tau_{\mathrm{tot}}\simeq\tau_w=\rho u_\tau^2</annotation></semantics></math>，其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>τ</mi></msub><mo>=</mo><msqrt><mrow><msub><mi>τ</mi><mi>w</mi></msub><mi>/</mi><mi>ρ</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">u_\tau=\sqrt{\tau_w/\rho}</annotation></semantics></math>
+为摩擦速度。此时 Reynolds 应力占主导。采用 Prandtl 混合长度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>m</mi></msub><mo>=</mo><mi>κ</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\ell_m=\kappa y</annotation></semantics></math>，可得</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mover><mrow><mi>u</mi><mi>′</mi><mi>v</mi><mi>′</mi></mrow><mo accent="true">¯</mo></mover><mo>≈</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>κ</mi><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi mathvariant="normal">d</mi><mi>U</mi></mrow><mrow><mi mathvariant="normal">d</mi><mi>y</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mrow><mi mathvariant="normal">d</mi><mi>U</mi></mrow><mrow><mi mathvariant="normal">d</mi><mi>y</mi></mrow></mfrac><mo>≈</mo><mfrac><msub><mi>u</mi><mi>τ</mi></msub><mrow><mi>κ</mi><mi>y</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+-\overline{u&#39;v&#39;}\approx(\kappa y)^2
+\left(\frac{\mathrm dU}{\mathrm dy}\right)^2,
+\qquad
+\frac{\mathrm dU}{\mathrm dy}\approx\frac{u_\tau}{\kappa y}.
+</annotation></semantics></math></p>
+<p>沿
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+积分，得到光滑壁面常用的对数速度分布：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>U</mi><mo>+</mo></msup><mo>=</mo><mfrac><mn>1</mn><mi>κ</mi></mfrac><mo>ln</mo><msup><mi>y</mi><mo>+</mo></msup><mo>+</mo><mi>B</mi><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>U</mi><mo>+</mo></msup><mo>=</mo><mfrac><mi>U</mi><msub><mi>u</mi><mi>τ</mi></msub></mfrac><mo>,</mo><mspace width="1.0em"></mspace><msup><mi>y</mi><mo>+</mo></msup><mo>=</mo><mfrac><mrow><mi>y</mi><msub><mi>u</mi><mi>τ</mi></msub></mrow><mi>ν</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+U^+=\frac{1}{\kappa}\ln y^++B,
+\qquad U^+=\frac{U}{u_\tau},\quad y^+=\frac{yu_\tau}{\nu}.
+</annotation></semantics></math></p>
+<p>这条关系表明：在适当的采样高度上，速度与摩擦速度由近壁速度律联系。知道速度和采样位置，便可以反求
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">u_\tau</annotation></semantics></math>，再得到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>τ</mi><mi>w</mi></msub><annotation encoding="application/x-tex">\tau_w</annotation></semantics></math>。</p>
+<h3 id="一种粗糙壁面的代数壁面模型">2.3 一种粗糙壁面的代数壁面模型</h3>
+<p>对中性条件下的粗糙壁面，可以选用一种便于数值实现的速度律：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>U</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mfrac><msub><mi>u</mi><mi>τ</mi></msub><mi>κ</mi></mfrac><mo>ln</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mfrac><msub><mi>d</mi><mi>w</mi></msub><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">
+|U_1|=\frac{u_\tau}{\kappa}
+\ln\left(1+\frac{d_w}{z_0}\right),
+</annotation></semantics></math></p>
+<p>其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+为粗糙长度，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>≈</mo><mn>0.41</mn></mrow><annotation encoding="application/x-tex">\kappa\approx0.41</annotation></semantics></math>。在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>w</mi></msub><mo>≫</mo><msub><mi>z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">d_w\gg z_0</annotation></semantics></math>
+时，上式接近常用的粗糙壁面对数律。直接反解可得</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>u</mi><mi>τ</mi></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mrow><mi>κ</mi><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>U</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">|</mo></mrow></mrow><mrow><mo>ln</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msub><mi>d</mi><mi>w</mi></msub><mi>/</mi><msub><mi>z</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>C</mi><mi>d</mi></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><mfrac><mi>κ</mi><mrow><mo>ln</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msub><mi>d</mi><mi>w</mi></msub><mi>/</mi><msub><mi>z</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo stretchy="true" form="postfix">]</mo></mrow><mn>2</mn></msup><mo>,</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+u_\tau&amp;=\frac{\kappa|U_1|}{\ln(1+d_w/z_0)},\\
+C_d&amp;=\left[\frac{\kappa}{\ln(1+d_w/z_0)}\right]^2,
+\end{aligned}
+</annotation></semantics></math></p>
+<p>从而得到带流向符号的壁面应力：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><menclose notation="box"><mrow><msubsup><mi>τ</mi><mi>w</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">l</mi></mrow></msubsup><mo>=</mo><mi>ρ</mi><msub><mi>C</mi><mi>d</mi></msub><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>U</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>U</mi><mn>1</mn></msub></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\boxed{\tau_w^{\mathrm{model}}=\rho C_d|U_1|U_1}.
+</annotation></semantics></math></p>
+<p>在单向流动中，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U_1&gt;0</annotation></semantics></math>
+对应正的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>τ</mi><mi>w</mi></msub><annotation encoding="application/x-tex">\tau_w</annotation></semantics></math>；壁面施加于流体的力方向与局部切向速度相反。对于三维流动，只需把采样速度投影到壁面切平面，再沿切向施加应力。</p>
+<p>将局部 LES 速度直接代入平均速度律，是一种局部平衡建模近似。</p>
+<p>例如，当
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>w</mi></msub><mo>=</mo><mn>1</mn><mspace width="0.222em"></mspace><mi mathvariant="normal">m</mi></mrow><annotation encoding="application/x-tex">d_w=1\ \mathrm m</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">U_1=3\ \mathrm{m/s}</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>=</mo><mn>0.03</mn><mspace width="0.222em"></mspace><mi mathvariant="normal">m</mi></mrow><annotation encoding="application/x-tex">z_0=0.03\ \mathrm m</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>1.2</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">/</mi><msup><mi mathvariant="normal">m</mi><mn mathvariant="normal">3</mn></msup></mrow></mrow><annotation encoding="application/x-tex">\rho=1.2\ \mathrm{kg/m^3}</annotation></semantics></math>
+时，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>d</mi></msub><mo>≈</mo><mn>0.0134</mn></mrow><annotation encoding="application/x-tex">C_d\approx0.0134</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>τ</mi></msub><mo>≈</mo><mn>0.348</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">u_\tau\approx0.348\ \mathrm{m/s}</annotation></semantics></math>，壁面剪切应力约为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.145</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">a</mi></mrow></mrow><annotation encoding="application/x-tex">0.145\ \mathrm{Pa}</annotation></semantics></math>。</p>
+<h2 id="cfd-如何实现-wmles">3. CFD 如何实现 WMLES？</h2>
+<h3 id="wmles-改变了哪一项">3.1 WMLES 改变了哪一项？</h3>
+<p>1.2
+节的两种离散写法已经说明：速度差分与剪切应力通量表达完全等价。现在只需改变壁面应力的计算方式。第一层控制体积仍满足</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mfrac><mrow><msubsup><mi>U</mi><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>−</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup></mrow><mrow><mi>Δ</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msubsup><mi>τ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow><mi>n</mi></msubsup><mo>−</mo><msubsup><mi>τ</mi><mi>w</mi><mi>n</mi></msubsup></mrow><mrow><mi>Δ</mi><mi>y</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\rho\frac{U_1^{n+1}-U_1^n}{\Delta t}
+=\frac{\tau_{\mathrm{top}}^n-\tau_w^n}{\Delta y}.
+</annotation></semantics></math></p>
+<p>内部界面的通量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>τ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msub><annotation encoding="application/x-tex">\tau_{\mathrm{top}}</annotation></semantics></math>
+按既定离散计算。两种方法的区别集中在壁面通量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>τ</mi><mi>w</mi></msub><annotation encoding="application/x-tex">\tau_w</annotation></semantics></math>：</p>
+<div class="method-compare">
+<section class="method-card">
+<h4>
+不使用壁面模型
+</h4>
+<p>
+以无滑移边界的简单梯度离散估算壁面应力：
+</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>τ</mi><mi>w</mi><mi>n</mi></msubsup><mo>=</mo><mi>μ</mi><mfrac><mrow><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>−</mo><msub><mi>U</mi><mi>w</mi></msub></mrow><mrow><mi>Δ</mi><mi>y</mi><mi>/</mi><mn>2</mn></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\tau_w^n=\mu\frac{U_1^n-U_w}{\Delta y/2}.
+</annotation></semantics></math></p>
+<p>
+代入离散动量方程：
+</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msubsup><mi>U</mi><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>=</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>+</mo><mfrac><mrow><mi>Δ</mi><mi>t</mi></mrow><mrow><mi>ρ</mi><mi>Δ</mi><mi>y</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><msubsup><mi>τ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow><mi>n</mi></msubsup><mo>−</mo><mi>μ</mi><mfrac><mrow><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>−</mo><msub><mi>U</mi><mi>w</mi></msub></mrow><mrow><mi>Δ</mi><mi>y</mi><mi>/</mi><mn>2</mn></mrow></mfrac><mo stretchy="true" form="postfix">]</mo></mrow></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{
+U_1^{n+1}=U_1^n+
+\frac{\Delta t}{\rho\Delta y}
+\left[\tau_{\mathrm{top}}^n-\mu\frac{U_1^n-U_w}{\Delta y/2}\right]
+}
+</annotation></semantics></math></p>
+</section>
+<section class="method-card">
+<h4>
+使用 WMLES
+</h4>
+<p>
+根据采样速度，由壁面律估算壁面应力：
+</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>τ</mi><mi>w</mi><mi>n</mi></msubsup><mo>=</mo><mi>ρ</mi><msub><mi>C</mi><mi>d</mi></msub><mrow><mo stretchy="true" form="prefix">|</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo stretchy="true" form="postfix">|</mo></mrow><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\tau_w^n=\rho C_d|U_1^n|U_1^n.
+</annotation></semantics></math></p>
+<p>
+代入同一个离散动量方程：
+</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msubsup><mi>U</mi><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>=</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo>+</mo><mfrac><mrow><mi>Δ</mi><mi>t</mi></mrow><mrow><mi>ρ</mi><mi>Δ</mi><mi>y</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">[</mo><msubsup><mi>τ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow><mi>n</mi></msubsup><mo>−</mo><mi>ρ</mi><msub><mi>C</mi><mi>d</mi></msub><mrow><mo stretchy="true" form="prefix">|</mo><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo stretchy="true" form="postfix">|</mo></mrow><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><mo stretchy="true" form="postfix">]</mo></mrow></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{
+U_1^{n+1}=U_1^n+
+\frac{\Delta t}{\rho\Delta y}
+\left[\tau_{\mathrm{top}}^n-\rho C_d|U_1^n|U_1^n\right]
+}
+</annotation></semantics></math></p>
+</section>
+</div>
+<p><strong>两式的唯一区别是壁面应力项。</strong>
+在相同的内部通量与时间推进格式下，壁面应力的差异会直接改变第一层速度，随后影响相邻单元的动量输运。</p>
+<h3 id="壁面模型如何参与时间推进">3.2 壁面模型如何参与时间推进？</h3>
+<p>一个时间步的计算可以连贯地理解为：已有当前近壁速度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>U</mi><mn>1</mn><mi>n</mi></msubsup><annotation encoding="application/x-tex">U_1^n</annotation></semantics></math>，由壁面律计算
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>τ</mi><mi>w</mi><mi>n</mi></msubsup><annotation encoding="application/x-tex">\tau_w^n</annotation></semantics></math>；求解器把该应力与内部动量通量一起代入离散方程，得到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>U</mi><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msubsup><annotation encoding="application/x-tex">U_1^{n+1}</annotation></semantics></math>；下一时间步又使用更新后的流场计算新的壁面应力。</p>
+<p>对于流向为正的情况，在其他项相同的瞬间，壁面应力对第一层速度的单独贡献为</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><msub><mi>U</mi><mrow><mn>1</mn><mo>,</mo><mrow><mi mathvariant="normal">w</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">l</mi></mrow></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mrow><mi>Δ</mi><mi>t</mi></mrow><mrow><mi>ρ</mi><mi>Δ</mi><mi>y</mi></mrow></mfrac><msubsup><mi>τ</mi><mi>w</mi><mi>n</mi></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Delta U_{1,\mathrm{wall}}
+=-\frac{\Delta t}{\rho\Delta y}\tau_w^n.
+</annotation></semantics></math></p>
+<p>这意味着壁面摩擦预测的差异会立即改变速度更新，随后影响相邻单元的动量输运。完整
+LES 还包含压力、对流以及 SGS
+应力；本节只把其中的壁面动量通量单独列出，以便看清 WMLES
+在数值计算中的作用。</p>
+<h3 id="壁面模型和-sgs-模型的分工">3.3 壁面模型和 SGS 模型的分工</h3>
+<p>SGS 模型（如
+Smagorinsky、WALE）为流体内部的未解析湍流运动提供动量输运闭合；壁面应力模型描述未解析近壁区域与固体之间的动量交换。Wall-damping
+function 则主要用于调整 SGS
+涡黏性的近壁行为，它与壁面应力闭合处理的是不同的问题。</p>
+<p>在附着、近似平衡的边界层中，使用对数律计算壁面应力有明确的统计依据。建筑棱边、分离与再附着区的流动更复杂，需要通过实验或高分辨率计算检验局部壁面律的适用性。</p>
+<h2 id="小结">小结</h2>
+<p>从传统速度差分写法，到剪切应力通量写法，离散 N–S
+方程没有变化：<strong>壁面剪切应力对应的动量通量始终参与近壁速度的更新。</strong>
+高雷诺数 LES 难以用粗网格解析近壁速度梯度，WMLES
+便利用已解析速度和壁面律估算壁面应力，将它作为数值求解所需的壁面动量通量。</p>
+
+</article>
+</body>
+</html>
