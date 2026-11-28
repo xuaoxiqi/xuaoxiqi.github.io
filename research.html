@@ -58,14 +58,18 @@ hero_stats:
             and adaptive control. I am interested in how aircraft can exploit atmospheric energy to sustain
             unpowered flight and improve flight efficiency.
         </p>
-        {% assign soaring_version = 0 %}
+        {% assign soaring_timestamp = 0 %}
         {% assign soaring_path = '' %}
         {% for file in site.static_files %}
-            {% if file.path contains '/Thermal_Soaring_V' %}
-                {% assign version = file.path | remove: '/Thermal_Soaring_V' | remove: '.html' | plus: 0 %}
-                {% assign expected_path = '/Thermal_Soaring_V' | append: version | append: '.html' %}
-                {% if file.path == expected_path and version > soaring_version %}
-                    {% assign soaring_version = version %}
+            {% assign timestamp = file.path | remove: '/Thermal_Soaring_' | remove: '.html' %}
+            {% assign date_parts = timestamp | split: '-' %}
+            {% assign timestamp_digits = timestamp | remove: '-' %}
+            {% assign timestamp_number = timestamp_digits | plus: 0 %}
+            {% assign normalized_timestamp = timestamp_number | append: '' %}
+            {% assign expected_path = '/Thermal_Soaring_' | append: timestamp | append: '.html' %}
+            {% if file.path == expected_path and timestamp_digits == normalized_timestamp and date_parts.size == 5 %}
+                {% if date_parts[0].size == 4 and date_parts[1].size == 2 and date_parts[2].size == 2 and date_parts[3].size == 2 and date_parts[4].size == 2 and timestamp_number > soaring_timestamp %}
+                    {% assign soaring_timestamp = timestamp_number %}
                     {% assign soaring_path = file.path %}
                 {% endif %}
             {% endif %}

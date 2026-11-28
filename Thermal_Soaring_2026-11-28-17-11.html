@@ -4,24 +4,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>无人机热滑翔 · UAV Thermal Soaring V37 | 徐翱</title>
+<title>无人机热滑翔 · UAV Thermal Soaring · 2026-11-28-17-11 | 徐翱</title>
 <meta name="description" content="固定翼无人机利用上升热气流进行无动力滑翔的原理演示。六幕动画、九段报告解说，同步展示姿态角、空气动力与速度关系。">
 <style>
-:root{--bg:#061420;--panel:#102637;--line:#294d60;--white:#f2f8fd;--muted:#a2bed0;--mint:#53e4cb;--cyan:#74caff;--drag:#ff947c;--gravity:#ffd16c;--gold:#f9dc9c}
+:root{--bg:#101e31;--panel:#172b43;--line:#37536a;
+ --ui-accent:#aac9dc;--ui-control:#20364a;--ui-edge:#466075;--ui-track:#293f52;
+ --velocity-ground:#baa8ff;--velocity-air:#60e9ce;--velocity-wind:#ffb46f;
+ --white:#f2f8fd;--muted:#a2bed0;--mint:#53e4cb;--cyan:#74caff;--drag:#ff947c;--gravity:#ffd16c;--gold:#f9dc9c}
 *{box-sizing:border-box}html{min-height:100%;background:var(--bg)}
-body{margin:0;background:radial-gradient(ellipse at 9% 0%,#1b455a 0,transparent 44%),#061420;font-family:Inter,'Segoe UI','Microsoft YaHei','PingFang SC',system-ui,sans-serif;color:var(--white);font-size:16px}
+body{margin:0;background:radial-gradient(ellipse at 9% 0%,#1b3045 0,transparent 44%),var(--bg);font-family:Inter,'Segoe UI','Microsoft YaHei','PingFang SC',system-ui,sans-serif;color:var(--white);font-size:16px}
 .shell{max-width:1510px;margin:auto;padding:20px 23px 28px}
 .head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:15px}
 .eyebrow{color:var(--mint);font-size:13px;font-weight:800;letter-spacing:2.7px;margin-bottom:5px}
-h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin:0}h1 span{color:#83e4d4}
+h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin:0}h1 span{color:var(--ui-accent)}
 .parameters{display:flex;align-items:center;justify-content:flex-start;gap:7px;flex-wrap:wrap}
-.chip{font-size:14px;border:1px solid #355367;border-radius:999px;background:#102a39;padding:8px 12px;color:#b7d4e3;white-space:nowrap}.chip b{color:#f8ffff}.chip.primary{border-color:#2b9286;background:#164144;color:#c1ffef}
+.chip{font-size:14px;border:1px solid #355367;border-radius:999px;background:#102a39;padding:8px 12px;color:#b7d4e3;white-space:nowrap}.chip b{color:#f8ffff}.chip.primary{border-color:#60798d;background:#21384c;color:#dce9f2}
 .stagegrid{display:grid;grid-template-columns:minmax(0,1fr) 405px;gap:13px;align-items:stretch}
-.mainstage,.sidecard,.scenebar{border:1px solid #2e4d63;border-radius:16px;background:#091b2d;box-shadow:0 13px 35px #020b17a3;overflow:hidden}
+.mainstage,.sidecard,.scenebar{border:1px solid #2e4d63;border-radius:16px;background:#091b2d;box-shadow:0 10px 26px #020b1748;overflow:hidden}
 .mainstage{position:relative;min-height:645px;isolation:isolate}#world{display:block;width:100%;height:645px}
+.stageid{
+ position:absolute;top:14px;left:14px;z-index:2;box-sizing:border-box;
+ font-size:22px;width:calc(6em + 28px);max-width:52%;
+ padding:8px 12px 9px;border:1px solid #3e647a;border-radius:10px;
+ background:#081f30e6;backdrop-filter:blur(7px)
+}
+.stageid .num{
+ color:var(--ui-accent);font-size:12px;font-weight:750;letter-spacing:1px;
+ line-height:1.2;font-variant-numeric:tabular-nums
+}
+.stageid h2{margin:3px 0 0;font-size:1em;line-height:1.3;white-space:nowrap}
+.copyright-overlay{
+ position:absolute;z-index:3;top:14px;right:14px;width:204px;box-sizing:border-box;
+ display:flex;align-items:center;justify-content:center;gap:.32em;
+ padding:7px 4px;border:1px solid #4e8390;border-radius:9px;
+ background:#071f30e8;color:#f0fffb;
+ font-family:inherit;font-size:14px;font-weight:650;line-height:1.3;
+ text-align:center
+}
+.copyright-overlay span{white-space:nowrap}
+.copyright-overlay.compact{
+ top:10px;flex-direction:column;gap:0;padding:4px 2px;font-size:11px
+}
+@media(max-width:600px){
+ .stageid{top:10px;left:10px;font-size:18px;width:calc(6em + 22px);padding:7px 9px}
+ .stageid .num{font-size:11px}
+}
 .mainstage:after{content:"";position:absolute;pointer-events:none;inset:0;background:linear-gradient(90deg,#04122053,transparent 38%,transparent 83%,#071b2620),linear-gradient(0deg,#06131d2b,transparent 30%)}
-.stageid{position:absolute;top:18px;left:18px;z-index:2;max-width:370px;background:#081f30e6;backdrop-filter:blur(7px);border:1px solid #3e647a;border-radius:12px;padding:11px 14px}
-.stageid .num{font-size:13px;letter-spacing:2px;color:#75ecd2;font-weight:800;margin-bottom:5px}.stageid h2{font-size:26px;margin:0 0 3px}.stageid .en{color:#b9d9e9;font-size:15px}
+
+
 .scriptbox{position:absolute;left:0;right:0;bottom:0;z-index:2;border:none;border-radius:0;background:linear-gradient(0deg,rgba(2,16,28,.91) 0%,rgba(2,16,28,.76) 78%,transparent 100%);padding:14px 26px 10px;color:#f4fbff;font-size:clamp(21px,1.85vw,26px);font-weight:720;letter-spacing:.3px;line-height:1.42;text-align:center;text-wrap:balance;line-break:strict;text-shadow:0 2px 5px #00111f,0 0 12px #00111f;pointer-events:none}
 .side{display:flex;flex-direction:column;gap:10px}.sidecard{padding:0;border:none;background:transparent;box-shadow:none}.sidecard h3{font-size:19px;margin:0 0 7px}.sidecard .desc{font-size:15px;color:#afc9da;line-height:1.58;margin:0 0 11px}
 .viewframe{position:relative;overflow:hidden;border-radius:8px;border:1px solid #2b5062;background:#0b2533}
@@ -33,24 +63,24 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
 .physmetrics{display:none}.physmetrics b{color:#fff;font-variant-numeric:tabular-nums}
 #altitude{height:128px}.formula{margin-top:7px;background:#123449;border:1px solid #2d6172;padding:8px 6px;border-radius:9px;color:#f6dfaa;font-size:14px;line-height:1.5;font-weight:700;text-align:center}.formula small{display:block;font-size:14px;font-weight:400;color:#b5d0df}
 .scenebar{padding:12px 16px 13px;margin-top:12px}.barhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}.barhead strong{font-size:15px}.barhead small{font-size:14px;color:#98bbcd;margin-left:7px}
-.minicontrols{display:flex;gap:8px;align-items:center}.timer{font-size:15px;color:#d2f5eb;font-variant-numeric:tabular-nums;font-weight:760}.controlbtn{font-size:15px;font-weight:800;border:1px solid #376b79;border-radius:8px;background:#184252;color:#f0fffe;padding:9px 13px;cursor:pointer}.controlbtn:hover,.controlbtn:focus-visible{background:#246176}
+.minicontrols{display:flex;gap:8px;align-items:center}.timer{font-size:15px;color:#d3e1eb;font-variant-numeric:tabular-nums;font-weight:760}.controlbtn{font-size:15px;font-weight:800;border:1px solid var(--ui-edge);border-radius:8px;background:var(--ui-control);color:#edf3f7;padding:9px 13px;cursor:pointer}.controlbtn:hover,.controlbtn:focus-visible{background:#354f65}
 .minicontrols{flex-wrap:wrap}
-.speedgroup{display:inline-flex;align-items:center;border:1px solid #376b79;border-radius:9px;overflow:hidden;background:#102b3d;white-space:nowrap}
+.speedgroup{display:inline-flex;align-items:center;border:1px solid var(--ui-edge);border-radius:9px;overflow:hidden;background:var(--ui-control);white-space:nowrap}
 .speedbtn{font-family:inherit;font-size:14px;font-weight:800;line-height:1.2;min-height:37px;border:0;color:#c9dfe9;padding:9px 12px;background:transparent;cursor:pointer;white-space:nowrap}
-.speedbtn+.speedbtn{border-left:1px solid #376b79}
-.speedbtn.active{color:#082c36;background:#75e4ce}
-.speedbtn:hover:not(.active),.speedbtn:focus-visible:not(.active){background:#215069;color:white}
+.speedbtn+.speedbtn{border-left:1px solid var(--ui-edge)}
+.speedbtn.active{color:#14283b;background:var(--ui-accent)}
+.speedbtn:hover:not(.active),.speedbtn:focus-visible:not(.active){background:#354f65;color:white}
 @media(max-width:600px){.minicontrols{gap:6px}.speedbtn{font-size:13px;min-height:35px;padding:8px 10px}}
 .scrubwrap{display:flex;align-items:center;gap:12px}.scrublabel{white-space:nowrap;font-size:14px;color:#9fc2d4}
-#seek{width:100%;height:28px;cursor:ew-resize;accent-color:#64e7c7;margin:0;appearance:none;background:transparent;touch-action:pan-y}
-#seek::-webkit-slider-runnable-track{height:7px;border-radius:999px;border:1px solid #3e6571;background:linear-gradient(90deg,#52d7c3 0%,#80cfff var(--played,0%),#1d3b50 var(--played,0%),#1d3b50 100%)}
-#seek::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;border:3px solid #e6fff8;background:#61e7c9;box-shadow:0 0 0 3px #28675b;margin-top:-7px}
-#seek::-moz-range-track{height:7px;background:#1d3b50;border:1px solid #3e6571;border-radius:999px}
-#seek::-moz-range-progress{height:7px;background:#52d7c3}#seek::-moz-range-thumb{height:19px;width:19px;border-radius:50%;border:3px solid #e6fff8;background:#61e7c9}
-.copyright-overlay{position:absolute;right:15px;top:13px;z-index:3;border:1px solid #4e8390;border-radius:9px;background:#071f30e8;padding:10px 14px;color:#f0fffb;font-size:17px;letter-spacing:.2px;font-weight:750;text-shadow:0 1px 3px #001320}
+#seek{width:100%;height:28px;cursor:ew-resize;accent-color:var(--ui-accent);margin:0;appearance:none;background:transparent;touch-action:pan-y}
+#seek::-webkit-slider-runnable-track{height:7px;border-radius:999px;border:1px solid var(--ui-edge);background:linear-gradient(90deg,var(--ui-accent) var(--played,0%),var(--ui-track) var(--played,0%))}
+#seek::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;border:3px solid #e6eef3;background:var(--ui-accent);box-shadow:0 0 0 3px #3c566b;margin-top:-7px}
+#seek::-moz-range-track{height:7px;background:var(--ui-track);border:1px solid var(--ui-edge);border-radius:999px}
+#seek::-moz-range-progress{height:7px;background:var(--ui-accent)}#seek::-moz-range-thumb{height:19px;width:19px;border-radius:50%;border:3px solid #e6eef3;background:var(--ui-accent)}
+
 @media(max-width:1100px){.stagegrid{grid-template-columns:minmax(0,1fr) 365px}.mainstage{min-height:600px}#world{height:600px}}
-@media(max-width:850px){.stagegrid{grid-template-columns:1fr}.mainstage{min-height:510px}#world{height:510px}.side{display:block}.stageid h2{font-size:23px}.copyright-overlay{font-size:15px}}
-@media(max-width:600px){.shell{padding:13px 10px 20px}.side{grid-template-columns:1fr}.mainstage{min-height:450px}#world{height:450px}.stageid{top:9px;left:9px;padding:9px 10px;max-width:56%}.stageid h2{font-size:19px}.stageid .num{font-size:13px}.stageid .en{font-size:14px}.scriptbox{left:0;right:0;bottom:0;font-size:19px;line-height:1.4;padding:11px 13px 9px;letter-spacing:0}.copyright-overlay{right:8px;top:9px;font-size:14px;padding:8px 9px;max-width:44%;text-align:right}.angles .viewframe{height:220px}.pitchframe{height:333px}.pitch-readouts{top:8px;right:8px;gap:3px;padding:6px 7px}.angle-readout{font-size:11px;gap:4px}.angle-readout strong{font-size:15px}.mini-readout{font-size:13px;gap:4px}.mini-readout strong{font-size:17px}.chip{font-size:13px}}
+@media(max-width:850px){.stagegrid{grid-template-columns:1fr}.mainstage{min-height:510px}#world{height:510px}.side{display:block}}
+@media(max-width:600px){.shell{padding:13px 10px 20px}.side{grid-template-columns:1fr}.mainstage{min-height:450px}#world{height:450px}.scriptbox{left:0;right:0;bottom:0;font-size:19px;line-height:1.4;padding:11px 13px 9px;letter-spacing:0}.angles .viewframe{height:220px}.pitchframe{height:333px}.pitch-readouts{top:8px;right:8px;gap:3px;padding:6px 7px}.angle-readout{font-size:11px;gap:4px}.angle-readout strong{font-size:15px}.mini-readout{font-size:13px;gap:4px}.mini-readout strong{font-size:17px}.chip{font-size:13px}}
 
 /* V17: independent, responsive velocity diagram, built on the V15 animation engine. */
 .stagegrid{grid-template-columns:minmax(0,1fr) 520px}
@@ -170,10 +200,10 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
    On wide screens, fit the complete presentation into the visible viewport. */
 .tools{margin-left:auto;display:flex;gap:8px;align-items:center}
 .textbtn{border:none;background:transparent;color:#acd0e0;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;padding:8px 9px;border-radius:7px;white-space:nowrap}
-.textbtn:hover,.textbtn:focus-visible{color:#fff;background:#215069;outline-offset:2px}
+.textbtn:hover,.textbtn:focus-visible{color:#fff;background:#354f65;outline-offset:2px}
 @media(max-width:600px){.tools{margin-left:0}.textbtn{font-size:13px;padding:7px 8px}}
 @media(min-width:851px){
- html:fullscreen,html:fullscreen body{height:100%;overflow:hidden;background:#061420}
+ html:fullscreen,html:fullscreen body{height:100%;overflow:hidden;background:var(--bg)}
  html:fullscreen .shell{height:100dvh;max-width:none;width:100%;padding:11px 18px 12px;display:flex;flex-direction:column;overflow:hidden}
  html:fullscreen main{flex:1;min-height:0;display:flex;flex-direction:column}
  html:fullscreen .stagegrid{flex:1;min-height:0}
@@ -183,7 +213,7 @@ h1{font-size:clamp(25px,2.8vw,37px);line-height:1.16;letter-spacing:-.6px;margin
  html:fullscreen .scenebar{flex:0 0 auto;margin-top:8px;padding:9px 13px 10px}
 }
 /* At tablet and mobile widths, preserve normal stacked scrolling in fullscreen. */
-html:fullscreen body{background:#061420}
+html:fullscreen body{background:var(--bg)}
 
 /* V37 — UAV narration, fixed numerical cells and presentation-safe layout.
    No external fonts or resources: this file remains fully usable offline. */
@@ -207,13 +237,13 @@ h1 span{display:inline-block;white-space:nowrap}
 .fixed-number .number-unit{display:inline-block;flex:0 0 1ch;width:1ch;text-align:left}
 #climbChip{width:9ch;min-width:9ch;font-size:14px}
 #climbChip .number-unit{width:4ch;flex-basis:4ch;white-space:pre}
-.stageid{width:232px;height:108px;max-width:calc(100% - 260px);padding:12px 14px}
-.stageid h2{font-size:24px;line-height:1.35;white-space:nowrap}
-.stageid .en{font-size:14px;line-height:1.45;white-space:nowrap}
-.stageid .num{font-variant-numeric:tabular-nums;line-height:1.25}
-.copyright-overlay{white-space:nowrap}
-.copyright-overlay>span{display:inline-block;white-space:nowrap}
-.viewframe{border-radius:12px;border-color:#34576b;background:linear-gradient(145deg,#0d2939,#0a2130)}
+
+
+
+
+
+
+.viewframe{border-radius:12px;border-color:#34576b;background:linear-gradient(145deg,var(--panel),#112338)}
 .pitch-readouts{
  top:40px;right:10px;left:auto;bottom:auto;width:238px;max-width:calc(100% - 20px);
  height:112px;min-height:112px;padding:7px 10px;
@@ -259,7 +289,7 @@ h1 span{display:inline-block;white-space:nowrap}
 .timer{display:inline-block;width:13ch;min-width:13ch;font-family:var(--numeric-font);font-size:14px;white-space:nowrap}
 .controlbtn{min-width:86px;font-family:inherit}
 #fullscreen{min-width:78px;text-align:center}
-.controlbtn:focus-visible,.speedbtn:focus-visible,.textbtn:focus-visible,#seek:focus-visible{outline:2px solid #75e4ce;outline-offset:4px}
+.controlbtn:focus-visible,.speedbtn:focus-visible,.textbtn:focus-visible,#seek:focus-visible{outline:2px solid var(--ui-accent);outline-offset:4px}
 .scenebar{box-shadow:0 8px 25px #020b1740}
 @media(min-width:851px) and (max-width:1100px){
  .pitch-readouts{top:39px;height:110px;min-height:110px;padding:5px 9px;grid-template-rows:repeat(4,24px)}
@@ -298,11 +328,11 @@ h1 span{display:inline-block;white-space:nowrap}
  .parameters{gap:6px}
  .chip{font-size:12px;padding:7px 9px;min-height:33px;gap:4px}
  #climbChip{font-size:12px}
- .stageid{top:10px;left:10px;width:180px;max-width:54%;height:91px;padding:9px 10px}
- .stageid h2{font-size:19px;line-height:1.35}
- .stageid .num{font-size:11px;letter-spacing:1.3px}
- .stageid .en{font-size:12px}
- .copyright-overlay{right:9px;top:10px;font-size:11px;padding:8px;max-width:43%;white-space:normal;line-height:1.5}
+
+
+
+
+
  .scriptbox{height:108px;padding:12px 14px 10px;font-size:18px;line-height:1.5;letter-spacing:0}
  .analysis-panels .pitchframe{height:340px}
  .pitch-readouts{top:38px;right:10px;width:226px;max-width:calc(100% - 20px);height:110px;min-height:110px;padding:6px 9px;grid-template-rows:repeat(4,24px)}
@@ -318,9 +348,9 @@ h1 span{display:inline-block;white-space:nowrap}
  .timer{font-size:13px}
 }
 @media(max-width:360px){
- .stageid{width:160px;padding-left:8px;padding-right:8px}
- .stageid h2{font-size:17px}
- .stageid .en{font-size:11px}
+
+
+
  .scriptbox{font-size:17px}
  .mini-readout{grid-template-columns:64px 48px;font-size:12px;column-gap:3px}
  .mini-readout strong{width:48px;min-width:48px;font-size:16px}
@@ -347,8 +377,8 @@ h1 span{display:inline-block;white-space:nowrap}
 <main>
 <section class="stagegrid">
 <div class="mainstage"><canvas id="world" aria-label="固定翼无人机热滑翔原理示意：上升热气流、飞行航迹与空气动力"></canvas>
-<div class="copyright-overlay"><span>© 2026 西北工业大学</span><span> · 徐翱</span></div>
-<div class="stageid"><div class="num" id="stageNo">SCENE 01 / 06</div><h2 id="stageTitle">寻找热气流</h2><div class="en" id="stageEn">Thermal Search</div></div>
+<div class="copyright-overlay" id="credit"><span>© 2026</span> <span>西北工业大学 · 徐翱</span></div>
+<div class="stageid"><div class="num" id="stageNo">01 / 06</div><h2 id="stageTitle">寻找热气流</h2></div>
 <div class="scriptbox"><p class="caption-text" id="scriptText">为了延长续航，固定翼无人机先以滑翔方式飞行，寻找可以利用的上升热气流。</p></div>
 </div>
 <aside class="side">
@@ -367,7 +397,7 @@ h1 span{display:inline-block;white-space:nowrap}
 <canvas id="velview" aria-label="速度三角形：对地速度等于空速加当地风速"></canvas>
 <div class="velocity-header">速度关系 <small>V<sub>g</sub> = V<sub>a</sub> + w</small></div>
 <div class="velocity-legend">
-<span style="color:#b6a5ff">V<sub>g</sub> · 对地速度</span><span style="color:#60e9ce">Vₐ · 空速（相对空气）</span><span style="color:#ffc17d">w · 当地风速</span>
+<span style="color:var(--velocity-ground)">V<sub>g</sub> · 对地速度</span><span style="color:var(--velocity-air)">Vₐ · 空速（相对空气）</span><span style="color:var(--velocity-wind)">w · 当地风速</span>
 </div>
 </div>
 </div>
@@ -386,14 +416,21 @@ h1 span{display:inline-block;white-space:nowrap}
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id), PI=Math.PI,TAU=PI*2, DEG=PI/180;
+// Use the legend's CSS colours in all canvas velocity diagrams.
+const palette=getComputedStyle(document.documentElement);
+const velocityColor={
+  ground:palette.getPropertyValue('--velocity-ground').trim(),
+  air:palette.getPropertyValue('--velocity-air').trim(),
+  wind:palette.getPropertyValue('--velocity-wind').trim()
+};
 const durations=[8,7,22,11,6,6], starts=[0,8,15,37,48,54], ends=[8,15,37,48,54,60],TOTAL=60;
 const SCENES=[
- {"name": "寻找热气流", "en": "Thermal Search", "zh": "为了延长续航，固定翼无人机先以滑翔方式飞行，寻找可以利用的上升热气流。", "eng": "The fixed-wing UAV glides while searching for rising warm air to extend its endurance.", "hint": "搜索上升气流"},
- {"name": "进入热气流", "en": "Thermal Entry", "zh": "接近热气流后，无人机逐渐降低空速，倾斜机翼，转入盘旋。", "eng": "The UAV reduces its airspeed, banks and enters a circling turn.", "hint": "建立盘旋"},
- {"name": "盘旋爬升", "en": "Thermalling", "zh": "盘旋时，升力的水平分量提供向心力，使无人机沿弯曲航迹飞行。", "eng": "The UAV circles in rising air and gains altitude relative to the ground.", "hint": "持续盘旋爬升"},
- {"name": "调整盘旋中心", "en": "Thermal Centering", "zh": "不过，热气流中上升最强的区域并非固定不动。", "eng": "The UAV adjusts its circling centre to follow stronger rising air.", "hint": "调整盘旋中心"},
- {"name": "退出热气流", "en": "Thermal Exit", "zh": "获得足够高度后，无人机逐渐放平机翼，退出盘旋。", "eng": "After gaining sufficient altitude, the UAV levels its wings and exits the thermal.", "hint": "退出热气流"},
- {"name": "跨区滑翔", "en": "Cross-Country Glide", "zh": "随后，它以高度换取航程，继续滑翔，寻找下一股热气流。", "eng": "The UAV trades altitude for range and glides towards the next thermal.", "hint": "跨区滑翔"}
+ {"name": "寻找热气流", "zh": "为了延长续航，固定翼无人机先以滑翔方式飞行，寻找可以利用的上升热气流。", "eng": "The fixed-wing UAV glides while searching for rising warm air to extend its endurance.", "hint": "搜索上升气流"},
+ {"name": "进入热气流", "zh": "接近热气流后，无人机逐渐降低空速，倾斜机翼，转入盘旋。", "eng": "The UAV reduces its airspeed, banks and enters a circling turn.", "hint": "建立盘旋"},
+ {"name": "盘旋爬升", "zh": "盘旋时，升力的水平分量提供向心力，使无人机沿弯曲航迹飞行。", "eng": "The UAV circles in rising air and gains altitude relative to the ground.", "hint": "持续盘旋爬升"},
+ {"name": "调整盘旋中心", "zh": "不过，热气流中上升最强的区域并非固定不动。", "eng": "The UAV adjusts its circling centre to follow stronger rising air.", "hint": "调整盘旋中心"},
+ {"name": "退出热气流", "zh": "获得足够高度后，无人机逐渐放平机翼，退出盘旋。", "eng": "After gaining sufficient altitude, the UAV levels its wings and exits the thermal.", "hint": "退出热气流"},
+ {"name": "跨区滑翔", "zh": "随后，它以高度换取航程，继续滑翔，寻找下一股热气流。", "eng": "The UAV trades altitude for range and glides towards the next thermal.", "hint": "跨区滑翔"}
 ];
 
 const NARRATION=[
@@ -483,7 +520,7 @@ function stateAt(t){t=clamp(t,0,TOTAL);const phase=which(t),s=clamp((t-starts[ph
 function canvas(id){const c=$(id),rect=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2),w=Math.max(10,rect.width),h=Math.max(10,rect.height);if(c.width!==Math.round(w*d)||c.height!==Math.round(h*d)){c.width=Math.round(w*d);c.height=Math.round(h*d)}let ctx=c.getContext('2d');ctx.setTransform(d,0,0,d,0,0);ctx.clearRect(0,0,w,h);return{ctx,w,h}}
 function poly(ctx,points,fill,stroke,width=1){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.lineWidth=width;ctx.strokeStyle=stroke;ctx.stroke()}}
 function line(ctx,a,b,color='#fff',width=1,alpha=1){ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();ctx.restore()}
-function arrow(ctx,a,b,color,width=2.7,label=''){const theta=Math.atan2(b[1]-a[1],b[0]-a[0]);ctx.save();ctx.shadowBlur=6;ctx.shadowColor=color;line(ctx,a,b,color,width);ctx.shadowBlur=0;poly(ctx,[b,[b[0]-11*Math.cos(theta-.5),b[1]-11*Math.sin(theta-.5)],[b[0]-11*Math.cos(theta+.5),b[1]-11*Math.sin(theta+.5)]],color);if(label){ctx.font='800 18px Segoe UI,Arial';ctx.lineWidth=4;ctx.strokeStyle='#072233';ctx.textAlign='center';let x=b[0]+13*Math.cos(theta),y=b[1]+13*Math.sin(theta);ctx.strokeText(label,x,y);ctx.fillStyle=color;ctx.fillText(label,x,y)}ctx.restore()}
+function arrow(ctx,a,b,color,width=2.7,label=''){const theta=Math.atan2(b[1]-a[1],b[0]-a[0]);ctx.save();line(ctx,a,b,color,width);poly(ctx,[b,[b[0]-11*Math.cos(theta-.5),b[1]-11*Math.sin(theta-.5)],[b[0]-11*Math.cos(theta+.5),b[1]-11*Math.sin(theta+.5)]],color);if(label){ctx.font='800 18px Segoe UI,Arial';ctx.lineWidth=4;ctx.strokeStyle='#072233';ctx.textAlign='center';let x=b[0]+13*Math.cos(theta),y=b[1]+13*Math.sin(theta);ctx.strokeText(label,x,y);ctx.fillStyle=color;ctx.fillText(label,x,y)}ctx.restore()}
 function label(ctx,text,x,y,color='#d4eaf7',size=15,align='center'){ctx.save();ctx.font=`700 ${size}px Segoe UI,Arial`;ctx.textAlign=align;ctx.lineWidth=3;ctx.strokeStyle='#082136';ctx.strokeText(text,x,y);ctx.fillStyle=color;ctx.fillText(text,x,y);ctx.restore()}
 function topGlider(ctx,x,y,angle,size=1){
  ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.scale(size,size);
@@ -499,7 +536,7 @@ function topGlider(ctx,x,y,angle,size=1){
  ctx.strokeStyle='#c2e0ee';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-4,-23);ctx.lineTo(4,-5);ctx.moveTo(-4,23);ctx.lineTo(4,5);ctx.stroke();
  ctx.restore();
 }
-function bg(ctx,w,h,st){let g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0,'#0c2e4d');g.addColorStop(.55,'#245677');g.addColorStop(.78,'#3d6876');g.addColorStop(1,'#0d2b33');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+function bg(ctx,w,h,st){let g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0,'#1d3959');g.addColorStop(.55,'#345873');g.addColorStop(.78,'#50727d');g.addColorStop(1,'#25424b');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
  // World-relative parallax across the final glide: near terrain moves faster than distant ridges.
  const travel=Math.max(0,st.pos.x-190),shift=travel;
  for(let j=0;j<3;j++){let yy=h*(.65+j*.069);ctx.beginPath();ctx.moveTo(0,h);ctx.lineTo(0,yy);for(let x=0;x<=w+9;x+=9){let xx=x+shift*[.09,.25,.5][j];let y=yy+17*Math.sin(xx*.012+j)+7*Math.sin(xx*.036+j*2.4)+4*Math.sin(xx*.061+j);ctx.lineTo(x,y)}ctx.lineTo(w,h);ctx.closePath();ctx.fillStyle=['#254f63a9','#173f54e0','#113248'][j];ctx.fill()}
@@ -522,30 +559,97 @@ function bg(ctx,w,h,st){let g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0
  // Sparse atmospheric light drifting slowly.
  for(let j=0;j<5;j++){let x=((j*292+110-shift*.025)%(w+370)+(w+370))%(w+370)-100,y=h*(.21+.075*(j%3));ctx.fillStyle='#cce5f511';ctx.beginPath();ctx.ellipse(x,y,65+12*(j%3),15,0,0,TAU);ctx.fill()}
 }
-function projection(st,w,h){let focusx,focusy=-60,zoom=1.15;const s=st.s;
- // Scene 1 framing: move BOTH thermal and initial UAV left on screen, avoiding the top-view inset.
- // Only the virtual camera changes; actual position(t) and the physical thermal centre stay unchanged.
- if(st.phase===0){focusx=w<610?st.pos.x+22:mix(-170,-80,smooth(s));zoom=mix(w<610?1:.82,1.27,smooth(s))}
- else if(st.phase===1){focusx=mix(w<610?-160:-80,0,smooth(s));zoom=1.27}
- else if(st.phase===2||st.phase===3){focusx=st.phase===3?10:0;focusy=0;zoom=1.38}
- else if(st.phase===4){focusx=mix(25,160,smooth(s));focusy=-50;zoom=mix(1.33,1.08,smooth(s))}
- else{focusx=st.pos.x+(w<610?-6:155);focusy=-65;zoom=.97}
- if(w<610&&(st.phase===2||st.phase===3)){focusx=.55*st.pos.x;focusy=.55*st.pos.y}
- // Correct the image-plane handedness: the XY mapping must have the SAME orientation
- // as the true top view (X right, Y up). This also fixes apparent orbit direction.
- const f=p=>{const dx=p.x-focusx,dy=p.y-focusy,dz=p.z-st.pos.z;return[w*.48+zoom*(dx*.90-dy*.39),(w<610?h*.47:h*.60)+zoom*(dx*.12-dy*.27-dz*1.08)]};return{p:f,zoom,focusx,focusy}
+function projection(st,w,h){
+ const narrow=w<610, ease=smooth(st.s);
+ const originX=w*.48, originY=h*(narrow?.47:.60);
+ const insetLeft=w-218;
+ const orbitZoom=narrow?clamp((w-132)/242,.65,1.20):1.38;
+ const orbitScreenX=narrow?w*.47:Math.min(originX,insetLeft-165);
+ // The 3-D camera is fixed to the ground for both circling scenes.
+ // On phones the smaller orbit fits below the map without tracking the nose.
+ const orbitFocusX=(originX-orbitScreenX)/(.90*orbitZoom);
+ const orbitFocusZ=narrow?243:202;
+ let focusX=orbitFocusX, focusY=0, focusZ=orbitFocusZ, zoom=orbitZoom;
+ if(st.phase===0){
+   focusX=narrow?st.pos.x+22:mix(-170,-80,ease);
+   focusY=-60;focusZ=184;
+   zoom=mix(narrow?1:.82,1.27,ease);
+ }else if(st.phase===1){
+   focusX=mix(narrow?-168:-80,orbitFocusX,ease);
+   focusY=mix(-60,0,ease);focusZ=mix(184,orbitFocusZ,ease);
+   zoom=mix(1.27,orbitZoom,ease);
+ }else if(st.phase>=4){
+   const pan=st.phase===4?ease:1;
+   focusX=mix(orbitFocusX,st.pos.x+(narrow?-6:155),pan);
+   focusY=mix(0,-65,pan);
+   zoom=mix(orbitZoom,.97,pan);
+ }
+ const project=point=>{
+   const dx=point.x-focusX,dy=point.y-focusY,dz=point.z-focusZ;
+   return [originX+zoom*(.90*dx-.39*dy),originY+zoom*(.12*dx-.27*dy-1.08*dz)];
+ };
+ return {p:project,zoom,focusx:focusX,focusy:focusY};
 }
-function thermal(ctx,p,st){let center=vec(0,0,0),base=p(center),top=p(vec(0,0,340));if(base[0]<-170||base[0]>ctx.canvas.clientWidth+170)return;
- ctx.save();let gg=ctx.createLinearGradient(0,top[1],0,base[1]);gg.addColorStop(0,'#fab36508');gg.addColorStop(.2,'#ffd08449');gg.addColorStop(.58,'#eea76444');gg.addColorStop(1,'#f49a5340');poly(ctx,[p(vec(-110,-15,0)),p(vec(-88,-15,340)),p(vec(88,-15,340)),p(vec(110,-15,0))],gg);
+function createThermalTexture(topWidthRatio) {
+  const texture=document.createElement('canvas');
+  texture.width=160;
+  texture.height=240;
+  const ctx=texture.getContext('2d');
+  const image=ctx.createImageData(texture.width,texture.height);
+  for(let y=0;y<texture.height;y++){
+    const z=y/(texture.height-1); // Top to base.
+    const width=mix(topWidthRatio,1,z);
+    const endFade=smooth(z/.16)*smooth((1-z)/.20);
+    for(let x=0;x<texture.width;x++){
+      const radius=Math.abs(2*x/(texture.width-1)-1)/width;
+      const core=1-smooth(radius);
+      const n=4*(y*texture.width+x);
+      image.data[n]=255;
+      image.data[n+1]=mix(150,185,core);
+      image.data[n+2]=mix(62,98,core);
+      image.data[n+3]=Math.round(118*core*endFade);
+    }
+  }
+  ctx.putImageData(image,0,0);
+  return texture;
+}
+const thermalTexture=createThermalTexture(88/110);
+const distantThermalTexture=createThermalTexture(.55);
+
+function thermal(ctx,p,st){let center=vec(0,0,0),base=p(center);if(base[0]<-170||base[0]>ctx.canvas.clientWidth+170)return;
+ ctx.save();
+ // Project the texture onto the same plane and footprint as the original column.
+ const left=p(vec(-110,-15,0)),right=p(vec(110,-15,0)),tip=p(vec(0,-15,340));
+ const dx=right[0]-left[0],dy=right[1]-left[1];
+ ctx.save();
+ ctx.transform(dx,dy,(left[0]+right[0])/2-tip[0],(left[1]+right[1])/2-tip[1],
+               tip[0]-dx/2,tip[1]-dy/2);
+ ctx.drawImage(thermalTexture,0,0,1,1);
+ ctx.restore();
  for(let i=0;i<16;i++){let a=i*2.4,rr=12+(i*37)%84,z=(i*33+st.t*70)%325;let pt=p(vec(rr*Math.cos(a),rr*Math.sin(a),z));ctx.beginPath();ctx.arc(pt[0],pt[1],2.5,0,TAU);ctx.fillStyle='#ffcc85a8';ctx.fill()}
  for(let j=-1;j<=1;j++){let x=j*52,z=55+((st.t*37+j*83+340)%235);arrow(ctx,p(vec(x,-12,z)),p(vec(x,-12,z+41)),'#ffc477',2.2)}
  if(ctx.canvas.clientWidth>=610){const tag=p(vec(0,0,340));label(ctx,'UPDRAFT · 2.4 m/s',tag[0],tag[1]-17,'#fdd79a',15)}ctx.restore();
 }
-function trail(ctx,p,t){const n=Math.max(1,Math.ceil(t/.11));let last=null;for(let i=0;i<=n;i++){let tt=t*i/n,pt=p(position(tt));if(last){let col=tt<15?'#a8dfed':tt<48?'#72e9d8':tt<54?'#afdfff':'#ffdd9f';line(ctx,last,pt,col,2.5,.83)}last=pt}}
+const TRAIL_COLOR='#72e9d8';
+function trail(ctx,project,t){
+ if(t<=0)return;
+ ctx.save();
+ ctx.beginPath();
+ const first=project(position(0));
+ ctx.moveTo(first[0],first[1]);
+ const samples=Math.ceil(t/.11);
+ for(let i=1;i<=samples;i++){
+   const point=project(position(Math.min(i*.11,t)));
+   ctx.lineTo(point[0],point[1]);
+ }
+ ctx.strokeStyle=TRAIL_COLOR;ctx.lineWidth=2.5;
+ ctx.lineJoin='round';ctx.lineCap='round';ctx.globalAlpha=.83;
+ ctx.stroke();ctx.restore();
+}
 function glider(ctx,p,st){let ex=3.22*Math.max(.56,Math.min(1,ctx.canvas.clientWidth/800));const point=(f,r,n)=>p(add(add(add(st.pos,mul(st.bodyForward,f*ex)),mul(st.rightWing,r*ex)),mul(st.lift,n*ex)));
  // Simplified high-aspect-ratio fixed-wing UAV planform: tapered high-aspect wing, slender fuselage, tailplane and vertical fin.
  const wing1=point(-1.4,-30,0),wing2=point(-1.4,30,0),wingLtip=point(-1.6,-33,0),wingRtip=point(-1.6,33,0),nose=point(18,0,0),tail=point(-21,0,0),cog=point(0,0,0);
- ctx.save();ctx.shadowBlur=10;ctx.shadowColor='#8ce7fff0';poly(ctx,[point(1,-3,0),point(-.5,-17,0),wingLtip,wing1,point(-5,-3,0),point(-5,3,0),wing2,wingRtip,point(-.5,17,0),point(1,3,0)],'#f0fbff','#d2edff',1);ctx.shadowBlur=0;
+ ctx.save();ctx.shadowBlur=4;ctx.shadowColor='#b7d9ed50';poly(ctx,[point(1,-3,0),point(-.5,-17,0),wingLtip,wing1,point(-5,-3,0),point(-5,3,0),wing2,wingRtip,point(-.5,17,0),point(1,3,0)],'#f0fbff','#d2edff',1);ctx.shadowBlur=0;
  poly(ctx,[point(-18,-8.6,0),point(-15,-7,0),point(-15,7,0),point(-18,8.6,0)],'#d6e6f3','#f5fcff',1);
  line(ctx,tail,nose,'#08253a',10);line(ctx,tail,nose,'#ecf8ff',7);
  poly(ctx,[point(-21,0,0),point(-18,0,6),point(-15,0,.1)],'#b8d8e7','#e5f7ff',1);
@@ -553,17 +657,25 @@ function glider(ctx,p,st){let ex=3.22*Math.max(.56,Math.min(1,ctx.canvas.clientW
  ctx.fillStyle='#faffff';ctx.beginPath();ctx.arc(cog[0],cog[1],2.2,0,TAU);ctx.fill();ctx.restore();return cog}
 function forces(ctx,p,st,cg){let base=p(st.pos);function ep(dir,length){let far=p(add(st.pos,mul(dir,80))),dx=far[0]-base[0],dy=far[1]-base[1],n=Math.hypot(dx,dy)||1;return[cg[0]+length*dx/n,cg[1]+length*dy/n]}
  arrow(ctx,cg,ep(st.lift,73),'#74caff',3.1,'Lift');arrow(ctx,cg,ep(st.drag,65),'#ff947c',3.0,'Drag');arrow(ctx,cg,ep(st.weight,74),'#ffd16c',3.1,'mg');
- // Velocity is not an aerodynamic force: drawn separate from force triad.
- let va=ep(st.airHat,95);ctx.save();ctx.setLineDash([5,5]);line(ctx,[cg[0]+8,cg[1]-6],[va[0]+8,va[1]-6],'#b9f4ed',1.8,.65);ctx.restore();
 }
+let lastInsetCanvasWidth=-1;
 function topView(ctx,st,w,h){
  // An always-visible top-down view, sharing the SAME path and state with the main animation.
  // Only points at times <= the current animation time are ever drawn.
  const narrow=w<610;
- const bw=narrow?154:204, bh=narrow?161:208;
- const bx=w-bw-(narrow?8:14), by=narrow?94:70;
+ const bw=narrow?clamp(w*.34,114,154):204, bh=narrow?Math.round(bw*161/154):208;
+ const right=narrow?8:14, bx=w-bw-right, by=narrow?58:70;
+ // Set both overlays from the same canvas dimensions, including in fullscreen.
+ if(w!==lastInsetCanvasWidth){
+   const credit=$('credit');
+   credit.style.width=bw+'px';
+   credit.style.right=right+'px';
+   credit.classList.toggle('compact',narrow);
+   lastInsetCanvasWidth=w;
+ }
  const cx=bx+bw*.50, cy=by+bh*.56;
- const standardScale=narrow?.52:.66;
+ const standardScale=narrow?.52*bw/154:.66;
+ const entryScale=narrow?.385*bw/154:.545;
  let scale=standardScale;
  const s=st.s;
  // Map camera is centred between the approaching aircraft and the *same*
@@ -576,22 +688,21 @@ function topView(ctx,st,w,h){
    const reveal=smooth((st.pos.x+380)/190);
    focusX=mix(st.pos.x-35,st.pos.x*.40,reveal);
    focusY=mix(-84,-20,reveal);
-   scale=mix(standardScale,narrow?.385:.545,reveal);
+   scale=mix(standardScale,entryScale,reveal);
  }
  else if(st.phase===1){
    // Include the real 105 m thermal footprint, even at entry's beginning.
    // The UAV is still outside it at 8 s; it crosses in near 13 s.
    focusX=.40*st.pos.x;
    focusY=mix(-20,0,smooth(s));
-   scale=mix(narrow?.385:.545,standardScale,smooth(s));
+   scale=mix(entryScale,standardScale,smooth(s));
  }
- else if(st.phase===2){focusX=0;focusY=0}
- else if(st.phase===3){focusX=12*s;focusY=0}
- else if(st.phase===4){focusX=mix(12,112,smooth(s));focusY=mix(0,-40,smooth(s))}
+ else if(st.phase===2||st.phase===3){focusX=0;focusY=0}
+ else if(st.phase===4){focusX=mix(0,112,smooth(s));focusY=mix(0,-40,smooth(s))}
  else{focusX=112+(st.pos.x-190);focusY=-40+(st.pos.y+78)}
  const xy=p=>[cx+(p.x-focusX)*scale,cy-(p.y-focusY)*scale];
  ctx.save();
- ctx.beginPath();ctx.roundRect(bx,by,bw,bh,11);
+ ctx.beginPath();ctx.roundRect(bx+.6,by+.6,bw-1.2,bh-1.2,11);
  ctx.fillStyle='#071e2cf0';ctx.fill();ctx.strokeStyle='#477c8b';ctx.lineWidth=1.2;ctx.stroke();
  label(ctx,'俯视轨迹',bx+13,by+23,'#d0f1f7',narrow?13:16,'left');
  // Restrict content to the map viewport without clipping its title.
@@ -608,10 +719,10 @@ function topView(ctx,st,w,h){
    glow.addColorStop(0,'rgba(255,211,145,.42)');
    glow.addColorStop(.34,'rgba(255,187,103,.29)');
    glow.addColorStop(.73,'rgba(255,174,94,.17)');
-   glow.addColorStop(1,'rgba(255,174,94,.07)');
+   glow.addColorStop(1,'rgba(255,174,94,0)');
    ctx.fillStyle=glow;ctx.beginPath();ctx.arc(q[0],q[1],outer,0,TAU);ctx.fill();
    ctx.beginPath();ctx.arc(q[0],q[1],outer,0,TAU);
-   ctx.strokeStyle='rgba(255,204,134,.32)';ctx.lineWidth=1.15;ctx.stroke();
+   ctx.strokeStyle='rgba(255,204,134,.23)';ctx.lineWidth=1.15;ctx.stroke();
    const coreRadius=38*scale;
    const core=ctx.createRadialGradient(q[0],q[1],.5,q[0],q[1],coreRadius);
    core.addColorStop(0,'rgba(255,226,162,.26)');
@@ -623,11 +734,11 @@ function topView(ctx,st,w,h){
  if(n>0){
    ctx.beginPath();
    for(let k=0;k<=n;k++){
-     const tt=st.t*k/n;
+     const tt=Math.min(k*.095,st.t);
      const pp=xy(position(tt));
      k===0?ctx.moveTo(pp[0],pp[1]):ctx.lineTo(pp[0],pp[1]);
    }
-   ctx.strokeStyle='#72e9d8';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
+   ctx.strokeStyle=TRAIL_COLOR;ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
  }
  // Use the exact same instantaneous state as in the main 3-D view.
  const here=xy(st.pos);
@@ -635,11 +746,16 @@ function topView(ctx,st,w,h){
  topGlider(ctx,here[0],here[1],heading,narrow?.37:.47);
  ctx.restore();ctx.restore();
 }
-function nextThermal(ctx,w,h,t){let s=clamp((t-54)/6),x=w*(.86-.27*smooth(s)),y=h*(.74+.045*s),ht=75+215*smooth(s),ww=26+69*smooth(s);ctx.save();let grad=ctx.createLinearGradient(0,y-ht,0,y);grad.addColorStop(0,'#f3c38b41');grad.addColorStop(.35,'#fbb2738b');grad.addColorStop(1,'#ffc38418');poly(ctx,[[x-ww,y],[x-ww*.55,y-ht],[x+ww*.55,y-ht],[x+ww,y]],grad);for(let i=0;i<5;i++){let yy=y-22-i*(ht-35)/5+(t*14%15);arrow(ctx,[x-15+i*8,yy+11],[x-15+i*8,yy-12],'#ffc77d',2.1)}label(ctx,'NEXT THERMAL',x,y-ht-10,'#f8dba7',15);ctx.restore()}
+function nextThermal(ctx,w,h,t){let s=clamp((t-54)/6),x=w*(.86-.27*smooth(s)),y=h*(.74+.045*s),ht=75+215*smooth(s),ww=26+69*smooth(s);ctx.save();
+ ctx.drawImage(distantThermalTexture,x-ww,y-ht,2*ww,ht);
+ for(let i=0;i<5;i++){let yy=y-22-i*(ht-35)/5+(t*14%15);arrow(ctx,[x-15+i*8,yy+11],[x-15+i*8,yy-12],'#ffc477',2.1)}label(ctx,'NEXT THERMAL',x,y-ht-10,'#f8dba7',15);ctx.restore()}
 function world(t){const st=stateAt(t),{ctx,w,h}=canvas('world');bg(ctx,w,h,st);let pr=projection(st,w,h);if(st.phase<5)thermal(ctx,pr.p,st);trail(ctx,pr.p,t);if(st.phase===5)nextThermal(ctx,w,h,t);
- if(st.phase===3){ctx.save();ctx.setLineDash([4,6]);ctx.strokeStyle='#b9d7e5a8';ctx.beginPath();for(let i=0;i<=100;i++){let a=i*TAU/100,pt=pr.p(vec(84*Math.cos(a),84*Math.sin(a),st.pos.z));i?ctx.lineTo(...pt):ctx.moveTo(...pt)}ctx.stroke();ctx.restore()}
  let cg=glider(ctx,pr.p,st);forces(ctx,pr.p,st,cg);topView(ctx,st,w,h);
- if(st.phase===2||st.phase===3){label(ctx,'w = 2.4 m/s ↑',w<610?w*.68:w*.20,w<610?h*.67:h*.68,'#ffc98a',15);label(ctx,'相对空气下沉 0.9 m/s',w<610?w*.66:w*.22,w<610?h*.73:h*.72,'#b3e9e0',14)}
+ if(st.phase===2||st.phase===3){
+   const narrow=w<610,align=narrow?'right':'center';
+   label(ctx,'w = 2.4 m/s ↑',narrow?w-12:w*.20,narrow?h-143:h*.68,'#ffc98a',15,align);
+   label(ctx,'相对空气下沉 0.9 m/s',narrow?w-12:w*.22,narrow?h-122:h*.72,'#b3e9e0',14,align);
+ }
 
 
 }
@@ -662,7 +778,7 @@ function pitchview(t){
  ctx.save();ctx.setLineDash([5,5]);line(ctx,[12,cy],[w-12,cy],'#8baab9',1.5,.71);ctx.restore();
  line(ctx,center,bodyTip,'#f5fbff',4.0);
  ctx.beginPath();ctx.arc(bodyTip[0],bodyTip[1],3,0,TAU);ctx.fillStyle='#f5fbff';ctx.fill();
- arrow(ctx,center,vTip,'#60e9ce',3.2);
+ arrow(ctx,center,vTip,velocityColor.air,3.2);
  arrow(ctx,center,dTip,'#ff947c',3.0);
  arrow(ctx,center,lTip,'#74caff',3.0);
  const arc=(r,a0,a1,col,lw)=>{ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=lw;ctx.arc(cx,cy,r,a0,a1,false);ctx.stroke()};
@@ -671,7 +787,7 @@ function pitchview(t){
  arc(27,0,-gamma,'#93b0bd',1.5);
  label(ctx,'Lift',lTip[0]+10,lTip[1]-10,'#74caff',14,'left');
  label(ctx,'Drag',Math.max(36,dTip[0]+9),dTip[1]-15,'#ff947c',14,'left');
- label(ctx,'Vₐ',Math.min(w-22,vTip[0]+4),vTip[1]+24,'#7decd9',16);
+ label(ctx,'Vₐ',Math.min(w-22,vTip[0]+4),vTip[1]+24,velocityColor.air,16);
  label(ctx,'弦线',Math.min(w-55,bodyTip[0]+1),bodyTip[1]-14,'#f5fbff',14);
  label(ctx,'水平线',w-38,cy-13,'#9cb9c6',13);
  label(ctx,'θ',cx+59*Math.cos(theta*.5),cy-59*Math.sin(theta*.5)-12,'#b3c4ff',16);
@@ -704,15 +820,15 @@ function velview(t){
  const G=[start[0]+scaleX*endForward,start[1]-scaleZ*groundVz];
  ctx.save();ctx.setLineDash([3,5]);line(ctx,[start[0]-8,start[1]],[w-8,start[1]],'#79a0b3',1,.42);ctx.restore();
  // Purple Vg first, green Va second, then orange wind. This keeps coincident arrows recognizable.
- arrow(ctx,start,G,'#a992ff',3.5);
- arrow(ctx,start,A,'#60e9ce',2.5);
+ arrow(ctx,start,G,velocityColor.ground,4.2);
+ arrow(ctx,start,A,velocityColor.air,2.5);
  const windPixel=Math.hypot(G[0]-A[0],G[1]-A[1]);
  if(windPixel>1.5){
    // Use a smaller tip when wind is short relative to the aircraft airspeed.
    const phi=Math.atan2(G[1]-A[1],G[0]-A[0]);
-   line(ctx,A,G,'#f1a54d',2.8);
+   line(ctx,A,G,velocityColor.wind,2.8);
    const tipSize=Math.min(9,Math.max(4,windPixel*.35));
-   poly(ctx,[G,[G[0]-tipSize*Math.cos(phi-.5),G[1]-tipSize*Math.sin(phi-.5)],[G[0]-tipSize*Math.cos(phi+.5),G[1]-tipSize*Math.sin(phi+.5)]],'#f1a54d');
+   poly(ctx,[G,[G[0]-tipSize*Math.cos(phi-.5),G[1]-tipSize*Math.sin(phi-.5)],[G[0]-tipSize*Math.cos(phi+.5),G[1]-tipSize*Math.sin(phi+.5)]],velocityColor.wind);
  }
  // Colored legend below identifies the three vectors; no labels over the arrowheads.
  // This is essential when horizontal wind and airspeed are nearly collinear.
@@ -781,7 +897,7 @@ function updateReadouts(s,force=false){
 }
 
 function display(t,forceReadouts=false){t=clamp(t,0,TOTAL);let s=stateAt(t),i=s.phase,scene=SCENES[i];
- if(lastScene!==i){$('stageNo').textContent=`SCENE 0${i+1} / 06`;$('stageTitle').textContent=scene.name;$('stageEn').textContent=scene.en;lastScene=i}
+ if(lastScene!==i){$('stageNo').textContent=`0${i+1} / 06`;$('stageTitle').textContent=scene.name;lastScene=i}
  updateNarration(t);
  updateReadouts(s,forceReadouts);
  $('clock').textContent=`${format(t)} / 01:00`;if(!scrubbing)$('seek').value=String(t);$('seek').style.setProperty('--played',(100*t/TOTAL).toFixed(2)+'%');

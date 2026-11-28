@@ -1,10 +1,11 @@
 ## Thermal Soaring Animation
 
 Place new animation files in the repository root using the name
-`Thermal_Soaring_V<number>.html`, for example `Thermal_Soaring_V29.html`.
-Use positive integer versions without leading zeros and keep these standalone
-HTML files without YAML front matter. During each Jekyll build, `research.html`
-automatically embeds the highest numeric version from `site.static_files`.
+`Thermal_Soaring_YYYY-MM-DD-HH-mm.html`, for example
+`Thermal_Soaring_2026-11-28-17-11.html`. Use zero-padded date and time fields.
+During each Jekyll build, `research.html` automatically embeds the newest
+timestamped file from `site.static_files`.
+Keep these standalone HTML files without YAML front matter.
 Older versions may be kept or removed; no Research page edit is needed.
 Commit and publish the new file through the normal website workflow.
 
